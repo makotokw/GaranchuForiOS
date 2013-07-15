@@ -1,0 +1,46 @@
+//
+//  WZNaviViewController.m
+//  Garanchu
+//
+//  Copyright (c) 2013 makoto_kw. All rights reserved.
+//
+
+#import "WZNaviViewController.h"
+
+@interface WZNaviViewController ()
+
+@end
+
+@implementation WZNaviViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    
+    self.navigationBar.tintColor = [UIColor greenSeaFlatColor];
+    
+    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor turquoiseFlatColor]
+                                  highlightedColor:[UIColor greenSeaFlatColor]
+                                      cornerRadius:3
+                                   whenContainedIn:[WZNaviViewController class]];
+    
+    [self.navigationBar configureFlatNavigationBarWithColor:[UIColor blackColor]];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

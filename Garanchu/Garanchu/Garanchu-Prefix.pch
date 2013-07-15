@@ -1,0 +1,23 @@
+//
+// Prefix header for all source files of the 'Garanchu' target in the 'Garanchu' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <BlocksKit/BlocksKit.h>
+    #import <FlatUIKit/FlatUIKit.h>
+    #import <FlatUIColor/UIColor+FlatUI.h>
+    #import <WZGarapon/WZGarapon.h>
+#endif
+
+#define GARAPON_SERVICE_NAME @"garapon"
+#define GARAPON_DEV_ID @"c399c615ffe8d7167f6d12fdf9554ea8"
+
+#define WZGaranchuDidSelectProgram @"WZGaranchuDidSelectProgram"
