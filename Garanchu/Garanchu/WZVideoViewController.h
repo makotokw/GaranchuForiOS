@@ -10,4 +10,8 @@
 
 @interface WZVideoViewController : WZAVPlayerViewController<UIGestureRecognizerDelegate>
 
+@property (readonly) WZGaraponWeb *garaponWeb;
+@property (readonly) WZGaraponTv *garaponTv;
+@property (readonly) WZGaraponTvProgram *watchingProgram;
+
 @end

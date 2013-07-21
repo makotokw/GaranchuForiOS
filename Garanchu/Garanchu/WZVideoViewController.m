@@ -21,9 +21,6 @@
 @implementation WZVideoViewController
 
 {
-    WZGaraponWeb *_garaponWeb;
-    WZGaraponTv *_garaponTv;
-    WZGaraponTvProgram *_watchingProgram;
     
     UIColor *_overlayBackgroundColor;
 
@@ -32,10 +29,18 @@
     IBOutlet WZVideoPlayerView *_videoPlayerView;
     IBOutlet UIView *_menuContainerView;
     WZNaviViewController *_naviViewController;
-    WZMenuViewController *_menuViewController;
+//    WZMenuViewController *_menuViewController;
     IBOutlet UIView *_controlView;
     UITapGestureRecognizer *_tapGestureRecognizer;
+    
+    WZLoginViewController *_loginViewController;
+    
+    BOOL _isLogined;
 }
+
+@synthesize garaponTv = _garaponTv;
+@synthesize garaponWeb = _garaponWeb;
+@synthesize watchingProgram = _watchingProgram;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,17 +54,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-            
+    
     self.view.backgroundColor = [UIColor blackColor];    
     
-    WZGaranchuUser *user = [WZGaranchuUser defaultUser];
     _garaponWeb = [WZGaranchu current].garaponWeb;
     _garaponTv = [WZGaranchu current].garaponTv;
+    _isLogined = NO;
     
     _overlayBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
-    
-    
+        
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectProgram:) name:WZGaranchuDidSelectProgram object:nil];
 
     _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewDidTapped:)];
@@ -71,38 +74,22 @@
     [self appendControlView];
     [self loadingProgram:nil];
     
-    BOOL didLogin = NO;
+    // hiddein all subView until login
+    _headerView.hidden =YES;
+    _menuContainerView.hidden = YES;
+    _controlView.hidden = YES;
     
-#if DEBUG
+    [self performBlock:^(id sender) {
+        [sender presentModalLoginViewController];
+    } afterDelay:0.1f];
     
-    NSDictionary *cache = [user hostAddressCache];
-    if (cache) {
-        didLogin = YES;
-        [_garaponTv setHostAndPortWithAddressResponse:cache];
-        [_garaponTv loginWithLoginId:user.garaponId password:user.password completionHandler:^(NSError *error) {
-            if (error) {
-                [UIAlertView showAlertViewWithTitle:@"" message:error.localizedDescription cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                    ;
-                }];
-            } else {
-                [_menuViewController seach];
-            }
-        }];
-    }    
-    
-#endif
-    
-    if (!didLogin) {
-        __weak WZVideoViewController *me = self;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [me presentModalLoginViewController];
-        });
-    }
 }
 
 - (void)viewDidTapped:(UITapGestureRecognizer *)sender
 {
-    _menuContainerView.hidden = !_menuContainerView.hidden;
+    if (_isLogined) {
+        _menuContainerView.hidden = !_menuContainerView.hidden;
+    }
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
@@ -132,34 +119,23 @@
 
 - (void)appendMenuView
 {
-    _menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuViewController"];
-    [self addChildViewController:_menuViewController];
-    [_menuViewController didMoveToParentViewController:self];
-    [_menuContainerView addSubview:_menuViewController.view];
-    
-    _menuViewController.view.frame = _menuContainerView.bounds;
-    _menuContainerView.backgroundColor = _overlayBackgroundColor;
-    
-    __weak WZVideoViewController *me = self;
-    _menuViewController.didSelectProgramHandler = ^(WZGaraponTvProgram *program) {
-        [me loadingProgram:program];
-    };
+//    _menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuViewController"];
+//    [self addChildViewController:_menuViewController];
+//    [_menuViewController didMoveToParentViewController:self];
+//    [_menuContainerView addSubview:_menuViewController.view];
+//    
+//    _menuViewController.view.frame = _menuContainerView.bounds;
+//    _menuContainerView.backgroundColor = _overlayBackgroundColor;
+//    
+//    __weak WZVideoViewController *me = self;
+//    _menuViewController.didSelectProgramHandler = ^(WZGaraponTvProgram *program) {
+//        [me loadingProgram:program];
+//    };
 }
 
 - (void)appendControlView
 {
     _controlView.backgroundColor = _overlayBackgroundColor;
-}
-
-- (void)loadingProgram:(WZGaraponTvProgram *)program
-{
-    _watchingProgram = program;    
-    if (program) {
-        NSString *mediaUrl = [_garaponTv httpLiveStreamingURLStringWithProgram:program];
-        [self setContentTitle:program.title];
-        [self setContentURL:[NSURL URLWithString:mediaUrl]];
-    }
-    [self refreshHeaderView];
 }
 
 - (void)refreshHeaderView
@@ -178,62 +154,17 @@
     return YES;
 }
 
-- (void)presentModalLoginViewController
-{
-    __weak WZVideoViewController *me = self;
-    WZLoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
-    loginViewController.loginButtonClickedHandler = ^(WZLoginViewController *viewController) {
-        [viewController setEnableControls:NO];
-        
-        __weak MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:viewController.view animated:YES];
-        
-        [[WZGaranchuUser defaultUser] getGaraponTvAddress:_garaponWeb
-                                                garaponId:viewController.usernameField.text
-                                              rawPassword:viewController.passwordField.text
-                                        completionHandler:^(NSDictionary *response, NSError *error) {
-                                            
-                                            if (error) {
-                                                [MBProgressHUD hideHUDForView:viewController.view animated:YES];
-                                                [UIAlertView showAlertViewWithTitle:@"" message:error.localizedDescription cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                                    ;
-                                                }];
-                                            } else {
-                                                [_garaponTv setHostAndPortWithAddressResponse:response];
-                                                
-                                                hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-                                                hud.mode = MBProgressHUDModeCustomView;
-                                                hud.labelText = @"AuthSucceeded";
-                                                
-                                                double delayInSeconds = 1.0;
-                                                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-                                                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                                                    [MBProgressHUD hideHUDForView:viewController.view animated:YES];
-                                                    [me dismissModalViewControllerAnimated:YES];
-                                                });                                                
-                                            }
-            
-        }];
-    };
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        loginViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-        loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;        
-        [self presentModalViewController:loginViewController animated:YES];
-        loginViewController.view.superview.bounds = CGRectMake(0, 0, 400, 300);
-        
-        //            UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-        //            if (orientation == UIInterfaceOrientationPortrait) {
-        //                loginViewController.view.superview.center = CGPointMake(roundf(me.view.center.x), roundf(me.view.center.y));
-        //            } else {
-        //                loginViewController.view.superview.center = CGPointMake(roundf(me.view.center.y), roundf(me.view.center.x));
-        //            }
-                
-    } else {
-        loginViewController.modalPresentationStyle = UIModalPresentationFullScreen;
-        loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        [self presentModalViewController:loginViewController animated:YES];
-    }
+#pragma mark - Program
 
+- (void)loadingProgram:(WZGaraponTvProgram *)program
+{
+    _watchingProgram = program;
+    if (program) {
+        NSString *mediaUrl = [_garaponTv httpLiveStreamingURLStringWithProgram:program];
+        [self setContentTitle:program.title];
+        [self setContentURL:[NSURL URLWithString:mediaUrl]];
+    }
+    [self refreshHeaderView];
 }
 
 -(void)didSelectProgram:(NSNotification *)notification
@@ -246,5 +177,104 @@
     }
     
 }
+
+#pragma mark - Login
+
+- (void)didLoginGraponWeb
+{
+    __weak WZVideoViewController *me = self;
+    __weak WZLoginViewController *loginViewController = _loginViewController;
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:loginViewController.view];
+    if (!hud) {
+        hud = [MBProgressHUD showHUDAddedTo:loginViewController.view animated:YES];
+    }
+    
+    hud.labelText = @"ガラポンTVにログイン中...";
+    
+    WZGaranchuUser *user = [WZGaranchuUser defaultUser];
+    [_garaponTv loginWithLoginId:user.garaponId password:user.password completionHandler:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:loginViewController.view animated:YES];
+        if (error) {
+            [UIAlertView showAlertViewWithTitle:@"" message:error.localizedDescription cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                ;
+                [loginViewController setEnableControls:YES];
+            }];
+        } else {
+            [me performBlock:^(id sender) {
+                [me dismissViewControllerAnimated:YES completion:^{
+                    [me didLoginGaraponTv];
+                }];
+            } afterDelay:1.0f];
+        }
+    }];
+}
+
+- (void)didLoginGaraponTv
+{
+    _isLogined = YES;
+    _headerView.hidden = NO;
+    _menuContainerView.hidden = NO;
+    _controlView.hidden = NO;
+
+}
+
+- (void)presentModalLoginViewController
+{
+    if (!_loginViewController) {
+        _loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+    }
+    
+    __weak WZVideoViewController *me = self;
+    __weak WZLoginViewController *loginViewController = _loginViewController;
+    _loginViewController.loginButtonClickedHandler = ^(WZLoginViewController *viewController) {
+        [viewController setEnableControls:NO];
+        
+        __weak MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:loginViewController.view animated:YES];
+        hud.labelText = @"ガラポンTVを検索しています...";
+        
+        [[WZGaranchuUser defaultUser] getGaraponTvAddress:me.garaponWeb
+                                                garaponId:viewController.usernameField.text
+                                              rawPassword:viewController.passwordField.text
+                                        completionHandler:^(NSDictionary *response, NSError *error) {
+                                            
+                                            if (error) {
+                                                [MBProgressHUD hideHUDForView:loginViewController.view animated:YES];
+                                                [UIAlertView showAlertViewWithTitle:@"" message:error.localizedDescription cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {                                                    
+                                                    [loginViewController setEnableControls:YES];
+                                                }];
+                                            } else {
+                                                [me.garaponTv setHostAndPortWithAddressResponse:response];
+                                                [me performBlock:^(id sender) {
+                                                    [me didLoginGraponWeb];
+                                                } afterDelay:1.0f];
+                                            }
+            
+        }];
+    };
+    
+    [_loginViewController setEnableControls:YES];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        _loginViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+        _loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;        
+        [self presentModalViewController:_loginViewController animated:YES];
+        _loginViewController.view.superview.bounds = CGRectMake(0, 0, 400, 300);
+        
+        //            UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+        //            if (orientation == UIInterfaceOrientationPortrait) {
+        //                loginViewController.view.superview.center = CGPointMake(roundf(me.view.center.x), roundf(me.view.center.y));
+        //            } else {
+        //                loginViewController.view.superview.center = CGPointMake(roundf(me.view.center.y), roundf(me.view.center.x));
+        //            }
+                
+    } else {
+        _loginViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+        _loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentModalViewController:_loginViewController animated:YES];
+    }
+
+}
+
+
 
 @end

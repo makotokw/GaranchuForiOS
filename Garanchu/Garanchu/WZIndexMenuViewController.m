@@ -117,6 +117,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
 - (BOOL)hasSection
 {
     return (_indexType == WZGenreGaranchuIndexType || _indexType == WZRootGaranchuIndexType);
