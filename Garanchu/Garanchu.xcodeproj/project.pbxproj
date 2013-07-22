@@ -33,6 +33,7 @@
 		8F935BC91791F2ED001FFE01 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BC81791F2ED001FFE01 /* iPad.storyboard */; };
 		8F935BCC1791F570001FFE01 /* WZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BCB1791F570001FFE01 /* WZLoginViewController.m */; };
 		8FF1B0EA179C551100BF9785 /* GaranchuResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0E9179C551100BF9785 /* GaranchuResources.bundle */; };
+		8FF1B0ED179CD32A00BF9785 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0EF179CD32A00BF9785 /* Localizable.strings */; };
 		DEAD08CC53D6433E97303441 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FD30FE5BBFD4D808BB97071 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +72,6 @@
 		8F935B951791F24D001FFE01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8F935B971791F24D001FFE01 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8F935B9B1791F24D001FFE01 /* Garanchu-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Garanchu-Info.plist"; sourceTree = "<group>"; };
-		8F935B9D1791F24D001FFE01 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8F935B9F1791F24D001FFE01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8F935BA11791F24D001FFE01 /* Garanchu-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Garanchu-Prefix.pch"; sourceTree = "<group>"; };
 		8F935BA21791F24D001FFE01 /* WZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WZAppDelegate.h; sourceTree = "<group>"; };
@@ -82,13 +82,15 @@
 		8F935BB01791F24D001FFE01 /* GaranchuTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GaranchuTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F935BB11791F24D001FFE01 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		8F935BB91791F24D001FFE01 /* GaranchuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GaranchuTests-Info.plist"; sourceTree = "<group>"; };
-		8F935BBB1791F24D001FFE01 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8F935BBD1791F24D001FFE01 /* GaranchuTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GaranchuTests.h; sourceTree = "<group>"; };
 		8F935BBE1791F24D001FFE01 /* GaranchuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GaranchuTests.m; sourceTree = "<group>"; };
 		8F935BC81791F2ED001FFE01 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		8F935BCA1791F570001FFE01 /* WZLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZLoginViewController.h; sourceTree = "<group>"; };
 		8F935BCB1791F570001FFE01 /* WZLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZLoginViewController.m; sourceTree = "<group>"; };
 		8FF1B0E9179C551100BF9785 /* GaranchuResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GaranchuResources.bundle; sourceTree = "<group>"; };
+		8FF1B0F0179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8FF1B0F1179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8FF1B0F2179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		96F8EB6C90064691BC69EB19 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -191,6 +193,7 @@
 				8F935BA51791F24D001FFE01 /* Default.png */,
 				8F935BA71791F24D001FFE01 /* Default@2x.png */,
 				8F935BA91791F24D001FFE01 /* Default-568h@2x.png */,
+				8FF1B0EF179CD32A00BF9785 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ja,
 			);
 			mainGroup = 8F935B871791F24D001FFE01;
 			productRefGroup = 8F935B911791F24D001FFE01 /* Products */;
@@ -294,6 +298,7 @@
 				8F935BAA1791F24D001FFE01 /* Default-568h@2x.png in Resources */,
 				8F935BC91791F2ED001FFE01 /* iPad.storyboard in Resources */,
 				8FF1B0EA179C551100BF9785 /* GaranchuResources.bundle in Resources */,
+				8FF1B0ED179CD32A00BF9785 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,7 +398,7 @@
 		8F935B9C1791F24D001FFE01 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8F935B9D1791F24D001FFE01 /* en */,
+				8FF1B0F0179CD36A00BF9785 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -401,9 +406,17 @@
 		8F935BBA1791F24D001FFE01 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8F935BBB1791F24D001FFE01 /* en */,
+				8FF1B0F2179CD36A00BF9785 /* ja */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8FF1B0EF179CD32A00BF9785 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8FF1B0F1179CD36A00BF9785 /* ja */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

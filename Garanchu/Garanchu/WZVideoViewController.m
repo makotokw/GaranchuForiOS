@@ -9,6 +9,7 @@
 #import "WZMenuViewController.h"
 #import "WZNaviViewController.h"
 #import "WZLoginViewController.h"
+#import "WZAlertView.h"
 #import "WZVideoPlayerView.h"
 #import "WZGaranchu.h"
 #import "WZGaranchuUser.h"
@@ -222,9 +223,13 @@
     [_garaponTv loginWithLoginId:user.garaponId password:user.password completionHandler:^(NSError *error) {
         [MBProgressHUD hideHUDForView:view animated:YES];
         if (error) {
-            [UIAlertView showAlertViewWithTitle:@"" message:error.localizedDescription cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            [WZAlertView showAlertViewWithTitle:@"" message:error.localizedDescription cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
                 ;
-                [loginViewController setEnableControls:YES];
+                if (loginViewController) {
+                    [loginViewController setEnableControls:YES];
+                } else {
+                    [me presentModalLoginViewController];
+                }
             }];
         } else {
             [me performBlock:^(id sender) {
@@ -267,7 +272,7 @@
                                             
                                             if (error) {
                                                 [MBProgressHUD hideHUDForView:loginViewController.view animated:YES];
-                                                [UIAlertView showAlertViewWithTitle:@"" message:error.localizedDescription cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {                                                    
+                                                [WZAlertView showAlertViewWithTitle:@"" message:error.localizedDescription cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
                                                     [loginViewController setEnableControls:YES];
                                                 }];
                                             } else {
