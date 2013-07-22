@@ -14,4 +14,6 @@
 @property (readonly) WZGaraponTv *garaponTv;
 @property (readonly) WZGaraponTvProgram *watchingProgram;
 
+- (IBAction)playerViewDidTapped:(id)sender;
+
 @end

@@ -31,6 +31,7 @@
     NSInteger _maxSearchPage;
     NSInteger _totalCount;
     
+    UIImage *_placeHolderImage;
     NSDateFormatter *_programCellDateFormatter;
 }
 
@@ -65,6 +66,8 @@
     _items = [[NSMutableArray alloc] init];
     
     self.title = _context[@"title"];
+    
+    _placeHolderImage = [UIImage imageNamed:@"GaranchuResources.bundle/thumbnail.png"];
     
     _programCellDateFormatter = [[NSDateFormatter alloc] init];
     [_programCellDateFormatter setDateFormat:@"M/d HH:mm"];
@@ -333,7 +336,7 @@
                 
         NSURL *thumbnailURL = [NSURL URLWithString:[_garaponTv thumbnailURLStringWithProgram:item]];
 
-        [thumbnailView setImageWithURL:thumbnailURL placeholderImage:nil options:SDWebImageCacheMemoryOnly];
+        [thumbnailView setImageWithURL:thumbnailURL placeholderImage:_placeHolderImage options:SDWebImageCacheMemoryOnly];
         
         
         titleLabel.text = item.title;

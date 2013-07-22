@@ -27,4 +27,36 @@
 }
 */
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    self.playButtonImage = [UIImage imageNamed:@"GaranchuResources.bundle/play.png"];
+    self.pauseButtonImage = [UIImage imageNamed:@"GaranchuResources.bundle/pause.png"];
+    [self.playButton setImage:self.playButtonImage forState:UIControlStateNormal];
+    
+    
+    [_previousButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/previous.png"] forState:UIControlStateNormal];
+    [_stepBackButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepBack.png"] forState:UIControlStateNormal];
+    [_stepSkipButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepSkip.png"] forState:UIControlStateNormal];
+}
+
+- (void)enableControls
+{
+    [super enableControls];
+    
+    _previousButton.enabled =
+    _stepBackButton.enabled = 
+    _stepSkipButton.enabled = YES;
+}
+
+- (void)disableControls
+{
+    [super disableControls];
+    
+    _previousButton.enabled =
+    _stepBackButton.enabled =
+    _stepSkipButton.enabled = NO;
+}
+
 @end

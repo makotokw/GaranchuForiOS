@@ -31,8 +31,7 @@
     WZNaviViewController *_naviViewController;
 //    WZMenuViewController *_menuViewController;
     IBOutlet UIView *_controlView;
-    UITapGestureRecognizer *_tapGestureRecognizer;
-    
+//    UITapGestureRecognizer *_tapGestureRecognizer;    
     WZLoginViewController *_loginViewController;
     
     BOOL _isLogined;
@@ -65,12 +64,9 @@
         
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectProgram:) name:WZGaranchuDidSelectProgram object:nil];
 
-    _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewDidTapped:)];
-    _tapGestureRecognizer.delegate = self;
-    [self.view addGestureRecognizer:_tapGestureRecognizer];
-
     [self appendHeaderView];
     [self appendNaviView];
+    [self appendVideoView];
     [self appendControlView];
     [self loadingProgram:nil];
     
@@ -79,26 +75,32 @@
     _menuContainerView.hidden = YES;
     _controlView.hidden = YES;
     
+    
+#if DEBUG
+    __weak WZVideoViewController *me = self;
+    WZGaranchuUser *user = [WZGaranchuUser defaultUser];
+    NSDictionary *cached = [user hostAddressCache];
+    if (cached) {
+        [me.garaponTv setHostAndPortWithAddressResponse:cached];
+        [me performBlock:^(id sender) {
+            [me didLoginGraponWeb];
+        } afterDelay:1.0f];
+        return;
+    }
+#endif
+    
     [self performBlock:^(id sender) {
         [sender presentModalLoginViewController];
     } afterDelay:0.1f];
     
 }
 
-- (void)viewDidTapped:(UITapGestureRecognizer *)sender
+- (IBAction)playerViewDidTapped:(id)sender
 {
     if (_isLogined) {
         _menuContainerView.hidden = !_menuContainerView.hidden;
     }
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
-    // test if our control subview is on-screen
-    if (_menuContainerView.superview != nil) {
-        return touch.view == self.view;
-    }
-    return YES; // handle the touch
+    [_videoPlayerView toggleOverlayWithDuration:0.25];
 }
 
 - (void)appendHeaderView
@@ -117,8 +119,8 @@
     _menuContainerView.backgroundColor = _overlayBackgroundColor;
 }
 
-- (void)appendMenuView
-{
+//- (void)appendMenuView
+//{
 //    _menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuViewController"];
 //    [self addChildViewController:_menuViewController];
 //    [_menuViewController didMoveToParentViewController:self];
@@ -131,6 +133,13 @@
 //    _menuViewController.didSelectProgramHandler = ^(WZGaraponTvProgram *program) {
 //        [me loadingProgram:program];
 //    };
+//}
+
+- (void)appendVideoView
+{
+    [_videoPlayerView disableScreenTapRecognizer];
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playerViewDidTapped:)];
+    [_videoPlayerView addGestureRecognizer:tapGestureRecognizer];
 }
 
 - (void)appendControlView
@@ -154,12 +163,26 @@
     return YES;
 }
 
+#pragma mark - WZAVPlayerViewController
+
+
+- (id)playerView
+{
+    return _videoPlayerView;
+}
+
+- (void)playerDidReadyPlayback
+{
+    [self hideProgress];
+}
+
 #pragma mark - Program
 
 - (void)loadingProgram:(WZGaraponTvProgram *)program
 {
     _watchingProgram = program;
-    if (program) {
+    if (program) {        
+        [self showProgressWithText:@"Loading..."];
         NSString *mediaUrl = [_garaponTv httpLiveStreamingURLStringWithProgram:program];
         [self setContentTitle:program.title];
         [self setContentURL:[NSURL URLWithString:mediaUrl]];
@@ -184,16 +207,20 @@
 {
     __weak WZVideoViewController *me = self;
     __weak WZLoginViewController *loginViewController = _loginViewController;
-    MBProgressHUD *hud = [MBProgressHUD HUDForView:loginViewController.view];
+    __weak UIView *view = loginViewController.view;
+    if (!view) {
+        view = me.view;
+    }
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:view];
     if (!hud) {
-        hud = [MBProgressHUD showHUDAddedTo:loginViewController.view animated:YES];
+        hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     }
     
     hud.labelText = @"ガラポンTVにログイン中...";
     
     WZGaranchuUser *user = [WZGaranchuUser defaultUser];
     [_garaponTv loginWithLoginId:user.garaponId password:user.password completionHandler:^(NSError *error) {
-        [MBProgressHUD hideHUDForView:loginViewController.view animated:YES];
+        [MBProgressHUD hideHUDForView:view animated:YES];
         if (error) {
             [UIAlertView showAlertViewWithTitle:@"" message:error.localizedDescription cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 ;
@@ -202,8 +229,9 @@
         } else {
             [me performBlock:^(id sender) {
                 [me dismissViewControllerAnimated:YES completion:^{
-                    [me didLoginGaraponTv];
+                    
                 }];
+                [me didLoginGaraponTv];
             } afterDelay:1.0f];
         }
     }];
