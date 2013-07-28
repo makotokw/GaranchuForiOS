@@ -205,11 +205,8 @@
             WZAlertView *alertView = [[WZAlertView alloc] initWithTitle:@"" message:@"error" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alertView show];
         } else {
-            
             NSArray *items = [WZGaraponTvChannel arrayWithChannelResponse:response];
             [me addChannelFromArray:items];
-            
-            
         }
     }];
 }

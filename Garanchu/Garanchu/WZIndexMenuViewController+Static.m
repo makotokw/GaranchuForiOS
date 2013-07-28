@@ -13,11 +13,11 @@
 {
     return [@[
             @{@"title": @"インデックス", @"items": @[
-            @{@"title": @"録画番組一覧", @"indexType": [NSNumber numberWithInteger:WZProgramGaranchuIndexType]},
+            @{@"title": @"録画番組", @"indexType": [NSNumber numberWithInteger:WZProgramGaranchuIndexType]},
             //                 @{@"title": @"現在録画中の番組一覧", @"indexType": [NSNumber numberWithInteger:WZRecordingProgramGaranchuIndexType]},
 //            @{@"title": @"日付一覧", @"indexType": [NSNumber numberWithInteger:WZDateGaranchuIndexType]},
-            @{@"title": @"ジャンル一覧", @"indexType": [NSNumber numberWithInteger:WZGenreGaranchuIndexType]},
-            @{@"title": @"放送局別一覧", @"indexType": [NSNumber numberWithInteger:WZChannelGaranchuIndexType]},
+            @{@"title": @"ジャンル", @"indexType": [NSNumber numberWithInteger:WZGenreGaranchuIndexType]},
+            @{@"title": @"放送局", @"indexType": [NSNumber numberWithInteger:WZChannelGaranchuIndexType]},
             @{@"title": @"お気に入り", @"indexType": [NSNumber numberWithInteger:WZProgramGaranchuIndexType], @"params": @{@"rank": @"all"}},
             ]
             }

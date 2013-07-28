@@ -22,7 +22,6 @@
 @implementation WZVideoViewController
 
 {
-    
     UIColor *_overlayBackgroundColor;
 
     IBOutlet UIView *_headerView;
@@ -30,9 +29,7 @@
     IBOutlet WZVideoPlayerView *_videoPlayerView;
     IBOutlet UIView *_menuContainerView;
     WZNaviViewController *_naviViewController;
-//    WZMenuViewController *_menuViewController;
     IBOutlet UIView *_controlView;
-//    UITapGestureRecognizer *_tapGestureRecognizer;    
     WZLoginViewController *_loginViewController;
     
     BOOL _isLogined;
@@ -77,22 +74,27 @@
     _controlView.hidden = YES;
     
     
-#if DEBUG
     __weak WZVideoViewController *me = self;
     WZGaranchuUser *user = [WZGaranchuUser defaultUser];
+#if DEBUG
     NSDictionary *cached = [user hostAddressCache];
     if (cached) {
         [me.garaponTv setHostAndPortWithAddressResponse:cached];
         [me performBlock:^(id sender) {
-            [me didLoginGraponWeb];
-        } afterDelay:1.0f];
+            [me loginGraponTv];
+        } afterDelay:0.1f];
         return;
     }
 #endif
-    
-    [self performBlock:^(id sender) {
-        [sender presentModalLoginViewController];
-    } afterDelay:0.1f];
+    if (user.garaponId.length && user.password.length) {
+        [self performBlock:^(id sender) {
+            [me loginGaraponWebWithUsername:user.garaponId password:user.password];
+        } afterDelay:0.1f];
+    } else {
+        [self performBlock:^(id sender) {
+            [me presentModalLoginViewController];
+        } afterDelay:0.1f];
+    }
     
 }
 
@@ -164,6 +166,34 @@
     return YES;
 }
 
+#pragma mark - PlayerController
+
+- (IBAction)playOrPause:(id)sender
+{
+    [_videoPlayerView playOrPause:sender];
+}
+
+- (IBAction)previous:(id)sender
+{
+    [_videoPlayerView seekToTime:0 completionHandler:^{
+        [_videoPlayerView dismissOverlayWithDuration:0.25f];
+    }];
+}
+
+- (IBAction)stepBack:(id)sender
+{
+    [_videoPlayerView seekFromCurrentTime:-10.0f completionHandler:^{
+        [_videoPlayerView dismissOverlayWithDuration:0.25f];
+    }];
+}
+
+- (IBAction)stepSkip:(id)sender
+{
+    [_videoPlayerView seekFromCurrentTime:15.0f completionHandler:^{
+        [_videoPlayerView dismissOverlayWithDuration:0.25f];
+    }];
+}
+
 #pragma mark - WZAVPlayerViewController
 
 
@@ -204,51 +234,105 @@
 
 #pragma mark - Login
 
-- (void)didLoginGraponWeb
-{
-    __weak WZVideoViewController *me = self;
-    __weak WZLoginViewController *loginViewController = _loginViewController;
-    __weak UIView *view = loginViewController.view;
-    if (!view) {
-        view = me.view;
-    }
-    MBProgressHUD *hud = [MBProgressHUD HUDForView:view];
-    if (!hud) {
-        hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    }
-    
-    hud.labelText = @"ガラポンTVにログイン中...";
-    
-    WZGaranchuUser *user = [WZGaranchuUser defaultUser];
-    [_garaponTv loginWithLoginId:user.garaponId password:user.password completionHandler:^(NSError *error) {
-        [MBProgressHUD hideHUDForView:view animated:YES];
-        if (error) {
-            [WZAlertView showAlertViewWithTitle:@"" message:error.localizedDescription cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
-                ;
-                if (loginViewController) {
-                    [loginViewController setEnableControls:YES];
-                } else {
-                    [me presentModalLoginViewController];
-                }
-            }];
-        } else {
-            [me performBlock:^(id sender) {
-                [me dismissViewControllerAnimated:YES completion:^{
-                    
-                }];
-                [me didLoginGaraponTv];
-            } afterDelay:1.0f];
-        }
-    }];
-}
-
 - (void)didLoginGaraponTv
 {
     _isLogined = YES;
     _headerView.hidden = NO;
     _menuContainerView.hidden = NO;
     _controlView.hidden = NO;
+}
 
+- (void)silentLogin
+{
+    __weak WZVideoViewController *me = self;
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:me.view animated:YES];
+    hud.labelText = @"ガラポンTVにログイン中...";
+    
+    WZGaranchuUser *user = [WZGaranchuUser defaultUser];
+    [_garaponTv loginWithLoginId:user.garaponId password:user.password completionHandler:^(NSError *error) {
+        if (error) {
+            
+        } else {
+            [me performBlock:^(id sender) {
+                [me dismissViewControllerAnimated:YES completion:^{
+                    [me loginGraponTv];
+                }];
+            } afterDelay:1.0f];
+        }
+    }];
+}
+
+- (void)loginGaraponWebWithUsername:(NSString *)username password:(NSString *)password
+{
+    __weak WZVideoViewController *me = self;
+    __weak WZLoginViewController *loginViewController = _loginViewController;
+    __weak UIView *hudView = loginViewController.view ? loginViewController.view : me.view;
+    
+    __weak MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:hudView animated:YES];
+    hud.labelText = @"ガラポンTVを検索しています...";
+    
+    [_loginViewController setEnableControls:NO];
+    [[WZGaranchuUser defaultUser] getGaraponTvAddress:me.garaponWeb
+                                            garaponId:username
+                                          rawPassword:password
+                                    completionHandler:^(NSDictionary *response, NSError *error) {
+                                        
+                                        if (error) {
+                                            [MBProgressHUD hideHUDForView:loginViewController.view animated:YES];
+                                            [WZAlertView showAlertViewWithTitle:@""
+                                                                        message:error.localizedDescription
+                                                              cancelButtonTitle:@"OK" otherButtonTitles:nil
+                                                                        handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+                                                                            [loginViewController setEnableControls:YES];
+                                                                        }];
+                                        } else {
+                                            [me.garaponTv setHostAndPortWithAddressResponse:response];                                            
+                                            [me performBlock:^(id sender) {
+                                                [me loginGraponTv];
+                                            } afterDelay:1.0f];
+                                        }
+                                    }];
+}
+
+- (void)loginGraponTv
+{
+    __weak WZVideoViewController *me = self;
+    __weak WZLoginViewController *loginViewController = _loginViewController;
+    __weak UIView *hudView = loginViewController.view ? loginViewController.view : me.view;
+    
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:hudView];
+    if (!hud) {
+        hud = [MBProgressHUD showHUDAddedTo:hudView animated:YES];
+    }
+    
+    hud.labelText = @"ガラポンTVにログイン中...";
+    
+    WZGaranchuUser *user = [WZGaranchuUser defaultUser];
+    [_garaponTv loginWithLoginId:user.garaponId password:user.password completionHandler:^(NSError *error) {
+        if (error) {
+            [MBProgressHUD hideHUDForView:hudView animated:YES];
+            [WZAlertView showAlertViewWithTitle:@""
+                                        message:error.localizedDescription
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil
+                                        handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+                                            ;
+                                            if (loginViewController) {
+                                                [loginViewController setEnableControls:YES];
+                                            } else {
+                                                [me presentModalLoginViewController];
+                                            }
+                                        }];
+        } else {
+            [me performBlock:^(id sender) {
+                [MBProgressHUD hideHUDForView:hudView animated:YES];
+                [me didLoginGaraponTv];
+                [_loginViewController dismissViewControllerAnimated:YES completion:^{
+                    _loginViewController = nil;
+                }];
+            } afterDelay:1.0f];
+        }
+    }];
 }
 
 - (void)presentModalLoginViewController
@@ -258,31 +342,8 @@
     }
     
     __weak WZVideoViewController *me = self;
-    __weak WZLoginViewController *loginViewController = _loginViewController;
     _loginViewController.loginButtonClickedHandler = ^(WZLoginViewController *viewController) {
-        [viewController setEnableControls:NO];
-        
-        __weak MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:loginViewController.view animated:YES];
-        hud.labelText = @"ガラポンTVを検索しています...";
-        
-        [[WZGaranchuUser defaultUser] getGaraponTvAddress:me.garaponWeb
-                                                garaponId:viewController.usernameField.text
-                                              rawPassword:viewController.passwordField.text
-                                        completionHandler:^(NSDictionary *response, NSError *error) {
-                                            
-                                            if (error) {
-                                                [MBProgressHUD hideHUDForView:loginViewController.view animated:YES];
-                                                [WZAlertView showAlertViewWithTitle:@"" message:error.localizedDescription cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
-                                                    [loginViewController setEnableControls:YES];
-                                                }];
-                                            } else {
-                                                [me.garaponTv setHostAndPortWithAddressResponse:response];
-                                                [me performBlock:^(id sender) {
-                                                    [me didLoginGraponWeb];
-                                                } afterDelay:1.0f];
-                                            }
-            
-        }];
+        [me loginGaraponWebWithUsername:viewController.usernameField.text password:viewController.passwordField.text];
     };
     
     [_loginViewController setEnableControls:YES];
@@ -292,22 +353,11 @@
         _loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;        
         [self presentModalViewController:_loginViewController animated:YES];
         _loginViewController.view.superview.bounds = CGRectMake(0, 0, 400, 300);
-        
-        //            UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-        //            if (orientation == UIInterfaceOrientationPortrait) {
-        //                loginViewController.view.superview.center = CGPointMake(roundf(me.view.center.x), roundf(me.view.center.y));
-        //            } else {
-        //                loginViewController.view.superview.center = CGPointMake(roundf(me.view.center.y), roundf(me.view.center.x));
-        //            }
-                
     } else {
         _loginViewController.modalPresentationStyle = UIModalPresentationFullScreen;
         _loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         [self presentModalViewController:_loginViewController animated:YES];
     }
-
 }
-
-
 
 @end

@@ -65,7 +65,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="playOrPause:" destination="Vte-mT-Hu8" eventType="touchDown" id="fJz-GQ-1q7"/>
+                                            <action selector="playOrPause:" destination="ePR-Fl-IsY" eventType="touchDown" id="Zsg-bK-bzz"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xga-KD-yOd" userLabel="prevButton">
@@ -79,6 +79,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="previous:" destination="ePR-Fl-IsY" eventType="touchDown" id="Jwh-RG-Ujc"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZdH-Kb-zlN" userLabel="stepBackButton">
                                         <rect key="frame" x="96" y="0.0" width="40" height="40"/>
@@ -91,6 +94,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="stepBack:" destination="ePR-Fl-IsY" eventType="touchDown" id="s4p-dW-Ty3"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eCa-wj-t2p" userLabel="stepSkipButton">
                                         <rect key="frame" x="144" y="0.0" width="40" height="40"/>
@@ -103,6 +109,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="stepSkip:" destination="ePR-Fl-IsY" eventType="touchDown" id="sJF-TQ-ieP"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="txf-wt-TEz" userLabel="currentTimeLabel">
                                         <rect key="frame" x="192" y="8" width="60" height="21"/>
@@ -346,7 +355,16 @@
         <class className="WZVideoViewController" superclassName="WZAVPlayerViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WZVideoViewController.h"/>
             <relationships>
+                <relationship kind="action" name="playOrPause:"/>
                 <relationship kind="action" name="playerViewDidTapped:"/>
+                <relationship kind="action" name="previous:"/>
+                <relationship kind="action" name="stepBack:"/>
+                <relationship kind="action" name="stepSkip:"/>
+                <relationship kind="outlet" name="_controlView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="_headerTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="_headerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="_menuContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="_videoPlayerView" candidateClass="WZVideoPlayerView"/>
             </relationships>
         </class>
     </classes>
