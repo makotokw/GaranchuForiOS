@@ -17,6 +17,9 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 
 @interface WZVideoViewController ()
+@property (readonly) WZGaraponWeb *garaponWeb;
+@property (readonly) WZGaraponTv *garaponTv;
+@property (readonly) WZGaraponTvProgram *watchingProgram;
 @end
 
 @implementation WZVideoViewController
@@ -26,6 +29,8 @@
 
     IBOutlet UIView *_headerView;
     IBOutlet UILabel *_headerTitleLabel;
+    IBOutlet UIButton *_menuButton;
+    
     IBOutlet WZVideoPlayerView *_videoPlayerView;
     IBOutlet UIView *_menuContainerView;
     WZNaviViewController *_naviViewController;
@@ -100,15 +105,35 @@
 
 - (IBAction)playerViewDidTapped:(id)sender
 {
-    if (_isLogined) {
-        _menuContainerView.hidden = !_menuContainerView.hidden;
-    }
     [_videoPlayerView toggleOverlayWithDuration:0.25];
+}
+
+- (void)toggleOverlayWithDuration:(NSTimeInterval)duration
+{
+    __weak WZAVPlayerView *me = _videoPlayerView;
+    [UIView animateWithDuration:duration
+                     animations:^{
+                         if (_controlView.alpha == 0.0) {
+                             _controlView.alpha = 1.0;
+                         } else {
+                             _controlView.alpha = 0.0;
+                         }
+                     }
+                     completion:^(BOOL finished) {
+                         if (finished) {
+                             if (_controlView.alpha != 0.0) {
+                                 [me resetIdleTimer];
+                             }
+                         }
+                     }];
 }
 
 - (void)appendHeaderView
 {
-    _headerView.backgroundColor = _overlayBackgroundColor;
+    _headerView.backgroundColor = _overlayBackgroundColor;    
+    [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menu.png"] forState:UIControlStateNormal];
+    [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menuActive.png"] forState:UIControlStateHighlighted];
+    [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menuActive.png"] forState:UIControlStateSelected];
 }
 
 - (void)appendNaviView
@@ -153,6 +178,7 @@
 - (void)refreshHeaderView
 {
     _headerTitleLabel.text = _watchingProgram.title;
+    _menuButton.selected = _menuContainerView.alpha == 1.0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -165,6 +191,66 @@
 {
     return YES;
 }
+
+#pragma mark - ToolbarActions
+
+- (IBAction)menuClick:(id)sender
+{
+    if (_menuButton.isSelected) {
+        [self hideSideMenu];
+    } else {
+        [self showSideMenu];
+    }
+}
+
+
+- (void)showSideMenu
+{
+    if (!_isLogined) {
+        return;
+    }
+    
+    CGRect frame = _menuContainerView.frame;
+    frame.origin.x = self.view.bounds.size.width + frame.size.width + 1;
+    _menuContainerView.frame = frame;
+    
+    frame.origin.x = self.view.bounds.size.width - frame.size.width;
+    
+    _menuButton.selected = YES;
+    [UIView animateWithDuration:0.50f
+                 animations:^{
+                     _menuContainerView.alpha = 1.0;
+                     _menuContainerView.frame = frame;
+                 }
+                 completion:^(BOOL finished) {
+                     if (finished) {
+                         _menuButton.selected = YES;
+                     }
+                 }];
+
+}
+
+
+- (void)hideSideMenu
+{
+    _menuButton.selected = NO;
+    
+    CGRect frame = _menuContainerView.frame;
+    frame.origin.x = frame.origin.x + frame.size.width;
+    
+    [UIView animateWithDuration:0.25f
+                     animations:^{
+//                         _menuContainerView.alpha = 0.0;
+                         _menuContainerView.frame = frame;
+                     }
+                     completion:^(BOOL finished) {
+                         if (finished) {
+                             _menuButton.selected = NO;
+                         }
+                     }];
+
+}
+
 
 #pragma mark - PlayerController
 
@@ -195,7 +281,6 @@
 }
 
 #pragma mark - WZAVPlayerViewController
-
 
 - (id)playerView
 {
@@ -238,8 +323,11 @@
 {
     _isLogined = YES;
     _headerView.hidden = NO;
+    _menuContainerView.alpha = 0.0f;
     _menuContainerView.hidden = NO;
     _controlView.hidden = NO;
+    
+    [self showSideMenu];
 }
 
 - (void)silentLogin

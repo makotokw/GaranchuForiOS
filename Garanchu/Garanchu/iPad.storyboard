@@ -13,14 +13,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="Vte-mT-Hu8" userLabel="playerView" customClass="WZVideoPlayerView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+                                <rect key="frame" x="0.0" y="40" width="768" height="964"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="controlView" destination="E1U-pL-hsc" id="1CN-L2-pD5"/>
                                     <outlet property="currentTimeLabel" destination="txf-wt-TEz" id="eOq-1a-Uyh"/>
                                     <outlet property="durationLabel" destination="Dw1-er-aoJ" id="ibx-mZ-ppr"/>
-                                    <outlet property="headerView" destination="YcY-3K-Kd2" id="gC0-dv-yKS"/>
                                     <outlet property="playButton" destination="PwG-9a-UeZ" id="zf7-Nh-Aq0"/>
                                     <outlet property="previousButton" destination="xga-KD-yOd" id="ULX-ES-peH"/>
                                     <outlet property="scrubber" destination="tTS-hw-KPk" id="Rk0-VT-LKv"/>
@@ -32,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rCD-lx-OF7">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rCD-lx-OF7" userLabel="headerLavel">
                                         <rect key="frame" x="12" y="9" width="710" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -41,11 +40,26 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4gA-JN-H4i" userLabel="sideMenuButton">
+                                        <rect key="frame" x="728" y="4" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="menuClick:" destination="ePR-Fl-IsY" eventType="touchDown" id="Czg-rE-Ww6"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" id="Cxf-eo-6bt" userLabel="menuViewContainer">
-                                <rect key="frame" x="528" y="0.0" width="240" height="963"/>
+                                <rect key="frame" x="528" y="40" width="240" height="964"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -152,6 +166,7 @@
                         <outlet property="_controlView" destination="E1U-pL-hsc" id="SY5-Je-f5A"/>
                         <outlet property="_headerTitleLabel" destination="rCD-lx-OF7" id="46e-yL-NJu"/>
                         <outlet property="_headerView" destination="YcY-3K-Kd2" id="sck-mo-DQ2"/>
+                        <outlet property="_menuButton" destination="4gA-JN-H4i" id="oDD-Vn-HhK"/>
                         <outlet property="_menuContainerView" destination="Cxf-eo-6bt" id="fur-by-bfJ"/>
                         <outlet property="_videoPlayerView" destination="Vte-mT-Hu8" id="zuB-Tl-Loe"/>
                     </connections>
@@ -355,6 +370,7 @@
         <class className="WZVideoViewController" superclassName="WZAVPlayerViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WZVideoViewController.h"/>
             <relationships>
+                <relationship kind="action" name="menuClick:"/>
                 <relationship kind="action" name="playOrPause:"/>
                 <relationship kind="action" name="playerViewDidTapped:"/>
                 <relationship kind="action" name="previous:"/>
@@ -363,6 +379,7 @@
                 <relationship kind="outlet" name="_controlView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="_headerTitleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="_headerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="_menuButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="_menuContainerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="_videoPlayerView" candidateClass="WZVideoPlayerView"/>
             </relationships>

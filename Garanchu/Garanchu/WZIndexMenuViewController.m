@@ -70,7 +70,8 @@
     _placeHolderImage = [UIImage imageNamed:@"GaranchuResources.bundle/thumbnail.png"];
     
     _programCellDateFormatter = [[NSDateFormatter alloc] init];
-    [_programCellDateFormatter setDateFormat:@"M/d HH:mm"];
+    _programCellDateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
+    [_programCellDateFormatter setDateFormat:@"M/d(EEE) HH:mm"];
         
     __weak WZIndexMenuViewController *me = self;
     
@@ -112,6 +113,42 @@
     if (_indexType == WZChannelGaranchuIndexType) {
         [self channel];
     }
+
+    UITapGestureRecognizer *tapGestureRecognizer =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(titleViewDidTapped:)];
+
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 480, 44)];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    titleLabel.textAlignment = UITextAlignmentCenter;
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.text = self.title;
+    titleLabel.userInteractionEnabled = YES;
+    self.navigationItem.titleView = titleLabel;
+    [titleLabel addGestureRecognizer:tapGestureRecognizer];
+
+    if (self.navigationController.viewControllers[0] != self) {
+        UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+        [backButton addTarget:self action:@selector(backBttonDidTapped:) forControlEvents:UIControlEventTouchUpInside];
+        [backButton setBackgroundImage:[UIImage imageNamed:@"GaranchuResources.bundle/back.png"] forState:UIControlStateNormal];
+        UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+        self.navigationItem.leftBarButtonItem = backBarButtonItem;
+    } else {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
+
+}
+
+- (void)titleViewDidTapped:(id)sender
+{
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
+- (void)backBttonDidTapped:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
