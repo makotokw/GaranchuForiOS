@@ -389,7 +389,7 @@
     
     UIView *_selectedBackgroundView = [[UIView alloc] init];
     
-    _selectedBackgroundView.backgroundColor = [UIColor greenSeaFlatColor];
+    _selectedBackgroundView.backgroundColor = [UIColor greenSeaColor];
     
     cell.selectedBackgroundView = _selectedBackgroundView;
     

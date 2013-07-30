@@ -1,7 +1,6 @@
 platform :ios,'5.0'
 
-
-#pod 'TestFlightSDK', '1.2.6'
+pod 'TestFlightSDK', '1.2.6'
 pod 'BlocksKit'
 pod 'SDWebImage'
 pod 'SFHFKeychainUtils'
@@ -12,4 +11,4 @@ pod 'SVPullToRefresh', '~> 0.4'
 pod 'WZPlayerSlider', :path => '~/arcadia/KWPods/WZPlayerSlider'
 pod 'WZAVPlayer', :path => '~/arcadia/KWPods/WZAVPlayer'
 pod 'WZGarapon', :path => '~/arcadia/KWPods/WZGarapon'
-pod 'FlatUIColor', :git => 'https://github.com/makotokw/CocoaFlatUIColor.git'
+#pod 'FlatUIColor', :git => 'https://github.com/makotokw/CocoaFlatUIColor.git'

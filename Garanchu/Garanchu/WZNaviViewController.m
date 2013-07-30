@@ -27,12 +27,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.navigationBar.tintColor = [UIColor greenSeaFlatColor];
+    self.navigationBar.tintColor = [UIColor greenSeaColor];
     
-    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor turquoiseFlatColor]
-                                  highlightedColor:[UIColor greenSeaFlatColor]
+    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor turquoiseColor]
+                                  highlightedColor:[UIColor greenSeaColor]
                                       cornerRadius:3
-                                   whenContainedIn:[WZNaviViewController class]];
+                                   whenContainedIn:[WZNaviViewController class], nil];
     
     [self.navigationBar configureFlatNavigationBarWithColor:[UIColor blackColor]];
 }

@@ -42,8 +42,8 @@
     // Do any additional setup after loading the view.
     
     UIColor *whiteColor = [UIColor whiteColor];
-    UIColor *mainColor = [UIColor emeraldFlatColor];
-    UIColor *darkColor = [UIColor nephritisFlatColor];
+    UIColor *mainColor = [UIColor emerlandColor];
+    UIColor *darkColor = [UIColor nephritisColor];
     
     NSString *fontName     = @"Avenir-Book";
     NSString *boldFontName = @"Avenir-Black";
@@ -88,7 +88,7 @@
     _loginButton.titleLabel.font    = [UIFont fontWithName:boldFontName size:20.0f];
     [_loginButton setTitle:@"LOGIN" forState:UIControlStateNormal];
     [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_loginButton setTitleColor:[UIColor silverFlatColor] forState:UIControlStateDisabled];
+    [_loginButton setTitleColor:[UIColor silverColor] forState:UIControlStateDisabled];
     [_loginButton setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.5f] forState:UIControlStateHighlighted];
         
     WZGaranchuUser *user = [WZGaranchuUser defaultUser];

@@ -13,7 +13,6 @@
     #import <Foundation/Foundation.h>
     #import <BlocksKit/BlocksKit.h>
     #import <FlatUIKit/FlatUIKit.h>
-    #import <FlatUIColor/UIColor+FlatUI.h>
     #import <WZGarapon/WZGarapon.h>
 #endif
 
