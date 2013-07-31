@@ -506,11 +506,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 96F8EB6C90064691BC69EB19 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Makoto Kawasaki (89AY2T5R4H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Makoto Kawasaki (89AY2T5R4H)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
 				INFOPLIST_FILE = "Garanchu/Garanchu-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "03980E2E-6F2B-4468-878F-868E23EE72A0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03980E2E-6F2B-4468-878F-868E23EE72A0";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};

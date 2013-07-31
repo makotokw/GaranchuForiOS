@@ -5,7 +5,7 @@ pod 'BlocksKit'
 pod 'SDWebImage'
 pod 'SFHFKeychainUtils'
 pod 'FlatUIKit'
-pod 'MBProgressHUD', '~> 0.5'
+pod 'MBProgressHUD', '~> 0.7'
 pod 'SVPullToRefresh', '~> 0.4'
 
 pod 'WZPlayerSlider', :path => '~/arcadia/KWPods/WZPlayerSlider'
