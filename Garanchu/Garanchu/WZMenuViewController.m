@@ -56,7 +56,13 @@
     [_garaponTv searchWithParameter:nil
                   completionHandler:^(NSDictionary *response, NSError *error) {
                       if (error) {
-                          WZAlertView *alertView = [[WZAlertView alloc] initWithTitle:@"" message:@"error" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                          
+                          NSString *message = [NSString stringWithFormat:@"%@\n%@",
+                                               error.localizedDescription,
+                                               error.localizedRecoverySuggestion
+                                               ];
+                          
+                          WZAlertView *alertView = [[WZAlertView alloc] initWithTitle:@"" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                           [alertView show];
                       } else {
                           NSArray *items = [WZGaraponTvProgram arrayWithSearchResponse:response];
