@@ -36,8 +36,8 @@
     [self.playButton setImage:self.playButtonImage forState:UIControlStateNormal];
         
     [_previousButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/previous.png"] forState:UIControlStateNormal];
-    [_stepBackButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepBack.png"] forState:UIControlStateNormal];
-    [_stepSkipButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepSkip.png"] forState:UIControlStateNormal];
+    [_stepBackwardButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepBack.png"] forState:UIControlStateNormal];
+    [_stepForwardButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepSkip.png"] forState:UIControlStateNormal];
 }
 
 - (void)enableControls
@@ -45,8 +45,8 @@
     [super enableControls];
     
     _previousButton.enabled =
-    _stepBackButton.enabled = 
-    _stepSkipButton.enabled = YES;
+    _stepBackwardButton.enabled = 
+    _stepForwardButton.enabled = YES;
 }
 
 - (void)disableControls
@@ -54,8 +54,26 @@
     [super disableControls];
     
     _previousButton.enabled =
-    _stepBackButton.enabled =
-    _stepSkipButton.enabled = NO;
+    _stepBackwardButton.enabled =
+    _stepForwardButton.enabled = NO;
+}
+
+- (void)enableSeekControls
+{
+    [super enableSeekControls];
+    
+    _previousButton.enabled =
+    _stepBackwardButton.enabled =
+    _stepForwardButton.enabled = YES;
+}
+
+- (void)disableSeekControls
+{
+    [super disableSeekControls];
+    
+    _previousButton.enabled =
+    _stepBackwardButton.enabled =
+    _stepForwardButton.enabled = NO;
 }
 
 @end

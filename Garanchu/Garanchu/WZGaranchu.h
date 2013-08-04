@@ -12,6 +12,7 @@
 
 @property (readonly) WZGaraponWeb *garaponWeb;
 @property (readonly) WZGaraponTv *garaponTv;
+@property (weak, readwrite) WZGaraponTvProgram *watchingProgram;
 
 + (WZGaranchu *)current;
 

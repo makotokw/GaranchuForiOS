@@ -15,9 +15,12 @@
 #import <SDWebImage/SDWebImageManager.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
+typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
+
 @interface WZIndexMenuViewController ()
 
 @property (readonly) BOOL hasSection;
+@property (readonly) BOOL hasMoreItems;
 @property (readonly) BOOL isProgramMenu;
 
 @end
@@ -25,8 +28,10 @@
 @implementation WZIndexMenuViewController
 
 {
+    __weak WZGaranchu *_stage;
+    __weak WZGaraponTv *_garaponTv;
+    
     NSMutableArray *_items;
-    WZGaraponTv *_garaponTv;
     NSInteger _currentSearchPage;
     NSInteger _maxSearchPage;
     NSInteger _totalCount;
@@ -62,7 +67,8 @@
     self.view.backgroundColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    _garaponTv = [WZGaranchu current].garaponTv;
+    _stage = [WZGaranchu current];
+    _garaponTv = _stage.garaponTv;
     _items = [[NSMutableArray alloc] init];
     
     self.title = _context[@"title"];
@@ -78,20 +84,33 @@
     if (self.isProgramMenu) {
         
         _currentSearchPage = 0;
-        [self searchWithCompletionHandler:^(NSError *error) {
+        _maxSearchPage = 0;
+        
+        [self.tableView addPullToRefreshWithActionHandler:^{
+            [me searchLatestItemsWithCompletionHandler:^(NSError *error) {
+                [me.tableView.pullToRefreshView stopAnimating];
+            }];
         }];
-        
-//        [self.tableView addPullToRefreshWithActionHandler:^{
-//            [me.tableView.pullToRefreshView stopAnimating];
-//        }];
-        
 
-        [self.tableView addInfiniteScrollingWithActionHandler:^{
-            [me searchWithCompletionHandler:^(NSError *error) {
-            }];            
-        }];
+        if (self.hasMoreItems) {
+            [self.tableView addInfiniteScrollingWithActionHandler:^{
+                if (me.hasMoreItems) {
+                    [me searchMoreItemsWithCompletionHandler:^(NSError *error) {
+                        [me.tableView.infiniteScrollingView stopAnimating];
+                    }];
+                } else {
+                    [me.tableView.infiniteScrollingView stopAnimating];
+                }
+            }];
+        }
+
+        self.tableView.pullToRefreshView.textColor = [UIColor whiteColor];
+        self.tableView.pullToRefreshView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
         self.tableView.infiniteScrollingView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
-
+        
+        // search First page
+        [self searchMoreItemsWithCompletionHandler:^(NSError *error) {
+        }];
     } else {        
         switch (_indexType) {
             case WZChannelGaranchuIndexType:
@@ -137,7 +156,6 @@
     } else {
         self.navigationItem.leftBarButtonItem = nil;
     }
-
 }
 
 - (void)titleViewDidTapped:(id)sender
@@ -167,6 +185,14 @@
     return (_indexType == WZGenreGaranchuIndexType || _indexType == WZRootGaranchuIndexType);
 }
 
+- (BOOL)hasMoreItems
+{
+    if (_indexType == WZProgramGaranchuIndexType) {
+        return (_maxSearchPage > 0 && _currentSearchPage >= _maxSearchPage) ? NO : YES;
+    }
+    return NO;
+}
+
 - (BOOL)isProgramMenu
 {
     return (_indexType == WZRecordingProgramGaranchuIndexType || _indexType == WZProgramGaranchuIndexType);
@@ -181,18 +207,47 @@
     return _items[indexPath.row];
 }
 
-- (NSDictionary *)parameterForSearch
+- (NSDictionary *)parameterForSearchWithPage:(NSInteger)page
 {
     NSDictionary *dict = _context[@"params"];
     if (!dict) {
-        return @{@"p": [NSString stringWithFormat:@"%d", _currentSearchPage + 1]};
+        return @{@"p": [NSString stringWithFormat:@"%d", page]};
     }
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:dict];
-    params[@"p"] = [NSString stringWithFormat:@"%d", _currentSearchPage + 1];
+    params[@"p"] = [NSString stringWithFormat:@"%d", page];
     return params;
 }
 
-- (void)searchWithCompletionHandler:(WZGaraponAsyncBlock)completionHandler
+- (void)searchLatestItemsWithCompletionHandler:(WZGaraponAsyncBlock)completionHandler
+{
+    __weak WZIndexMenuViewController *me = self;
+    NSDictionary *params = [self parameterForSearchWithPage:1];
+    [self searcWithParameter:params completionHandler:^(NSArray *items, NSError *error) {
+        if (items.count > 0) {
+            [me insertProgramsToHeadFromArray:items];
+        }
+        if (completionHandler) {
+            completionHandler(error);
+        }
+    }];
+}
+
+- (void)searchMoreItemsWithCompletionHandler:(WZGaraponAsyncBlock)completionHandler
+{
+    __weak WZIndexMenuViewController *me = self;
+    NSDictionary *params = [self parameterForSearchWithPage:_currentSearchPage + 1];
+    [self searcWithParameter:params completionHandler:^(NSArray *items, NSError *error) {
+        if (items.count > 0) {
+            [me addProgramsFromArray:items];
+            _currentSearchPage++;
+        }
+        if (completionHandler) {
+            completionHandler(error);
+        }
+    }];
+}
+
+- (void)searcWithParameter:(NSDictionary *)params completionHandler:(WZGaraponSearchAsyncBlock)completionHandler
 {
     __weak WZIndexMenuViewController *me = self;
     if (_items.count == 0) {
@@ -200,30 +255,25 @@
         hud.opacity = 0.0f;
         hud.labelText = @"Loading";
     }
-    NSDictionary *params = [self parameterForSearch];
+    WZGaraponWrapDictionary *wrapParams = [WZGaraponWrapDictionary wrapWithDictionary:params];
+    __block NSInteger numberOfPage = [wrapParams intgerValueWithKey:@"n" defaultValue:20];
+    
     [_garaponTv searchWithParameter:params
                   completionHandler:^(NSDictionary *response, NSError *error) {
                       
                       [MBProgressHUD hideHUDForView:me.tableView animated:NO];
+                      NSArray *items = nil;
                       if (error) {
                           WZAlertView *alertView = [[WZAlertView alloc] initWithTitle:@"" message:@"error" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                           [alertView show];
-                      } else {
-                          
+                      } else {                          
                           WZGaraponWrapDictionary *wrap = [WZGaraponWrapDictionary wrapWithDictionary:response];
-                          
                           _totalCount = [wrap intgerValueWithKey:@"hit" defaultValue:0];
-                          _maxSearchPage = ceil((float)_totalCount / 20);
-                          
-                          NSArray *items = [WZGaraponTvProgram arrayWithSearchResponse:response];                          
-                          [me addProgramsFromArray:items];
-                          if (items.count > 0) {
-                              _currentSearchPage++;
-                          }
+                          _maxSearchPage = ceil((float)_totalCount / numberOfPage);                          
+                          items = [WZGaraponTvProgram arrayWithSearchResponse:response];
                       }
-                      [me.tableView.infiniteScrollingView stopAnimating];
                       if (completionHandler) {
-                          completionHandler(error);
+                          completionHandler(items, error);
                       }
                       
                   }
@@ -261,24 +311,71 @@
     [self.tableView reloadData];
 }
 
+- (void)replaceLiveProgramsFromArray:(NSArray *)items
+{
+    [_items removeAllObjects];
+    NSMutableDictionary *channelMap = [NSMutableDictionary dictionary];
+    for (WZGaraponTvProgram *p in items) {
+        if (!p.bcTags || channelMap[p.bcTags]) {
+            continue;
+        }
+        channelMap[p.bcTags] = p;
+    }
+    [_items addObjectsFromArray:[channelMap allValues]];
+    [self.tableView reloadData];
+    [self selectRowAtWatchingIndex];
+}
+
+- (void)insertProgramsToHeadFromArray:(NSArray *)items
+{
+    if (_indexType == WZRecordingProgramGaranchuIndexType) {
+        [self replaceLiveProgramsFromArray:items];
+    } else {
+        BOOL modifed = NO;
+        NSInteger index = 0;
+        for (WZGaraponTvProgram *p in items) {
+            WZGaraponTvProgram *exists = [_items match:^BOOL(id obj) {
+                return [p.gtvid isEqualToString:[obj gtvid]];
+            }];
+            if (exists) {
+                break;
+            }
+            [_items insertObject:p atIndex:index++];
+            modifed = YES;
+        }
+        if (modifed) {
+            [self.tableView reloadData];
+            [self selectRowAtWatchingIndex];
+        }
+    }
+}
+
 - (void)addProgramsFromArray:(NSArray *)items
 {
     if (_indexType == WZRecordingProgramGaranchuIndexType) {
-        [_items removeAllObjects];
-        
-        NSMutableDictionary *channelMap = [NSMutableDictionary dictionary];
-        for (WZGaraponTvProgram *p in items) {
-            if (!p.bcTags || channelMap[p.bcTags]) {
-                continue;
-            }
-            channelMap[p.bcTags] = p;
-        }
-        [_items addObjectsFromArray:[channelMap allValues]];
-        
+        [self replaceLiveProgramsFromArray:items];
     } else {
-        [_items addObjectsFromArray:items];
+        BOOL modifed = NO;
+        BOOL stillExists = YES;
+        for (WZGaraponTvProgram *p in items) {            
+            if (stillExists) {
+                WZGaraponTvProgram *exists = [_items match:^BOOL(id obj) {
+                    return [p.gtvid isEqualToString:[obj gtvid]];
+                }];
+                if (!exists) {
+                    [_items addObject:p];
+                    stillExists = NO;
+                    modifed = YES;
+                }
+            } else {
+                [_items addObject:p];
+            }
+        }
+        if (modifed) {
+            [self.tableView reloadData];
+            [self selectRowAtWatchingIndex];
+        }
     }
-    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -339,8 +436,7 @@
 {
     if (self.isProgramMenu) {
         return 88.0f;
-    }
-    
+    }    
     return 44.0f;
 }
 
@@ -354,8 +450,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     
-    // Configure the cell...
-    
+    // Configure the cell...    
     cell.textLabel.textColor =  [UIColor whiteColor];
     
     if (self.isProgramMenu) {
@@ -371,8 +466,7 @@
         NSURL *thumbnailURL = [NSURL URLWithString:[_garaponTv thumbnailURLStringWithProgram:item]];
 
         [thumbnailView setImageWithURL:thumbnailURL placeholderImage:_placeHolderImage options:SDWebImageCacheMemoryOnly];
-        
-        
+                
         titleLabel.text = item.title;
         channelLabel.text = item.bc;
         
@@ -380,20 +474,40 @@
         
 //        NSDate *date = [NSDate dateWithTimeIntervalSince1970:item.startdate];        
         dateLabel.text = [_programCellDateFormatter stringFromDate:item.startdate];
-
         
     } else {
         NSDictionary *item = [self objectAtIndexPath:indexPath];
         cell.textLabel.text = item[@"title"];
     }
     
-    UIView *_selectedBackgroundView = [[UIView alloc] init];
-    
+    UIView *_selectedBackgroundView = [[UIView alloc] init];    
     _selectedBackgroundView.backgroundColor = [UIColor greenSeaColor];
-    
     cell.selectedBackgroundView = _selectedBackgroundView;
     
     return cell;
+}
+
+- (void)selectRowAtWatchingIndex
+{
+    NSInteger index = [self watchingProgramCellIndex];
+    if (index != -1) {
+        NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+        [self.tableView selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionNone];
+    }
+    
+}
+
+- (NSInteger)watchingProgramCellIndex
+{
+    WZGaraponTvProgram *watching = _stage.watchingProgram;
+    NSInteger index = 0;
+    for (WZGaraponTvProgram *p in _items) {
+        if ([watching.gtvid isEqualToString:p.gtvid]) {
+            return index;
+        }
+        index++;
+    }
+    return -1;
 }
 
 /*

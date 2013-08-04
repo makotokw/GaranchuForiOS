@@ -10,7 +10,7 @@
 @interface WZVideoPlayerView : WZAVPlayerView
 
 @property (nonatomic, retain) IBOutlet UIButton *previousButton;
-@property (nonatomic, retain) IBOutlet UIButton *stepBackButton;
-@property (nonatomic, retain) IBOutlet UIButton *stepSkipButton;
+@property (nonatomic, retain) IBOutlet UIButton *stepBackwardButton;
+@property (nonatomic, retain) IBOutlet UIButton *stepForwardButton;
 
 @end

@@ -23,8 +23,8 @@
                                     <outlet property="playButton" destination="PwG-9a-UeZ" id="zf7-Nh-Aq0"/>
                                     <outlet property="previousButton" destination="xga-KD-yOd" id="ULX-ES-peH"/>
                                     <outlet property="scrubber" destination="tTS-hw-KPk" id="Rk0-VT-LKv"/>
-                                    <outlet property="stepBackButton" destination="ZdH-Kb-zlN" id="odX-UB-svV"/>
-                                    <outlet property="stepSkipButton" destination="eCa-wj-t2p" id="h8B-Xb-fC3"/>
+                                    <outlet property="stepBackwardButton" destination="ZdH-Kb-zlN" id="pxT-lo-MDd"/>
+                                    <outlet property="stepForwardButton" destination="eCa-wj-t2p" id="AfB-YC-yIw"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" id="YcY-3K-Kd2" userLabel="headerView">
@@ -97,7 +97,7 @@
                                             <action selector="previous:" destination="ePR-Fl-IsY" eventType="touchDown" id="Jwh-RG-Ujc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZdH-Kb-zlN" userLabel="stepBackButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZdH-Kb-zlN" userLabel="stepBackwardButton">
                                         <rect key="frame" x="96" y="0.0" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -112,7 +112,7 @@
                                             <action selector="stepBack:" destination="ePR-Fl-IsY" eventType="touchDown" id="s4p-dW-Ty3"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eCa-wj-t2p" userLabel="stepSkipButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eCa-wj-t2p" userLabel="stepForwardButton">
                                         <rect key="frame" x="144" y="0.0" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -241,7 +241,7 @@
                                 </view>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="gray" indentationWidth="10" reuseIdentifier="ProgramCell" rowHeight="88" id="9HY-90-d4t" userLabel="ProgramCell">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ProgramCell" rowHeight="88" id="9HY-90-d4t" userLabel="ProgramCell">
                                 <rect key="frame" x="0.0" y="66" width="250" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -291,6 +291,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -363,20 +364,12 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WZVideoPlayerView.h"/>
             <relationships>
                 <relationship kind="outlet" name="previousButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="stepBackButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="stepSkipButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="stepBackwardButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="stepForwardButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="WZVideoViewController" superclassName="WZAVPlayerViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WZVideoViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="_controlView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="_headerTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="_headerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="_menuButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_menuContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="_videoPlayerView" candidateClass="WZVideoPlayerView"/>
-            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

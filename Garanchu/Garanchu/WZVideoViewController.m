@@ -147,22 +147,6 @@
     _menuContainerView.backgroundColor = _overlayBackgroundColor;
 }
 
-//- (void)appendMenuView
-//{
-//    _menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuViewController"];
-//    [self addChildViewController:_menuViewController];
-//    [_menuViewController didMoveToParentViewController:self];
-//    [_menuContainerView addSubview:_menuViewController.view];
-//    
-//    _menuViewController.view.frame = _menuContainerView.bounds;
-//    _menuContainerView.backgroundColor = _overlayBackgroundColor;
-//    
-//    __weak WZVideoViewController *me = self;
-//    _menuViewController.didSelectProgramHandler = ^(WZGaraponTvProgram *program) {
-//        [me loadingProgram:program];
-//    };
-//}
-
 - (void)appendVideoView
 {
     [_videoPlayerView disableScreenTapRecognizer];
@@ -202,7 +186,6 @@
         [self showSideMenu];
     }
 }
-
 
 - (void)showSideMenu
 {
@@ -266,14 +249,14 @@
     }];
 }
 
-- (IBAction)stepBack:(id)sender
+- (IBAction)stepBackward:(id)sender
 {
     [_videoPlayerView seekFromCurrentTime:-10.0f completionHandler:^{
         [_videoPlayerView dismissOverlayWithDuration:0.25f];
     }];
 }
 
-- (IBAction)stepSkip:(id)sender
+- (IBAction)stepForward:(id)sender
 {
     [_videoPlayerView seekFromCurrentTime:15.0f completionHandler:^{
         [_videoPlayerView dismissOverlayWithDuration:0.25f];
@@ -308,13 +291,12 @@
 
 -(void)didSelectProgram:(NSNotification *)notification
 {
-    NSDictionary *userInfo = [notification userInfo];
-    
+    NSDictionary *userInfo = [notification userInfo];    
     WZGaraponTvProgram *program = userInfo[@"program"];
     if (program) {
         [self loadingProgram:program];
     }
-    
+    [WZGaranchu current].watchingProgram = program;
 }
 
 #pragma mark - Login
