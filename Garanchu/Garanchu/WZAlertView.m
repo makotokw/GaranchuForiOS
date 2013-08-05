@@ -35,6 +35,17 @@
  }
  */
 
++ (void)showAlertWithError:(NSError *)error
+{
+    NSString *message = error.localizedRecoverySuggestion ? [NSString stringWithFormat:@"%@\n%@",
+                                                             error.localizedDescription,
+                                                             error.localizedRecoverySuggestion
+                                                             ] : error.localizedDescription;
+    
+    WZAlertView *alertView = [[WZAlertView alloc] initWithTitle:@"Garanchu" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
+}
+
 + (void)showAlertViewWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles handler:(void(^) (WZAlertView *, NSInteger))block
 {
     WZAlertView *alertView = [[WZAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil];

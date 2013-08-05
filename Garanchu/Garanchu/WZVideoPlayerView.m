@@ -36,8 +36,8 @@
     [self.playButton setImage:self.playButtonImage forState:UIControlStateNormal];
         
     [_previousButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/previous.png"] forState:UIControlStateNormal];
-    [_stepBackwardButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepBack.png"] forState:UIControlStateNormal];
-    [_stepForwardButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepSkip.png"] forState:UIControlStateNormal];
+    [_stepBackwardButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepBackward.png"] forState:UIControlStateNormal];
+    [_stepForwardButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepForward.png"] forState:UIControlStateNormal];
 }
 
 - (void)enableControls

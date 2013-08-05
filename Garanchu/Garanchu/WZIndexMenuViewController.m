@@ -263,12 +263,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                       [MBProgressHUD hideHUDForView:me.tableView animated:NO];
                       NSArray *items = nil;
                       if (error) {
-                          NSString *message = [NSString stringWithFormat:@"%@ %@",
-                                               error.localizedDescription,
-                                               error.localizedRecoverySuggestion
-                                               ];
-                          WZAlertView *alertView = [[WZAlertView alloc] initWithTitle:@"ガラポンTV" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                          [alertView show];
+                          [WZAlertView showAlertWithError:error];
                       } else {                          
                           WZGaraponWrapDictionary *wrap = [WZGaraponWrapDictionary wrapWithDictionary:response];
                           _totalCount = [wrap intgerValueWithKey:@"hit" defaultValue:0];
@@ -291,12 +286,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     [_garaponTv channelWithCompletionHandler:^(NSDictionary *response, NSError *error) {
         [MBProgressHUD hideHUDForView:self.tableView animated:NO];
         if (error) {
-            NSString *message = [NSString stringWithFormat:@"%@ %@",
-                                 error.localizedDescription,
-                                 error.localizedRecoverySuggestion
-                                 ];
-            WZAlertView *alertView = [[WZAlertView alloc] initWithTitle:@"ガラポンTV" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alertView show];
+            [WZAlertView showAlertWithError:error];
         } else {
             NSArray *items = [WZGaraponTvChannel arrayWithChannelResponse:response];
             [me addChannelFromArray:items];

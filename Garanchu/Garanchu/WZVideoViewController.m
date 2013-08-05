@@ -33,8 +33,10 @@
     
     IBOutlet WZVideoPlayerView *_videoPlayerView;
     IBOutlet UIView *_menuContainerView;
-    WZNaviViewController *_naviViewController;
+    IBOutlet UIView *_menuContentView;
     IBOutlet UIView *_controlView;
+    
+    WZNaviViewController *_naviViewController;
     WZLoginViewController *_loginViewController;
     
     BOOL _isLogined;
@@ -77,8 +79,7 @@
     _headerView.hidden =YES;
     _menuContainerView.hidden = YES;
     _controlView.hidden = YES;
-    
-    
+        
     __weak WZVideoViewController *me = self;
     WZGaranchuUser *user = [WZGaranchuUser defaultUser];
 #if DEBUG
@@ -141,9 +142,8 @@
     _naviViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"naviViewController"];
     [self addChildViewController:_naviViewController];
     [_naviViewController didMoveToParentViewController:self];
-    [_menuContainerView addSubview:_naviViewController.view];
-    
-    _naviViewController.view.frame = _menuContainerView.bounds;
+    [_menuContentView addSubview:_naviViewController.view];
+    _naviViewController.view.frame = _menuContentView.bounds;    
     _menuContainerView.backgroundColor = _overlayBackgroundColor;
 }
 
@@ -338,7 +338,7 @@
     __weak WZLoginViewController *loginViewController = _loginViewController;
     __weak UIView *hudView = loginViewController.view ? loginViewController.view : me.view;
     
-    __weak MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:hudView animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:hudView animated:YES];
     hud.labelText = @"ガラポンTVを検索しています...";
     
     [_loginViewController setEnableControls:NO];

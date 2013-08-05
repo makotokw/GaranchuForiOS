@@ -52,18 +52,10 @@
 
 - (void)seach
 {
-//    __weak WZMenuViewController *me = self;
     [_garaponTv searchWithParameter:nil
                   completionHandler:^(NSDictionary *response, NSError *error) {
                       if (error) {
-                          
-                          NSString *message = [NSString stringWithFormat:@"%@\n%@",
-                                               error.localizedDescription,
-                                               error.localizedRecoverySuggestion
-                                               ];
-                          
-                          WZAlertView *alertView = [[WZAlertView alloc] initWithTitle:@"" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                          [alertView show];
+                          [WZAlertView showAlertWithError:error];
                       } else {
                           NSArray *items = [WZGaraponTvProgram arrayWithSearchResponse:response];
                           [_programs addObjectsFromArray:items];

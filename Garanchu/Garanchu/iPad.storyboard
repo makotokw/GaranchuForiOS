@@ -41,7 +41,7 @@
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4gA-JN-H4i" userLabel="sideMenuButton">
-                                        <rect key="frame" x="728" y="4" width="32" height="32"/>
+                                        <rect key="frame" x="731" y="4" width="32" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Button">
@@ -59,8 +59,20 @@
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" id="Cxf-eo-6bt" userLabel="menuViewContainer">
-                                <rect key="frame" x="528" y="40" width="240" height="964"/>
+                                <rect key="frame" x="459" y="40" width="309" height="964"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="4Px-LE-WL6" userLabel="menuContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="269" height="989"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="47j-UP-NMo" userLabel="menuHeaderView">
+                                        <rect key="frame" x="269" y="0.0" width="40" height="964"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="E1U-pL-hsc" userLabel="playerControlView">
@@ -168,6 +180,7 @@
                         <outlet property="_headerView" destination="YcY-3K-Kd2" id="sck-mo-DQ2"/>
                         <outlet property="_menuButton" destination="4gA-JN-H4i" id="oDD-Vn-HhK"/>
                         <outlet property="_menuContainerView" destination="Cxf-eo-6bt" id="fur-by-bfJ"/>
+                        <outlet property="_menuContentView" destination="4Px-LE-WL6" id="8F1-6C-Asg"/>
                         <outlet property="_videoPlayerView" destination="Vte-mT-Hu8" id="zuB-Tl-Loe"/>
                     </connections>
                 </viewController>
