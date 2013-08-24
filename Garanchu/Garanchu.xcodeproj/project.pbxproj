@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F3C22EF17B38FE000D35CF2 /* MBProgressHUD+Garanchu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */; };
 		8F59FC511791F73C00EEA418 /* WZVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC501791F73C00EEA418 /* WZVideoViewController.m */; };
 		8F59FC541792C21E00EEA418 /* WZGaranchuUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC531792C21E00EEA418 /* WZGaranchuUser.m */; };
 		8F59FC571792CC2F00EEA418 /* WZGaranchu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC561792CC2E00EEA418 /* WZGaranchu.m */; };
@@ -32,10 +33,12 @@
 		8F935BBF1791F24D001FFE01 /* GaranchuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BBE1791F24D001FFE01 /* GaranchuTests.m */; };
 		8F935BC91791F2ED001FFE01 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BC81791F2ED001FFE01 /* iPad.storyboard */; };
 		8F935BCC1791F570001FFE01 /* WZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BCB1791F570001FFE01 /* WZLoginViewController.m */; };
+		8FB6262B17C5037800EC5A0E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262717C5037800EC5A0E /* Icon-72.png */; };
+		8FB6262C17C5037800EC5A0E /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262817C5037800EC5A0E /* Icon-72@2x.png */; };
+		8FB6262D17C5037800EC5A0E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262917C5037800EC5A0E /* Icon.png */; };
+		8FB6262E17C5037800EC5A0E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262A17C5037800EC5A0E /* Icon@2x.png */; };
 		8FF1B0EA179C551100BF9785 /* GaranchuResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0E9179C551100BF9785 /* GaranchuResources.bundle */; };
 		8FF1B0ED179CD32A00BF9785 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0EF179CD32A00BF9785 /* Localizable.strings */; };
-		8FF1B0F4179D497A00BF9785 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0F3179D497A00BF9785 /* Icon-72.png */; };
-		8FF1B0F6179D498000BF9785 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0F5179D498000BF9785 /* Icon-72@2x.png */; };
 		DEAD08CC53D6433E97303441 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FD30FE5BBFD4D808BB97071 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		5FD30FE5BBFD4D808BB97071 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F3C22ED17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Garanchu.h"; sourceTree = "<group>"; };
+		8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Garanchu.m"; sourceTree = "<group>"; };
 		8F59FC4F1791F73C00EEA418 /* WZVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZVideoViewController.h; sourceTree = "<group>"; };
 		8F59FC501791F73C00EEA418 /* WZVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZVideoViewController.m; sourceTree = "<group>"; };
 		8F59FC521792C21E00EEA418 /* WZGaranchuUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZGaranchuUser.h; sourceTree = "<group>"; };
@@ -89,12 +94,14 @@
 		8F935BC81791F2ED001FFE01 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		8F935BCA1791F570001FFE01 /* WZLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZLoginViewController.h; sourceTree = "<group>"; };
 		8F935BCB1791F570001FFE01 /* WZLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZLoginViewController.m; sourceTree = "<group>"; };
+		8FB6262717C5037800EC5A0E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		8FB6262817C5037800EC5A0E /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		8FB6262917C5037800EC5A0E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		8FB6262A17C5037800EC5A0E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		8FF1B0E9179C551100BF9785 /* GaranchuResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GaranchuResources.bundle; sourceTree = "<group>"; };
 		8FF1B0F0179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8FF1B0F1179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8FF1B0F2179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8FF1B0F3179D497A00BF9785 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
-		8FF1B0F5179D498000BF9785 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "../Icon-72@2x.png"; sourceTree = "<group>"; };
 		96F8EB6C90064691BC69EB19 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -182,6 +189,8 @@
 				8F59FCB31793D9FC00EEA418 /* WZIndexMenuViewController.m */,
 				8F59FCB51794149100EEA418 /* WZIndexMenuViewController+Static.h */,
 				8F59FCB61794149200EEA418 /* WZIndexMenuViewController+Static.m */,
+				8F3C22ED17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.h */,
+				8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */,
 			);
 			path = Garanchu;
 			sourceTree = "<group>";
@@ -189,8 +198,10 @@
 		8F935B9A1791F24D001FFE01 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8FF1B0F5179D498000BF9785 /* Icon-72@2x.png */,
-				8FF1B0F3179D497A00BF9785 /* Icon-72.png */,
+				8FB6262717C5037800EC5A0E /* Icon-72.png */,
+				8FB6262817C5037800EC5A0E /* Icon-72@2x.png */,
+				8FB6262917C5037800EC5A0E /* Icon.png */,
+				8FB6262A17C5037800EC5A0E /* Icon@2x.png */,
 				8FF1B0E9179C551100BF9785 /* GaranchuResources.bundle */,
 				8F935B9B1791F24D001FFE01 /* Garanchu-Info.plist */,
 				8F935B9C1791F24D001FFE01 /* InfoPlist.strings */,
@@ -305,8 +316,10 @@
 				8F935BC91791F2ED001FFE01 /* iPad.storyboard in Resources */,
 				8FF1B0EA179C551100BF9785 /* GaranchuResources.bundle in Resources */,
 				8FF1B0ED179CD32A00BF9785 /* Localizable.strings in Resources */,
-				8FF1B0F4179D497A00BF9785 /* Icon-72.png in Resources */,
-				8FF1B0F6179D498000BF9785 /* Icon-72@2x.png in Resources */,
+				8FB6262B17C5037800EC5A0E /* Icon-72.png in Resources */,
+				8FB6262C17C5037800EC5A0E /* Icon-72@2x.png in Resources */,
+				8FB6262D17C5037800EC5A0E /* Icon.png in Resources */,
+				8FB6262E17C5037800EC5A0E /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +394,7 @@
 				8F59FCB11793D77B00EEA418 /* WZNaviViewController.m in Sources */,
 				8F59FCB41793D9FC00EEA418 /* WZIndexMenuViewController.m in Sources */,
 				8F59FCB71794149300EEA418 /* WZIndexMenuViewController+Static.m in Sources */,
+				8F3C22EF17B38FE000D35CF2 /* MBProgressHUD+Garanchu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

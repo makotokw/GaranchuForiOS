@@ -10,10 +10,14 @@
 #import "WZAlertView.h"
 #import "WZGaranchu.h"
 
+#import "MBProgressHUD+Garanchu.h"
+
+#import <BlocksKit/BlocksKit.h>
 #import <SVPullToRefresh/SVPullToRefresh.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <SDWebImage/SDWebImageManager.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <FlatUIKit/UIColor+FlatUI.h>
 
 typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 
@@ -127,10 +131,6 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                 _items = [self rootItems];
                 break;
         }
-    }
-    
-    if (_indexType == WZChannelGaranchuIndexType) {
-        [self channel];
     }
 
     UITapGestureRecognizer *tapGestureRecognizer =
@@ -252,8 +252,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     __weak WZIndexMenuViewController *me = self;
     if (_items.count == 0) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
-        hud.opacity = 0.0f;
-        hud.labelText = @"Loading";
+        [hud indicatorWhiteWithMessage: @"Loading..."];
     }
     WZGaraponWrapDictionary *wrapParams = [WZGaraponWrapDictionary wrapWithDictionary:params];
     __block NSInteger numberOfPage = [wrapParams intgerValueWithKey:@"n" defaultValue:20];
@@ -280,21 +279,22 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 - (void)channel
 {
     if (_items.count == 0) {
-        [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+        [hud indicatorWhiteWithMessage: @"Loading..."];
     }
     __weak WZIndexMenuViewController *me = self;
     [_garaponTv channelWithCompletionHandler:^(NSDictionary *response, NSError *error) {
-        [MBProgressHUD hideHUDForView:self.tableView animated:NO];
+        [MBProgressHUD hideHUDForView:me.tableView animated:NO];
         if (error) {
             [WZAlertView showAlertWithError:error];
         } else {
             NSArray *items = [WZGaraponTvChannel arrayWithChannelResponse:response];
-            [me addChannelFromArray:items];
+            [me replaceChannelsFromArray:items];
         }
     }];
 }
 
-- (void)addChannelFromArray:(NSArray *)items
+- (void)replaceChannelsFromArray:(NSArray *)items
 {
     [_items removeAllObjects];
     for (WZGaraponTvChannel *c in items) {
@@ -474,6 +474,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     } else {
         NSDictionary *item = [self objectAtIndexPath:indexPath];
         cell.textLabel.text = item[@"title"];
+        cell.textLabel.shadowColor = [UIColor blackColor];
     }
     
     UIView *_selectedBackgroundView = [[UIView alloc] init];    

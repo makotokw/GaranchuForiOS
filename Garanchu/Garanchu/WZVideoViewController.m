@@ -14,7 +14,9 @@
 #import "WZGaranchu.h"
 #import "WZGaranchuUser.h"
 
-#import <MBProgressHUD/MBProgressHUD.h>
+#import "MBProgressHUD+Garanchu.h"
+
+#import <BlocksKit/BlocksKit.h>
 
 @interface WZVideoViewController ()
 @property (readonly) WZGaraponWeb *garaponWeb;
@@ -33,13 +35,18 @@
     
     IBOutlet WZVideoPlayerView *_videoPlayerView;
     IBOutlet UIView *_menuContainerView;
+    IBOutlet UIView *_menuHeaderView;
     IBOutlet UIView *_menuContentView;
+    IBOutlet UIButton *_menuTvButton;
+    IBOutlet UIButton *_menuOptionButton;
     IBOutlet UIView *_controlView;
     
     WZNaviViewController *_naviViewController;
     WZLoginViewController *_loginViewController;
     
     BOOL _isLogined;
+    
+    UIPanGestureRecognizer *_menuPanGesture;
 }
 
 @synthesize garaponTv = _garaponTv;
@@ -76,9 +83,7 @@
     [self loadingProgram:nil];
     
     // hiddein all subView until login
-    _headerView.hidden =YES;
-    _menuContainerView.hidden = YES;
-    _controlView.hidden = YES;
+    [self hideControlsNotLogin];
         
     __weak WZVideoViewController *me = self;
     WZGaranchuUser *user = [WZGaranchuUser defaultUser];
@@ -102,6 +107,15 @@
         } afterDelay:0.1f];
     }
     
+    [super viewDidLoad];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    // remove the gesture recognizers
+    [_menuContainerView removeGestureRecognizer:_menuPanGesture];
 }
 
 - (IBAction)playerViewDidTapped:(id)sender
@@ -131,7 +145,8 @@
 
 - (void)appendHeaderView
 {
-    _headerView.backgroundColor = _overlayBackgroundColor;    
+    _headerView.backgroundColor = _overlayBackgroundColor;
+    [_menuButton setTitle:nil forState:UIControlStateNormal];
     [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menu.png"] forState:UIControlStateNormal];
     [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menuActive.png"] forState:UIControlStateHighlighted];
     [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menuActive.png"] forState:UIControlStateSelected];
@@ -139,12 +154,35 @@
 
 - (void)appendNaviView
 {
+    [_menuTvButton setTitle:nil forState:UIControlStateNormal];
+    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tv.png"] forState:UIControlStateNormal];
+    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tvActive.png"] forState:UIControlStateHighlighted];
+    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tvActive.png"] forState:UIControlStateSelected];
+    
+    [_menuOptionButton setTitle:nil forState:UIControlStateNormal];
+    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cog"] forState:UIControlStateNormal];
+    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateHighlighted];
+    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateSelected];
+    
     _naviViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"naviViewController"];
     [self addChildViewController:_naviViewController];
     [_naviViewController didMoveToParentViewController:self];
     [_menuContentView addSubview:_naviViewController.view];
-    _naviViewController.view.frame = _menuContentView.bounds;    
-    _menuContainerView.backgroundColor = _overlayBackgroundColor;
+    _naviViewController.view.frame = _menuContentView.bounds;
+
+    CGRect frame = _menuContainerView.frame;
+    frame.origin.x = self.view.bounds.size.width + frame.size.width + 1;
+    _menuContainerView.frame = frame;
+    
+    _menuContainerView.backgroundColor =[UIColor clearColor];
+    _menuHeaderView.backgroundColor = _overlayBackgroundColor;
+    _menuContentView.backgroundColor = [UIColor clearColor];
+        
+    // create a UIPanGestureRecognizer to detect when the screenshot is touched and dragged
+    _menuPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureMoveAround:)];
+    [_menuPanGesture setMaximumNumberOfTouches:2];
+    [_menuPanGesture setDelegate:self];
+    [_menuContainerView addGestureRecognizer:_menuPanGesture];
 }
 
 - (void)appendVideoView
@@ -176,6 +214,20 @@
     return YES;
 }
 
+- (id)showProgressWithText:(NSString *)text
+{
+    MBProgressHUD *hud = [super showProgressWithText:text];
+    [hud indicatorWhiteWithMessage:text];
+    return hud;
+}
+
+- (id)showProgressMessageWithText:(NSString *)text
+{
+    MBProgressHUD *hud = [super showProgressWithText:text];
+    [hud indicatorWhiteWithMessage:text];
+    return hud;
+}
+
 #pragma mark - ToolbarActions
 
 - (IBAction)menuClick:(id)sender
@@ -187,6 +239,46 @@
     }
 }
 
+/* The following is from http://blog.shoguniphicus.com/2011/06/15/working-with-uigesturerecognizers-uipangesturerecognizer-uipinchgesturerecognizer/ */
+-(void)panGestureMoveAround:(UIPanGestureRecognizer *)gesture;
+{
+    UIView *piece = gesture.view;
+    [self adjustAnchorPointForGestureRecognizer:gesture];
+    
+    CGPoint velocity = [gesture velocityInView:piece];
+//    NSLog(@"velocity = %lf", velocity.x);
+    
+    if (gesture.state == UIGestureRecognizerStateBegan || gesture.state == UIGestureRecognizerStateChanged) {
+        float defaultOriginX = self.view.bounds.size.width - piece.frame.size.width;
+        CGPoint translation = [gesture translationInView:piece.superview];
+        if (defaultOriginX < piece.frame.origin.x + translation.x) {
+            piece.center = CGPointMake(piece.center.x + translation.x, piece.center.y);
+        }
+        [gesture setTranslation:CGPointZero inView:piece.superview];            
+        
+    }
+    else if ([gesture state] == UIGestureRecognizerStateEnded) {
+        if (velocity.x > 0) {
+            [self hideSideMenu];
+        } else {
+            [self showSideMenu];
+        }
+        
+    }
+}
+
+- (void)adjustAnchorPointForGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        UIView *piece = gestureRecognizer.view;
+        CGPoint locationInView = [gestureRecognizer locationInView:piece];
+        CGPoint locationInSuperview = [gestureRecognizer locationInView:piece.superview];
+        
+        piece.layer.anchorPoint = CGPointMake(locationInView.x / piece.bounds.size.width, locationInView.y / piece.bounds.size.height);
+        piece.center = locationInSuperview;
+    }
+}
+
 - (void)showSideMenu
 {
     if (!_isLogined) {
@@ -194,9 +286,6 @@
     }
     
     CGRect frame = _menuContainerView.frame;
-    frame.origin.x = self.view.bounds.size.width + frame.size.width + 1;
-    _menuContainerView.frame = frame;
-    
     frame.origin.x = self.view.bounds.size.width - frame.size.width;
     
     _menuButton.selected = YES;
@@ -208,6 +297,7 @@
                  completion:^(BOOL finished) {
                      if (finished) {
                          _menuButton.selected = YES;
+                         _menuTvButton.selected = YES;
                      }
                  }];
 
@@ -301,13 +391,22 @@
 
 #pragma mark - Login
 
+- (void)hideControlsNotLogin
+{
+    _headerView.hidden = YES;
+    _menuButton.hidden = YES;
+    _menuContainerView.hidden = YES;
+    _controlView.hidden = YES;
+}
+
 - (void)didLoginGaraponTv
 {
     _isLogined = YES;
     _headerView.hidden = NO;
+    _menuButton.hidden = NO;
     _menuContainerView.alpha = 0.0f;
     _menuContainerView.hidden = NO;
-    _controlView.hidden = NO;
+    _controlView.hidden = NO;        
     
     [self showSideMenu];
 }
@@ -316,7 +415,7 @@
 {
     __weak WZVideoViewController *me = self;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:me.view animated:YES];
-    hud.labelText = @"ガラポンTVにログイン中...";
+    [hud indicatorWhiteWithMessage: @"ガラポンTVにログイン中..."];
     
     WZGaranchuUser *user = [WZGaranchuUser defaultUser];
     [_garaponTv loginWithLoginId:user.garaponId password:user.password completionHandler:^(NSError *error) {
@@ -339,7 +438,7 @@
     __weak UIView *hudView = loginViewController.view ? loginViewController.view : me.view;
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:hudView animated:YES];
-    hud.labelText = @"ガラポンTVを検索しています...";
+    [hud indicatorWhiteWithMessage: @"ガラポンTVを検索しています..."];
     
     [_loginViewController setEnableControls:NO];
     [[WZGaranchuUser defaultUser] getGaraponTvAddress:me.garaponWeb
@@ -375,7 +474,7 @@
         hud = [MBProgressHUD showHUDAddedTo:hudView animated:YES];
     }
     
-    hud.labelText = @"ガラポンTVにログイン中...";
+    [hud indicatorWhiteWithMessage: @"ガラポンTVにログイン中..."];
     
     WZGaranchuUser *user = [WZGaranchuUser defaultUser];
     [_garaponTv loginWithLoginId:user.garaponId password:user.password completionHandler:^(NSError *error) {

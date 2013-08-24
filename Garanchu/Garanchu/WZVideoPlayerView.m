@@ -34,9 +34,12 @@
     self.playButtonImage = [UIImage imageNamed:@"GaranchuResources.bundle/play.png"];
     self.pauseButtonImage = [UIImage imageNamed:@"GaranchuResources.bundle/pause.png"];
     [self.playButton setImage:self.playButtonImage forState:UIControlStateNormal];
-        
+    
+    [_previousButton setTitle:nil forState:UIControlStateNormal];
     [_previousButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/previous.png"] forState:UIControlStateNormal];
+    [_stepBackwardButton setTitle:nil forState:UIControlStateNormal];
     [_stepBackwardButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepBackward.png"] forState:UIControlStateNormal];
+    [_stepForwardButton setTitle:nil forState:UIControlStateNormal];
     [_stepForwardButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepForward.png"] forState:UIControlStateNormal];
 }
 
