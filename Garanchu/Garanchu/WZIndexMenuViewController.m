@@ -111,6 +111,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         self.tableView.pullToRefreshView.textColor = [UIColor whiteColor];
         self.tableView.pullToRefreshView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
         self.tableView.infiniteScrollingView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
+        self.clearsSelectionOnViewWillAppear = NO;
         
         // search First page
         [self searchMoreItemsWithCompletionHandler:^(NSError *error) {

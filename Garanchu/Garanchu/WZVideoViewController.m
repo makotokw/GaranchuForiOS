@@ -17,11 +17,18 @@
 #import "MBProgressHUD+Garanchu.h"
 
 #import <BlocksKit/BlocksKit.h>
+#import <InAppSettingsKit/IASKAppSettingsViewController.h>
+#import <InAppSettingsKit/IASKSettingsReader.h>
 
 @interface WZVideoViewController ()
 @property (readonly) WZGaraponWeb *garaponWeb;
 @property (readonly) WZGaraponTv *garaponTv;
 @property (readonly) WZGaraponTvProgram *watchingProgram;
+@end
+
+@interface WZVideoViewController()<IASKSettingsDelegate, UIPopoverControllerDelegate>
+@property (nonatomic) IASKAppSettingsViewController* appSettingsViewController;
+@property (nonatomic) UIPopoverController* currentPopoverController;
 @end
 
 @implementation WZVideoViewController
@@ -43,8 +50,10 @@
     
     WZNaviViewController *_naviViewController;
     WZLoginViewController *_loginViewController;
+    IASKAppSettingsViewController *_appSettingsViewController;
     
     BOOL _isLogined;
+    BOOL _isSuspendedPause;
     
     UIPanGestureRecognizer *_menuPanGesture;
 }
@@ -52,6 +61,7 @@
 @synthesize garaponTv = _garaponTv;
 @synthesize garaponWeb = _garaponWeb;
 @synthesize watchingProgram = _watchingProgram;
+@synthesize appSettingsViewController = _appSettingsViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -107,6 +117,8 @@
         } afterDelay:0.1f];
     }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:kIASKAppSettingChanged object:nil];
+    
     [super viewDidLoad];
 }
 
@@ -116,6 +128,12 @@
     
     // remove the gesture recognizers
     [_menuContainerView removeGestureRecognizer:_menuPanGesture];
+}
+
+- (void) dismissCurrentPopover
+{
+	[self.currentPopoverController dismissPopoverAnimated:YES];
+	self.currentPopoverController = nil;
 }
 
 - (IBAction)playerViewDidTapped:(id)sender
@@ -152,17 +170,105 @@
     [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menuActive.png"] forState:UIControlStateSelected];
 }
 
+- (IASKAppSettingsViewController*)appSettingsViewController
+{
+	if (!_appSettingsViewController) {
+		_appSettingsViewController = [[IASKAppSettingsViewController alloc] init];
+        _appSettingsViewController.title = @"設定";
+		_appSettingsViewController.delegate = self;
+	}
+	return _appSettingsViewController;
+}
+
+- (void)showSettingsPopover:(id)sender
+{
+	if (self.currentPopoverController) {
+        [self dismissCurrentPopover];
+		return;
+	}
+    
+	self.appSettingsViewController.showDoneButton = NO;
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.appSettingsViewController];
+	UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:navController];
+	popover.delegate = self;
+    
+    CGRect rect = [_menuOptionButton convertRect:_menuOptionButton.bounds toView:self.view];
+    [popover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+	self.currentPopoverController = popover;
+}
+
+- (IBAction)showSettingsModal:(id)sender
+{
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.appSettingsViewController];
+    //[viewController setShowCreditsFooter:NO];   // Uncomment to not display InAppSettingsKit credits for creators.
+    // But we encourage you not to uncomment. Thank you!
+    self.appSettingsViewController.showDoneButton = YES;
+    [self presentModalViewController:navController animated:YES];
+    [self suspendPlaying];
+}
+
+- (void)suspendPlaying
+{
+    if (self.playerView.isOpened) {
+        if (self.playerView.isPlaying) {
+            [self pause];
+            _isSuspendedPause = YES;
+        }
+    }
+}
+
+- (void)resumePlaying
+{
+    if (_isSuspendedPause) {
+        _isSuspendedPause = NO;
+        [self play];
+    }
+}
+
+- (void)settingsViewController:(IASKAppSettingsViewController*)sender buttonTappedForSpecifier:(IASKSpecifier*)specifier
+{
+	if ([specifier.key isEqualToString:@"account_logout"]) {
+        [self logountInSettings];
+	}
+}
+
+- (void)logountInSettings
+{
+    [self dismissModalViewControllerAnimated:NO];
+    [self logoutGraponTv];
+    
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    // This method will be called only after device rotation is finished
+    // Can be used to reanchor popovers
+    if (self.currentPopoverController) {
+        CGRect rect = [_menuOptionButton convertRect:_menuOptionButton.bounds toView:self.view];
+        [self.currentPopoverController presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:NO];
+    }
+}
+
 - (void)appendNaviView
 {
+    __weak WZVideoViewController *me = self;
     [_menuTvButton setTitle:nil forState:UIControlStateNormal];
     [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tv.png"] forState:UIControlStateNormal];
     [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tvActive.png"] forState:UIControlStateHighlighted];
     [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tvActive.png"] forState:UIControlStateSelected];
+    [_menuTvButton addEventHandler:^(id sender) {
+        
+    } forControlEvents:UIControlEventTouchDown];
     
     [_menuOptionButton setTitle:nil forState:UIControlStateNormal];
     [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cog"] forState:UIControlStateNormal];
     [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateHighlighted];
     [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateSelected];
+    [_menuOptionButton addEventHandler:^(id sender) {
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            [me showSettingsModal:sender];
+        }
+    } forControlEvents:UIControlEventTouchDown];
     
     _naviViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"naviViewController"];
     [self addChildViewController:_naviViewController];
@@ -197,9 +303,25 @@
     _controlView.backgroundColor = _overlayBackgroundColor;
 }
 
++ (NSString *)formatDateTime:(NSTimeInterval)timestamp
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
+    return [dateFormatter stringFromDate:date];
+}
+
 - (void)refreshHeaderView
 {
-    _headerTitleLabel.text = _watchingProgram.title;
+    if (_watchingProgram) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm"];
+        NSString *dateString =  [dateFormatter stringFromDate:_watchingProgram.startdate];
+        NSString *headerContentTitle = [NSString stringWithFormat:@"%@ (%@)", _watchingProgram.title, dateString];
+        _headerTitleLabel.text = headerContentTitle;
+    } else {
+        _headerTitleLabel.text = nil;
+    }
     _menuButton.selected = _menuContainerView.alpha == 1.0;
 }
 
@@ -226,6 +348,29 @@
     MBProgressHUD *hud = [super showProgressWithText:text];
     [hud indicatorWhiteWithMessage:text];
     return hud;
+}
+
+
+#pragma mark - InAppSettings delegate, notificifation
+
+- (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender
+{
+    __weak WZVideoViewController *me = self;
+    [self dismissViewControllerAnimated:YES completion:^{
+        [me resumePlaying];
+    }];
+}
+
+- (void)settingsDidChange:(NSNotification*)notification
+{
+	
+}
+
+#pragma mark - UIPopoverControllerDelegate
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    self.currentPopoverController = nil;
 }
 
 #pragma mark - ToolbarActions
@@ -372,9 +517,11 @@
     _watchingProgram = program;
     if (program) {        
         [self showProgressWithText:@"Loading..."];
-        NSString *mediaUrl = [_garaponTv httpLiveStreamingURLStringWithProgram:program];
+        NSString *mediaUrl = [_garaponTv httpLiveStreamingURLStringWithProgram:program];        
         [self setContentTitle:program.title];
         [self setContentURL:[NSURL URLWithString:mediaUrl]];
+    } else {
+        [self setContentTitle:nil];
     }
     [self refreshHeaderView];
 }
@@ -409,6 +556,17 @@
     _controlView.hidden = NO;        
     
     [self showSideMenu];
+}
+
+- (void)didLogoutGaraponTv
+{
+    _isLogined = NO;
+    _headerView.hidden = YES;
+    _menuButton.hidden = YES;
+    _menuContainerView.hidden = YES;
+    _controlView.hidden = YES;
+    
+    [self close];
 }
 
 - (void)silentLogin
@@ -463,19 +621,28 @@
                                     }];
 }
 
+- (void)showGaraponIndicatorWhiteWithMessage:(NSString *)message inView:(UIView *)view
+{
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:view];
+    if (!hud) {
+        hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    }
+    [hud indicatorWhiteWithMessage:message];
+}
+
+- (void)hideGaraponIndicatorForView:(UIView *)view
+{
+    [MBProgressHUD hideHUDForView:view animated:YES];
+}
+
 - (void)loginGraponTv
 {
     __weak WZVideoViewController *me = self;
     __weak WZLoginViewController *loginViewController = _loginViewController;
     __weak UIView *hudView = loginViewController.view ? loginViewController.view : me.view;
     
-    MBProgressHUD *hud = [MBProgressHUD HUDForView:hudView];
-    if (!hud) {
-        hud = [MBProgressHUD showHUDAddedTo:hudView animated:YES];
-    }
-    
-    [hud indicatorWhiteWithMessage: @"ガラポンTVにログイン中..."];
-    
+    [self showGaraponIndicatorWhiteWithMessage:@"ガラポンTVにログイン中..." inView:hudView];
+        
     WZGaranchuUser *user = [WZGaranchuUser defaultUser];
     [_garaponTv loginWithLoginId:user.garaponId password:user.password completionHandler:^(NSError *error) {
         if (error) {
@@ -494,7 +661,7 @@
                                         }];
         } else {
             [me performBlock:^(id sender) {
-                [MBProgressHUD hideHUDForView:hudView animated:YES];
+                [me hideGaraponIndicatorForView:hudView];
                 [me didLoginGaraponTv];
                 [_loginViewController dismissViewControllerAnimated:YES completion:^{
                     _loginViewController = nil;
@@ -502,6 +669,19 @@
             } afterDelay:1.0f];
         }
     }];
+}
+
+- (void)logoutGraponTv
+{
+    __weak WZVideoViewController *me = self;    
+    if (_garaponTv) {
+        [self showGaraponIndicatorWhiteWithMessage:@"ログアウトしています..." inView:self.view];
+        [_garaponTv logoutWithCompletionHandler:^(NSError *error) {
+            [me hideGaraponIndicatorForView:me.view];            
+            [me didLogoutGaraponTv];
+            [me presentModalLoginViewController];
+        }];
+    }
 }
 
 - (void)presentModalLoginViewController

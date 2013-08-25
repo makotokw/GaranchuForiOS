@@ -39,6 +39,7 @@
 		8FB6262E17C5037800EC5A0E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262A17C5037800EC5A0E /* Icon@2x.png */; };
 		8FF1B0EA179C551100BF9785 /* GaranchuResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0E9179C551100BF9785 /* GaranchuResources.bundle */; };
 		8FF1B0ED179CD32A00BF9785 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0EF179CD32A00BF9785 /* Localizable.strings */; };
+		8FF5973517C98B0200A9E8E9 /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8FF5973417C98B0200A9E8E9 /* InAppSettings.bundle */; };
 		DEAD08CC53D6433E97303441 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FD30FE5BBFD4D808BB97071 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +103,7 @@
 		8FF1B0F0179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8FF1B0F1179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8FF1B0F2179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8FF5973417C98B0200A9E8E9 /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppSettings.bundle; sourceTree = "<group>"; };
 		96F8EB6C90064691BC69EB19 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -211,6 +213,7 @@
 				8F935BA71791F24D001FFE01 /* Default@2x.png */,
 				8F935BA91791F24D001FFE01 /* Default-568h@2x.png */,
 				8FF1B0EF179CD32A00BF9785 /* Localizable.strings */,
+				8FF5973417C98B0200A9E8E9 /* InAppSettings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				8FB6262C17C5037800EC5A0E /* Icon-72@2x.png in Resources */,
 				8FB6262D17C5037800EC5A0E /* Icon.png in Resources */,
 				8FB6262E17C5037800EC5A0E /* Icon@2x.png in Resources */,
+				8FF5973517C98B0200A9E8E9 /* InAppSettings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
