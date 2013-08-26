@@ -16,6 +16,7 @@
 
 + (WZGaranchu *)current;
 
+- (void)setup;
 - (void)storeTvAddress:(NSDictionary *)dict;
 
 @end

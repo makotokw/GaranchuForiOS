@@ -2,16 +2,17 @@
 //  WZAppDelegate.m
 //  Garanchu
 //
-//  Created by Makoto Kawasaki on 2013/07/14.
-//  Copyright (c) 2013年 makoto_kw. All rights reserved.
+//  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
 #import "WZAppDelegate.h"
+#import "WZGaranchu.h"
 
 @implementation WZAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[WZGaranchu current] setup];
     return YES;
 }
 

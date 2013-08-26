@@ -543,7 +543,7 @@
     _headerView.hidden = YES;
     _menuButton.hidden = YES;
     _menuContainerView.hidden = YES;
-    _controlView.hidden = YES;
+    _controlView.hidden = YES;    
 }
 
 - (void)didLoginGaraponTv
@@ -553,7 +553,11 @@
     _menuButton.hidden = NO;
     _menuContainerView.alpha = 0.0f;
     _menuContainerView.hidden = NO;
-    _controlView.hidden = NO;        
+    _controlView.hidden = NO;
+        
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];     
+    [userDefault setObject:_garaponTv.firmwareVersion forKey:@"gtv_firmware_version"];
+    [userDefault setObject:_garaponTv.host forKey:@"gtv_address"];
     
     [self showSideMenu];
 }

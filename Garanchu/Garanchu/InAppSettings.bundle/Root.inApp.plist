@@ -4,9 +4,71 @@
 <dict>
 	<key>PreferenceSpecifiers</key>
 	<array>
-		<dict>
+        <dict>
 			<key>Title</key>
-			<string>AccountGroup</string>
+			<string>GaraponTvGroup</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+        <dict>
+			<key>DefaultValue</key>
+			<string></string>
+			<key>Key</key>
+			<string>gtv_address</string>
+			<key>Title</key>
+			<string>GaraponTvAddress</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>1.0</string>
+			<key>Key</key>
+			<string>gtv_firmware_version</string>
+			<key>Title</key>
+			<string>GaraponTvFirmwareVersion</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+        <dict>
+			<key>Title</key>
+			<string>ApplicationGroup</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>1.0</string>
+			<key>Key</key>
+			<string>version</string>
+			<key>Title</key>
+			<string>ApplicationVersion</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+        <dict>
+			<key>File</key>
+			<string>library_copyrights.html</string>
+			<key>IASKViewControllerClass</key>
+			<string>IASKAppSettingsWebViewController</string>
+			<key>IASKViewControllerSelector</key>
+			<string>initWithFile:key:</string>
+			<key>Title</key>
+			<string>ApplicationLibraryLicense</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+        <dict>
+			<key>DefaultValue</key>
+			<string>makotokw.com</string>
+			<key>File</key>
+			<string>https://twitter.com/makoto_kw</string>
+			<key>Title</key>
+			<string>ApplicationDeveloper</string>
+			<key>Type</key>
+			<string>IASKOpenURLSpecifier</string>
+		</dict>
+        <dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
@@ -14,10 +76,10 @@
 			<key>Key</key>
 			<string>account_logout</string>
 			<key>Title</key>
-			<string>Logout</string>
+			<string>AccountGroupLogout</string>
 			<key>Type</key>
 			<string>IASKButtonSpecifier</string>
-		</dict>	
+		</dict>
 	</array>
 	<key>StringsTable</key>
 	<string>Root</string>

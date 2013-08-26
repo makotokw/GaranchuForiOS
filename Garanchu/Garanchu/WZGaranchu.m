@@ -14,19 +14,6 @@
     WZGaraponTv *_garaponTv;
 }
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        _garaponWeb = [[WZGaraponWeb alloc] init];
-        _garaponWeb.devId = GARAPON_DEV_ID;
-        
-        _garaponTv = [[WZGaraponTv alloc] init];
-        _garaponTv.devId = GARAPON_DEV_ID;
-    }
-    return self;
-}
-
 + (WZGaranchu *)current
 {
     static WZGaranchu *current = nil;
@@ -34,6 +21,33 @@
         current = [[WZGaranchu alloc] init];
     }
     return current;
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _garaponWeb = [[WZGaraponWeb alloc] init];
+        _garaponWeb.devId = GARAPON_DEV_ID;        
+        _garaponTv = [[WZGaraponTv alloc] init];
+        _garaponTv.devId = GARAPON_DEV_ID;
+    }
+    return self;
+}
+
+- (void)setup
+{    
+    [[NSUserDefaults standardUserDefaults] setObject:[self applictionVersion] forKey:@"version"];
+}
+
+- (NSString *)applictionVersion
+{
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+#if DEBUG
+    return [NSString stringWithFormat:@"%@ (%@)", info[@"CFBundleShortVersionString"], info[(NSString *)kCFBundleVersionKey]];
+#else
+    return info[@"CFBundleShortVersionString"];
+#endif
 }
 
 - (void)storeTvAddress:(NSDictionary *)dict
