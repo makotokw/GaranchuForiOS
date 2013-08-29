@@ -203,7 +203,8 @@
     //[viewController setShowCreditsFooter:NO];   // Uncomment to not display InAppSettingsKit credits for creators.
     // But we encourage you not to uncomment. Thank you!
     self.appSettingsViewController.showDoneButton = YES;
-    [self presentModalViewController:navController animated:YES];
+    [self presentViewController:navController animated:YES completion:^{
+    }];
     [self suspendPlaying];
 }
 
@@ -234,9 +235,9 @@
 
 - (void)logountInSettings
 {
-    [self dismissModalViewControllerAnimated:NO];
-    [self logoutGraponTv];
-    
+    [self dismissViewControllerAnimated:NO completion:^{
+        [self logoutGraponTv];
+    }];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -703,13 +704,15 @@
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         _loginViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-        _loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;        
-        [self presentModalViewController:_loginViewController animated:YES];
+        _loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentViewController:_loginViewController animated:YES completion:^{
+        }];
         _loginViewController.view.superview.bounds = CGRectMake(0, 0, 400, 300);
     } else {
         _loginViewController.modalPresentationStyle = UIModalPresentationFullScreen;
         _loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        [self presentModalViewController:_loginViewController animated:YES];
+        [self presentViewController:_loginViewController animated:YES completion:^{
+        }];
     }
 }
 
