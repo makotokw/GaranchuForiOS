@@ -201,13 +201,6 @@
     }
 }
 
-- (void)settingsViewController:(IASKAppSettingsViewController*)sender buttonTappedForSpecifier:(IASKSpecifier*)specifier
-{
-	if ([specifier.key isEqualToString:@"account_logout"]) {
-        [self logountInSettings];
-	}
-}
-
 - (void)logountInSettings
 {
     [self dismissViewControllerAnimated:NO completion:^{
@@ -328,7 +321,7 @@
 
 #pragma mark - InAppSettings delegate, notificifation
 
-- (IASKAppSettingsViewController*)appSettingsViewController
+- (IASKAppSettingsViewController *)appSettingsViewController
 {
 	if (!_appSettingsViewController) {
 		_appSettingsViewController = [[IASKAppSettingsViewController alloc] init];
@@ -339,9 +332,19 @@
 	return _appSettingsViewController;
 }
 
+- (void)settingsViewController:(IASKAppSettingsViewController *)sender buttonTappedForSpecifier:(IASKSpecifier *)specifier
+{
+    if ([specifier.key isEqualToString:@"account_logout"]) {
+        [self logountInSettings];
+	}    
+	else if ([specifier.key isEqualToString:@"gtv_web_server"]) {
+        [[UIApplication sharedApplication] openURL:[_garaponTv URLWithPath:@""]];
+		
+	}
+}
+
 - (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender
 {
-    __weak WZVideoViewController *me = self;
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
