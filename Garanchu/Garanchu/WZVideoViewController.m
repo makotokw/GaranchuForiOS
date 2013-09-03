@@ -20,15 +20,10 @@
 #import <InAppSettingsKit/IASKAppSettingsViewController.h>
 #import <InAppSettingsKit/IASKSettingsReader.h>
 
-@interface WZVideoViewController ()
+@interface WZVideoViewController ()<IASKSettingsDelegate, UIPopoverControllerDelegate>
 @property (readonly) WZGaraponWeb *garaponWeb;
 @property (readonly) WZGaraponTv *garaponTv;
 @property (readonly) WZGaraponTvProgram *watchingProgram;
-@end
-
-@interface WZVideoViewController()<IASKSettingsDelegate, UIPopoverControllerDelegate>
-@property (nonatomic) IASKAppSettingsViewController* appSettingsViewController;
-@property (nonatomic) UIPopoverController* currentPopoverController;
 @end
 
 @implementation WZVideoViewController
@@ -51,6 +46,7 @@
     WZNaviViewController *_naviViewController;
     WZLoginViewController *_loginViewController;
     IASKAppSettingsViewController *_appSettingsViewController;
+    UIPopoverController *_currentPopoverController;
     
     BOOL _isLogined;
     BOOL _isSuspendedPause;
@@ -61,7 +57,6 @@
 @synthesize garaponTv = _garaponTv;
 @synthesize garaponWeb = _garaponWeb;
 @synthesize watchingProgram = _watchingProgram;
-@synthesize appSettingsViewController = _appSettingsViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -85,6 +80,7 @@
     _overlayBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
         
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectProgram:) name:WZGaranchuDidSelectProgram object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:kIASKAppSettingChanged object:nil];
 
     [self appendHeaderView];
     [self appendNaviView];
@@ -117,8 +113,6 @@
         } afterDelay:0.1f];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:kIASKAppSettingChanged object:nil];
-    
     [super viewDidLoad];
 }
 
@@ -128,12 +122,6 @@
     
     // remove the gesture recognizers
     [_menuContainerView removeGestureRecognizer:_menuPanGesture];
-}
-
-- (void) dismissCurrentPopover
-{
-	[self.currentPopoverController dismissPopoverAnimated:YES];
-	self.currentPopoverController = nil;
 }
 
 - (IBAction)playerViewDidTapped:(id)sender
@@ -170,19 +158,9 @@
     [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menuActive.png"] forState:UIControlStateSelected];
 }
 
-- (IASKAppSettingsViewController*)appSettingsViewController
-{
-	if (!_appSettingsViewController) {
-		_appSettingsViewController = [[IASKAppSettingsViewController alloc] init];
-        _appSettingsViewController.title = @"設定";
-		_appSettingsViewController.delegate = self;
-	}
-	return _appSettingsViewController;
-}
-
 - (void)showSettingsPopover:(id)sender
 {
-	if (self.currentPopoverController) {
+	if (_currentPopoverController) {
         [self dismissCurrentPopover];
 		return;
 	}
@@ -194,23 +172,20 @@
     
     CGRect rect = [_menuOptionButton convertRect:_menuOptionButton.bounds toView:self.view];
     [popover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
-	self.currentPopoverController = popover;
+	_currentPopoverController = popover;
 }
 
 - (IBAction)showSettingsModal:(id)sender
 {
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.appSettingsViewController];
-    //[viewController setShowCreditsFooter:NO];   // Uncomment to not display InAppSettingsKit credits for creators.
-    // But we encourage you not to uncomment. Thank you!
-    self.appSettingsViewController.showDoneButton = YES;
+    navController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:navController animated:YES completion:^{
     }];
-    [self suspendPlaying];
 }
 
 - (void)suspendPlaying
 {
-    if (self.playerView.isOpened) {
+    if (self.playerView.isPlayerOpened) {
         if (self.playerView.isPlaying) {
             [self pause];
             _isSuspendedPause = YES;
@@ -244,9 +219,9 @@
 {
     // This method will be called only after device rotation is finished
     // Can be used to reanchor popovers
-    if (self.currentPopoverController) {
+    if (_currentPopoverController) {
         CGRect rect = [_menuOptionButton convertRect:_menuOptionButton.bounds toView:self.view];
-        [self.currentPopoverController presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:NO];
+        [_currentPopoverController presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:NO];
     }
 }
 
@@ -351,14 +326,23 @@
     return hud;
 }
 
-
 #pragma mark - InAppSettings delegate, notificifation
+
+- (IASKAppSettingsViewController*)appSettingsViewController
+{
+	if (!_appSettingsViewController) {
+		_appSettingsViewController = [[IASKAppSettingsViewController alloc] init];
+        _appSettingsViewController.title = @"設定";
+        _appSettingsViewController.showDoneButton = YES;
+		_appSettingsViewController.delegate = self;
+	}
+	return _appSettingsViewController;
+}
 
 - (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender
 {
     __weak WZVideoViewController *me = self;
     [self dismissViewControllerAnimated:YES completion:^{
-        [me resumePlaying];
     }];
 }
 
@@ -367,11 +351,17 @@
 	
 }
 
-#pragma mark - UIPopoverControllerDelegate
+#pragma mark - UIPopoverController
+
+- (void)dismissCurrentPopover
+{
+	[_currentPopoverController dismissPopoverAnimated:YES];
+	_currentPopoverController = nil;
+}
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
-    self.currentPopoverController = nil;
+    _currentPopoverController = nil;
 }
 
 #pragma mark - ToolbarActions
@@ -473,11 +463,6 @@
 
 #pragma mark - PlayerController
 
-- (IBAction)playOrPause:(id)sender
-{
-    [_videoPlayerView playOrPause:sender];
-}
-
 - (IBAction)previous:(id)sender
 {
     [_videoPlayerView seekToTime:0 completionHandler:^{
@@ -508,7 +493,22 @@
 
 - (void)playerDidReadyPlayback
 {
-    [self hideProgress];
+    [super playerDidReadyPlayback];
+}
+
+- (void)playerDidBeginPlayback
+{
+    [super playerDidBeginPlayback];
+}
+
+- (void)playerDidEndPlayback
+{
+    [super playerDidEndPlayback];
+}
+
+- (void)playerDidReachEndPlayback
+{
+    [super playerDidReachEndPlayback];
 }
 
 #pragma mark - Program
