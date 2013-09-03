@@ -10,6 +10,7 @@
 @interface WZIndexMenuViewController (Static)
 
 - (NSMutableArray *)rootItems;
+- (NSMutableArray *)dateItems;
 - (NSMutableArray *)genreItems;
 
 @end

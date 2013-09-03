@@ -122,6 +122,10 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                 [self channel];
                 break;
                 
+            case WZDateGaranchuIndexType:
+                _items = [self dateItems];
+                break;
+                
             case WZGenreGaranchuIndexType:
                 _items = [self genreItems];
                 break;

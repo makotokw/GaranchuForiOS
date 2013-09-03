@@ -14,8 +14,8 @@
     return [@[
             @{@"title": @"インデックス", @"items": @[
             @{@"title": @"録画番組", @"indexType": [NSNumber numberWithInteger:WZProgramGaranchuIndexType]},
-            @{@"title": @"放送中の番組", @"indexType": [NSNumber numberWithInteger:WZRecordingProgramGaranchuIndexType], @"params":[self recordingProgramParams]},
-//            @{@"title": @"日付一覧", @"indexType": [NSNumber numberWithInteger:WZDateGaranchuIndexType]},
+            @{@"title": @"現在録画中の番組", @"indexType": [NSNumber numberWithInteger:WZRecordingProgramGaranchuIndexType], @"params":[self recordingProgramParams]},
+            @{@"title": @"日付", @"indexType": [NSNumber numberWithInteger:WZDateGaranchuIndexType]},
             @{@"title": @"ジャンル", @"indexType": [NSNumber numberWithInteger:WZGenreGaranchuIndexType]},
             @{@"title": @"放送局", @"indexType": [NSNumber numberWithInteger:WZChannelGaranchuIndexType]},
             @{@"title": @"お気に入り", @"indexType": [NSNumber numberWithInteger:WZProgramGaranchuIndexType], @"params": @{@"rank": @"all"}},
@@ -36,6 +36,30 @@
              @"sdate": [WZGaraponTv formatDateTime:edate],
              @"video": @"all",
              };
+}
+
+- (NSMutableArray *)dateItems
+{
+    NSInteger numberOfDate = 14;
+    
+    NSDate *date = [NSDate date];
+    NSInteger diskSize = [[NSUserDefaults standardUserDefaults] integerForKey:@"gtv_disk_size"];
+    if (diskSize >= 1000) {
+        numberOfDate = diskSize * 30/1000;
+    }    
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
+    [dateFormatter setDateFormat:@"YYYY/MM/dd(EEE)"];
+    
+    NSMutableArray *items = [NSMutableArray array];
+    for (NSInteger i = 0; i < numberOfDate; i++) {
+        [items addObject:@{@"title":[dateFormatter stringFromDate:date],
+         @"indexType": [NSNumber numberWithInteger:WZProgramGaranchuIndexType],
+         @"params": @{@"dt":@"e", @"sdate":[WZGaraponTv formatDate:date.timeIntervalSince1970], @"edate":[WZGaraponTv formatDate:date.timeIntervalSince1970 + 86400]}}];
+        date = [date dateByAddingTimeInterval:-86400];    
+    }
+    return items;         
 }
 
 - (NSMutableArray *)genreItems
