@@ -9,6 +9,15 @@
 
 @implementation WZVideoPlayerView
 
+{    
+    IBOutlet UIButton *_previousButton;
+    IBOutlet UIButton *_stepBackwardButton;
+    IBOutlet UIButton *_stepForwardButton;
+    IBOutlet UIButton *_favButton;
+    IBOutlet UIButton *_infoButton;
+    IBOutlet UIButton *_shareButton;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -35,12 +44,13 @@
     self.pauseButtonImage = [UIImage imageNamed:@"GaranchuResources.bundle/pause.png"];
     [self.playButton setImage:self.playButtonImage forState:UIControlStateNormal];
     
-    [_previousButton setTitle:nil forState:UIControlStateNormal];
     [_previousButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/previous.png"] forState:UIControlStateNormal];
-    [_stepBackwardButton setTitle:nil forState:UIControlStateNormal];
     [_stepBackwardButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepBackward.png"] forState:UIControlStateNormal];
-    [_stepForwardButton setTitle:nil forState:UIControlStateNormal];
     [_stepForwardButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepForward.png"] forState:UIControlStateNormal];
+    [_favButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/star.png"] forState:UIControlStateNormal];
+    [_favButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/starEnabled.png"] forState:UIControlStateSelected];
+    [_infoButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/info.png"] forState:UIControlStateNormal];
+    [_shareButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/share.png"] forState:UIControlStateNormal];
 }
 
 - (void)enableControls
@@ -49,7 +59,10 @@
     
     _previousButton.enabled =
     _stepBackwardButton.enabled = 
-    _stepForwardButton.enabled = YES;
+    _stepForwardButton.enabled =
+    _favButton.enabled =
+    _infoButton.enabled =
+    _shareButton.enabled = YES;
 }
 
 - (void)disableControls
@@ -58,7 +71,10 @@
     
     _previousButton.enabled =
     _stepBackwardButton.enabled =
-    _stepForwardButton.enabled = NO;
+    _stepForwardButton.enabled =
+    _favButton.enabled =
+    _infoButton.enabled =
+    _shareButton.enabled = NO;
 }
 
 - (void)enableSeekControls

@@ -33,6 +33,7 @@
 		8F935BBF1791F24D001FFE01 /* GaranchuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BBE1791F24D001FFE01 /* GaranchuTests.m */; };
 		8F935BC91791F2ED001FFE01 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BC81791F2ED001FFE01 /* iPad.storyboard */; };
 		8F935BCC1791F570001FFE01 /* WZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BCB1791F570001FFE01 /* WZLoginViewController.m */; };
+		8FAD8C4317D6540F002F0D50 /* WZSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD8C4217D6540E002F0D50 /* WZSearchResultViewController.m */; };
 		8FB6262B17C5037800EC5A0E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262717C5037800EC5A0E /* Icon-72.png */; };
 		8FB6262C17C5037800EC5A0E /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262817C5037800EC5A0E /* Icon-72@2x.png */; };
 		8FB6262D17C5037800EC5A0E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262917C5037800EC5A0E /* Icon.png */; };
@@ -41,6 +42,9 @@
 		8FF1B0ED179CD32A00BF9785 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0EF179CD32A00BF9785 /* Localizable.strings */; };
 		8FF5973517C98B0200A9E8E9 /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8FF5973417C98B0200A9E8E9 /* InAppSettings.bundle */; };
 		8FF5973717C9EBBE00A9E8E9 /* library_copyrights.html in Resources */ = {isa = PBXBuildFile; fileRef = 8FF5973617C9EBBE00A9E8E9 /* library_copyrights.html */; };
+		8FFD027B17DE28D700583B1E /* WZSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFD027A17DE28D700583B1E /* WZSearchBar.m */; };
+		8FFD027E17DE2D6D00583B1E /* WZGaraponTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFD027D17DE2D6D00583B1E /* WZGaraponTabController.m */; };
+		8FFD028117DE379600583B1E /* WZSearchSuggestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFD028017DE379600583B1E /* WZSearchSuggestViewController.m */; };
 		DEAD08CC53D6433E97303441 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FD30FE5BBFD4D808BB97071 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +100,8 @@
 		8F935BC81791F2ED001FFE01 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		8F935BCA1791F570001FFE01 /* WZLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZLoginViewController.h; sourceTree = "<group>"; };
 		8F935BCB1791F570001FFE01 /* WZLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZLoginViewController.m; sourceTree = "<group>"; };
+		8FAD8C4117D6540E002F0D50 /* WZSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZSearchResultViewController.h; sourceTree = "<group>"; };
+		8FAD8C4217D6540E002F0D50 /* WZSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZSearchResultViewController.m; sourceTree = "<group>"; };
 		8FB6262717C5037800EC5A0E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		8FB6262817C5037800EC5A0E /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		8FB6262917C5037800EC5A0E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -106,6 +112,12 @@
 		8FF1B0F2179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8FF5973417C98B0200A9E8E9 /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppSettings.bundle; sourceTree = "<group>"; };
 		8FF5973617C9EBBE00A9E8E9 /* library_copyrights.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = library_copyrights.html; sourceTree = "<group>"; };
+		8FFD027917DE28D700583B1E /* WZSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZSearchBar.h; sourceTree = "<group>"; };
+		8FFD027A17DE28D700583B1E /* WZSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZSearchBar.m; sourceTree = "<group>"; };
+		8FFD027C17DE2D6D00583B1E /* WZGaraponTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZGaraponTabController.h; sourceTree = "<group>"; };
+		8FFD027D17DE2D6D00583B1E /* WZGaraponTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZGaraponTabController.m; sourceTree = "<group>"; };
+		8FFD027F17DE379600583B1E /* WZSearchSuggestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZSearchSuggestViewController.h; sourceTree = "<group>"; };
+		8FFD028017DE379600583B1E /* WZSearchSuggestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZSearchSuggestViewController.m; sourceTree = "<group>"; };
 		96F8EB6C90064691BC69EB19 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -195,6 +207,14 @@
 				8F59FCB61794149200EEA418 /* WZIndexMenuViewController+Static.m */,
 				8F3C22ED17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.h */,
 				8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */,
+				8FFD027F17DE379600583B1E /* WZSearchSuggestViewController.h */,
+				8FFD028017DE379600583B1E /* WZSearchSuggestViewController.m */,
+				8FAD8C4117D6540E002F0D50 /* WZSearchResultViewController.h */,
+				8FAD8C4217D6540E002F0D50 /* WZSearchResultViewController.m */,
+				8FFD027917DE28D700583B1E /* WZSearchBar.h */,
+				8FFD027A17DE28D700583B1E /* WZSearchBar.m */,
+				8FFD027C17DE2D6D00583B1E /* WZGaraponTabController.h */,
+				8FFD027D17DE2D6D00583B1E /* WZGaraponTabController.m */,
 			);
 			path = Garanchu;
 			sourceTree = "<group>";
@@ -403,6 +423,10 @@
 				8F59FCB41793D9FC00EEA418 /* WZIndexMenuViewController.m in Sources */,
 				8F59FCB71794149300EEA418 /* WZIndexMenuViewController+Static.m in Sources */,
 				8F3C22EF17B38FE000D35CF2 /* MBProgressHUD+Garanchu.m in Sources */,
+				8FAD8C4317D6540F002F0D50 /* WZSearchResultViewController.m in Sources */,
+				8FFD027B17DE28D700583B1E /* WZSearchBar.m in Sources */,
+				8FFD027E17DE2D6D00583B1E /* WZGaraponTabController.m in Sources */,
+				8FFD028117DE379600583B1E /* WZSearchSuggestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

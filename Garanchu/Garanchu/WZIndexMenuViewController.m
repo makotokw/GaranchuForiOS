@@ -24,6 +24,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 @interface WZIndexMenuViewController ()
 
 @property (readonly) BOOL hasSection;
+@property (readonly) BOOL hasSearchText;
 @property (readonly) BOOL hasMoreItems;
 @property (readonly) BOOL isProgramMenu;
 
@@ -35,6 +36,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     __weak WZGaranchu *_stage;
     __weak WZGaraponTv *_garaponTv;
     
+    NSDictionary *_context;
     NSMutableArray *_items;
     NSInteger _currentSearchPage;
     NSInteger _maxSearchPage;
@@ -45,8 +47,9 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 }
 
 @synthesize indexType = _indexType;
-@synthesize context = _context;
+@dynamic context;
 @dynamic hasSection;
+@dynamic hasSearchText;
 @dynamic isProgramMenu;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -58,24 +61,31 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     return self;
 }
 
+- (NSString *)title
+{
+    if (_context[@"title"]) {
+        return _context[@"title"];
+    }
+    
+    switch (_indexType) {
+        case WZSearchResultGaranchuIndexType:
+            return @"検索";
+        default:
+            break;
+    }
+    return @"ガラポンTV";
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     self.view.backgroundColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     _stage = [WZGaranchu current];
     _garaponTv = _stage.garaponTv;
     _items = [[NSMutableArray alloc] init];
-    
-    self.title = _context[@"title"];
     
     _placeHolderImage = [UIImage imageNamed:@"GaranchuResources.bundle/thumbnail.png"];
     
@@ -96,7 +106,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
             }];
         }];
 
-        if (self.hasMoreItems) {
+        if (_indexType != WZRecordingProgramGaranchuIndexType) {
             [self.tableView addInfiniteScrollingWithActionHandler:^{
                 if (me.hasMoreItems) {
                     [me searchMoreItemsWithCompletionHandler:^(NSError *error) {
@@ -112,7 +122,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         self.tableView.pullToRefreshView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
         self.tableView.infiniteScrollingView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
         self.clearsSelectionOnViewWillAppear = NO;
-        
+                
         // search First page
         [self searchMoreItemsWithCompletionHandler:^(NSError *error) {
         }];
@@ -131,7 +141,6 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                 break;
                 
             default:
-                self.title = @"ガラポンTV";
                 _indexType = WZRootGaranchuIndexType;
                 _items = [self rootItems];
                 break;
@@ -185,14 +194,40 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     return YES;
 }
 
+- (NSDictionary *)context
+{
+    return _context;
+}
+
+- (void)setContext:(NSDictionary *)context
+{
+    _context = context;
+    
+    if (self.isViewLoaded) {
+        self.title = _context[@"title"];
+        if (self.isProgramMenu) {
+            _currentSearchPage = 0;
+            _maxSearchPage = 0;
+            [_items removeAllObjects];
+            [MBProgressHUD hideHUDForView:self.tableView animated:NO];
+            [self.tableView reloadData];
+            
+            // search First page
+            [self searchMoreItemsWithCompletionHandler:^(NSError *error) {
+            }];
+        }
+    }
+}
+
 - (BOOL)hasSection
 {
-    return (_indexType == WZGenreGaranchuIndexType || _indexType == WZRootGaranchuIndexType);
+    return (_indexType == WZGenreGaranchuIndexType
+            || _indexType == WZRootGaranchuIndexType);
 }
 
 - (BOOL)hasMoreItems
 {
-    if (_indexType == WZProgramGaranchuIndexType) {
+    if (self.isProgramMenu) {
         return (_maxSearchPage > 0 && _currentSearchPage >= _maxSearchPage) ? NO : YES;
     }
     return NO;
@@ -200,7 +235,9 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 
 - (BOOL)isProgramMenu
 {
-    return (_indexType == WZRecordingProgramGaranchuIndexType || _indexType == WZProgramGaranchuIndexType);
+    return (_indexType == WZRecordingProgramGaranchuIndexType
+            || _indexType == WZProgramGaranchuIndexType
+            || _indexType == WZSearchResultGaranchuIndexType);
 }
 
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath
@@ -223,9 +260,23 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     return params;
 }
 
+- (BOOL)hasSearchText
+{
+    NSDictionary *dict = _context[@"params"];
+    return (dict[@"key"]) ? YES : NO;
+}
+
 - (void)searchLatestItemsWithCompletionHandler:(WZGaraponAsyncBlock)completionHandler
 {
     __weak WZIndexMenuViewController *me = self;
+    
+    if (_indexType == WZSearchResultGaranchuIndexType && !self.hasSearchText) {
+        if (completionHandler) {
+            completionHandler(nil);
+        }
+        return;
+    }
+    
     NSDictionary *params = [self parameterForSearchWithPage:1];
     [self searcWithParameter:params completionHandler:^(NSArray *items, NSError *error) {
         if (items.count > 0) {
@@ -240,6 +291,14 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 - (void)searchMoreItemsWithCompletionHandler:(WZGaraponAsyncBlock)completionHandler
 {
     __weak WZIndexMenuViewController *me = self;
+    
+    if (_indexType == WZSearchResultGaranchuIndexType && !self.hasSearchText) {
+        if (completionHandler) {
+            completionHandler(nil);
+        }
+        return;
+    }
+    
     NSDictionary *params = [self parameterForSearchWithPage:_currentSearchPage + 1];
     [self searcWithParameter:params completionHandler:^(NSArray *items, NSError *error) {
         if (items.count > 0) {
@@ -256,7 +315,10 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 {
     __weak WZIndexMenuViewController *me = self;
     if (_items.count == 0) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+        MBProgressHUD *hud = [MBProgressHUD HUDForView:self.tableView];
+        if (!hud) {
+            hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+        }        
         [hud indicatorWhiteWithMessage: @"Loading..."];
     }
     WZGaraponWrapDictionary *wrapParams = [WZGaraponWrapDictionary wrapWithDictionary:params];
@@ -264,7 +326,6 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     
     [_garaponTv searchWithParameter:params
                   completionHandler:^(NSDictionary *response, NSError *error) {                      
-                      [MBProgressHUD hideHUDForView:me.tableView animated:NO];
                       NSArray *items = nil;
                       if (error) {
                           [WZAlertView showAlertWithError:error];
@@ -274,6 +335,15 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                           _maxSearchPage = ceil((float)_totalCount / numberOfPage);                          
                           items = [WZGaraponTvProgram arrayWithSearchResponse:response];
                       }
+                      
+                      if (_items.count == 0 && items.count == 0) {
+                          MBProgressHUD *hud = [MBProgressHUD HUDForView:me.tableView];
+                          hud.mode = MBProgressHUDModeText;
+                          hud.labelText = @"番組が見つかりません";
+                      } else {
+                          [MBProgressHUD hideHUDForView:me.tableView animated:NO];
+                      }
+                      
                       if (completionHandler) {
                           completionHandler(items, error);
                       }                      
@@ -364,12 +434,13 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                     return [p.gtvid isEqualToString:[obj gtvid]];
                 }];
                 if (!exists) {
-                    [_items addObject:p];
                     stillExists = NO;
+                    [_items addObject:p];                    
                     modifed = YES;
                 }
             } else {
                 [_items addObject:p];
+                modifed = YES;
             }
         }
         if (modifed) {

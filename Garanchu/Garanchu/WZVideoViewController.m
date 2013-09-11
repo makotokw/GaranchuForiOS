@@ -6,9 +6,13 @@
 //
 
 #import "WZVideoViewController.h"
-#import "WZMenuViewController.h"
+#import "WZGaraponTabController.h"
+// obsolated
+//#import "WZMenuViewController.h"
+#import "WZIndexMenuViewController.h"
 #import "WZNaviViewController.h"
 #import "WZLoginViewController.h"
+#import "WZSearchSuggestViewController.h"
 #import "WZAlertView.h"
 #import "WZVideoPlayerView.h"
 #import "WZGaranchu.h"
@@ -36,14 +40,19 @@
     IBOutlet UIButton *_menuButton;
     
     IBOutlet WZVideoPlayerView *_videoPlayerView;
+    IBOutlet UIButton *_favButton;
     IBOutlet UIView *_menuContainerView;
     IBOutlet UIView *_menuHeaderView;
     IBOutlet UIView *_menuContentView;
     IBOutlet UIButton *_menuTvButton;
+    IBOutlet UIButton *_menuSearchButton;
     IBOutlet UIButton *_menuOptionButton;
     IBOutlet UIView *_controlView;
     
+    WZGaraponTabController *_tabController;
     WZNaviViewController *_naviViewController;
+    WZNaviViewController *_searchNaviViewController;
+    WZIndexMenuViewController *_searchResultViewController;
     WZLoginViewController *_loginViewController;
     IASKAppSettingsViewController *_appSettingsViewController;
     UIPopoverController *_currentPopoverController;
@@ -152,36 +161,11 @@
 - (void)appendHeaderView
 {
     _headerView.backgroundColor = _overlayBackgroundColor;
-    [_menuButton setTitle:nil forState:UIControlStateNormal];
     [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menu.png"] forState:UIControlStateNormal];
     [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menuActive.png"] forState:UIControlStateHighlighted];
     [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menuActive.png"] forState:UIControlStateSelected];
 }
 
-- (void)showSettingsPopover:(id)sender
-{
-	if (_currentPopoverController) {
-        [self dismissCurrentPopover];
-		return;
-	}
-    
-	self.appSettingsViewController.showDoneButton = NO;
-	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.appSettingsViewController];
-	UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:navController];
-	popover.delegate = self;
-    
-    CGRect rect = [_menuOptionButton convertRect:_menuOptionButton.bounds toView:self.view];
-    [popover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
-	_currentPopoverController = popover;
-}
-
-- (IBAction)showSettingsModal:(id)sender
-{
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.appSettingsViewController];
-    navController.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentViewController:navController animated:YES completion:^{
-    }];
-}
 
 - (void)suspendPlaying
 {
@@ -201,7 +185,7 @@
     }
 }
 
-- (void)logountInSettings
+- (void)logoutInSettings
 {
     [self dismissViewControllerAnimated:NO completion:^{
         [self logoutGraponTv];
@@ -220,30 +204,23 @@
 
 - (void)appendNaviView
 {
-    __weak WZVideoViewController *me = self;
-    [_menuTvButton setTitle:nil forState:UIControlStateNormal];
-    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tv.png"] forState:UIControlStateNormal];
-    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tvActive.png"] forState:UIControlStateHighlighted];
-    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tvActive.png"] forState:UIControlStateSelected];
-    [_menuTvButton addEventHandler:^(id sender) {
-        
-    } forControlEvents:UIControlEventTouchDown];
-    
-    [_menuOptionButton setTitle:nil forState:UIControlStateNormal];
-    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cog"] forState:UIControlStateNormal];
-    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateHighlighted];
-    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateSelected];
-    [_menuOptionButton addEventHandler:^(id sender) {
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            [me showSettingsModal:sender];
-        }
-    } forControlEvents:UIControlEventTouchDown];
+    _tabController = [[WZGaraponTabController alloc] init];
     
     _naviViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"naviViewController"];
     [self addChildViewController:_naviViewController];
     [_naviViewController didMoveToParentViewController:self];
     [_menuContentView addSubview:_naviViewController.view];
     _naviViewController.view.frame = _menuContentView.bounds;
+    
+    // setup serach result ViewController
+    _searchNaviViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"naviViewController"];
+    [self addChildViewController:_searchNaviViewController];
+    [_searchNaviViewController didMoveToParentViewController:self];
+    [_menuContentView addSubview:_searchNaviViewController.view];
+    _searchNaviViewController.view.frame = _menuContentView.bounds;
+    _searchNaviViewController.view.hidden = YES;
+    _searchResultViewController = (WZIndexMenuViewController *)(_searchNaviViewController.topViewController);
+    _searchResultViewController.indexType = WZSearchResultGaranchuIndexType;
 
     CGRect frame = _menuContainerView.frame;
     frame.origin.x = self.view.bounds.size.width + frame.size.width + 1;
@@ -258,6 +235,42 @@
     [_menuPanGesture setMaximumNumberOfTouches:2];
     [_menuPanGesture setDelegate:self];
     [_menuContainerView addGestureRecognizer:_menuPanGesture];
+        
+    [_tabController addTabWithId:WZGaraponTabGaraponTv button:_menuTvButton viewController:_naviViewController];
+    [_tabController addTabWithId:WZGaraponTabSearch button:_menuSearchButton viewController:_searchNaviViewController];
+    [_tabController addTabWithId:WZGaraponTabOption button:_menuOptionButton viewController:nil];
+    [_tabController selectWithId:WZGaraponTabGaraponTv];
+    
+    __weak WZVideoViewController *me = self;
+    __weak WZGaraponTabController *tabController = _tabController;
+    
+    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tv.png"] forState:UIControlStateNormal];
+    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tvActive.png"] forState:UIControlStateHighlighted];
+    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tvActive.png"] forState:UIControlStateSelected];
+    [_menuTvButton addEventHandler:^(id sender) {
+        [tabController selectWithId:WZGaraponTabGaraponTv];
+    } forControlEvents:UIControlEventTouchDown];
+    
+    [_menuSearchButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/search"] forState:UIControlStateNormal];
+    [_menuSearchButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/searchActive.png"] forState:UIControlStateHighlighted];
+    [_menuSearchButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/searchActive.png"] forState:UIControlStateSelected];
+    [_menuSearchButton addEventHandler:^(id sender) {
+//        [tabController selectWithId:WZGaraponTabSearch];
+//        WZGaraponTab *tab = [tabController tabWithId:WZGaraponTabSearch];
+//        tab.button.selected = YES;
+        [me showSearchPopover];
+    } forControlEvents:UIControlEventTouchDown];
+    
+    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cog"] forState:UIControlStateNormal];
+    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateHighlighted];
+    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateSelected];
+    [_menuOptionButton addEventHandler:^(id sender) {
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            [me showSettingsModal];
+        } else {
+            [me showSettingsModal];
+        }
+    } forControlEvents:UIControlEventTouchDown];
 }
 
 - (void)appendVideoView
@@ -265,6 +278,9 @@
     [_videoPlayerView disableScreenTapRecognizer];
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playerViewDidTapped:)];
     [_videoPlayerView addGestureRecognizer:tapGestureRecognizer];
+    
+    UIImage *thumbImage = [UIImage imageNamed:@"GaranchuResources.bundle/thumbImage"];
+    [_videoPlayerView.scrubber setThumbImage:thumbImage forState:UIControlStateNormal];
 }
 
 - (void)appendControlView
@@ -319,6 +335,44 @@
     return hud;
 }
 
+#pragma mark - Search delegate, notificifation
+
+
+- (void)showSearchPopover
+{
+	if (_currentPopoverController) {
+        [self dismissCurrentPopover];
+		return;
+	}
+
+    WZSearchSuggestViewController *searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"searchSuggestViewController"];
+    
+    __weak WZVideoViewController *me = self;
+    __weak WZGaraponTabController *tabController = _tabController;
+    __weak WZIndexMenuViewController *searchResultViewController = _searchResultViewController;
+    searchViewController.submitHandler = ^(NSString *text) {
+        [me dismissCurrentPopover];        
+        if (!text) {
+            text = @"";
+        }
+        NSDictionary *searchParams = @{
+                                       @"s":@"e",
+                                       @"key":text,
+                                       @"sort": @"std",
+                                       @"video": @"all",
+                                       };
+        
+        searchResultViewController.context = @{@"title":text, @"indexType": [NSNumber numberWithInteger:WZSearchResultGaranchuIndexType], @"params":searchParams};
+        [tabController selectWithId:WZGaraponTabSearch];
+    };
+	UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:searchViewController];
+	popover.delegate = self;
+
+    CGRect rect = [_menuSearchButton convertRect:_menuSearchButton.bounds toView:self.view];
+    [popover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+	_currentPopoverController = popover;
+}
+
 #pragma mark - InAppSettings delegate, notificifation
 
 - (IASKAppSettingsViewController *)appSettingsViewController
@@ -332,14 +386,42 @@
 	return _appSettingsViewController;
 }
 
+- (void)showSettingsModal
+{
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.appSettingsViewController];
+    navController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:navController animated:YES completion:^{
+    }];
+}
+
+//
+//- (void)showSettingsPopover:(id)sender
+//{
+//	if (_currentPopoverController) {
+//        [self dismissCurrentPopover];
+//		return;
+//	}
+//
+//	self.appSettingsViewController.showDoneButton = NO;
+//	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.appSettingsViewController];
+//	UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:navController];
+//	popover.delegate = self;
+//
+//    CGRect rect = [_menuOptionButton convertRect:_menuOptionButton.bounds toView:self.view];
+//    [popover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+//	_currentPopoverController = popover;
+//}
+
 - (void)settingsViewController:(IASKAppSettingsViewController *)sender buttonTappedForSpecifier:(IASKSpecifier *)specifier
 {
     if ([specifier.key isEqualToString:@"account_logout"]) {
-        [self logountInSettings];
+        [self logoutInSettings];
 	}    
 	else if ([specifier.key isEqualToString:@"gtv_web_server"]) {
         [[UIApplication sharedApplication] openURL:[_garaponTv URLWithPath:@""]];
-		
+	}
+    else if ([specifier.key isEqualToString:@"gtv_tv_site"]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://site.garapon.tv/"]];
 	}
 }
 
@@ -436,7 +518,6 @@
                  completion:^(BOOL finished) {
                      if (finished) {
                          _menuButton.selected = YES;
-                         _menuTvButton.selected = YES;
                      }
                  }];
 
@@ -487,6 +568,19 @@
     }];
 }
 
+- (IBAction)favorite:(id)sender
+{
+    __weak WZVideoViewController *me = self;
+    __weak WZGaraponTvProgram *tvProgram = _watchingProgram;
+    __block NSInteger rank = _watchingProgram.favorite == 0 ? 1 : 0;
+    [_garaponTv favoriteWithGtvid:_watchingProgram.gtvid rank:rank completionHandler:^(NSDictionary *response, NSError *error) {
+        if (!error) {
+            tvProgram.favorite = rank;
+            [me refreshControlButtons];
+        }
+    }];
+}
+
 #pragma mark - WZAVPlayerViewController
 
 - (id)playerView
@@ -516,6 +610,11 @@
 
 #pragma mark - Program
 
+- (void)refreshControlButtons
+{
+    _favButton.selected = _watchingProgram.favorite == 1;
+}
+
 - (void)loadingProgram:(WZGaraponTvProgram *)program
 {
     _watchingProgram = program;
@@ -528,11 +627,27 @@
         [self setContentTitle:nil];
     }
     [self refreshHeaderView];
+    [self refreshControlButtons];
+    
+    if (program) {
+        __weak WZVideoViewController *me = self;
+        __weak WZGaraponTvProgram *tvProgram = program;
+        [_garaponTv searchWithGtvid:tvProgram.gtvid completionHandler:^(NSDictionary *response, NSError *error) {
+            if (!error) {
+                NSArray *items = [WZGaraponTvProgram arrayWithSearchResponse:response];
+                WZGaraponTvProgram *item = items[0];
+                if (item && [tvProgram.gtvid isEqualToString:item.gtvid]) {
+                    tvProgram.favorite = item.favorite;
+                    [me refreshControlButtons];
+                }
+            }
+        }];
+    }
 }
 
 -(void)didSelectProgram:(NSNotification *)notification
 {
-    NSDictionary *userInfo = [notification userInfo];    
+    NSDictionary *userInfo = [notification userInfo];
     WZGaraponTvProgram *program = userInfo[@"program"];
     if (program) {
         [self loadingProgram:program];

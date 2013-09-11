@@ -67,6 +67,16 @@
             <string>IASKUITextAlignmentLeft</string>
 		</dict>
         <dict>
+			<key>Key</key>
+			<string>gtv_tv_site</string>
+			<key>Title</key>
+			<string>GaraponTvSiteOpenURL</string>
+			<key>Type</key>
+			<string>IASKButtonSpecifier</string>
+            <key>IASKTextAlignment</key>
+            <string>IASKUITextAlignmentLeft</string>
+		</dict>
+        <dict>
 			<key>Title</key>
 			<string>ApplicationGroup</string>
 			<key>Type</key>
