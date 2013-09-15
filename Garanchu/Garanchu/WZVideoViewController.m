@@ -24,6 +24,8 @@
 #import <InAppSettingsKit/IASKAppSettingsViewController.h>
 #import <InAppSettingsKit/IASKSettingsReader.h>
 
+#import "SearchCondition.h"
+
 @interface WZVideoViewController ()<IASKSettingsDelegate, UIPopoverControllerDelegate>
 @property (readonly) WZGaraponWeb *garaponWeb;
 @property (readonly) WZGaraponTv *garaponTv;
@@ -350,8 +352,10 @@
     __weak WZVideoViewController *me = self;
     __weak WZGaraponTabController *tabController = _tabController;
     __weak WZIndexMenuViewController *searchResultViewController = _searchResultViewController;
-    searchViewController.submitHandler = ^(NSString *text) {
-        [me dismissCurrentPopover];        
+    searchViewController.submitHandler = ^(SearchCondition *condition) {
+        [me dismissCurrentPopover];
+        
+        NSString *text = condition.keyword;
         if (!text) {
             text = @"";
         }
@@ -359,7 +363,6 @@
                                        @"s":@"e",
                                        @"key":text,
                                        @"sort": @"std",
-                                       @"video": @"all",
                                        };
         
         searchResultViewController.context = @{@"title":text, @"indexType": [NSNumber numberWithInteger:WZSearchResultGaranchuIndexType], @"params":searchParams};
@@ -635,10 +638,12 @@
         [_garaponTv searchWithGtvid:tvProgram.gtvid completionHandler:^(NSDictionary *response, NSError *error) {
             if (!error) {
                 NSArray *items = [WZGaraponTvProgram arrayWithSearchResponse:response];
-                WZGaraponTvProgram *item = items[0];
-                if (item && [tvProgram.gtvid isEqualToString:item.gtvid]) {
-                    tvProgram.favorite = item.favorite;
-                    [me refreshControlButtons];
+                if (items.count > 0) {
+                    WZGaraponTvProgram *item = items[0];
+                    if (item && [tvProgram.gtvid isEqualToString:item.gtvid]) {
+                        tvProgram.favorite = item.favorite;
+                        [me refreshControlButtons];
+                    }
                 }
             }
         }];

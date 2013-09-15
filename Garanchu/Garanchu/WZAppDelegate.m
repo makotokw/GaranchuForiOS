@@ -12,7 +12,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[WZGaranchu current] setup];
+    WZGaranchu *stage = [WZGaranchu current];
+    [stage setup];
     return YES;
 }
 
@@ -41,6 +42,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    WZGaranchu *stage = [WZGaranchu current];
+    [stage saveManagedObjectContext];
 }
 
 @end

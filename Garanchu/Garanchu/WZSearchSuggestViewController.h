@@ -7,7 +7,9 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^WZSearchSuggestSubmitHandler)(NSString *text);
+@class SearchCondition;
+
+typedef void (^WZSearchSuggestSubmitHandler)(SearchCondition *cond);
 
 @interface WZSearchSuggestViewController : UITableViewController
 

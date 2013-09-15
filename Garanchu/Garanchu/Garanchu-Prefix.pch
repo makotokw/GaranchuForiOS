@@ -11,6 +11,7 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
     #import <BlocksKit/BlocksKit.h>
     #import <FlatUIKit/FlatUIKit.h>
     #import <WZGarapon/WZGarapon.h>
