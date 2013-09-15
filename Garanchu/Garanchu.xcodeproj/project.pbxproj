@@ -38,6 +38,10 @@
 		8F935BCC1791F570001FFE01 /* WZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BCB1791F570001FFE01 /* WZLoginViewController.m */; };
 		8FAD8C4317D6540F002F0D50 /* WZSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD8C4217D6540E002F0D50 /* WZSearchResultViewController.m */; };
 		8FAFF06117E5E7BE008CDA2F /* WZStageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF06017E5E7BE008CDA2F /* WZStageView.m */; };
+		8FAFF06417E5FDAA008CDA2F /* SearchConditionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF06317E5FDAA008CDA2F /* SearchConditionList.m */; };
+		8FAFF07217E5FE3A008CDA2F /* VideoProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF06F17E5FE3A008CDA2F /* VideoProgram.m */; };
+		8FAFF07317E5FE3A008CDA2F /* WatchHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF07117E5FE3A008CDA2F /* WatchHistory.m */; };
+		8FAFF07717E6066D008CDA2F /* WZCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF07617E6066C008CDA2F /* WZCoreData.m */; };
 		8FB6262B17C5037800EC5A0E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262717C5037800EC5A0E /* Icon-72.png */; };
 		8FB6262C17C5037800EC5A0E /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262817C5037800EC5A0E /* Icon-72@2x.png */; };
 		8FB6262D17C5037800EC5A0E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262917C5037800EC5A0E /* Icon.png */; };
@@ -112,6 +116,14 @@
 		8FAD8C4217D6540E002F0D50 /* WZSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZSearchResultViewController.m; sourceTree = "<group>"; };
 		8FAFF05F17E5E7BD008CDA2F /* WZStageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZStageView.h; sourceTree = "<group>"; };
 		8FAFF06017E5E7BE008CDA2F /* WZStageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZStageView.m; sourceTree = "<group>"; };
+		8FAFF06217E5FDAA008CDA2F /* SearchConditionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionList.h; sourceTree = "<group>"; };
+		8FAFF06317E5FDAA008CDA2F /* SearchConditionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchConditionList.m; sourceTree = "<group>"; };
+		8FAFF06E17E5FE3A008CDA2F /* VideoProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoProgram.h; sourceTree = "<group>"; };
+		8FAFF06F17E5FE3A008CDA2F /* VideoProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoProgram.m; sourceTree = "<group>"; };
+		8FAFF07017E5FE3A008CDA2F /* WatchHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchHistory.h; sourceTree = "<group>"; };
+		8FAFF07117E5FE3A008CDA2F /* WatchHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchHistory.m; sourceTree = "<group>"; };
+		8FAFF07517E6066C008CDA2F /* WZCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZCoreData.h; sourceTree = "<group>"; };
+		8FAFF07617E6066C008CDA2F /* WZCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZCoreData.m; sourceTree = "<group>"; };
 		8FB6262717C5037800EC5A0E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		8FB6262817C5037800EC5A0E /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		8FB6262917C5037800EC5A0E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -160,7 +172,6 @@
 		8F935B871791F24D001FFE01 = {
 			isa = PBXGroup;
 			children = (
-				8F72AFD517E0EC65007E1715 /* CoreData.framework */,
 				8F935B991791F24D001FFE01 /* Garanchu */,
 				8F935BB71791F24D001FFE01 /* GaranchuTests */,
 				8F935B921791F24D001FFE01 /* Frameworks */,
@@ -181,6 +192,7 @@
 		8F935B921791F24D001FFE01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F72AFD517E0EC65007E1715 /* CoreData.framework */,
 				8F935B931791F24D001FFE01 /* UIKit.framework */,
 				8F935B951791F24D001FFE01 /* Foundation.framework */,
 				8F935B971791F24D001FFE01 /* CoreGraphics.framework */,
@@ -193,10 +205,11 @@
 		8F935B991791F24D001FFE01 /* Garanchu */ = {
 			isa = PBXGroup;
 			children = (
-				8F935BA21791F24D001FFE01 /* WZAppDelegate.h */,
-				8F935BA31791F24D001FFE01 /* WZAppDelegate.m */,
+				8FAFF07417E5FE76008CDA2F /* NSManagedObject */,
 				8F935B9A1791F24D001FFE01 /* Supporting Files */,
 				8F935BC81791F2ED001FFE01 /* iPad.storyboard */,
+				8F935BA21791F24D001FFE01 /* WZAppDelegate.h */,
+				8F935BA31791F24D001FFE01 /* WZAppDelegate.m */,
 				8F59FC4F1791F73C00EEA418 /* WZVideoViewController.h */,
 				8F59FC501791F73C00EEA418 /* WZVideoViewController.m */,
 				8FAFF05F17E5E7BD008CDA2F /* WZStageView.h */,
@@ -229,8 +242,6 @@
 				8FFD027A17DE28D700583B1E /* WZSearchBar.m */,
 				8FFD027C17DE2D6D00583B1E /* WZGaraponTabController.h */,
 				8FFD027D17DE2D6D00583B1E /* WZGaraponTabController.m */,
-				8F72B01817E58C4D007E1715 /* SearchCondition.h */,
-				8F72B01917E58C4D007E1715 /* SearchCondition.m */,
 			);
 			path = Garanchu;
 			sourceTree = "<group>";
@@ -253,7 +264,6 @@
 				8F935BA91791F24D001FFE01 /* Default-568h@2x.png */,
 				8FF1B0EF179CD32A00BF9785 /* Localizable.strings */,
 				8FF5973417C98B0200A9E8E9 /* InAppSettings.bundle */,
-				8F72AFD217E0EBD7007E1715 /* Garanchu.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -275,6 +285,24 @@
 				8F935BBA1791F24D001FFE01 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8FAFF07417E5FE76008CDA2F /* NSManagedObject */ = {
+			isa = PBXGroup;
+			children = (
+				8F72AFD217E0EBD7007E1715 /* Garanchu.xcdatamodeld */,
+				8FAFF07517E6066C008CDA2F /* WZCoreData.h */,
+				8FAFF07617E6066C008CDA2F /* WZCoreData.m */,
+				8FAFF06E17E5FE3A008CDA2F /* VideoProgram.h */,
+				8FAFF06F17E5FE3A008CDA2F /* VideoProgram.m */,
+				8FAFF07017E5FE3A008CDA2F /* WatchHistory.h */,
+				8FAFF07117E5FE3A008CDA2F /* WatchHistory.m */,
+				8F72B01817E58C4D007E1715 /* SearchCondition.h */,
+				8F72B01917E58C4D007E1715 /* SearchCondition.m */,
+				8FAFF06217E5FDAA008CDA2F /* SearchConditionList.h */,
+				8FAFF06317E5FDAA008CDA2F /* SearchConditionList.m */,
+			);
+			name = NSManagedObject;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,6 +475,10 @@
 				8F72AFD417E0EBD7007E1715 /* Garanchu.xcdatamodeld in Sources */,
 				8F72B01A17E58C4E007E1715 /* SearchCondition.m in Sources */,
 				8FAFF06117E5E7BE008CDA2F /* WZStageView.m in Sources */,
+				8FAFF06417E5FDAA008CDA2F /* SearchConditionList.m in Sources */,
+				8FAFF07217E5FE3A008CDA2F /* VideoProgram.m in Sources */,
+				8FAFF07317E5FE3A008CDA2F /* WatchHistory.m in Sources */,
+				8FAFF07717E6066D008CDA2F /* WZCoreData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,6 +25,7 @@
 #import <InAppSettingsKit/IASKSettingsReader.h>
 
 #import "SearchCondition.h"
+#import "WatchHistory.h"
 
 @interface WZVideoViewController ()<IASKSettingsDelegate, UIPopoverControllerDelegate>
 @property (readonly) WZGaraponWeb *garaponWeb;
@@ -58,11 +59,13 @@
     WZLoginViewController *_loginViewController;
     IASKAppSettingsViewController *_appSettingsViewController;
     UIPopoverController *_currentPopoverController;
+    UIPanGestureRecognizer *_menuPanGesture;
     
     BOOL _isLogined;
     BOOL _isSuspendedPause;
     
-    UIPanGestureRecognizer *_menuPanGesture;
+    WZGaraponTvProgram *_playingProgram;
+    NSTimeInterval _initialPlaybackPosition;
 }
 
 @synthesize garaponTv = _garaponTv;
@@ -550,6 +553,12 @@
 
 #pragma mark - PlayerController
 
+- (void)pause
+{
+    [super pause];
+    [self updateHistoryOfWathingProgram];
+}
+
 - (IBAction)previous:(id)sender
 {
     [_videoPlayerView seekToTime:0 completionHandler:^{
@@ -584,6 +593,19 @@
     }];
 }
 
+- (void)updateHistoryOfWathingProgram
+{
+    NSTimeInterval currentTime = CMTimeGetSeconds(_videoPlayerView.player.currentTime);
+    [self updateHistoryOfWathingProgramWithPosition:currentTime done:NO];
+}
+
+- (void)updateHistoryOfWathingProgramWithPosition:(NSTimeInterval)position done:(BOOL)done
+{
+    if (isfinite(position)) {
+        [WatchHistory updateHistoryWithProgram:_playingProgram position:position done:done];
+    }
+}
+
 #pragma mark - WZAVPlayerViewController
 
 - (id)playerView
@@ -591,8 +613,19 @@
     return _videoPlayerView;
 }
 
+- (NSTimeInterval)playerInitialPlayPosition
+{
+    NSTimeInterval position = _initialPlaybackPosition;
+    _initialPlaybackPosition = 0.0f;
+    if (isfinite(position) && position > 0) {
+        return position;
+    }
+    return [super playerInitialPlayPosition];
+}
+
 - (void)playerDidReadyPlayback
 {
+    _playingProgram = _watchingProgram;
     [super playerDidReadyPlayback];
 }
 
@@ -609,6 +642,13 @@
 - (void)playerDidReachEndPlayback
 {
     [super playerDidReachEndPlayback];
+    
+    [self updateHistoryOfWathingProgramWithPosition:0.0 done:YES];    
+}
+
+- (void)playerDidReplaceFromPlayer:(AVPlayer *)oldPlayer
+{
+    [self updateHistoryOfWathingProgram];
 }
 
 #pragma mark - Program
@@ -621,11 +661,18 @@
 - (void)loadingProgram:(WZGaraponTvProgram *)program
 {
     _watchingProgram = program;
+    _initialPlaybackPosition = 0.0;
     if (program) {        
         [self showProgressWithText:@"Loading..."];
         NSString *mediaUrl = [_garaponTv httpLiveStreamingURLStringWithProgram:program];        
         [self setContentTitle:program.title];
         [self setContentURL:[NSURL URLWithString:mediaUrl]];
+        
+        WatchHistory *history = [WatchHistory findByGtvid:program.gtvid];
+        if (history != nil && !history.done.boolValue) {
+            _initialPlaybackPosition = history.position.floatValue;
+        }
+        
     } else {
         [self setContentTitle:nil];
     }

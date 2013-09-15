@@ -6,8 +6,9 @@
 //
 
 #import "WZSearchSuggestViewController.h"
-#import "WZGaranchu.h"
+#import "WZCoreData.h"
 
+#import "SearchConditionList.h"
 #import "SearchCondition.h"
 
 @interface WZSearchSuggestViewController () <UISearchBarDelegate>
@@ -18,6 +19,7 @@
 
 {
     IBOutlet UISearchBar *_searchBar;
+    SearchConditionList *_list;
     NSMutableArray *_items;
 }
 
@@ -38,27 +40,28 @@
     
     _searchBar.delegate = self;
     
+    _list = [SearchConditionList findOrCreateByCode:@"search_history"];
+    
     [self reloadSuggests];
     
 }
 
 - (void)reloadSuggests
 {
-    WZGaranchu *stage = [WZGaranchu current];
+    WZCoreData *data = [WZCoreData sharedInstance];
     
-    NSManagedObjectContext *context = stage.managedObjectContext;
+    NSManagedObjectContext *context = data.managedObjectContext;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"SearchCondition" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"searched_at" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"searchdate" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     [fetchRequest setSortDescriptors:sortDescriptors];
     
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"<#Predicate string#>",
-//                              <#Predicate arguments#>];
-//    [fetchRequest setPredicate:predicate];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(ANY list == %@)", _list];
+    [fetchRequest setPredicate:predicate];
     
     NSError *error;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
@@ -83,46 +86,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Data
-
-- (SearchCondition *)createConditionWithKeyword:(NSString *)keyword
-{
-    WZGaranchu *stage = [WZGaranchu current];
-    NSManagedObjectContext *context = stage.managedObjectContext;
-    SearchCondition *condtion = [NSEntityDescription
-                                 insertNewObjectForEntityForName:@"SearchCondition"
-                                 inManagedObjectContext:context];
-    condtion.keyword = keyword;
-    return condtion;
-}
-
-- (void)deleteCondition:(SearchCondition *)condition
-{
-    WZGaranchu *stage = [WZGaranchu current];
-    NSManagedObjectContext *context = stage.managedObjectContext;
-    [context deleteObject:condition];
-    
-    NSError *error;
-    if (![context save:&error]) {
-        // Handle the error.
-        NSLog(@"Error: %@", error);
-    }
-}
-
-- (void)updatedSearchedAtWithCondition:(SearchCondition *)condition
-{
-    WZGaranchu *stage = [WZGaranchu current];
-    NSManagedObjectContext *context = stage.managedObjectContext;
-    condition.searched_at = [NSDate date];
-    
-    NSError *error;
-    if (![context save:&error]) {
-        // Handle the error.
-        NSLog(@"Error: %@", error);
-    }
-}
-
-
 #pragma mark - UISearchBarDelegate
 
 
@@ -136,10 +99,10 @@
         }];
         
         if (!condtion) {
-            condtion = [self createConditionWithKeyword:searchBar.text];
+            condtion = [SearchCondition conditionWithKeyword:searchBar.text addTo:_list];
         }
         
-        [self updatedSearchedAtWithCondition:condtion];
+        [SearchCondition updatedSearchedAtWithCondition:condtion];
         
         if (_submitHandler) {
             _submitHandler(condtion);
@@ -183,7 +146,7 @@
         
         //add code here for when you hit delete
         SearchCondition *condition = _items[indexPath.row];
-        [self deleteCondition:condition];
+        [SearchCondition deleteWithCondition:condition];
         [_items removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]  withRowAnimation:UITableViewRowAnimationFade];
     }
@@ -194,7 +157,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SearchCondition *condtion = _items[indexPath.row];
-    [self updatedSearchedAtWithCondition:condtion];
+    [SearchCondition updatedSearchedAtWithCondition:condtion];
     if (_submitHandler) {
         _submitHandler(condtion);
     }

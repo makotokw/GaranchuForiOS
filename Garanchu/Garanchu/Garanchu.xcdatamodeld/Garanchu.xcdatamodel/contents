@@ -5,10 +5,33 @@
         <attribute name="genre01" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="genre02" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="keyword" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="searched_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="searchdate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="list" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SearchConditionList" inverseName="items" inverseEntity="SearchConditionList" syncable="YES"/>
+    </entity>
+    <entity name="SearchConditionList" representedClassName="SearchConditionList" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SearchCondition" inverseName="list" inverseEntity="SearchCondition" syncable="YES"/>
+    </entity>
+    <entity name="VideoProgram" representedClassName="VideoProgram" syncable="YES">
+        <attribute name="ch" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gtvid" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="startdate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="WatchHistory" representedClassName="WatchHistory" syncable="YES">
+        <attribute name="done" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="gtvid" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="recorddate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="watchdate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="program" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="VideoProgram" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="SearchCondition" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="SearchCondition" positionX="160" positionY="192" width="128" height="148"/>
+        <element name="VideoProgram" positionX="124" positionY="495" width="128" height="118"/>
+        <element name="SearchConditionList" positionX="-164" positionY="269" width="128" height="73"/>
+        <element name="WatchHistory" positionX="-155" positionY="414" width="128" height="133"/>
     </elements>
 </model>
