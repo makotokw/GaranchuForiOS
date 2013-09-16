@@ -20,8 +20,8 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) SearchConditionList *list;
 
-
 + (SearchCondition *)conditionWithKeyword:(NSString *)keyword addTo:(SearchConditionList *)list;
++ (NSArray *)findByList:(SearchConditionList *)list;
 + (void)deleteWithCondition:(SearchCondition *)condition;
 + (void)updatedSearchedAtWithCondition:(SearchCondition *)condition;
 

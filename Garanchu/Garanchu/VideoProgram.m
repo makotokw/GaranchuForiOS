@@ -25,6 +25,15 @@
     self.startdate = program.startdate;
 }
 
+- (void)copyToProgram:(WZGaraponTvProgram *)program
+{
+    program.gtvid = self.gtvid;
+    program.title = self.title;
+    program.duration = self.duration.floatValue;
+    program.ch = self.ch.integerValue;
+    program.startdate = self.startdate;
+}
+
 + (VideoProgram *)findOrCreateByProgram:(WZGaraponTvProgram *)program
 {
     VideoProgram *record = nil;

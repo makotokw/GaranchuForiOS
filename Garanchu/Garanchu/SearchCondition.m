@@ -33,6 +33,29 @@
     return condtion;
 }
 
++ (NSArray *)findByList:(SearchConditionList *)list
+{
+    WZCoreData *data = [WZCoreData sharedInstance];
+    
+    NSManagedObjectContext *context = data.managedObjectContext;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SearchCondition" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"searchdate" ascending:NO];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(ANY list == %@)", list];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    
+    return fetchedObjects;
+}
+
 + (void)deleteWithCondition:(SearchCondition *)condition
 {
     WZCoreData *data = [WZCoreData sharedInstance];

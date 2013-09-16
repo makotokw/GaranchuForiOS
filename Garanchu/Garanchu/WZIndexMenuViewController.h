@@ -14,6 +14,7 @@ typedef enum : NSInteger {
     WZDateGaranchuIndexType,
     WZGenreGaranchuIndexType,
     WZChannelGaranchuIndexType,
+    WZWatchHistoryGaranchuIndexType,
     WZSearchResultGaranchuIndexType,
 } WZGaranchuIndexType;
 

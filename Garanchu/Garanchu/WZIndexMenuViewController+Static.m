@@ -13,12 +13,13 @@
 {
     return [@[
             @{@"title": @"インデックス", @"items": @[
-            @{@"title": @"録画番組", @"indexType": [NSNumber numberWithInteger:WZProgramGaranchuIndexType]},
-            @{@"title": @"現在録画中の番組", @"indexType": [NSNumber numberWithInteger:WZRecordingProgramGaranchuIndexType], @"params":[WZGaraponTv recordingProgramParams]},
-            @{@"title": @"日付", @"indexType": [NSNumber numberWithInteger:WZDateGaranchuIndexType]},
-            @{@"title": @"ジャンル", @"indexType": [NSNumber numberWithInteger:WZGenreGaranchuIndexType]},
-            @{@"title": @"放送局", @"indexType": [NSNumber numberWithInteger:WZChannelGaranchuIndexType]},
-            @{@"title": @"お気に入り", @"indexType": [NSNumber numberWithInteger:WZProgramGaranchuIndexType], @"params": @{@"rank": @"all"}},
+                @{@"title": @"録画番組", @"indexType": [NSNumber numberWithInteger:WZProgramGaranchuIndexType]},
+                @{@"title": @"現在録画中の番組", @"indexType": [NSNumber numberWithInteger:WZRecordingProgramGaranchuIndexType], @"params":[WZGaraponTv recordingProgramParams]},
+                @{@"title": @"日付", @"indexType": [NSNumber numberWithInteger:WZDateGaranchuIndexType]},
+                @{@"title": @"ジャンル", @"indexType": [NSNumber numberWithInteger:WZGenreGaranchuIndexType]},
+                @{@"title": @"放送局", @"indexType": [NSNumber numberWithInteger:WZChannelGaranchuIndexType]},
+                @{@"title": @"お気に入り", @"indexType": [NSNumber numberWithInteger:WZProgramGaranchuIndexType], @"params": @{@"rank": @"all"}},
+                @{@"title": @"視聴履歴", @"indexType": [NSNumber numberWithInteger:WZWatchHistoryGaranchuIndexType]},
             ]
             }
             ] mutableCopy];

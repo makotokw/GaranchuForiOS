@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSNumber * ch;
 
 - (void)copyFromProgram:(WZGaraponTvProgram *)program;
+- (void)copyToProgram:(WZGaraponTvProgram *)program;
 + (VideoProgram *)findOrCreateByProgram:(WZGaraponTvProgram *)program;
 
 @end

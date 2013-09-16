@@ -19,6 +19,7 @@
         <attribute name="gtvid" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="startdate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="history" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="WatchHistory" inverseName="program" inverseEntity="WatchHistory" syncable="YES"/>
     </entity>
     <entity name="WatchHistory" representedClassName="WatchHistory" syncable="YES">
         <attribute name="done" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -26,11 +27,11 @@
         <attribute name="position" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="recorddate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="watchdate" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="program" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="VideoProgram" syncable="YES"/>
+        <relationship name="program" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="VideoProgram" inverseName="history" inverseEntity="VideoProgram" syncable="YES"/>
     </entity>
     <elements>
         <element name="SearchCondition" positionX="160" positionY="192" width="128" height="148"/>
-        <element name="VideoProgram" positionX="124" positionY="495" width="128" height="118"/>
+        <element name="VideoProgram" positionX="124" positionY="495" width="128" height="133"/>
         <element name="SearchConditionList" positionX="-164" positionY="269" width="128" height="73"/>
         <element name="WatchHistory" positionX="-155" positionY="414" width="128" height="133"/>
     </elements>

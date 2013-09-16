@@ -11,7 +11,6 @@
 @class SearchCondition;
 
 @interface SearchConditionList : NSManagedObject
-
 @property (nonatomic, retain) NSString * code;
 @property (nonatomic, retain) NSSet *items;
 @end

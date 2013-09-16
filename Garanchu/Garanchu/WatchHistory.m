@@ -62,6 +62,26 @@
     return record;
 }
 
++ (NSArray *)findWithLimit:(NSInteger)limit
+{
+    WZCoreData *data = [WZCoreData sharedInstance];
+    NSManagedObjectContext *context = data.managedObjectContext;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"WatchHistory" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"watchdate" ascending:NO];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    [fetchRequest setFetchLimit:limit];    
+    
+    NSError *error;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    return fetchedObjects;
+}
+
 + (void)updateHistoryWithProgram:(WZGaraponTvProgram *)program position:(NSTimeInterval)position done:(BOOL)done
 {
     WatchHistory *history = [self findOrCreateByProgram:program];

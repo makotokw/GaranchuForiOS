@@ -85,14 +85,13 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor blackColor];    
+    self.view.backgroundColor = [UIColor blackColor];
     
     _garaponWeb = [WZGaranchu current].garaponWeb;
     _garaponTv = [WZGaranchu current].garaponTv;
     _isLogined = NO;
-    
     _overlayBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
-        
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectProgram:) name:WZGaranchuDidSelectProgram object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:kIASKAppSettingChanged object:nil];
 
@@ -101,6 +100,10 @@
     [self appendVideoView];
     [self appendControlView];
     [self loadingProgram:nil];
+
+#if DEBUG
+//    _videoPlayerView.backgroundColor = [UIColor whiteColor];
+#endif
     
     // hiddein all subView until login
     [self hideControlsNotLogin];
@@ -233,8 +236,9 @@
     
     _menuContainerView.backgroundColor =[UIColor clearColor];
     _menuHeaderView.backgroundColor = _overlayBackgroundColor;
-    _menuContentView.backgroundColor = [UIColor clearColor];
-        
+//    _menuContentView.backgroundColor = [UIColor clearColor];
+    _menuContentView.backgroundColor = [_overlayBackgroundColor colorWithAlphaComponent:0.2];
+    
     // create a UIPanGestureRecognizer to detect when the screenshot is touched and dragged
     _menuPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureMoveAround:)];
     [_menuPanGesture setMaximumNumberOfTouches:2];
@@ -680,6 +684,8 @@
     [self refreshControlButtons];
     
     if (program) {
+        
+        // download current properies of program
         __weak WZVideoViewController *me = self;
         __weak WZGaraponTvProgram *tvProgram = program;
         [_garaponTv searchWithGtvid:tvProgram.gtvid completionHandler:^(NSDictionary *response, NSError *error) {
@@ -687,8 +693,8 @@
                 NSArray *items = [WZGaraponTvProgram arrayWithSearchResponse:response];
                 if (items.count > 0) {
                     WZGaraponTvProgram *item = items[0];
-                    if (item && [tvProgram.gtvid isEqualToString:item.gtvid]) {
-                        tvProgram.favorite = item.favorite;
+                    if (item) {
+                        [tvProgram mergeFrom:item];
                         [me refreshControlButtons];
                     }
                 }

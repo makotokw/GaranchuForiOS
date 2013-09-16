@@ -48,29 +48,12 @@
 
 - (void)reloadSuggests
 {
-    WZCoreData *data = [WZCoreData sharedInstance];
-    
-    NSManagedObjectContext *context = data.managedObjectContext;
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SearchCondition" inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"searchdate" ascending:NO];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(ANY list == %@)", _list];
-    [fetchRequest setPredicate:predicate];
-    
-    NSError *error;
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    NSArray *fetchedObjects = [SearchCondition findByList:_list];
     if (fetchedObjects.count > 0) {
         _items = [fetchedObjects mutableCopy];
     } else {
         _items = [NSMutableArray array];
     }
-    
     [self.tableView reloadData];
 }
 

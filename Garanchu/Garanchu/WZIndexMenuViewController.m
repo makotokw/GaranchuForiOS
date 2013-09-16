@@ -9,6 +9,8 @@
 #import "WZIndexMenuViewController+Static.h"
 #import "WZAlertView.h"
 #import "WZGaranchu.h"
+#import "WatchHistory.h"
+#import "VideoProgram.h"
 
 #import "MBProgressHUD+Garanchu.h"
 
@@ -24,9 +26,10 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 @interface WZIndexMenuViewController ()
 
 @property (readonly) BOOL hasSection;
-@property (readonly) BOOL hasSearchText;
+@property (readonly) BOOL hasKeywordOfParams;
 @property (readonly) BOOL hasMoreItems;
 @property (readonly) BOOL isProgramMenu;
+@property (readonly) BOOL isRemoteProgramMenu;
 
 @end
 
@@ -44,13 +47,16 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     
     UIImage *_placeHolderImage;
     NSDateFormatter *_programCellDateFormatter;
+//    UIColor *_cellBackgroundColor;
+//    UIColor *_oddCellBackgroundColor;
 }
 
 @synthesize indexType = _indexType;
 @dynamic context;
 @dynamic hasSection;
-@dynamic hasSearchText;
+@dynamic hasKeywordOfParams;
 @dynamic isProgramMenu;
+@dynamic isRemoteProgramMenu;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -92,7 +98,9 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     _programCellDateFormatter = [[NSDateFormatter alloc] init];
     _programCellDateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
     [_programCellDateFormatter setDateFormat:@"M/d(EEE) HH:mm"];
-        
+//    _cellBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+//    _oddCellBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+    
     __weak WZIndexMenuViewController *me = self;
     
     if (self.isProgramMenu) {
@@ -100,12 +108,20 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         _currentSearchPage = 0;
         _maxSearchPage = 0;
         
+        self.tableView.pullToRefreshView.textColor = [UIColor whiteColor];
+        self.tableView.pullToRefreshView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
+        self.tableView.infiniteScrollingView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
+        self.clearsSelectionOnViewWillAppear = NO;
+        
+    }
+    
+    if (self.isRemoteProgramMenu) {        
         [self.tableView addPullToRefreshWithActionHandler:^{
             [me searchLatestItemsWithCompletionHandler:^(NSError *error) {
                 [me.tableView.pullToRefreshView stopAnimating];
             }];
         }];
-
+        
         if (_indexType != WZRecordingProgramGaranchuIndexType) {
             [self.tableView addInfiniteScrollingWithActionHandler:^{
                 if (me.hasMoreItems) {
@@ -117,19 +133,14 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                 }
             }];
         }
-
-        self.tableView.pullToRefreshView.textColor = [UIColor whiteColor];
-        self.tableView.pullToRefreshView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
-        self.tableView.infiniteScrollingView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
-        self.clearsSelectionOnViewWillAppear = NO;
                 
         // search First page
         [self searchMoreItemsWithCompletionHandler:^(NSError *error) {
         }];
-    } else {        
+    } else {
         switch (_indexType) {
             case WZChannelGaranchuIndexType:
-                [self channel];
+                [self retrieveChannel];
                 break;
                 
             case WZDateGaranchuIndexType:
@@ -138,6 +149,10 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                 
             case WZGenreGaranchuIndexType:
                 _items = [self genreItems];
+                break;
+                
+            case WZWatchHistoryGaranchuIndexType:
+                [self reloadWatchHistory];
                 break;
                 
             default:
@@ -233,13 +248,6 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     return NO;
 }
 
-- (BOOL)isProgramMenu
-{
-    return (_indexType == WZRecordingProgramGaranchuIndexType
-            || _indexType == WZProgramGaranchuIndexType
-            || _indexType == WZSearchResultGaranchuIndexType);
-}
-
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.hasSection) {
@@ -249,109 +257,9 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     return _items[indexPath.row];
 }
 
-- (NSDictionary *)parameterForSearchWithPage:(NSInteger)page
-{
-    NSDictionary *dict = _context[@"params"];
-    if (!dict) {
-        return @{@"p": [NSString stringWithFormat:@"%d", page]};
-    }
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:dict];
-    params[@"p"] = [NSString stringWithFormat:@"%d", page];
-    return params;
-}
+#pragma mark - Channel Source
 
-- (BOOL)hasSearchText
-{
-    NSDictionary *dict = _context[@"params"];
-    return (dict[@"key"]) ? YES : NO;
-}
-
-- (void)searchLatestItemsWithCompletionHandler:(WZGaraponAsyncBlock)completionHandler
-{
-    __weak WZIndexMenuViewController *me = self;
-    
-    if (_indexType == WZSearchResultGaranchuIndexType && !self.hasSearchText) {
-        if (completionHandler) {
-            completionHandler(nil);
-        }
-        return;
-    }
-    
-    NSDictionary *params = [self parameterForSearchWithPage:1];
-    [self searcWithParameter:params completionHandler:^(NSArray *items, NSError *error) {
-        if (items.count > 0) {
-            [me insertProgramsToHeadFromArray:items];
-        }
-        if (completionHandler) {
-            completionHandler(error);
-        }
-    }];
-}
-
-- (void)searchMoreItemsWithCompletionHandler:(WZGaraponAsyncBlock)completionHandler
-{
-    __weak WZIndexMenuViewController *me = self;
-    
-    if (_indexType == WZSearchResultGaranchuIndexType && !self.hasSearchText) {
-        if (completionHandler) {
-            completionHandler(nil);
-        }
-        return;
-    }
-    
-    NSDictionary *params = [self parameterForSearchWithPage:_currentSearchPage + 1];
-    [self searcWithParameter:params completionHandler:^(NSArray *items, NSError *error) {
-        if (items.count > 0) {
-            [me addProgramsFromArray:items];
-            _currentSearchPage++;
-        }
-        if (completionHandler) {
-            completionHandler(error);
-        }
-    }];
-}
-
-- (void)searcWithParameter:(NSDictionary *)params completionHandler:(WZGaraponSearchAsyncBlock)completionHandler
-{
-    __weak WZIndexMenuViewController *me = self;
-    if (_items.count == 0) {
-        MBProgressHUD *hud = [MBProgressHUD HUDForView:self.tableView];
-        if (!hud) {
-            hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
-        }        
-        [hud indicatorWhiteWithMessage: @"Loading..."];
-    }
-    WZGaraponWrapDictionary *wrapParams = [WZGaraponWrapDictionary wrapWithDictionary:params];
-    __block NSInteger numberOfPage = [wrapParams intgerValueWithKey:@"n" defaultValue:20];
-    
-    [_garaponTv searchWithParameter:params
-                  completionHandler:^(NSDictionary *response, NSError *error) {                      
-                      NSArray *items = nil;
-                      if (error) {
-                          [WZAlertView showAlertWithError:error];
-                      } else {                          
-                          WZGaraponWrapDictionary *wrap = [WZGaraponWrapDictionary wrapWithDictionary:response];
-                          _totalCount = [wrap intgerValueWithKey:@"hit" defaultValue:0];
-                          _maxSearchPage = ceil((float)_totalCount / numberOfPage);                          
-                          items = [WZGaraponTvProgram arrayWithSearchResponse:response];
-                      }
-                      
-                      if (_items.count == 0 && items.count == 0) {
-                          MBProgressHUD *hud = [MBProgressHUD HUDForView:me.tableView];
-                          hud.mode = MBProgressHUDModeText;
-                          hud.labelText = @"番組が見つかりません";
-                      } else {
-                          [MBProgressHUD hideHUDForView:me.tableView animated:NO];
-                      }
-                      
-                      if (completionHandler) {
-                          completionHandler(items, error);
-                      }                      
-                  }
-     ];
-}
-
-- (void)channel
+- (void)retrieveChannel
 {
     if (_items.count == 0) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
@@ -374,12 +282,182 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     [_items removeAllObjects];
     for (WZGaraponTvChannel *c in items) {
         [_items addObject:@{
-                            @"title": c.name,
-                            @"indexType": [NSNumber numberWithInteger:WZProgramGaranchuIndexType],
-                            @"params": @{@"ch": [NSString stringWithFormat:@"%d", c.TSID]}
+         @"title": c.name,
+         @"indexType": [NSNumber numberWithInteger:WZProgramGaranchuIndexType],
+         @"params": @{@"ch": [NSString stringWithFormat:@"%d", c.TSID]}
          }];
     }
     [self.tableView reloadData];
+}
+
+#pragma mark - Program Source
+
+- (void)showLoadingHUD
+{
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:self.tableView];
+    if (!hud) {
+        hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+    }
+    [hud indicatorWhiteWithMessage: @"Loading..."];
+}
+
+- (void)showTextHUDWithMessage:(NSString *)message
+{
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:self.tableView];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = message;
+}
+
+- (void)hideHUD
+{
+    [MBProgressHUD hideHUDForView:self.tableView animated:NO];
+}
+
+- (BOOL)isProgramMenu
+{
+    return (_indexType == WZRecordingProgramGaranchuIndexType
+            || _indexType == WZProgramGaranchuIndexType
+            || _indexType == WZWatchHistoryGaranchuIndexType
+            || _indexType == WZSearchResultGaranchuIndexType);
+}
+
+- (BOOL)isRemoteProgramMenu
+{
+    return (_indexType == WZRecordingProgramGaranchuIndexType
+            || _indexType == WZProgramGaranchuIndexType
+            || _indexType == WZSearchResultGaranchuIndexType);
+}
+
+- (void)reloadWatchHistory
+{
+    
+    [_items removeAllObjects];
+    [self.tableView reloadData];
+    [self showLoadingHUD];
+    
+    __weak WZIndexMenuViewController *me = self;
+    [self performBlock:^(id sender) {
+        _items = [me watchHistoryItems];
+        if (_items.count == 0) {
+            [me showTextHUDWithMessage: @"履歴はありません"];
+        } else {
+            [me hideHUD];
+        }
+        [me.tableView reloadData];
+        [me selectRowAtWatchingIndex];
+        
+    } afterDelay:1];
+    
+}
+
+- (NSMutableArray *)watchHistoryItems
+{
+    NSArray *histories = [WatchHistory findWithLimit:50];
+    NSMutableArray *items = [NSMutableArray array];
+    
+    for (WatchHistory *h in histories) {
+        VideoProgram *p = (VideoProgram *)h.program;
+        WZGaraponTvProgram *program = [[WZGaraponTvProgram alloc] init];
+        [p copyToProgram:program];
+        [items addObject:program];
+    }
+    return items;
+}
+
+- (BOOL)hasKeywordOfParams
+{
+    NSDictionary *dict = _context[@"params"];
+    return (dict[@"key"]) ? YES : NO;
+}
+
+- (NSDictionary *)parameterForSearchWithPage:(NSInteger)page
+{
+    NSDictionary *dict = _context[@"params"];
+    if (!dict) {
+        return @{@"p": [NSString stringWithFormat:@"%d", page]};
+    }
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:dict];
+    params[@"p"] = [NSString stringWithFormat:@"%d", page];
+    return params;
+}
+
+- (void)searchLatestItemsWithCompletionHandler:(WZGaraponAsyncBlock)completionHandler
+{
+    __weak WZIndexMenuViewController *me = self;
+    
+    if (_indexType == WZSearchResultGaranchuIndexType && !self.hasKeywordOfParams) {
+        if (completionHandler) {
+            completionHandler(nil);
+        }
+        return;
+    }
+    
+    NSDictionary *params = [self parameterForSearchWithPage:1];
+    [self searcWithParameter:params completionHandler:^(NSArray *items, NSError *error) {
+        if (items.count > 0) {
+            [me insertProgramsToHeadFromArray:items];
+        }
+        if (completionHandler) {
+            completionHandler(error);
+        }
+    }];
+}
+
+- (void)searchMoreItemsWithCompletionHandler:(WZGaraponAsyncBlock)completionHandler
+{
+    __weak WZIndexMenuViewController *me = self;
+    
+    if (_indexType == WZSearchResultGaranchuIndexType && !self.hasKeywordOfParams) {
+        if (completionHandler) {
+            completionHandler(nil);
+        }
+        return;
+    }
+    
+    NSDictionary *params = [self parameterForSearchWithPage:_currentSearchPage + 1];
+    [self searcWithParameter:params completionHandler:^(NSArray *items, NSError *error) {
+        if (items.count > 0) {
+            [me addProgramsFromArray:items];
+            _currentSearchPage++;
+        }
+        if (completionHandler) {
+            completionHandler(error);
+        }
+    }];
+}
+
+- (void)searcWithParameter:(NSDictionary *)params completionHandler:(WZGaraponSearchAsyncBlock)completionHandler
+{
+    __weak WZIndexMenuViewController *me = self;
+    if (_items.count == 0) {
+        [self showLoadingHUD];
+    }
+    WZGaraponWrapDictionary *wrapParams = [WZGaraponWrapDictionary wrapWithDictionary:params];
+    __block NSInteger numberOfPage = [wrapParams intgerValueWithKey:@"n" defaultValue:20];
+    
+    [_garaponTv searchWithParameter:params
+                  completionHandler:^(NSDictionary *response, NSError *error) {                      
+                      NSArray *items = nil;
+                      if (error) {
+                          [WZAlertView showAlertWithError:error];
+                      } else {                          
+                          WZGaraponWrapDictionary *wrap = [WZGaraponWrapDictionary wrapWithDictionary:response];
+                          _totalCount = [wrap intgerValueWithKey:@"hit" defaultValue:0];
+                          _maxSearchPage = ceil((float)_totalCount / numberOfPage);                          
+                          items = [WZGaraponTvProgram arrayWithSearchResponse:response];
+                      }
+                      
+                      if (_items.count == 0 && items.count == 0) {
+                          [me showTextHUDWithMessage: @"番組が見つかりません"];
+                      } else {
+                          [me hideHUD];
+                      }
+                      
+                      if (completionHandler) {
+                          completionHandler(items, error);
+                      }                      
+                  }
+     ];
 }
 
 - (void)replaceLiveProgramsFromArray:(NSArray *)items
@@ -541,16 +619,14 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                 
         titleLabel.text = item.title;
         channelLabel.text = item.bc;
-        
         durationLabel.text = [NSString stringWithFormat:@"%d分", (int)item.duration/60];
-        
-//        NSDate *date = [NSDate dateWithTimeIntervalSince1970:item.startdate];        
         dateLabel.text = [_programCellDateFormatter stringFromDate:item.startdate];
         
     } else {
         NSDictionary *item = [self objectAtIndexPath:indexPath];
         cell.textLabel.text = item[@"title"];
         cell.textLabel.shadowColor = [UIColor blackColor];
+        cell.textLabel.backgroundColor =  [UIColor greenSeaColor];
     }
     
     UIView *_selectedBackgroundView = [[UIView alloc] init];    
@@ -559,6 +635,17 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     
     return cell;
 }
+
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (indexPath.row % 2 == 0) {
+//        cell.backgroundColor = _cellBackgroundColor;
+//        cell.textLabel.backgroundColor = [UIColor clearColor];
+//    } else {
+//        cell.backgroundColor = _oddCellBackgroundColor;
+//        cell.textLabel.backgroundColor = [UIColor clearColor];
+//    }
+//}
 
 - (void)selectRowAtWatchingIndex
 {
@@ -583,57 +670,10 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     return -1;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-    
+{    
     if (self.isProgramMenu) {
         WZGaraponTvProgram *program = [self objectAtIndexPath:indexPath];
         if (program) {
