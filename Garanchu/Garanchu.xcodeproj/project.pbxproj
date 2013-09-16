@@ -42,6 +42,7 @@
 		8FAFF07217E5FE3A008CDA2F /* VideoProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF06F17E5FE3A008CDA2F /* VideoProgram.m */; };
 		8FAFF07317E5FE3A008CDA2F /* WatchHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF07117E5FE3A008CDA2F /* WatchHistory.m */; };
 		8FAFF07717E6066D008CDA2F /* WZCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF07617E6066C008CDA2F /* WZCoreData.m */; };
+		8FAFF07A17E6FFFB008CDA2F /* WZActivityItemProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF07917E6FFFB008CDA2F /* WZActivityItemProvider.m */; };
 		8FB6262B17C5037800EC5A0E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262717C5037800EC5A0E /* Icon-72.png */; };
 		8FB6262C17C5037800EC5A0E /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262817C5037800EC5A0E /* Icon-72@2x.png */; };
 		8FB6262D17C5037800EC5A0E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262917C5037800EC5A0E /* Icon.png */; };
@@ -124,6 +125,8 @@
 		8FAFF07117E5FE3A008CDA2F /* WatchHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchHistory.m; sourceTree = "<group>"; };
 		8FAFF07517E6066C008CDA2F /* WZCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZCoreData.h; sourceTree = "<group>"; };
 		8FAFF07617E6066C008CDA2F /* WZCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZCoreData.m; sourceTree = "<group>"; };
+		8FAFF07817E6FFFB008CDA2F /* WZActivityItemProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZActivityItemProvider.h; sourceTree = "<group>"; };
+		8FAFF07917E6FFFB008CDA2F /* WZActivityItemProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZActivityItemProvider.m; sourceTree = "<group>"; };
 		8FB6262717C5037800EC5A0E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		8FB6262817C5037800EC5A0E /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		8FB6262917C5037800EC5A0E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 				8FFD027A17DE28D700583B1E /* WZSearchBar.m */,
 				8FFD027C17DE2D6D00583B1E /* WZGaraponTabController.h */,
 				8FFD027D17DE2D6D00583B1E /* WZGaraponTabController.m */,
+				8FAFF07817E6FFFB008CDA2F /* WZActivityItemProvider.h */,
+				8FAFF07917E6FFFB008CDA2F /* WZActivityItemProvider.m */,
 			);
 			path = Garanchu;
 			sourceTree = "<group>";
@@ -479,6 +484,7 @@
 				8FAFF07217E5FE3A008CDA2F /* VideoProgram.m in Sources */,
 				8FAFF07317E5FE3A008CDA2F /* WatchHistory.m in Sources */,
 				8FAFF07717E6066D008CDA2F /* WZCoreData.m in Sources */,
+				8FAFF07A17E6FFFB008CDA2F /* WZActivityItemProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

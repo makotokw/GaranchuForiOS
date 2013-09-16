@@ -626,7 +626,6 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         NSDictionary *item = [self objectAtIndexPath:indexPath];
         cell.textLabel.text = item[@"title"];
         cell.textLabel.shadowColor = [UIColor blackColor];
-        cell.textLabel.backgroundColor =  [UIColor greenSeaColor];
     }
     
     UIView *_selectedBackgroundView = [[UIView alloc] init];    

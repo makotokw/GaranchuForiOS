@@ -17,12 +17,14 @@
 #import "WZVideoPlayerView.h"
 #import "WZGaranchu.h"
 #import "WZGaranchuUser.h"
+#import "WZActivityItemProvider.h"
 
 #import "MBProgressHUD+Garanchu.h"
 
 #import <BlocksKit/BlocksKit.h>
 #import <InAppSettingsKit/IASKAppSettingsViewController.h>
 #import <InAppSettingsKit/IASKSettingsReader.h>
+#import <WZGarapon/WZGaraponTvSiteActivity.h>
 
 #import "SearchCondition.h"
 #import "WatchHistory.h"
@@ -594,6 +596,22 @@
             tvProgram.favorite = rank;
             [me refreshControlButtons];
         }
+    }];
+}
+
+- (IBAction)share:(id)sender
+{
+    WZActivityItemProvider *provider = [[WZActivityItemProvider alloc] initWithPlaceholderItem:_watchingProgram];
+    
+    NSArray *activityItems = @[_watchingProgram.title];
+    activityItems = @[provider];
+    
+    WZGaraponTvSiteActivity *tvSiteActivity = [[WZGaraponTvSiteActivity alloc] init
+                                               ];
+    NSArray *applicationActivities = @[tvSiteActivity];
+    
+    UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:applicationActivities];    
+    [self presentViewController:activityView animated:YES completion:^{
     }];
 }
 
