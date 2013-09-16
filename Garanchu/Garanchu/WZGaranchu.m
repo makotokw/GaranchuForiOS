@@ -14,6 +14,8 @@
     WZGaraponTv *_garaponTv;
 }
 
+@synthesize initialURL = _initialURL;
+
 + (WZGaranchu *)current
 {
     static WZGaranchu *current = nil;

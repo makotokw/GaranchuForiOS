@@ -13,6 +13,7 @@
 @property (readonly) WZGaraponWeb *garaponWeb;
 @property (readonly) WZGaraponTv *garaponTv;
 @property (weak, readwrite) WZGaraponTvProgram *watchingProgram;
+@property (readwrite) NSURL *initialURL;
 
 + (WZGaranchu *)current;
 

@@ -21,3 +21,14 @@
 #define GARAPON_DEV_ID @"c399c615ffe8d7167f6d12fdf9554ea8"
 
 #define WZGaranchuDidSelectProgram @"WZGaranchuDidSelectProgram"
+
+#if USE_TESTFLIGHT_SDK
+#define WZLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#define WZLog(...) NSLog(__VA_ARGS__)
+#endif
+#if DEBUG
+#define WZLogD(...) NSLog(__VA_ARGS__)
+#else
+#define WZLogD(...) ;
+#endif

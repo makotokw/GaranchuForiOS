@@ -87,6 +87,8 @@
 
 - (void)viewDidLoad
 {
+    WZLogD(@"WZVideoViewController/viewDidLoad");
+    
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor blackColor];
@@ -96,14 +98,24 @@
     _isLogined = NO;
     _overlayBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectProgram:) name:WZGaranchuDidSelectProgram object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:kIASKAppSettingChanged object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didSelectProgram:)
+                                                 name:WZGaranchuDidSelectProgram
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(settingsDidChange:)
+                                                 name:kIASKAppSettingChanged
+                                               object:nil];    
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(aplicationDidBecomeActive:)
+                                                name:UIApplicationDidBecomeActiveNotification
+                                              object:nil];
 
     [self appendHeaderView];
     [self appendNaviView];
     [self appendVideoView];
     [self appendControlView];
-    [self loadingProgram:nil];
+    [self loadingProgram:nil reload:NO];
     
     // hiddein all subView until login
     [self hideControlsNotLogin];
@@ -139,6 +151,48 @@
     
     // remove the gesture recognizers
     [_menuContainerView removeGestureRecognizer:_menuPanGesture];
+}
+
+- (void)aplicationDidBecomeActive:(NSNotification *)notification
+{
+    WZLogD(@"WZVideoViewController/aplicationDidBecomeActive");
+    [self executeInitialURL];
+}
+
+- (void)executeInitialURL
+{
+    __weak WZGaranchu *stage = [WZGaranchu current];
+    if (stage.initialURL) {
+        
+         __weak WZVideoViewController *me = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (_isLogined) {
+                
+                NSString *gtvid = nil;
+                NSString *URLString = stage.initialURL.absoluteString;
+                if (URLString.length > 0) {
+                    NSError *error = nil;
+                    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"gtvid=([\\w]+)"
+                                                                                           options:0
+                                                                                             error:&error];
+                    
+                    NSArray *matches = [regex matchesInString:URLString
+                                                      options:0
+                                                        range:NSMakeRange(0, [URLString length])];
+                    for (NSTextCheckingResult *match in matches) {
+                        NSRange range = [match rangeAtIndex:1];
+                        gtvid = [URLString substringWithRange:range];
+                        break;
+                    }
+                }
+                
+                if (gtvid) {
+                    stage.initialURL = nil;
+                    [me loadingProgramWithGtvid:gtvid];
+                }
+            }
+        });
+    }
 }
 
 - (IBAction)playerViewDidTapped:(id)sender
@@ -778,7 +832,23 @@
     _favButton.selected = _watchingProgram.favorite == 1;
 }
 
-- (void)loadingProgram:(WZGaraponTvProgram *)program
+- (void)loadingProgramWithGtvid:(NSString *)gtvid
+{
+    __weak WZVideoViewController *me = self;    
+    [_garaponTv searchWithGtvid:gtvid completionHandler:^(NSDictionary *response, NSError *error) {
+        if (!error) {
+            NSArray *items = [WZGaraponTvProgram arrayWithSearchResponse:response];
+            if (items.count > 0) {
+                WZGaraponTvProgram *item = items[0];
+                if (item) {
+                    [me loadingProgram:item reload:NO];
+                }
+            }
+        }
+    }];
+}
+
+- (void)loadingProgram:(WZGaraponTvProgram *)program reload:(BOOL)reload
 {
     _watchingProgram = program;
     _initialPlaybackPosition = 0.0;
@@ -799,11 +869,12 @@
     [self refreshHeaderView];
     [self refreshControlButtons];
     
-    if (program) {
+    if (program && reload) {
         
         // download current properies of program
         __weak WZVideoViewController *me = self;
         __weak WZGaraponTvProgram *tvProgram = program;
+        
         [_garaponTv searchWithGtvid:tvProgram.gtvid completionHandler:^(NSDictionary *response, NSError *error) {
             if (!error) {
                 NSArray *items = [WZGaraponTvProgram arrayWithSearchResponse:response];
@@ -824,7 +895,7 @@
     NSDictionary *userInfo = [notification userInfo];
     WZGaraponTvProgram *program = userInfo[@"program"];
     if (program) {
-        [self loadingProgram:program];
+        [self loadingProgram:program reload:YES];
     }
     [WZGaranchu current].watchingProgram = program;
 }
@@ -874,6 +945,8 @@
     [userDefault setObject:_garaponTv.host forKey:@"gtv_address"];
     
     [self showSideMenuWithReset:YES];
+    
+    [self executeInitialURL];
 }
 
 - (void)didLogoutGaraponTv

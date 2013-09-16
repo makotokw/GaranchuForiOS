@@ -13,6 +13,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    WZLogD(@"application:didFinishLaunchingWithOptions");
     WZGaranchu *stage = [WZGaranchu current];
     [stage setup];
     return YES;
@@ -28,6 +29,7 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    WZLogD(@"applicationDidEnterBackground");
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -38,6 +40,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    WZLogD(@"applicationDidBecomeActive");
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -45,6 +48,16 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     WZCoreData *data = [WZCoreData sharedInstance];
     [data saveManagedObjectContext];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    WZLogD(@"applicationOpenURL:%@", url);
+    
+    WZGaranchu *stage = [WZGaranchu current];
+    stage.initialURL = url;
+    
+    return YES;
 }
 
 @end
