@@ -15,6 +15,27 @@
 @dynamic code;
 @dynamic items;
 
+- (void)deleteItems
+{
+    NSUInteger count = 0;
+    
+    WZCoreData *data = [WZCoreData sharedInstance];
+    NSManagedObjectContext *context = data.managedObjectContext;
+    
+    NSSet *items = self.items;
+    for (NSManagedObject *item in items) {
+        [context deleteObject:item];
+    }
+    
+    NSError *error;
+    if (![context save:&error]) {
+        // Handle the error.
+        NSLog(@"Error: %@", error);
+    } else {
+        count = items.count;
+    }
+}
+
 + (SearchConditionList *)findOrCreateByCode:(NSString *)code
 {
     SearchConditionList *record = nil;

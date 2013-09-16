@@ -62,6 +62,24 @@
     return record;
 }
 
++ (NSUInteger)count
+{
+    WZCoreData *data = [WZCoreData sharedInstance];
+    NSManagedObjectContext *context = data.managedObjectContext;
+    
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"WatchHistory"
+                                   inManagedObjectContext:context]];
+    [request setIncludesSubentities:NO];
+    
+    NSError* error = nil;
+    NSUInteger count = [context countForFetchRequest:request error:&error];
+    if (count == NSNotFound) {
+        count = 0;
+    }    
+    return count;
+}
+
 + (NSArray *)findWithLimit:(NSInteger)limit
 {
     WZCoreData *data = [WZCoreData sharedInstance];
@@ -97,6 +115,35 @@
         // Handle the error.
         NSLog(@"Error: %@", error);
     }
+}
+
++ (NSUInteger)deleteAll
+{
+    NSUInteger count = 0;
+    
+    WZCoreData *data = [WZCoreData sharedInstance];
+    NSManagedObjectContext *context = data.managedObjectContext;
+    
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:@"WatchHistory" inManagedObjectContext:context]];
+    [fetchRequest setIncludesPropertyValues:NO];
+    
+    NSError *error;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    
+    if (!error) {
+        for (NSManagedObject *object in fetchedObjects) {
+            [context deleteObject:object];
+        }        
+        if (![context save:&error]) {
+            // Handle the error.
+            NSLog(@"Error: %@", error);
+        } else {
+            count = fetchedObjects.count;
+        }
+    }
+    
+    return count;
 }
 
 @end

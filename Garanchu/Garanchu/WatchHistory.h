@@ -20,7 +20,9 @@
 @property (nonatomic, retain) NSManagedObject *program;
 
 + (WatchHistory *)findByGtvid:(NSString *)gtvid;
++ (NSUInteger)count;
 + (NSArray *)findWithLimit:(NSInteger)limit;
 + (void)updateHistoryWithProgram:(WZGaraponTvProgram *)program position:(NSTimeInterval)position done:(BOOL)done;
++ (NSUInteger)deleteAll;
 
 @end

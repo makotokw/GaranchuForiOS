@@ -12,6 +12,7 @@
 #import "WZIndexMenuViewController.h"
 #import "WZNaviViewController.h"
 #import "WZLoginViewController.h"
+#import "WZVideoDetailViewController.h"
 #import "WZSearchSuggestViewController.h"
 #import "WZAlertView.h"
 #import "WZVideoPlayerView.h"
@@ -26,6 +27,7 @@
 #import <InAppSettingsKit/IASKSettingsReader.h>
 #import <WZGarapon/WZGaraponTvSiteActivity.h>
 
+#import "SearchConditionList.h"
 #import "SearchCondition.h"
 #import "WatchHistory.h"
 
@@ -102,10 +104,6 @@
     [self appendVideoView];
     [self appendControlView];
     [self loadingProgram:nil];
-
-#if DEBUG
-//    _videoPlayerView.backgroundColor = [UIColor whiteColor];
-#endif
     
     // hiddein all subView until login
     [self hideControlsNotLogin];
@@ -210,6 +208,7 @@
         CGRect rect = [_menuOptionButton convertRect:_menuOptionButton.bounds toView:self.view];
         [_currentPopoverController presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:NO];
     }
+    [self resetMenuContainerPosition];
 }
 
 - (void)appendNaviView
@@ -292,6 +291,14 @@
     
     UIImage *thumbImage = [UIImage imageNamed:@"GaranchuResources.bundle/thumbImage"];
     [_videoPlayerView.scrubber setThumbImage:thumbImage forState:UIControlStateNormal];
+    
+#if DEBUG
+//    _videoPlayerView.backgroundColor = [UIColor whiteColor];
+//    __weak WZVideoViewController *me = self;
+//    [self performBlock:^(id sender) {
+//        [me detail:nil];
+//    } afterDelay:1];
+#endif
 }
 
 - (void)appendControlView
@@ -424,11 +431,61 @@
 //	_currentPopoverController = popover;
 //}
 
+- (void)clearWatchHistory
+{
+    NSUInteger count = [WatchHistory count];
+    
+    if (count > 0) {
+        NSString *message = [NSString stringWithFormat:@"視聴履歴 %d 件を削除してよろしいですか？視聴履歴には前回再生位置も含まれます", count];
+        [UIAlertView showAlertViewWithTitle:@"視聴履歴の削除" message:message cancelButtonTitle:@"キャンセル" otherButtonTitles:@[@"削除"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex == 1) {                
+                NSUInteger deleteCount = [WatchHistory deleteAll];
+                NSString *deleteMessage = deleteCount > 0 ? @"削除しました" : @"削除できませんでした";
+                [UIAlertView showAlertViewWithTitle:@"視聴履歴の削除" message:deleteMessage cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                }];
+            }
+        }];
+    } else {
+        [UIAlertView showAlertViewWithTitle:@"視聴履歴の削除" message:@"視聴履歴が無いか削除済みです" cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        }];
+    }
+
+}
+
+- (void)clearSearchHistory
+{
+    SearchConditionList *list = [SearchConditionList findOrCreateByCode:@"search_history"];
+    NSUInteger count = list.items.count;
+    
+    if (count > 0) {
+        NSString *message = [NSString stringWithFormat:@"検索履歴 %d 件を削除してよろしいですか？", count];
+        [UIAlertView showAlertViewWithTitle:@"検索履歴の削除" message:message cancelButtonTitle:@"キャンセル" otherButtonTitles:@[@"削除"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                NSUInteger deleteCount = [list deleteItems];
+                NSString *deleteMessage = deleteCount > 0 ? @"削除しました" : @"削除できませんでした";
+                [UIAlertView showAlertViewWithTitle:@"検索履歴の削除" message:deleteMessage cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                }];
+            }
+        }];
+    } else {
+        [UIAlertView showAlertViewWithTitle:@"検索履歴の削除" message:@"検索履歴が無いか削除済みです" cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        }];
+    }
+    
+}
+
 - (void)settingsViewController:(IASKAppSettingsViewController *)sender buttonTappedForSpecifier:(IASKSpecifier *)specifier
 {
     if ([specifier.key isEqualToString:@"account_logout"]) {
         [self logoutInSettings];
-	}    
+	}
+    else if ([specifier.key isEqualToString:@"data_clear_watch_history"]) {
+        [self clearWatchHistory];
+    }
+    else if ([specifier.key isEqualToString:@"data_clear_search_history"]) {
+        [self clearSearchHistory];
+        
+	}
 	else if ([specifier.key isEqualToString:@"gtv_web_server"]) {
         [[UIApplication sharedApplication] openURL:[_garaponTv URLWithPath:@""]];
 	}
@@ -466,9 +523,9 @@
 - (IBAction)menuClick:(id)sender
 {
     if (_menuButton.isSelected) {
-        [self hideSideMenu];
+        [self hideSideMenuWithReset:YES];
     } else {
-        [self showSideMenu];
+        [self showSideMenuWithReset:YES];
     }
 }
 
@@ -492,9 +549,9 @@
     }
     else if ([gesture state] == UIGestureRecognizerStateEnded) {
         if (velocity.x > 0) {
-            [self hideSideMenu];
+            [self hideSideMenuWithReset:NO];
         } else {
-            [self showSideMenu];
+            [self showSideMenuWithReset:NO];
         }
         
     }
@@ -512,16 +569,39 @@
     }
 }
 
-- (void)showSideMenu
+- (void)resetMenuContainerPosition
+{
+    CGRect frame = _menuContainerView.frame;
+    if (_menuContainerView.hidden) {
+        frame.origin.x = self.view.bounds.size.width;
+        frame.origin.y = 0;
+        _menuContainerView.frame = frame;
+    } else {
+        frame.origin.x = self.view.bounds.size.width - frame.size.width;
+        frame.origin.y = 0;
+        _menuContainerView.frame = frame;
+    }
+}
+
+- (void)showSideMenuWithReset:(BOOL)reset
 {
     if (!_isLogined) {
         return;
     }
     
-    CGRect frame = _menuContainerView.frame;
-    frame.origin.x = self.view.bounds.size.width - frame.size.width;
+    // reset base position
+    if (reset) {
+        _menuContainerView.hidden = YES;
+        [self resetMenuContainerPosition];
+        _menuContainerView.hidden = NO;
+    }
     
+    CGRect frame = _menuContainerView.frame;
     _menuButton.selected = YES;
+    
+    frame.origin.x = self.view.bounds.size.width - frame.size.width;
+//    frame.origin.y = 0;
+    
     [UIView animateWithDuration:0.50f
                  animations:^{
                      _menuContainerView.alpha = 1.0;
@@ -536,20 +616,27 @@
 }
 
 
-- (void)hideSideMenu
+- (void)hideSideMenuWithReset:(BOOL)reset
 {
     _menuButton.selected = NO;
     
+    // reset base position
+    if (reset) {
+        [self resetMenuContainerPosition];
+    }
+    
     CGRect frame = _menuContainerView.frame;
     frame.origin.x = frame.origin.x + frame.size.width;
+//    frame.origin.y = 0;
     
     [UIView animateWithDuration:0.25f
                      animations:^{
-//                         _menuContainerView.alpha = 0.0;
                          _menuContainerView.frame = frame;
                      }
                      completion:^(BOOL finished) {
                          if (finished) {
+//                             _menuContainerView.alpha = 0.0;
+                             _menuContainerView.hidden = YES;
                              _menuButton.selected = NO;
                          }
                      }];
@@ -597,6 +684,11 @@
             [me refreshControlButtons];
         }
     }];
+}
+
+- (IBAction)detail:(id)sender
+{
+    [self presentModalDetailViewController];
 }
 
 - (IBAction)share:(id)sender
@@ -654,6 +746,7 @@
 - (void)playerDidBeginPlayback
 {
     [super playerDidBeginPlayback];
+    [self refreshControlButtons];
 }
 
 - (void)playerDidEndPlayback
@@ -664,8 +757,8 @@
 - (void)playerDidReachEndPlayback
 {
     [super playerDidReachEndPlayback];
-    
-    [self updateHistoryOfWathingProgramWithPosition:0.0 done:YES];    
+    [self updateHistoryOfWathingProgramWithPosition:0.0 done:YES];
+    [self refreshControlButtons];
 }
 
 - (void)playerDidReplaceFromPlayer:(AVPlayer *)oldPlayer
@@ -677,6 +770,11 @@
 
 - (void)refreshControlButtons
 {
+    if (_watchingProgram.descriptionText.length > 0) {
+        [_videoPlayerView enableInfoControls];
+    } else {
+        [_videoPlayerView disableInfoControls];
+    }
     _favButton.selected = _watchingProgram.favorite == 1;
 }
 
@@ -731,6 +829,27 @@
     [WZGaranchu current].watchingProgram = program;
 }
 
+- (void)presentModalDetailViewController
+{
+    WZVideoDetailViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"videoDetailViewController"];
+    
+    viewController.program = _playingProgram;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+        viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;        
+    } else {
+        viewController.modalPresentationStyle = UIModalPresentationFullScreen;
+        viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    }
+    
+    [self presentViewController:viewController animated:YES completion:^{
+    }];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        viewController.view.superview.bounds = CGRectMake(0, 0, 400, 300);
+    }
+}
+
 #pragma mark - Login
 
 - (void)hideControlsNotLogin
@@ -754,7 +873,7 @@
     [userDefault setObject:_garaponTv.firmwareVersion forKey:@"gtv_firmware_version"];
     [userDefault setObject:_garaponTv.host forKey:@"gtv_address"];
     
-    [self showSideMenu];
+    [self showSideMenuWithReset:YES];
 }
 
 - (void)didLogoutGaraponTv

@@ -77,6 +77,48 @@
             <string>IASKUITextAlignmentLeft</string>
 		</dict>
         <dict>
+            <key>Title</key>
+			<string>DataGroup</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+        <dict>
+			<key>Key</key>
+			<string>data_clear_watch_history</string>
+			<key>Title</key>
+			<string>DataGroupClearWatchHistory</string>
+			<key>Type</key>
+			<string>IASKButtonSpecifier</string>
+            <key>IASKTextAlignment</key>
+            <string>IASKUITextAlignmentLeft</string>
+		</dict>
+        <dict>
+			<key>Key</key>
+			<string>data_clear_search_history</string>
+			<key>Title</key>
+			<string>DataGroupClearSearchHistory</string>
+			<key>Type</key>
+			<string>IASKButtonSpecifier</string>
+            <key>IASKTextAlignment</key>
+            <string>IASKUITextAlignmentLeft</string>
+		</dict>
+        <dict>
+            <key>Title</key>
+			<string>ShareGroup</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+        <dict>
+			<key>Key</key>
+			<string>share_tag_line</string>
+            <key>DefaultValue</key>
+			<string>share_tag_line</string>
+			<key>Title</key>
+			<string>ShareGroupTagLine</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+        <dict>
 			<key>Title</key>
 			<string>ApplicationGroup</string>
 			<key>Type</key>

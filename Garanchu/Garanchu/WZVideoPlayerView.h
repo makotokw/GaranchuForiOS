@@ -9,4 +9,7 @@
 
 @interface WZVideoPlayerView : WZAVPlayerView
 
+- (void)enableInfoControls;
+- (void)disableInfoControls;
+
 @end

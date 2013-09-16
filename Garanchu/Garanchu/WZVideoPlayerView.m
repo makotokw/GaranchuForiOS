@@ -59,10 +59,7 @@
     
     _previousButton.enabled =
     _stepBackwardButton.enabled = 
-    _stepForwardButton.enabled =
-    _favButton.enabled =
-    _infoButton.enabled =
-    _shareButton.enabled = YES;
+    _stepForwardButton.enabled = YES;
 }
 
 - (void)disableControls
@@ -71,10 +68,9 @@
     
     _previousButton.enabled =
     _stepBackwardButton.enabled =
-    _stepForwardButton.enabled =
-    _favButton.enabled =
-    _infoButton.enabled =
-    _shareButton.enabled = NO;
+    _stepForwardButton.enabled = NO;
+    
+    [self disableInfoControls];
 }
 
 - (void)enableSeekControls
@@ -93,6 +89,20 @@
     _previousButton.enabled =
     _stepBackwardButton.enabled =
     _stepForwardButton.enabled = NO;
+}
+
+- (void)enableInfoControls
+{
+    _favButton.enabled =
+    _infoButton.enabled =
+    _shareButton.enabled = YES;
+}
+
+- (void)disableInfoControls
+{
+    _favButton.enabled =
+    _infoButton.enabled =
+    _shareButton.enabled = NO;
 }
 
 @end

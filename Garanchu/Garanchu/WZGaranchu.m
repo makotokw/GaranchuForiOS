@@ -36,8 +36,15 @@
 }
 
 - (void)setup
-{    
-    [[NSUserDefaults standardUserDefaults] setObject:[self applictionVersion] forKey:@"version"];
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    [userDefaults setObject:[self applictionVersion] forKey:@"version"];
+
+    NSString *tagValue = [userDefaults stringForKey:@"share_tag_line"];
+    if (!tagValue) {
+        [userDefaults setValue:@"見てる" forKey:@"share_tag_line"];
+    }
 }
 
 - (NSString *)applictionVersion
@@ -61,6 +68,7 @@
     [userDefaults setValue:privateAddress forKey:@"garaponTvPrivateAddress"];
     [userDefaults setValue:globalAddress forKey:@"garaponTvGlobalAddress"];
     [userDefaults setInteger:globalPort forKey:@"garaponTvGlobalPort"];
+    
     [userDefaults synchronize];
 }
 

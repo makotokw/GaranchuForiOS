@@ -22,6 +22,7 @@
 - (void)addItems:(NSSet *)values;
 - (void)removeItems:(NSSet *)values;
 
+- (NSUInteger)deleteItems;
 + (SearchConditionList *)findOrCreateByCode:(NSString *)code;
 
 @end
