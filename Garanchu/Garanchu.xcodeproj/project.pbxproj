@@ -52,7 +52,6 @@
 		8FF1B0ED179CD32A00BF9785 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0EF179CD32A00BF9785 /* Localizable.strings */; };
 		8FF5973517C98B0200A9E8E9 /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8FF5973417C98B0200A9E8E9 /* InAppSettings.bundle */; };
 		8FF5973717C9EBBE00A9E8E9 /* library_copyrights.html in Resources */ = {isa = PBXBuildFile; fileRef = 8FF5973617C9EBBE00A9E8E9 /* library_copyrights.html */; };
-		8FFD027B17DE28D700583B1E /* WZSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFD027A17DE28D700583B1E /* WZSearchBar.m */; };
 		8FFD027E17DE2D6D00583B1E /* WZGaraponTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFD027D17DE2D6D00583B1E /* WZGaraponTabController.m */; };
 		8FFD028117DE379600583B1E /* WZSearchSuggestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFD028017DE379600583B1E /* WZSearchSuggestViewController.m */; };
 		DEAD08CC53D6433E97303441 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FD30FE5BBFD4D808BB97071 /* libPods.a */; };
@@ -140,8 +139,6 @@
 		8FF1B0F2179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8FF5973417C98B0200A9E8E9 /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppSettings.bundle; sourceTree = "<group>"; };
 		8FF5973617C9EBBE00A9E8E9 /* library_copyrights.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = library_copyrights.html; sourceTree = "<group>"; };
-		8FFD027917DE28D700583B1E /* WZSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZSearchBar.h; sourceTree = "<group>"; };
-		8FFD027A17DE28D700583B1E /* WZSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZSearchBar.m; sourceTree = "<group>"; };
 		8FFD027C17DE2D6D00583B1E /* WZGaraponTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZGaraponTabController.h; sourceTree = "<group>"; };
 		8FFD027D17DE2D6D00583B1E /* WZGaraponTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZGaraponTabController.m; sourceTree = "<group>"; };
 		8FFD027F17DE379600583B1E /* WZSearchSuggestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZSearchSuggestViewController.h; sourceTree = "<group>"; };
@@ -246,8 +243,6 @@
 				8FFD028017DE379600583B1E /* WZSearchSuggestViewController.m */,
 				8FAD8C4117D6540E002F0D50 /* WZSearchResultViewController.h */,
 				8FAD8C4217D6540E002F0D50 /* WZSearchResultViewController.m */,
-				8FFD027917DE28D700583B1E /* WZSearchBar.h */,
-				8FFD027A17DE28D700583B1E /* WZSearchBar.m */,
 				8FFD027C17DE2D6D00583B1E /* WZGaraponTabController.h */,
 				8FFD027D17DE2D6D00583B1E /* WZGaraponTabController.m */,
 				8FAFF07817E6FFFB008CDA2F /* WZActivityItemProvider.h */,
@@ -479,7 +474,6 @@
 				8F59FCB71794149300EEA418 /* WZIndexMenuViewController+Static.m in Sources */,
 				8F3C22EF17B38FE000D35CF2 /* MBProgressHUD+Garanchu.m in Sources */,
 				8FAD8C4317D6540F002F0D50 /* WZSearchResultViewController.m in Sources */,
-				8FFD027B17DE28D700583B1E /* WZSearchBar.m in Sources */,
 				8FFD027E17DE2D6D00583B1E /* WZGaraponTabController.m in Sources */,
 				8FFD028117DE379600583B1E /* WZSearchSuggestViewController.m in Sources */,
 				8F72AFD417E0EBD7007E1715 /* Garanchu.xcdatamodeld in Sources */,
@@ -604,13 +598,13 @@
 			buildSettings = {
 				BUNDLE_DISPLAY_NAME_SUFFIX = D;
 				BUNDLE_IDENTIFIER_SUFFIX = .debug;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Makoto Kawasaki (KWQ3R6QAZ8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
 				INFOPLIST_FILE = "Garanchu/Garanchu-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "BE3D3CFC-0F35-4B6F-B50C-A8F2B90FC2A0";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -622,15 +616,14 @@
 			buildSettings = {
 				BUNDLE_DISPLAY_NAME_SUFFIX = "";
 				BUNDLE_IDENTIFIER_SUFFIX = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Makoto Kawasaki (89AY2T5R4H)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Makoto Kawasaki (89AY2T5R4H)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
 				INFOPLIST_FILE = "Garanchu/Garanchu-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B6747CDB-FAE8-4DCE-AB3B-2E14F60CAE82";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B6747CDB-FAE8-4DCE-AB3B-2E14F60CAE82";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A8628A41-299B-4278-8836-FCCFEDC98B0A";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};

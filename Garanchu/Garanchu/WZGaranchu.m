@@ -7,6 +7,9 @@
 
 #import "WZGaranchu.h"
 
+#import <SDWebImage/SDImageCache.h>
+#import <TestFlightSDK/TestFlight.h>
+
 @implementation WZGaranchu
 
 {
@@ -47,6 +50,12 @@
     if (!tagValue) {
         [userDefaults setValue:@"見てる" forKey:@"share_tag_line"];
     }
+    
+    SDImageCache *cache = [SDImageCache sharedImageCache];
+    cache.maxCacheAge = 86400;
+    [cache cleanDisk];
+    
+    [self initializeTestFlightWithTeamToken:@"bdfbcd15-b247-47a5-9998-9feeb5fec037"];
 }
 
 - (NSString *)applictionVersion
@@ -73,5 +82,39 @@
     
     [userDefaults synchronize];
 }
+
+static void WheezyHandleExceptions(NSException *exception)
+{
+    NSLog(@"This is where we save the application data during a exception");
+    // Save application data on crash
+}
+
+static void WheezySignalHandler(int sig)
+{
+    NSLog(@"This is where we save the application data during a signal");
+    // Save application data on crash
+}
+
+- (void)initializeTestFlightWithTeamToken:(NSString *)teamToken
+{
+    // installs HandleExceptions as the Uncaught Exception Handler
+    NSSetUncaughtExceptionHandler(&WheezyHandleExceptions);
+    // create the signal action structure
+    struct sigaction newSignalAction;
+    // initialize the signal action structure
+    memset(&newSignalAction, 0, sizeof(newSignalAction));
+    // set SignalHandler as the handler in the signal action structure
+    newSignalAction.sa_handler = &WheezySignalHandler;
+    // set SignalHandler as the handlers for SIGABRT, SIGILL and SIGBUS
+    sigaction(SIGABRT, &newSignalAction, NULL);
+    sigaction(SIGILL, &newSignalAction, NULL);
+    sigaction(SIGBUS, &newSignalAction, NULL);
+    
+#if USE_TESTFLIGHT_SDK
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+    [TestFlight takeOff:teamToken];
+#endif
+}
+
 
 @end

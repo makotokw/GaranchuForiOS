@@ -491,16 +491,16 @@
     
     if (count > 0) {
         NSString *message = [NSString stringWithFormat:@"視聴履歴 %d 件を削除してよろしいですか？視聴履歴には前回再生位置も含まれます", count];
-        [UIAlertView showAlertViewWithTitle:@"視聴履歴の削除" message:message cancelButtonTitle:@"キャンセル" otherButtonTitles:@[@"削除"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        [WZAlertView showAlertViewWithTitle:@"視聴履歴の削除" message:message cancelButtonTitle:@"キャンセル" otherButtonTitles:@[@"削除"] handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {                
                 NSUInteger deleteCount = [WatchHistory deleteAll];
                 NSString *deleteMessage = deleteCount > 0 ? @"削除しました" : @"削除できませんでした";
-                [UIAlertView showAlertViewWithTitle:@"視聴履歴の削除" message:deleteMessage cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                [WZAlertView showAlertViewWithTitle:@"視聴履歴の削除" message:deleteMessage cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
                 }];
             }
         }];
     } else {
-        [UIAlertView showAlertViewWithTitle:@"視聴履歴の削除" message:@"視聴履歴が無いか削除済みです" cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        [WZAlertView showAlertViewWithTitle:@"視聴履歴の削除" message:@"視聴履歴が無いか削除済みです" cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
         }];
     }
 
@@ -513,16 +513,16 @@
     
     if (count > 0) {
         NSString *message = [NSString stringWithFormat:@"検索履歴 %d 件を削除してよろしいですか？", count];
-        [UIAlertView showAlertViewWithTitle:@"検索履歴の削除" message:message cancelButtonTitle:@"キャンセル" otherButtonTitles:@[@"削除"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        [WZAlertView showAlertViewWithTitle:@"検索履歴の削除" message:message cancelButtonTitle:@"キャンセル" otherButtonTitles:@[@"削除"] handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 NSUInteger deleteCount = [list deleteItems];
                 NSString *deleteMessage = deleteCount > 0 ? @"削除しました" : @"削除できませんでした";
-                [UIAlertView showAlertViewWithTitle:@"検索履歴の削除" message:deleteMessage cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                [WZAlertView showAlertViewWithTitle:@"検索履歴の削除" message:deleteMessage cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
                 }];
             }
         }];
     } else {
-        [UIAlertView showAlertViewWithTitle:@"検索履歴の削除" message:@"検索履歴が無いか削除済みです" cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        [WZAlertView showAlertViewWithTitle:@"検索履歴の削除" message:@"検索履歴が無いか削除済みです" cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
         }];
     }
     
@@ -1004,7 +1004,7 @@
                                                                             [loginViewController setEnableControls:YES];
                                                                         }];
                                         } else {
-                                            [me.garaponTv setHostAndPortWithAddressResponse:response];                                            
+                                            [me.garaponTv setHostAndPortWithAddressResponse:response];                                        
                                             [me performBlock:^(id sender) {
                                                 [me loginGraponTv];
                                             } afterDelay:1.0f];
@@ -1031,6 +1031,21 @@
     __weak WZVideoViewController *me = self;
     __weak WZLoginViewController *loginViewController = _loginViewController;
     __weak UIView *hudView = loginViewController.view ? loginViewController.view : me.view;
+    
+    float gtvVersion = _garaponTv.gtvVersion.floatValue;
+    if (gtvVersion > 0 && gtvVersion < 3.0) {
+        [WZAlertView showAlertViewWithTitle:@""
+                                    message:@"参号機以前はAPIの互換性がないためサポートしていません"
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil
+                                    handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+                                        ;
+                                    }];
+
+        return;
+    }
+    
+    
     
     [self showGaraponIndicatorWhiteWithMessage:@"ガラポンTVにログイン中..." inView:hudView];
         

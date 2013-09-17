@@ -22,6 +22,26 @@
 
 #define WZGaranchuDidSelectProgram @"WZGaranchuDidSelectProgram"
 
+#if !DEBUG
+
+#define TARGET_APP_STORE 0
+
+#define USE_TESTFLIGHT_SDK 1
+
+#else
+
+#define USE_TESTFLIGHT_SDK 1
+
+#endif //!DEBUG
+
+#if TARGET_APP_STORE && USE_TESTFLIGHT_SDK
+#error must not use testflight to submit an app to the App Store
+#endif
+
+#if DEBUG && TARGET_APP_STORE
+#error must not use DEBUG to submit an app to the App Store
+#endif
+
 #if USE_TESTFLIGHT_SDK
 #define WZLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 #else
