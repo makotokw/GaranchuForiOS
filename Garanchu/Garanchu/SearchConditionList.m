@@ -15,7 +15,7 @@
 @dynamic code;
 @dynamic items;
 
-- (void)deleteItems
+- (NSUInteger)deleteItems
 {
     NSUInteger count = 0;
     
@@ -34,6 +34,7 @@
     } else {
         count = items.count;
     }
+    return count;
 }
 
 + (SearchConditionList *)findOrCreateByCode:(NSString *)code

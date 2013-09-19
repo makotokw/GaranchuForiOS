@@ -108,9 +108,6 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         _currentSearchPage = 0;
         _maxSearchPage = 0;
         
-        self.tableView.pullToRefreshView.textColor = [UIColor whiteColor];
-        self.tableView.pullToRefreshView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
-        self.tableView.infiniteScrollingView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
         self.clearsSelectionOnViewWillAppear = NO;
         
     }
@@ -185,6 +182,14 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     } else {
         self.navigationItem.leftBarButtonItem = nil;
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.tableView.pullToRefreshView.textColor = [UIColor cloudsColor];
+    self.tableView.pullToRefreshView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
+    self.tableView.infiniteScrollingView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
+
 }
 
 - (void)titleViewDidTapped:(id)sender
@@ -602,6 +607,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     
     // Configure the cell...    
     cell.textLabel.textColor =  [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
     
     if (self.isProgramMenu) {
         WZGaraponTvProgram *item = [self objectAtIndexPath:indexPath];
