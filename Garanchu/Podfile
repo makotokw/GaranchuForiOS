@@ -9,6 +9,7 @@ pod 'FlatUIKit', '1.2'
 pod 'MBProgressHUD', '0.7'
 pod 'SVPullToRefresh', '0.4.1'
 pod 'TMCache', '1.2.0'
+pod 'MZFormSheetController', '1.2.3'
 
 pod 'WZPlayerSlider', :path => '~/arcadia/KWPods/WZPlayerSlider'
 pod 'WZAVPlayer', :path => '~/arcadia/KWPods/WZAVPlayer'
