@@ -110,6 +110,11 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         
         self.clearsSelectionOnViewWillAppear = NO;
         
+        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+            self.edgesForExtendedLayout = UIRectEdgeNone;
+            self.automaticallyAdjustsScrollViewInsets = NO;
+        }
+        
     }
     
     if (self.isRemoteProgramMenu) {        
@@ -363,6 +368,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     for (WatchHistory *h in histories) {
         VideoProgram *p = (VideoProgram *)h.program;
         WZGaraponTvProgram *program = [[WZGaraponTvProgram alloc] init];
+        program.isProxy = YES;
         [p copyToProgram:program];
         [items addObject:program];
     }
@@ -378,6 +384,9 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 - (NSDictionary *)parameterForSearchWithPage:(NSInteger)page
 {
     NSDictionary *dict = _context[@"params"];
+    if (_indexType == WZRecordingProgramGaranchuIndexType) {
+        dict = [WZGaraponTv recordingProgramParams];
+    }
     if (!dict) {
         return @{@"p": [NSString stringWithFormat:@"%d", page]};
     }
@@ -625,7 +634,13 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                 
         titleLabel.text = item.title;
         channelLabel.text = item.bc;
-        durationLabel.text = [NSString stringWithFormat:@"%d分", (int)item.duration/60];
+        
+        // hack: ignore over 24h
+        if (item.duration > 3600*24) {
+            durationLabel.text = nil;
+        } else {
+            durationLabel.text = [NSString stringWithFormat:@"%d分", (int)item.duration/60];
+        }
         dateLabel.text = [_programCellDateFormatter stringFromDate:item.startdate];
         
     } else {
