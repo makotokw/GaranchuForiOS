@@ -11,12 +11,18 @@
 
 @implementation WZGaranchuUser
 
+{
+    NSString *_garaponId;
+}
+
 @dynamic garaponId, password;
 
 - (id)init
 {
     self = [super init];
     if (self) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        _garaponId = [userDefaults stringForKey:@"garaponId"];
     }
     return self;
 }
@@ -48,9 +54,25 @@
     error = nil;
     [SFHFKeychainUtils storeUsername:garaponId andPassword:password forServiceName:GARAPON_SERVICE_NAME updateExisting:YES error:&error];
     if (!error) {
+        _garaponId = garaponId;
         [userDefaults setValue:garaponId forKey:@"garaponId"];
         [userDefaults synchronize];
     }
+}
+
+- (void)deletePasswordForGaraponId:(NSString *)garaponId
+{
+    NSError *error = nil;
+    [SFHFKeychainUtils deleteItemForUsername:garaponId andServiceName:GARAPON_SERVICE_NAME error:&error];
+}
+
+
+- (void)clearGaraponIdAndPassword
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [self deletePasswordForGaraponId:_garaponId];
+    [userDefaults removeObjectForKey:@"garaponId"];
+    [userDefaults synchronize];
 }
 
 - (void)storeTvAddress:(NSDictionary *)dict
@@ -76,19 +98,16 @@
 
 - (NSString *)garaponId
 {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    return [userDefaults stringForKey:@"garaponId"];
+    return _garaponId;
 }
 
 - (NSString *)password
 {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *garaponId = [userDefaults stringForKey:@"garaponId"];
-    if (!garaponId) {
+    if (!_garaponId) {
         return nil;
     }
     NSError *error = nil;
-    return [SFHFKeychainUtils getPasswordForUsername:garaponId andServiceName:GARAPON_SERVICE_NAME error:&error];
+    return [SFHFKeychainUtils getPasswordForUsername:_garaponId andServiceName:GARAPON_SERVICE_NAME error:&error];
 }
 
 @end

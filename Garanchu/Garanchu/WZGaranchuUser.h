@@ -16,6 +16,7 @@
 + (WZGaranchuUser *)defaultUser;
 
 - (void)getGaraponTvAddress:(WZGaraponWeb *)garaponWeb garaponId:(NSString *)garaponId rawPassword:(NSString *)rawPassword completionHandler:(WZGaraponRequestAsyncBlock)completionHandler;
+- (void)clearGaraponIdAndPassword;
 - (NSDictionary *)hostAddressCache;
 
 @end
