@@ -41,6 +41,11 @@
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     WZLogD(@"applicationDidBecomeActive");
+    
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+        UIApplication *app = [UIApplication sharedApplication];
+        app.statusBarStyle = UIStatusBarStyleLightContent;
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
