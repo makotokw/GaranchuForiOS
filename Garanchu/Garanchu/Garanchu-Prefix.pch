@@ -17,6 +17,9 @@
     #import <WZGarapon/WZGarapon.h>
 #endif
 
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] \
+compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 #define GARAPON_SERVICE_NAME @"garapon"
 #define GARAPON_DEV_ID @"c399c615ffe8d7167f6d12fdf9554ea8"
 

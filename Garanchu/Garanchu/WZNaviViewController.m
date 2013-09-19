@@ -34,7 +34,11 @@
                                       cornerRadius:3
                                    whenContainedIn:[WZNaviViewController class], nil];
     
-    [self.navigationBar configureFlatNavigationBarWithColor:[UIColor blackColor]];
+
+//    [self.navigationBar configureFlatNavigationBarWithColor:[UIColor blackColor]];
+    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor] cornerRadius:0]
+               forBarMetrics:UIBarMetricsDefault & UIBarMetricsLandscapePhone];
+    
 }
 
 - (void)didReceiveMemoryWarning

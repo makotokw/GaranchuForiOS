@@ -26,6 +26,7 @@
 #import <InAppSettingsKit/IASKAppSettingsViewController.h>
 #import <InAppSettingsKit/IASKSettingsReader.h>
 #import <WZGarapon/WZGaraponTvSiteActivity.h>
+#import <MZFormSheetController/MZFormSheetController.h>
 
 #import "SearchConditionList.h"
 #import "SearchCondition.h"
@@ -123,13 +124,15 @@
     __weak WZVideoViewController *me = self;
     WZGaranchuUser *user = [WZGaranchuUser defaultUser];
 #if DEBUG
-    NSDictionary *cached = [user hostAddressCache];
-    if (cached) {
-        [me.garaponTv setHostAndPortWithAddressResponse:cached];
-        [me performBlock:^(id sender) {
-            [me loginGraponTv];
-        } afterDelay:0.1f];
-        return;
+    if (user.garaponId.length && user.password.length) {
+        NSDictionary *cached = [user hostAddressCache];
+        if (cached) {
+            [me.garaponTv setHostAndPortWithAddressResponse:cached];
+            [me performBlock:^(id sender) {
+                [me loginGraponTv];
+            } afterDelay:0.1f];
+            return;
+        }
     }
 #endif
     if (user.garaponId.length && user.password.length) {
@@ -251,6 +254,8 @@
 {
     [self dismissViewControllerAnimated:NO completion:^{
         [self logoutGraponTv];
+        WZGaranchuUser *user = [WZGaranchuUser defaultUser];
+        [user clearGaraponIdAndPassword];
     }];
 }
 
@@ -607,7 +612,6 @@
         } else {
             [self showSideMenuWithReset:NO];
         }
-        
     }
 }
 
@@ -747,18 +751,27 @@
 
 - (IBAction)share:(id)sender
 {
-    WZActivityItemProvider *provider = [[WZActivityItemProvider alloc] initWithPlaceholderItem:_watchingProgram];
-    
-    NSArray *activityItems = @[_watchingProgram.title];
-    activityItems = @[provider];
-    
-    WZGaraponTvSiteActivity *tvSiteActivity = [[WZGaraponTvSiteActivity alloc] init
-                                               ];
-    NSArray *applicationActivities = @[tvSiteActivity];
-    
-    UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:applicationActivities];    
-    [self presentViewController:activityView animated:YES completion:^{
-    }];
+    if (_watchingProgram && _watchingProgram.title) {
+        WZActivityItemProvider *provider = [[WZActivityItemProvider alloc] initWithPlaceholderItem:_watchingProgram];
+        
+        NSArray *activityItems = @[_watchingProgram.title];
+        activityItems = @[provider];
+        
+        WZGaraponTvSiteActivity *tvSiteActivity = [[WZGaraponTvSiteActivity alloc] init
+                                                   ];
+        NSArray *applicationActivities = @[tvSiteActivity];
+        
+        UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:applicationActivities];    
+        [self presentViewController:activityView animated:YES completion:^{
+        }];
+    } else {
+#if DEBUG
+        NSArray *activityItems = @[@"ActivityMessage"];
+        UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+        [self presentViewController:activityView animated:YES completion:^{
+        }];
+#endif
+    }
 }
 
 - (void)updateHistoryOfWathingProgram
@@ -801,6 +814,13 @@
 {
     [super playerDidBeginPlayback];
     [self refreshControlButtons];
+    
+    // hack: ignore over 24h
+    if (_playingProgram.duration > 3600*24) {
+        _videoPlayerView.estimateDuration = 0.0f;
+    } else {
+        _videoPlayerView.estimateDuration = _playingProgram.duration;
+    }
 }
 
 - (void)playerDidEndPlayback
@@ -824,12 +844,17 @@
 
 - (void)refreshControlButtons
 {
-    if (_watchingProgram.descriptionText.length > 0) {
-        [_videoPlayerView enableInfoControls];
+    if (_watchingProgram) {
+        if (_watchingProgram.isProxy) {
+            [_videoPlayerView disableInfoControls];
+        } else {
+            [_videoPlayerView enableInfoControls];
+        }
+        _favButton.selected = _watchingProgram.favorite == 1;
     } else {
         [_videoPlayerView disableInfoControls];
+        _favButton.selected = NO;
     }
-    _favButton.selected = _watchingProgram.favorite == 1;
 }
 
 - (void)loadingProgramWithGtvid:(NSString *)gtvid
@@ -882,6 +907,7 @@
                     WZGaraponTvProgram *item = items[0];
                     if (item) {
                         [tvProgram mergeFrom:item];
+                        tvProgram.isProxy = NO;
                         [me refreshControlButtons];
                     }
                 }
@@ -903,22 +929,21 @@
 - (void)presentModalDetailViewController
 {
     WZVideoDetailViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"videoDetailViewController"];
-    
     viewController.program = _playingProgram;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        viewController.modalPresentationStyle = UIModalPresentationFormSheet;
-        viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;        
-    } else {
-        viewController.modalPresentationStyle = UIModalPresentationFullScreen;
-        viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    }
+
+    MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:viewController];
     
-    [self presentViewController:viewController animated:YES completion:^{
+    formSheet.transitionStyle = MZFormSheetTransitionStyleSlideFromBottom;
+    formSheet.presentedFormSheetSize = CGSizeMake(400, 280);
+    formSheet.shouldCenterVertically = YES;
+    formSheet.shouldDismissOnBackgroundViewTap = YES;
+    
+    [formSheet presentAnimated:YES completionHandler:^(UIViewController *presentedFSViewController) {
+        
     }];
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        viewController.view.superview.bounds = CGRectMake(0, 0, 400, 300);
-    }
+//    [self presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+//    }];
 }
 
 #pragma mark - Login
@@ -945,7 +970,6 @@
     [userDefault setObject:_garaponTv.host forKey:@"gtv_address"];
     
     [self showSideMenuWithReset:YES];
-    
     [self executeInitialURL];
 }
 
@@ -1069,9 +1093,13 @@
             [me performBlock:^(id sender) {
                 [me hideGaraponIndicatorForView:hudView];
                 [me didLoginGaraponTv];
-                [_loginViewController dismissViewControllerAnimated:YES completion:^{
-                    _loginViewController = nil;
+                
+                [me dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+                     _loginViewController = nil;
                 }];
+//                [_loginViewController dismissViewControllerAnimated:YES completion:^{
+//                    _loginViewController = nil;
+//                }];
             } afterDelay:1.0f];
         }
     }];
@@ -1092,29 +1120,33 @@
 
 - (void)presentModalLoginViewController
 {
+    __weak WZVideoViewController *me = self;
+    
     if (!_loginViewController) {
         _loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+        _loginViewController.loginButtonClickedHandler = ^(WZLoginViewController *viewController) {
+            [me loginGaraponWebWithUsername:viewController.usernameField.text password:viewController.passwordField.text];
+        };
     }
-    
-    __weak WZVideoViewController *me = self;
-    _loginViewController.loginButtonClickedHandler = ^(WZLoginViewController *viewController) {
-        [me loginGaraponWebWithUsername:viewController.usernameField.text password:viewController.passwordField.text];
-    };
     
     [_loginViewController setEnableControls:YES];
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        _loginViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-        _loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        [self presentViewController:_loginViewController animated:YES completion:^{
-        }];
-        _loginViewController.view.superview.bounds = CGRectMake(0, 0, 400, 300);
-    } else {
-        _loginViewController.modalPresentationStyle = UIModalPresentationFullScreen;
-        _loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        [self presentViewController:_loginViewController animated:YES completion:^{
-        }];
-    }
+    MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:_loginViewController];
+
+    formSheet.transitionStyle = MZFormSheetTransitionStyleSlideFromBottom;
+    formSheet.presentedFormSheetSize = CGSizeMake(400, 280);
+    formSheet.landscapeTopInset = 100;
+    formSheet.portraitTopInset = 100;
+    formSheet.shouldCenterVerticallyWhenKeyboardAppears = YES;
+    
+    [self presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+        
+    }];
+//    _loginViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+//    _loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//    [self presentViewController:_loginViewController animated:YES completion:^{
+//    }];
+//    _loginViewController.view.superview.bounds = CGRectMake(0, 0, 400, 300);
 }
 
 @end
