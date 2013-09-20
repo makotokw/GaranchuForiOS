@@ -4,3 +4,53 @@
 
   Copyright (c) 2013 makoto_kw. All rights reserved.
 */
+
+
+"AlertCaption" = "Garanchu";
+"OkButtonLabel" = "了解";
+"CancelButtonLabel" = "キャンセル";
+
+"LoginGaraponIdLabel" = "ガラポンID";
+"LoginPasswordLabel" = "パスワード";
+"LoginButtonLabel" = "ログイン";
+
+
+"SettingsViewTitle" = "設定";
+
+"HeaderProgramDateTimeFormat" = "yyyy/MM/dd HH:mm";
+"HeaderProgramTitleFormat" = "%@ (%@)";
+
+
+"ClearButtonLabel" = "削除";
+"ClearSuccessMessage" = "削除しました";
+"ClearCanNotErrorMessage" = "削除できませんでした";
+"ClearWatchHistoryAlertCaption" = "視聴履歴の削除";
+"ClearWatchHistoryConfirmMessageFormat" = "視聴履歴 %d 件を削除してよろしいですか？視聴履歴には前回再生位置も含まれます";
+"ClearNoWatchHistoryErrorMessage" = "視聴履歴が無いか削除済みです";
+"ClearSearchHistoryAlertCaption" = "検索履歴の削除";
+"ClearSearchHistoryConfirmMessageFormat" = "検索履歴 %d 件を削除してよろしいですか？";
+"ClearNoSearchHistoryErrorMessage" = "検索履歴が無いか削除済みです";
+
+"GaraponTv2NotSupported" = "参号機以前はAPIの互換性がないためサポートしていません";
+
+"IndicatorLoadProgram" = "番組を読み込み中...";
+"IndicatorLoginGaraponWeb" = "ガラポンWebに認証中...";
+"IndicatorLoginGaraponTv" = "ガラポンTVに接続中...";
+"IndicatorLogoutGaraponTv" = "ガラポンTVから切断中...";
+
+"IndexMenuRootTitle" = "ガラポンTV";
+"IndexMenuSearchResultTitle" = "検索";
+"IndexMenuProgramCellDateLocale" = "ja_JP";
+"IndexMenuProgramCellDateFormat" = "M/d(EEE) HH:mm";
+"IndexMenuProgramCellDurationFormat" = "%d分";
+"IndexMenuLoading" = "読み込み中...";
+
+"IndexMenuNoProgram" = "番組が見つかりません";
+"IndexMenuNoWatchHistory" = "履歴はありません";
+
+"ActivityTwitterSuffix" = " #ガラポンTV";
+
+//WZGarancuLocalizedString(@"ActivityTwitterSuffix")
+
+
+

@@ -17,6 +17,8 @@
     #import <WZGarapon/WZGarapon.h>
 #endif
 
+FOUNDATION_EXPORT NSString *MYLocalizedString(NSString *key);
+
 #define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] \
 compare:v options:NSNumericSearch] == NSOrderedAscending)
 

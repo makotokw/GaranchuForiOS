@@ -62,14 +62,6 @@
 @synthesize garaponWeb = _garaponWeb;
 @synthesize watchingProgram = _watchingProgram;
 
-+ (NSString *)formatDateTime:(NSTimeInterval)timestamp
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
-    return [dateFormatter stringFromDate:date];
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -81,8 +73,6 @@
 
 - (void)viewDidLoad
 {
-    WZLogD(@"WZVideoViewController/viewDidLoad");
-    
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor blackColor];
@@ -146,7 +136,6 @@
 
 - (void)aplicationDidBecomeActive:(NSNotification *)notification
 {
-    WZLogD(@"WZVideoViewController/aplicationDidBecomeActive");
     [self executeInitialURL];
 }
 
@@ -219,9 +208,9 @@
 {
     if (program) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm"];
+        [dateFormatter setDateFormat:WZGarancuLocalizedString(@"HeaderProgramDateTimeFormat")];
         NSString *dateString =  [dateFormatter stringFromDate:program.startdate];
-        NSString *headerContentTitle = [NSString stringWithFormat:@"%@ (%@)", program.title, dateString];
+        NSString *headerContentTitle = [NSString stringWithFormat:WZGarancuLocalizedString(@"HeaderProgramTitleFormat"), program.title, dateString];
         [_stageView setContentTitle:headerContentTitle];
     } else {
         [_stageView setContentTitle:nil];
@@ -350,7 +339,7 @@
 {
 	if (!_appSettingsViewController) {
 		_appSettingsViewController = [[IASKAppSettingsViewController alloc] init];
-        _appSettingsViewController.title = @"設定";
+        _appSettingsViewController.title = WZGarancuLocalizedString(@"SettingsViewTitle");
         _appSettingsViewController.showDoneButton = YES;
 		_appSettingsViewController.delegate = self;
 	}
@@ -370,20 +359,31 @@
     NSUInteger count = [WatchHistory count];
     
     if (count > 0) {
-        NSString *message = [NSString stringWithFormat:@"視聴履歴 %d 件を削除してよろしいですか？視聴履歴には前回再生位置も含まれます", count];
-        [WZAlertView showAlertViewWithTitle:@"視聴履歴の削除" message:message cancelButtonTitle:@"キャンセル" otherButtonTitles:@[@"削除"] handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+        NSString *message = [NSString stringWithFormat:WZGarancuLocalizedString(@"ClearWatchHistoryConfirmMessageFormat"), count];
+        [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
+                                    message:message
+                          cancelButtonTitle:WZGarancuLocalizedString(@"CancelButtonLabel")
+                          otherButtonTitles:@[WZGarancuLocalizedString(@"ClearButtonLabel")]
+                                    handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {                
                 NSUInteger deleteCount = [WatchHistory deleteAll];
-                NSString *deleteMessage = deleteCount > 0 ? @"削除しました" : @"削除できませんでした";
-                [WZAlertView showAlertViewWithTitle:@"視聴履歴の削除" message:deleteMessage cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+                NSString *deleteMessage = deleteCount > 0 ? WZGarancuLocalizedString(@"ClearSuccessMessage") : WZGarancuLocalizedString(@"ClearCanNotErrorMessage");
+                [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
+                                            message:deleteMessage
+                                  cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
+                                  otherButtonTitles:nil
+                                            handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
                 }];
             }
         }];
     } else {
-        [WZAlertView showAlertViewWithTitle:@"視聴履歴の削除" message:@"視聴履歴が無いか削除済みです" cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+        [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
+                                    message:WZGarancuLocalizedString(@"ClearNoWatchHistoryErrorMessage")
+                          cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
+                          otherButtonTitles:nil
+                                    handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
         }];
     }
-
 }
 
 - (void)clearSearchHistory
@@ -392,17 +392,29 @@
     NSUInteger count = list.items.count;
     
     if (count > 0) {
-        NSString *message = [NSString stringWithFormat:@"検索履歴 %d 件を削除してよろしいですか？", count];
-        [WZAlertView showAlertViewWithTitle:@"検索履歴の削除" message:message cancelButtonTitle:@"キャンセル" otherButtonTitles:@[@"削除"] handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+        NSString *message = [NSString stringWithFormat:WZGarancuLocalizedString(@"ClearSearchHistoryConfirmMessageFormat"), count];
+        [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
+                                    message:message
+                          cancelButtonTitle:WZGarancuLocalizedString(@"CancelButtonLabel")
+                          otherButtonTitles:@[WZGarancuLocalizedString(@"ClearButtonLabel")]
+                                    handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 NSUInteger deleteCount = [list deleteItems];
-                NSString *deleteMessage = deleteCount > 0 ? @"削除しました" : @"削除できませんでした";
-                [WZAlertView showAlertViewWithTitle:@"検索履歴の削除" message:deleteMessage cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+                NSString *deleteMessage = deleteCount > 0 ? WZGarancuLocalizedString(@"ClearSuccessMessage") : WZGarancuLocalizedString(@"ClearCanNotErrorMessage");
+                [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
+                                            message:deleteMessage
+                                  cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
+                                  otherButtonTitles:nil
+                                            handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
                 }];
             }
         }];
     } else {
-        [WZAlertView showAlertViewWithTitle:@"検索履歴の削除" message:@"検索履歴が無いか削除済みです" cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+        [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
+                                    message:WZGarancuLocalizedString(@"ClearNoSearchHistoryErrorMessage")
+                          cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
+                          otherButtonTitles:nil
+                                    handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
         }];
     }
     
@@ -618,7 +630,7 @@
     _watchingProgram = program;
     _initialPlaybackPosition = 0.0;
     if (program) {        
-        [self showProgressWithText:@"Loading..."];
+        [self showProgressWithText:WZGarancuLocalizedString(@"IndicatorLoadProgram")];
         NSString *mediaUrl = [_garaponTv httpLiveStreamingURLStringWithProgram:program];        
         [self setContentTitleWithProgram:program];
         [self setContentURL:[NSURL URLWithString:mediaUrl]];
@@ -710,7 +722,7 @@
 {
     __weak WZVideoViewController *me = self;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:me.view animated:YES];
-    [hud indicatorWhiteWithMessage: @"ガラポンTVにログイン中..."];
+    [hud indicatorWhiteWithMessage:WZGarancuLocalizedString(@"IndicatorLoginGaraponTv")];
     
     WZGaranchuUser *user = [WZGaranchuUser defaultUser];
     [_garaponTv loginWithLoginId:user.garaponId password:user.password completionHandler:^(NSError *error) {
@@ -733,7 +745,7 @@
     __weak UIView *hudView = loginViewController.view ? loginViewController.view : me.view;
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:hudView animated:YES];
-    [hud indicatorWhiteWithMessage: @"ガラポンTVを検索しています..."];
+    [hud indicatorWhiteWithMessage:WZGarancuLocalizedString(@"IndicatorLoginGaraponWeb")];
     
     [_loginViewController setEnableControls:NO];
     [[WZGaranchuUser defaultUser] getGaraponTvAddress:me.garaponWeb
@@ -743,9 +755,10 @@
                                         
                                         if (error) {
                                             [MBProgressHUD hideHUDForView:loginViewController.view animated:YES];
-                                            [WZAlertView showAlertViewWithTitle:@""
+                                            [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"AlertCaption")
                                                                         message:error.localizedDescription
-                                                              cancelButtonTitle:@"OK" otherButtonTitles:nil
+                                                              cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
+                                                              otherButtonTitles:nil
                                                                         handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
                                                                             [loginViewController setEnableControls:YES];
                                                                         }];
@@ -779,9 +792,9 @@
     // block old devices
     float gtvVersion = _garaponTv.gtvVersion.floatValue;
     if (gtvVersion > 0 && gtvVersion < 3.0) {
-        [WZAlertView showAlertViewWithTitle:@""
-                                    message:@"参号機以前はAPIの互換性がないためサポートしていません"
-                          cancelButtonTitle:@"OK"
+        [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"AlertCaption")
+                                    message:WZGarancuLocalizedString(@"GaraponTv2NotSupported")
+                          cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                           otherButtonTitles:nil
                                     handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
                                         ;
@@ -794,15 +807,15 @@
     __weak WZLoginViewController *loginViewController = _loginViewController;
     __weak UIView *hudView = loginViewController.view ? loginViewController.view : me.view;
     
-    [self showGaraponIndicatorWhiteWithMessage:@"ガラポンTVにログイン中..." inView:hudView];
+    [self showGaraponIndicatorWhiteWithMessage:WZGarancuLocalizedString(@"IndicatorLoginGaraponTv") inView:hudView];
         
     WZGaranchuUser *user = [WZGaranchuUser defaultUser];
     [_garaponTv loginWithLoginId:user.garaponId password:user.password completionHandler:^(NSError *error) {
         if (error) {
             [MBProgressHUD hideHUDForView:hudView animated:YES];
-            [WZAlertView showAlertViewWithTitle:@""
+            [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"AlertCaption")
                                         message:error.localizedDescription
-                              cancelButtonTitle:@"OK"
+                              cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                               otherButtonTitles:nil
                                         handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
                                             ;
@@ -832,7 +845,7 @@
 {
     __weak WZVideoViewController *me = self;    
     if (_garaponTv) {
-        [self showGaraponIndicatorWhiteWithMessage:@"ログアウトしています..." inView:self.view];
+        [self showGaraponIndicatorWhiteWithMessage:WZGarancuLocalizedString(@"IndicatorLogoutGaraponTv") inView:self.view];
         [_garaponTv logoutWithCompletionHandler:^(NSError *error) {
             [me hideGaraponIndicatorForView:me.view];            
             [me didLogoutGaraponTv];

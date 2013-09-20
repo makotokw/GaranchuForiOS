@@ -6,6 +6,7 @@
 //
 
 #import "WZLoginViewController.h"
+#import "WZGaranchu.h"
 #import "WZGaranchuUser.h"
 
 #import <QuartzCore/QuartzCore.h>
@@ -52,7 +53,7 @@
     
     _usernameField.backgroundColor    = whiteColor;
     _usernameField.layer.cornerRadius = 3.0f;
-    _usernameField.placeholder        = @"GaraponID";
+    _usernameField.placeholder        = WZGarancuLocalizedString(@"LoginGaraponIdLabel");
     _usernameField.leftViewMode       = UITextFieldViewModeAlways;
     UIView *leftView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     _usernameField.leftView = leftView1;
@@ -65,7 +66,7 @@
     
     _passwordField.backgroundColor    = whiteColor;
     _passwordField.layer.cornerRadius = 3.0f;
-    _passwordField.placeholder        = @"Password";
+    _passwordField.placeholder        = WZGarancuLocalizedString(@"LoginPasswordLabel");
     _passwordField.leftViewMode       = UITextFieldViewModeAlways;
     UIView *leftView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     _passwordField.leftView = leftView2;
@@ -77,7 +78,6 @@
     _passwordField.clearButtonMode = UITextFieldViewModeAlways;
     _passwordField.delegate = self;
     
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(textFieldDidChange:)
                                                  name:UITextFieldTextDidChangeNotification
@@ -86,7 +86,7 @@
     _loginButton.backgroundColor    = darkColor;
     _loginButton.layer.cornerRadius = 3.0f;
     _loginButton.titleLabel.font    = [UIFont fontWithName:boldFontName size:20.0f];
-    [_loginButton setTitle:@"LOGIN" forState:UIControlStateNormal];
+    [_loginButton setTitle:WZGarancuLocalizedString(@"LoginButtonLabel") forState:UIControlStateNormal];
     [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_loginButton setTitleColor:[UIColor silverColor] forState:UIControlStateDisabled];
     [_loginButton setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.5f] forState:UIControlStateHighlighted];
@@ -132,84 +132,6 @@
         _loginButtonClickedHandler(self);
     }
 }
-
-#define kOFFSET_FOR_KEYBOARD 80.0
-
-- (void)keyboardWillShow
-{
-    // Animate the current view out of the way
-    if (self.view.frame.origin.y >= 0)
-    {
-        [self setViewMovedUp:YES];
-    }
-    else if (self.view.frame.origin.y < 0)
-    {
-        [self setViewMovedUp:NO];
-    }
-}
-
-- (void)keyboardWillHide
-{
-    if (self.view.frame.origin.y >= 0)
-    {
-        [self setViewMovedUp:YES];
-    }
-    else if (self.view.frame.origin.y < 0)
-    {
-        [self setViewMovedUp:NO];
-    }
-}
-
-// method to move the view up/down whenever the keyboard is shown/dismissed
-- (void)setViewMovedUp:(BOOL)movedUp
-{
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3]; // if you want to slide up the view
-    
-    CGRect rect = self.view.frame;
-    if (movedUp)
-    {
-        // 1. move the view's origin up so that the text field that will be hidden come above the keyboard
-        // 2. increase the size of the view so that the area behind the keyboard is covered up.
-        rect.origin.y    -= kOFFSET_FOR_KEYBOARD;
-        rect.size.height += kOFFSET_FOR_KEYBOARD;
-    }
-    else
-    {
-        // revert back to the normal state.
-        rect.origin.y    += kOFFSET_FOR_KEYBOARD;
-        rect.size.height -= kOFFSET_FOR_KEYBOARD;
-    }
-    self.view.frame = rect;
-    
-    [UIView commitAnimations];
-}
-
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    // register for keyboard notifications
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(keyboardWillShow)
-//                                                 name:UIKeyboardWillShowNotification
-//                                               object:nil];
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(keyboardWillHide)
-//                                                 name:UIKeyboardWillHideNotification
-//                                               object:nil];
-//}
-//
-//- (void)viewWillDisappear:(BOOL)animated
-//{
-//    // unregister for keyboard notifications while not visible.
-//    [[NSNotificationCenter defaultCenter] removeObserver:self
-//                                                    name:UIKeyboardWillShowNotification
-//                                                  object:nil];
-//    
-//    [[NSNotificationCenter defaultCenter] removeObserver:self
-//                                                    name:UIKeyboardWillHideNotification
-//                                                  object:nil];
-//}
 
 - (void)refreshLoginButton
 {

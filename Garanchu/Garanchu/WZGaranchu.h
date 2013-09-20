@@ -8,6 +8,8 @@
 #import <Foundation/Foundation.h>
 #import <WZGarapon/WZGarapon.h>
 
+FOUNDATION_EXPORT NSString *WZGarancuLocalizedString(NSString *key);
+
 @interface WZGaranchu : NSObject
 
 @property (readonly) WZGaraponWeb *garaponWeb;

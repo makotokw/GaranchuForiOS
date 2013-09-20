@@ -11,7 +11,6 @@
 		8F59FC511791F73C00EEA418 /* WZVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC501791F73C00EEA418 /* WZVideoViewController.m */; };
 		8F59FC541792C21E00EEA418 /* WZGaranchuUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC531792C21E00EEA418 /* WZGaranchuUser.m */; };
 		8F59FC571792CC2F00EEA418 /* WZGaranchu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC561792CC2E00EEA418 /* WZGaranchu.m */; };
-		8F59FC5B1792DF2E00EEA418 /* WZMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC5A1792DF2E00EEA418 /* WZMenuViewController.m */; };
 		8F59FC5E1792DFA700EEA418 /* WZVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC5D1792DFA700EEA418 /* WZVideoPlayerView.m */; };
 		8F59FC611793868E00EEA418 /* WZAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC601793868E00EEA418 /* WZAlertView.m */; };
 		8F59FCB11793D77B00EEA418 /* WZNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB01793D77B00EEA418 /* WZNaviViewController.m */; };
@@ -77,8 +76,6 @@
 		8F59FC531792C21E00EEA418 /* WZGaranchuUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZGaranchuUser.m; sourceTree = "<group>"; };
 		8F59FC551792CC2E00EEA418 /* WZGaranchu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZGaranchu.h; sourceTree = "<group>"; };
 		8F59FC561792CC2E00EEA418 /* WZGaranchu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZGaranchu.m; sourceTree = "<group>"; };
-		8F59FC591792DF2D00EEA418 /* WZMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZMenuViewController.h; sourceTree = "<group>"; };
-		8F59FC5A1792DF2E00EEA418 /* WZMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZMenuViewController.m; sourceTree = "<group>"; };
 		8F59FC5C1792DFA700EEA418 /* WZVideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZVideoPlayerView.h; sourceTree = "<group>"; };
 		8F59FC5D1792DFA700EEA418 /* WZVideoPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZVideoPlayerView.m; sourceTree = "<group>"; };
 		8F59FC5F1793868E00EEA418 /* WZAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZAlertView.h; sourceTree = "<group>"; };
@@ -223,8 +220,6 @@
 				8FAFF08017E757D1008CDA2F /* WZVideoDetailViewController.m */,
 				8F935BCA1791F570001FFE01 /* WZLoginViewController.h */,
 				8F935BCB1791F570001FFE01 /* WZLoginViewController.m */,
-				8F59FC591792DF2D00EEA418 /* WZMenuViewController.h */,
-				8F59FC5A1792DF2E00EEA418 /* WZMenuViewController.m */,
 				8F59FC551792CC2E00EEA418 /* WZGaranchu.h */,
 				8F59FC561792CC2E00EEA418 /* WZGaranchu.m */,
 				8F59FC521792C21E00EEA418 /* WZGaranchuUser.h */,
@@ -471,7 +466,6 @@
 				8F59FC511791F73C00EEA418 /* WZVideoViewController.m in Sources */,
 				8F59FC541792C21E00EEA418 /* WZGaranchuUser.m in Sources */,
 				8F59FC571792CC2F00EEA418 /* WZGaranchu.m in Sources */,
-				8F59FC5B1792DF2E00EEA418 /* WZMenuViewController.m in Sources */,
 				8F59FC5E1792DFA700EEA418 /* WZVideoPlayerView.m in Sources */,
 				8F59FC611793868E00EEA418 /* WZAlertView.m in Sources */,
 				8F59FCB11793D77B00EEA418 /* WZNaviViewController.m in Sources */,

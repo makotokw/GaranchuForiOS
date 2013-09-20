@@ -138,7 +138,7 @@
     _menuContainerView.backgroundColor =[UIColor clearColor];
     _menuHeaderView.backgroundColor = _overlayBackgroundColor;
 //    _menuContentView.backgroundColor = [UIColor clearColor];
-    _menuContentView.backgroundColor = [_overlayBackgroundColor colorWithAlphaComponent:0.2];
+    _menuContentView.backgroundColor = [_overlayBackgroundColor colorWithAlphaComponent:0.4];
     
     [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tv.png"] forState:UIControlStateNormal];
     [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tvActive.png"] forState:UIControlStateHighlighted];
@@ -282,12 +282,10 @@
     __weak WZStageView *me = self;
     [UIView animateWithDuration:0.50f
                      animations:^{
-                         NSLog(@"showSideMenuWithReset:animations");
                          _menuContainerView.alpha = 1.0;
                          _menuContainerView.frame = frame;
                      }
                      completion:^(BOOL finished) {
-                         NSLog(@"showSideMenuWithReset:completion");
                          if (finished) {
                              _menuButton.selected = YES;
                              [me resetMenuContainerPosition];
@@ -298,15 +296,6 @@
 
 - (void)hideSideMenuWithReset:(BOOL)reset
 {
-    NSLog(@"hideSideMenuWithReset:origin:(%lf, %lf), size:%lfx%lf, center:(%lf, %lf)",
-          _menuContainerView.frame.origin.x,
-          _menuContainerView.frame.origin.y,
-          _menuContainerView.frame.size.width,
-          _menuContainerView.frame.size.height,
-          _menuContainerView.center.x,
-          _menuContainerView.center.y
-          );
-    
     _menuButton.selected = NO;
     
     // reset base position
@@ -320,11 +309,9 @@
     __weak WZStageView *me = self;
     [UIView animateWithDuration:0.5f
                      animations:^{
-                         NSLog(@"hideSideMenuWithReset:animations");
                          _menuContainerView.frame = frame;
                      }
                      completion:^(BOOL finished) {
-                         NSLog(@"hideSideMenuWithReset:completion");
                          if (finished) {
                              _menuContainerView.hidden = YES;
                              _menuButton.selected = NO;

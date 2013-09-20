@@ -23,6 +23,7 @@
     NSManagedObjectContext *context = data.managedObjectContext;
     
     NSSet *items = self.items;
+    count = items.count;
     for (NSManagedObject *item in items) {
         [context deleteObject:item];
     }
@@ -31,8 +32,7 @@
     if (![context save:&error]) {
         // Handle the error.
         NSLog(@"Error: %@", error);
-    } else {
-        count = items.count;
+        count = 0;
     }
     return count;
 }

@@ -75,11 +75,11 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     
     switch (_indexType) {
         case WZSearchResultGaranchuIndexType:
-            return @"検索";
+            return WZGarancuLocalizedString(@"IndexMenuSearchResultTitle");
         default:
             break;
     }
-    return @"ガラポンTV";
+    return WZGarancuLocalizedString(@"IndexMenuRootTitle");
 }
 
 - (void)viewDidLoad
@@ -96,8 +96,8 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     _placeHolderImage = [UIImage imageNamed:@"GaranchuResources.bundle/thumbnail.png"];
     
     _programCellDateFormatter = [[NSDateFormatter alloc] init];
-    _programCellDateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
-    [_programCellDateFormatter setDateFormat:@"M/d(EEE) HH:mm"];
+    _programCellDateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:WZGarancuLocalizedString(@"IndexMenuProgramCellDateLocale")];
+    [_programCellDateFormatter setDateFormat:WZGarancuLocalizedString(@"IndexMenuProgramCellDateFormat")];
 //    _cellBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
 //    _oddCellBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
     
@@ -273,7 +273,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 {
     if (_items.count == 0) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
-        [hud indicatorWhiteWithMessage: @"Loading..."];
+        [hud indicatorWhiteWithMessage:WZGarancuLocalizedString(@"IndexMenuLoading")];
     }
     __weak WZIndexMenuViewController *me = self;
     [_garaponTv channelWithCompletionHandler:^(NSDictionary *response, NSError *error) {
@@ -308,7 +308,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     if (!hud) {
         hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
     }
-    [hud indicatorWhiteWithMessage: @"Loading..."];
+    [hud indicatorWhiteWithMessage:WZGarancuLocalizedString(@"IndexMenuLoading")];
 }
 
 - (void)showTextHUDWithMessage:(NSString *)message
@@ -349,7 +349,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     [self performBlock:^(id sender) {
         _items = [me watchHistoryItems];
         if (_items.count == 0) {
-            [me showTextHUDWithMessage: @"履歴はありません"];
+            [me showTextHUDWithMessage:WZGarancuLocalizedString(@"IndexMenuNoWatchHistory")];
         } else {
             [me hideHUD];
         }
@@ -462,7 +462,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                       }
                       
                       if (_items.count == 0 && items.count == 0) {
-                          [me showTextHUDWithMessage: @"番組が見つかりません"];
+                          [me showTextHUDWithMessage:WZGarancuLocalizedString(@"IndexMenuNoProgram")];
                       } else {
                           [me hideHUD];
                       }
@@ -639,7 +639,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         if (item.duration > 3600*24) {
             durationLabel.text = nil;
         } else {
-            durationLabel.text = [NSString stringWithFormat:@"%d分", (int)item.duration/60];
+            durationLabel.text = [NSString stringWithFormat:WZGarancuLocalizedString(@"IndexMenuProgramCellDurationFormat"), (int)item.duration/60];
         }
         dateLabel.text = [_programCellDateFormatter stringFromDate:item.startdate];
         

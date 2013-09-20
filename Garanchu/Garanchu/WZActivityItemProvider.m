@@ -6,6 +6,7 @@
 //
 
 #import "WZActivityItemProvider.h"
+#import "WZGaranchu.h"
 
 @implementation WZActivityItemProvider
 
@@ -34,7 +35,7 @@
     NSString *suffix = @"";
     
     if ([activityType isEqualToString:UIActivityTypePostToTwitter]) {
-        suffix = @" #ガラポンTV";
+        suffix = WZGarancuLocalizedString(@"ActivityTwitterSuffix");
     }
     return [NSString stringWithFormat:@"%@%@ %@%@", prefix, _program.title, _program.socialURL, suffix];
 }

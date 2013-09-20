@@ -6,6 +6,8 @@
 //
 
 #import "WZAlertView.h"
+#import "WZGaranchu.h"
+
 #import <BlocksKit/UIAlertView+BlocksKit.h>
 
 @implementation WZAlertView
@@ -42,7 +44,11 @@
                                                              error.localizedRecoverySuggestion
                                                              ] : error.localizedDescription;
     
-    WZAlertView *alertView = [[WZAlertView alloc] initWithTitle:@"Garanchu" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    WZAlertView *alertView = [[WZAlertView alloc] initWithTitle:WZGarancuLocalizedString(@"AlertCaption")
+                                                        message:message
+                                                       delegate:nil
+                                              cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
+                                              otherButtonTitles:nil];
     [alertView show];
 }
 

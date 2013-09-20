@@ -10,6 +10,11 @@
 #import <SDWebImage/SDImageCache.h>
 #import <TestFlightSDK/TestFlight.h>
 
+NSString *WZGarancuLocalizedString(NSString *key)
+{
+    return NSLocalizedString(key, nil);
+}
+
 @implementation WZGaranchu
 
 {
