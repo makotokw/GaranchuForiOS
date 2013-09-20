@@ -33,7 +33,7 @@
     
 	// Do any additional setup after loading the view.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        self.view.backgroundColor = [UIColor blackColor];
+//        self.view.backgroundColor = [UIColor blackColor];
         self.textView.textColor = [UIColor cloudsColor];
         self.textView.backgroundColor = [UIColor clearColor];
     }
@@ -46,7 +46,7 @@
     self.textView.text = [NSString stringWithFormat:@"%@\n\n%@", title, descriptionText];
 }
 
-- (void) viewDidAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 }

@@ -53,6 +53,30 @@
     [_shareButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/share.png"] forState:UIControlStateNormal];
 }
 
+- (void)resetIdleTimer
+{
+    // Disable auto hide to watch channel list
+}
+
+- (void)toggleOverlayWithDuration:(NSTimeInterval)duration
+{
+    __weak WZVideoPlayerView *me = self;
+    [UIView animateWithDuration:duration
+                     animations:^{
+                         if (me.headerView.alpha == 0.0) {
+                             me.headerView.alpha = 1.0;
+                             me.controlView.alpha = 1.0;
+                         } else {
+                             me.headerView.alpha = 0.0;
+                             me.controlView.alpha = 0.0;
+                         }
+                     }
+                     completion:^(BOOL finished) {
+                         if (finished) {
+                         }
+                     }];
+}
+
 - (void)enableControls
 {
     [super enableControls];

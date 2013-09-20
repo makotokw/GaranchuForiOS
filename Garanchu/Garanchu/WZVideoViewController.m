@@ -7,13 +7,12 @@
 
 #import "WZVideoViewController.h"
 #import "WZGaraponTabController.h"
-// obsolated
-//#import "WZMenuViewController.h"
 #import "WZIndexMenuViewController.h"
 #import "WZNaviViewController.h"
 #import "WZLoginViewController.h"
 #import "WZVideoDetailViewController.h"
 #import "WZSearchSuggestViewController.h"
+#import "WZStageView.h"
 #import "WZAlertView.h"
 #import "WZVideoPlayerView.h"
 #import "WZGaranchu.h"
@@ -41,21 +40,8 @@
 @implementation WZVideoViewController
 
 {
-    UIColor *_overlayBackgroundColor;
-
-    IBOutlet UIView *_headerView;
-    IBOutlet UILabel *_headerTitleLabel;
-    IBOutlet UIButton *_menuButton;
-    
+    IBOutlet WZStageView *_stageView;
     IBOutlet WZVideoPlayerView *_videoPlayerView;
-    IBOutlet UIButton *_favButton;
-    IBOutlet UIView *_menuContainerView;
-    IBOutlet UIView *_menuHeaderView;
-    IBOutlet UIView *_menuContentView;
-    IBOutlet UIButton *_menuTvButton;
-    IBOutlet UIButton *_menuSearchButton;
-    IBOutlet UIButton *_menuOptionButton;
-    IBOutlet UIView *_controlView;
     
     WZGaraponTabController *_tabController;
     WZNaviViewController *_naviViewController;
@@ -64,7 +50,6 @@
     WZLoginViewController *_loginViewController;
     IASKAppSettingsViewController *_appSettingsViewController;
     UIPopoverController *_currentPopoverController;
-    UIPanGestureRecognizer *_menuPanGesture;
     
     BOOL _isLogined;
     BOOL _isSuspendedPause;
@@ -76,6 +61,14 @@
 @synthesize garaponTv = _garaponTv;
 @synthesize garaponWeb = _garaponWeb;
 @synthesize watchingProgram = _watchingProgram;
+
++ (NSString *)formatDateTime:(NSTimeInterval)timestamp
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
+    return [dateFormatter stringFromDate:date];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -97,7 +90,6 @@
     _garaponWeb = [WZGaranchu current].garaponWeb;
     _garaponTv = [WZGaranchu current].garaponTv;
     _isLogined = NO;
-    _overlayBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(didSelectProgram:)
@@ -111,15 +103,14 @@
                                             selector:@selector(aplicationDidBecomeActive:)
                                                 name:UIApplicationDidBecomeActiveNotification
                                               object:nil];
+    
+    [_stageView setUpSubViews];
 
-    [self appendHeaderView];
-    [self appendNaviView];
-    [self appendVideoView];
-    [self appendControlView];
+    [self setUpTab];
     [self loadingProgram:nil reload:NO];
     
     // hiddein all subView until login
-    [self hideControlsNotLogin];
+    [_stageView hideControlsNotLogin];
         
     __weak WZVideoViewController *me = self;
     WZGaranchuUser *user = [WZGaranchuUser defaultUser];
@@ -151,9 +142,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    
-    // remove the gesture recognizers
-    [_menuContainerView removeGestureRecognizer:_menuPanGesture];
 }
 
 - (void)aplicationDidBecomeActive:(NSNotification *)notification
@@ -162,12 +150,90 @@
     [self executeInitialURL];
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    // This method will be called only after device rotation is finished
+    // Can be used to reanchor popovers
+    if (_currentPopoverController) {
+        CGRect rect = [_stageView.optionButton convertRect:_stageView.optionButton.bounds toView:self.view];
+        [_currentPopoverController presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:NO];
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
+- (void)setUpTab
+{
+    _tabController = [[WZGaraponTabController alloc] init];
+    
+    _naviViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"naviViewController"];
+    [self addChildViewController:_naviViewController];
+    [_naviViewController didMoveToParentViewController:self];
+    [_stageView addSubMenuView:_naviViewController.view];
+    
+    // setup serach result ViewController
+    _searchNaviViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"naviViewController"];
+    [self addChildViewController:_searchNaviViewController];
+    [_searchNaviViewController didMoveToParentViewController:self];
+    [_stageView addSubMenuView:_searchNaviViewController.view];
+    
+    _searchNaviViewController.view.hidden = YES;
+    _searchResultViewController = (WZIndexMenuViewController *)(_searchNaviViewController.topViewController);
+    _searchResultViewController.indexType = WZSearchResultGaranchuIndexType;
+    
+    [_tabController addTabWithId:WZGaraponTabGaraponTv button:_stageView.tvButton viewController:_naviViewController];
+    [_tabController addTabWithId:WZGaraponTabSearch button:_stageView.searchButton viewController:_searchNaviViewController];
+    [_tabController addTabWithId:WZGaraponTabOption button:_stageView.optionButton viewController:nil];
+    [_tabController selectWithId:WZGaraponTabGaraponTv];
+    
+    __weak WZVideoViewController *me = self;
+    __weak WZGaraponTabController *tabController = _tabController;
+    
+    [_stageView.tvButton addEventHandler:^(id sender) {
+        [tabController selectWithId:WZGaraponTabGaraponTv];
+    } forControlEvents:UIControlEventTouchDown];
+    
+    [_stageView.searchButton addEventHandler:^(id sender) {
+        [me showSearchPopover];
+    } forControlEvents:UIControlEventTouchDown];
+    
+    [_stageView.optionButton addEventHandler:^(id sender) {
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            [me showSettingsModal];
+        } else {
+            [me showSettingsModal];
+        }
+    } forControlEvents:UIControlEventTouchDown];
+}
+
+- (void)setContentTitleWithProgram:(WZGaraponTvProgram *)program
+{
+    if (program) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm"];
+        NSString *dateString =  [dateFormatter stringFromDate:program.startdate];
+        NSString *headerContentTitle = [NSString stringWithFormat:@"%@ (%@)", program.title, dateString];
+        [_stageView setContentTitle:headerContentTitle];
+    } else {
+        [_stageView setContentTitle:nil];
+    }
+}
+
 - (void)executeInitialURL
 {
     __weak WZGaranchu *stage = [WZGaranchu current];
     if (stage.initialURL) {
         
-         __weak WZVideoViewController *me = self;
+        __weak WZVideoViewController *me = self;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (_isLogined) {
                 
@@ -198,39 +264,6 @@
     }
 }
 
-- (IBAction)playerViewDidTapped:(id)sender
-{
-    [_videoPlayerView toggleOverlayWithDuration:0.25];
-}
-
-- (void)toggleOverlayWithDuration:(NSTimeInterval)duration
-{
-    __weak WZAVPlayerView *me = _videoPlayerView;
-    [UIView animateWithDuration:duration
-                     animations:^{
-                         if (_controlView.alpha == 0.0) {
-                             _controlView.alpha = 1.0;
-                         } else {
-                             _controlView.alpha = 0.0;
-                         }
-                     }
-                     completion:^(BOOL finished) {
-                         if (finished) {
-                             if (_controlView.alpha != 0.0) {
-                                 [me resetIdleTimer];
-                             }
-                         }
-                     }];
-}
-
-- (void)appendHeaderView
-{
-    _headerView.backgroundColor = _overlayBackgroundColor;
-    [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menu.png"] forState:UIControlStateNormal];
-    [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menuActive.png"] forState:UIControlStateHighlighted];
-    [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menuActive.png"] forState:UIControlStateSelected];
-}
-
 
 - (void)suspendPlaying
 {
@@ -259,145 +292,6 @@
     }];
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    // This method will be called only after device rotation is finished
-    // Can be used to reanchor popovers
-    if (_currentPopoverController) {
-        CGRect rect = [_menuOptionButton convertRect:_menuOptionButton.bounds toView:self.view];
-        [_currentPopoverController presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:NO];
-    }
-    [self resetMenuContainerPosition];
-}
-
-- (void)appendNaviView
-{
-    _tabController = [[WZGaraponTabController alloc] init];
-    
-    _naviViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"naviViewController"];
-    [self addChildViewController:_naviViewController];
-    [_naviViewController didMoveToParentViewController:self];
-    [_menuContentView addSubview:_naviViewController.view];
-    _naviViewController.view.frame = _menuContentView.bounds;
-    
-    // setup serach result ViewController
-    _searchNaviViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"naviViewController"];
-    [self addChildViewController:_searchNaviViewController];
-    [_searchNaviViewController didMoveToParentViewController:self];
-    [_menuContentView addSubview:_searchNaviViewController.view];
-    _searchNaviViewController.view.frame = _menuContentView.bounds;
-    _searchNaviViewController.view.hidden = YES;
-    _searchResultViewController = (WZIndexMenuViewController *)(_searchNaviViewController.topViewController);
-    _searchResultViewController.indexType = WZSearchResultGaranchuIndexType;
-
-    CGRect frame = _menuContainerView.frame;
-    frame.origin.x = self.view.bounds.size.width + frame.size.width + 1;
-    _menuContainerView.frame = frame;
-    
-    _menuContainerView.backgroundColor =[UIColor clearColor];
-    _menuHeaderView.backgroundColor = _overlayBackgroundColor;
-//    _menuContentView.backgroundColor = [UIColor clearColor];
-    _menuContentView.backgroundColor = [_overlayBackgroundColor colorWithAlphaComponent:0.2];
-    
-    // create a UIPanGestureRecognizer to detect when the screenshot is touched and dragged
-    _menuPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureMoveAround:)];
-    [_menuPanGesture setMaximumNumberOfTouches:2];
-    [_menuPanGesture setDelegate:self];
-    [_menuContainerView addGestureRecognizer:_menuPanGesture];
-        
-    [_tabController addTabWithId:WZGaraponTabGaraponTv button:_menuTvButton viewController:_naviViewController];
-    [_tabController addTabWithId:WZGaraponTabSearch button:_menuSearchButton viewController:_searchNaviViewController];
-    [_tabController addTabWithId:WZGaraponTabOption button:_menuOptionButton viewController:nil];
-    [_tabController selectWithId:WZGaraponTabGaraponTv];
-    
-    __weak WZVideoViewController *me = self;
-    __weak WZGaraponTabController *tabController = _tabController;
-    
-    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tv.png"] forState:UIControlStateNormal];
-    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tvActive.png"] forState:UIControlStateHighlighted];
-    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tvActive.png"] forState:UIControlStateSelected];
-    [_menuTvButton addEventHandler:^(id sender) {
-        [tabController selectWithId:WZGaraponTabGaraponTv];
-    } forControlEvents:UIControlEventTouchDown];
-    
-    [_menuSearchButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/search"] forState:UIControlStateNormal];
-    [_menuSearchButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/searchActive.png"] forState:UIControlStateHighlighted];
-    [_menuSearchButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/searchActive.png"] forState:UIControlStateSelected];
-    [_menuSearchButton addEventHandler:^(id sender) {
-//        [tabController selectWithId:WZGaraponTabSearch];
-//        WZGaraponTab *tab = [tabController tabWithId:WZGaraponTabSearch];
-//        tab.button.selected = YES;
-        [me showSearchPopover];
-    } forControlEvents:UIControlEventTouchDown];
-    
-    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cog"] forState:UIControlStateNormal];
-    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateHighlighted];
-    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateSelected];
-    [_menuOptionButton addEventHandler:^(id sender) {
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            [me showSettingsModal];
-        } else {
-            [me showSettingsModal];
-        }
-    } forControlEvents:UIControlEventTouchDown];
-}
-
-- (void)appendVideoView
-{
-    [_videoPlayerView disableScreenTapRecognizer];
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playerViewDidTapped:)];
-    [_videoPlayerView addGestureRecognizer:tapGestureRecognizer];
-    
-    UIImage *thumbImage = [UIImage imageNamed:@"GaranchuResources.bundle/thumbImage"];
-    [_videoPlayerView.scrubber setThumbImage:thumbImage forState:UIControlStateNormal];
-    
-#if DEBUG
-//    _videoPlayerView.backgroundColor = [UIColor whiteColor];
-//    __weak WZVideoViewController *me = self;
-//    [self performBlock:^(id sender) {
-//        [me detail:nil];
-//    } afterDelay:1];
-#endif
-}
-
-- (void)appendControlView
-{
-    _controlView.backgroundColor = _overlayBackgroundColor;
-}
-
-+ (NSString *)formatDateTime:(NSTimeInterval)timestamp
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
-    return [dateFormatter stringFromDate:date];
-}
-
-- (void)refreshHeaderView
-{
-    if (_watchingProgram) {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm"];
-        NSString *dateString =  [dateFormatter stringFromDate:_watchingProgram.startdate];
-        NSString *headerContentTitle = [NSString stringWithFormat:@"%@ (%@)", _watchingProgram.title, dateString];
-        _headerTitleLabel.text = headerContentTitle;
-    } else {
-        _headerTitleLabel.text = nil;
-    }
-    _menuButton.selected = _menuContainerView.alpha == 1.0;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
-}
-
 - (id)showProgressWithText:(NSString *)text
 {
     MBProgressHUD *hud = [super showProgressWithText:text];
@@ -413,7 +307,6 @@
 }
 
 #pragma mark - Search delegate, notificifation
-
 
 - (void)showSearchPopover
 {
@@ -446,7 +339,7 @@
 	UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:searchViewController];
 	popover.delegate = self;
 
-    CGRect rect = [_menuSearchButton convertRect:_menuSearchButton.bounds toView:self.view];
+    CGRect rect = [_stageView.searchButton convertRect:_stageView.searchButton.bounds toView:self.view];
     [popover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
 	_currentPopoverController = popover;
 }
@@ -471,24 +364,6 @@
     [self presentViewController:navController animated:YES completion:^{
     }];
 }
-
-//
-//- (void)showSettingsPopover:(id)sender
-//{
-//	if (_currentPopoverController) {
-//        [self dismissCurrentPopover];
-//		return;
-//	}
-//
-//	self.appSettingsViewController.showDoneButton = NO;
-//	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.appSettingsViewController];
-//	UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:navController];
-//	popover.delegate = self;
-//
-//    CGRect rect = [_menuOptionButton convertRect:_menuOptionButton.bounds toView:self.view];
-//    [popover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
-//	_currentPopoverController = popover;
-//}
 
 - (void)clearWatchHistory
 {
@@ -581,126 +456,12 @@
 
 - (IBAction)menuClick:(id)sender
 {
-    if (_menuButton.isSelected) {
-        [self hideSideMenuWithReset:YES];
+    if (_stageView.menuButton.isSelected) {
+        [_stageView hideSideMenuWithReset:YES];
     } else {
-        [self showSideMenuWithReset:YES];
+        [_stageView showSideMenuWithReset:YES];
     }
 }
-
-/* The following is from http://blog.shoguniphicus.com/2011/06/15/working-with-uigesturerecognizers-uipangesturerecognizer-uipinchgesturerecognizer/ */
--(void)panGestureMoveAround:(UIPanGestureRecognizer *)gesture;
-{
-    UIView *piece = gesture.view;
-    [self adjustAnchorPointForGestureRecognizer:gesture];
-    
-    CGPoint velocity = [gesture velocityInView:piece];
-//    NSLog(@"velocity = %lf", velocity.x);
-    
-    if (gesture.state == UIGestureRecognizerStateBegan || gesture.state == UIGestureRecognizerStateChanged) {
-        float defaultOriginX = self.view.bounds.size.width - piece.frame.size.width;
-        CGPoint translation = [gesture translationInView:piece.superview];
-        if (defaultOriginX < piece.frame.origin.x + translation.x) {
-            piece.center = CGPointMake(piece.center.x + translation.x, piece.center.y);
-        }
-        [gesture setTranslation:CGPointZero inView:piece.superview];            
-        
-    }
-    else if ([gesture state] == UIGestureRecognizerStateEnded) {
-        if (velocity.x > 0) {
-            [self hideSideMenuWithReset:NO];
-        } else {
-            [self showSideMenuWithReset:NO];
-        }
-    }
-}
-
-- (void)adjustAnchorPointForGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
-{
-    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        UIView *piece = gestureRecognizer.view;
-        CGPoint locationInView = [gestureRecognizer locationInView:piece];
-        CGPoint locationInSuperview = [gestureRecognizer locationInView:piece.superview];
-        
-        piece.layer.anchorPoint = CGPointMake(locationInView.x / piece.bounds.size.width, locationInView.y / piece.bounds.size.height);
-        piece.center = locationInSuperview;
-    }
-}
-
-- (void)resetMenuContainerPosition
-{
-    CGRect frame = _menuContainerView.frame;
-    if (_menuContainerView.hidden) {
-        frame.origin.x = self.view.bounds.size.width;
-        frame.origin.y = 0;
-        _menuContainerView.frame = frame;
-    } else {
-        frame.origin.x = self.view.bounds.size.width - frame.size.width;
-        frame.origin.y = 0;
-        _menuContainerView.frame = frame;
-    }
-}
-
-- (void)showSideMenuWithReset:(BOOL)reset
-{
-    if (!_isLogined) {
-        return;
-    }
-    
-    // reset base position
-    if (reset) {
-        _menuContainerView.hidden = YES;
-        [self resetMenuContainerPosition];
-        _menuContainerView.hidden = NO;
-    }
-    
-    CGRect frame = _menuContainerView.frame;
-    _menuButton.selected = YES;
-    
-    frame.origin.x = self.view.bounds.size.width - frame.size.width;
-//    frame.origin.y = 0;
-    
-    [UIView animateWithDuration:0.50f
-                 animations:^{
-                     _menuContainerView.alpha = 1.0;
-                     _menuContainerView.frame = frame;
-                 }
-                 completion:^(BOOL finished) {
-                     if (finished) {
-                         _menuButton.selected = YES;
-                     }
-                 }];
-
-}
-
-
-- (void)hideSideMenuWithReset:(BOOL)reset
-{
-    _menuButton.selected = NO;
-    
-    // reset base position
-    if (reset) {
-        [self resetMenuContainerPosition];
-    }
-    
-    CGRect frame = _menuContainerView.frame;
-    frame.origin.x = frame.origin.x + frame.size.width;
-//    frame.origin.y = 0;
-    
-    [UIView animateWithDuration:0.25f
-                     animations:^{
-                         _menuContainerView.frame = frame;
-                     }
-                     completion:^(BOOL finished) {
-                         if (finished) {
-//                             _menuContainerView.alpha = 0.0;
-                             _menuContainerView.hidden = YES;
-                             _menuButton.selected = NO;
-                         }
-                     }];
-
-}
-
 
 #pragma mark - PlayerController
 
@@ -733,13 +494,13 @@
 
 - (IBAction)favorite:(id)sender
 {
-    __weak WZVideoViewController *me = self;
+    __weak WZStageView *stageView = _stageView;
     __weak WZGaraponTvProgram *tvProgram = _watchingProgram;
     __block NSInteger rank = _watchingProgram.favorite == 0 ? 1 : 0;
     [_garaponTv favoriteWithGtvid:_watchingProgram.gtvid rank:rank completionHandler:^(NSDictionary *response, NSError *error) {
         if (!error) {
             tvProgram.favorite = rank;
-            [me refreshControlButtons];
+            [stageView refreshControlButtonsWithProgram:tvProgram];
         }
     }];
 }
@@ -812,15 +573,9 @@
 
 - (void)playerDidBeginPlayback
 {
-    [super playerDidBeginPlayback];
-    [self refreshControlButtons];
-    
-    // hack: ignore over 24h
-    if (_playingProgram.duration > 3600*24) {
-        _videoPlayerView.estimateDuration = 0.0f;
-    } else {
-        _videoPlayerView.estimateDuration = _playingProgram.duration;
-    }
+//    [super playerDidBeginPlayback];
+    [self tryAutoPlayWithDelay:0.5];
+    [_stageView refreshControlButtonsWithProgram:_playingProgram];
 }
 
 - (void)playerDidEndPlayback
@@ -832,7 +587,7 @@
 {
     [super playerDidReachEndPlayback];
     [self updateHistoryOfWathingProgramWithPosition:0.0 done:YES];
-    [self refreshControlButtons];
+    [_stageView refreshControlButtonsWithProgram:_playingProgram];
 }
 
 - (void)playerDidReplaceFromPlayer:(AVPlayer *)oldPlayer
@@ -841,21 +596,6 @@
 }
 
 #pragma mark - Program
-
-- (void)refreshControlButtons
-{
-    if (_watchingProgram) {
-        if (_watchingProgram.isProxy) {
-            [_videoPlayerView disableInfoControls];
-        } else {
-            [_videoPlayerView enableInfoControls];
-        }
-        _favButton.selected = _watchingProgram.favorite == 1;
-    } else {
-        [_videoPlayerView disableInfoControls];
-        _favButton.selected = NO;
-    }
-}
 
 - (void)loadingProgramWithGtvid:(NSString *)gtvid
 {
@@ -880,7 +620,7 @@
     if (program) {        
         [self showProgressWithText:@"Loading..."];
         NSString *mediaUrl = [_garaponTv httpLiveStreamingURLStringWithProgram:program];        
-        [self setContentTitle:program.title];
+        [self setContentTitleWithProgram:program];
         [self setContentURL:[NSURL URLWithString:mediaUrl]];
         
         WatchHistory *history = [WatchHistory findByGtvid:program.gtvid];
@@ -889,15 +629,14 @@
         }
         
     } else {
-        [self setContentTitle:nil];
+        [self setContentTitleWithProgram:nil];
     }
-    [self refreshHeaderView];
-    [self refreshControlButtons];
+    
+    [_stageView refreshControlButtonsWithProgram:program];
     
     if (program && reload) {
         
         // download current properies of program
-        __weak WZVideoViewController *me = self;
         __weak WZGaraponTvProgram *tvProgram = program;
         
         [_garaponTv searchWithGtvid:tvProgram.gtvid completionHandler:^(NSDictionary *response, NSError *error) {
@@ -908,7 +647,7 @@
                     if (item) {
                         [tvProgram mergeFrom:item];
                         tvProgram.isProxy = NO;
-                        [me refreshControlButtons];
+                        [_stageView refreshControlButtonsWithProgram:tvProgram];
                     }
                 }
             }
@@ -930,7 +669,8 @@
 {
     WZVideoDetailViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"videoDetailViewController"];
     viewController.program = _playingProgram;
-
+    viewController.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.6];
+    
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:viewController];
     
     formSheet.transitionStyle = MZFormSheetTransitionStyleSlideFromBottom;
@@ -939,47 +679,29 @@
     formSheet.shouldDismissOnBackgroundViewTap = YES;
     
     [formSheet presentAnimated:YES completionHandler:^(UIViewController *presentedFSViewController) {
-        
     }];
-    
-//    [self presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
-//    }];
 }
 
 #pragma mark - Login
 
-- (void)hideControlsNotLogin
-{
-    _headerView.hidden = YES;
-    _menuButton.hidden = YES;
-    _menuContainerView.hidden = YES;
-    _controlView.hidden = YES;    
-}
-
 - (void)didLoginGaraponTv
 {
     _isLogined = YES;
-    _headerView.hidden = NO;
-    _menuButton.hidden = NO;
-    _menuContainerView.alpha = 0.0f;
-    _menuContainerView.hidden = NO;
-    _controlView.hidden = NO;
-        
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];     
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault setObject:_garaponTv.firmwareVersion forKey:@"gtv_firmware_version"];
     [userDefault setObject:_garaponTv.host forKey:@"gtv_address"];
     
-    [self showSideMenuWithReset:YES];
+    [_stageView showControlsDidLogin];
+    [_stageView showSideMenuWithReset:YES];
     [self executeInitialURL];
 }
 
 - (void)didLogoutGaraponTv
 {
     _isLogined = NO;
-    _headerView.hidden = YES;
-    _menuButton.hidden = YES;
-    _menuContainerView.hidden = YES;
-    _controlView.hidden = YES;
+    
+    [_stageView hideControlsNotLogin];
     
     [self close];
 }
@@ -1053,9 +775,8 @@
 - (void)loginGraponTv
 {
     __weak WZVideoViewController *me = self;
-    __weak WZLoginViewController *loginViewController = _loginViewController;
-    __weak UIView *hudView = loginViewController.view ? loginViewController.view : me.view;
     
+    // block old devices
     float gtvVersion = _garaponTv.gtvVersion.floatValue;
     if (gtvVersion > 0 && gtvVersion < 3.0) {
         [WZAlertView showAlertViewWithTitle:@""
@@ -1070,6 +791,8 @@
     }
     
     
+    __weak WZLoginViewController *loginViewController = _loginViewController;
+    __weak UIView *hudView = loginViewController.view ? loginViewController.view : me.view;
     
     [self showGaraponIndicatorWhiteWithMessage:@"ガラポンTVにログイン中..." inView:hudView];
         

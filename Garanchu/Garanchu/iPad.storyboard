@@ -30,6 +30,7 @@
                                     <outlet property="controlView" destination="E1U-pL-hsc" id="1CN-L2-pD5"/>
                                     <outlet property="currentTimeLabel" destination="txf-wt-TEz" id="eOq-1a-Uyh"/>
                                     <outlet property="durationLabel" destination="Dw1-er-aoJ" id="ibx-mZ-ppr"/>
+                                    <outlet property="headerView" destination="YcY-3K-Kd2" id="gSQ-IG-u9N"/>
                                     <outlet property="playButton" destination="PwG-9a-UeZ" id="zf7-Nh-Aq0"/>
                                     <outlet property="scrubber" destination="tTS-hw-KPk" id="Rk0-VT-LKv"/>
                                 </connections>
@@ -37,8 +38,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YcY-3K-Kd2" userLabel="headerView">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="40"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCD-lx-OF7" userLabel="headerLavel">
-                                        <rect key="frame" x="10" y="10" width="744" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCD-lx-OF7" userLabel="headerLabel">
+                                        <rect key="frame" x="10" y="10" width="714" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="KUQ-BM-oWm"/>
                                         </constraints>
@@ -53,7 +54,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6H9-73-tx3"/>
                                     <constraint firstAttribute="centerY" secondItem="rCD-lx-OF7" secondAttribute="centerY" id="GMc-aO-qgd"/>
-                                    <constraint firstAttribute="trailing" secondItem="rCD-lx-OF7" secondAttribute="trailing" constant="270" id="XJf-EE-7NQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="rCD-lx-OF7" secondAttribute="trailing" constant="300" id="XJf-EE-7NQ"/>
                                     <constraint firstItem="rCD-lx-OF7" firstAttribute="leading" secondItem="YcY-3K-Kd2" secondAttribute="leading" constant="10" id="Z2G-Dn-0bU"/>
                                 </constraints>
                             </view>
@@ -369,25 +370,25 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <connections>
+                            <outlet property="_controlView" destination="E1U-pL-hsc" id="Goy-0s-F9X"/>
+                            <outlet property="_favButton" destination="D5B-fu-sVF" id="DgC-6W-c3N"/>
+                            <outlet property="_headerLabelRightMargin" destination="XJf-EE-7NQ" id="ZRY-Jf-URa"/>
+                            <outlet property="_headerTitleLabel" destination="rCD-lx-OF7" id="BLV-fP-Blp"/>
                             <outlet property="_headerView" destination="YcY-3K-Kd2" id="6Xb-Z9-9BQ"/>
                             <outlet property="_menuButton" destination="4gA-JN-H4i" id="PZT-KD-095"/>
+                            <outlet property="_menuContainerView" destination="Cxf-eo-6bt" id="Kf4-8t-Gbk"/>
+                            <outlet property="_menuContentView" destination="4Px-LE-WL6" id="jXA-K1-Yzf"/>
+                            <outlet property="_menuHeaderView" destination="47j-UP-NMo" id="qa5-wM-QCx"/>
+                            <outlet property="_menuOptionButton" destination="PCL-y9-cq2" id="qtS-lR-PAT"/>
+                            <outlet property="_menuSearchButton" destination="vXS-G7-8wJ" id="51m-Lm-JXY"/>
+                            <outlet property="_menuTvButton" destination="0pI-j9-eUO" id="4To-E9-b9T"/>
                             <outlet property="_menuView" destination="Cxf-eo-6bt" id="l8s-6h-DDv"/>
                             <outlet property="_videoPlayerView" destination="Vte-mT-Hu8" id="0fJ-qd-QIa"/>
                         </connections>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="_controlView" destination="E1U-pL-hsc" id="SY5-Je-f5A"/>
-                        <outlet property="_favButton" destination="D5B-fu-sVF" id="9bU-PN-MSm"/>
-                        <outlet property="_headerTitleLabel" destination="rCD-lx-OF7" id="46e-yL-NJu"/>
-                        <outlet property="_headerView" destination="YcY-3K-Kd2" id="sck-mo-DQ2"/>
-                        <outlet property="_menuButton" destination="4gA-JN-H4i" id="oDD-Vn-HhK"/>
-                        <outlet property="_menuContainerView" destination="Cxf-eo-6bt" id="fur-by-bfJ"/>
-                        <outlet property="_menuContentView" destination="4Px-LE-WL6" id="8F1-6C-Asg"/>
-                        <outlet property="_menuHeaderView" destination="47j-UP-NMo" id="Iy9-Vv-7s7"/>
-                        <outlet property="_menuOptionButton" destination="PCL-y9-cq2" id="el4-bZ-O22"/>
-                        <outlet property="_menuSearchButton" destination="vXS-G7-8wJ" id="EwP-4a-wsN"/>
-                        <outlet property="_menuTvButton" destination="0pI-j9-eUO" id="aJL-eH-Z7L"/>
+                        <outlet property="_stageView" destination="gnR-vG-h8B" id="5nx-vd-94S"/>
                         <outlet property="_videoPlayerView" destination="Vte-mT-Hu8" id="zuB-Tl-Loe"/>
                     </connections>
                 </viewController>
@@ -546,7 +547,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M6t-Ci-QV5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1568" y="-245"/>
+            <point key="canvasLocation" x="1594" y="-268"/>
         </scene>
         <!--Index Menu View Controller - Root View Controller-->
         <scene sceneID="ap5-jG-i6L">

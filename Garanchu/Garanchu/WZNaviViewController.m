@@ -35,9 +35,9 @@
                                    whenContainedIn:[WZNaviViewController class], nil];
     
 
-//    [self.navigationBar configureFlatNavigationBarWithColor:[UIColor blackColor]];
-    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor] cornerRadius:0]
-               forBarMetrics:UIBarMetricsDefault & UIBarMetricsLandscapePhone];
+    [self.navigationBar configureFlatNavigationBarWithColor:[UIColor clearColor]];
+//    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor] cornerRadius:0]
+//               forBarMetrics:UIBarMetricsDefault & UIBarMetricsLandscapePhone];
     
 }
 
