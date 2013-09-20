@@ -19,6 +19,8 @@
     IBOutlet WZVideoPlayerView *_videoPlayerView;
     IBOutlet UIView *_headerView;
     IBOutlet UILabel *_headerTitleLabel;
+    
+    IBOutletCollection(NSLayoutConstraint) NSArray *_headerConstraints;
     IBOutlet NSLayoutConstraint *_headerLabelRightMargin;
 
     IBOutlet UIButton *_menuButton;
@@ -73,6 +75,12 @@
     [self addGestures];
     
     _menuContainerView.hidden = YES;
+    
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+        for (NSLayoutConstraint *headerConstraint in _headerConstraints) {
+            headerConstraint.constant = 20;
+        }
+    }
 }
 
 - (void)addGestures
@@ -113,7 +121,7 @@
     [_videoPlayerView.scrubber setThumbImage:thumbImage forState:UIControlStateNormal];
     
 #if DEBUG
-    _videoPlayerView.backgroundColor = [UIColor midnightBlueColor];
+//    _videoPlayerView.backgroundColor = [UIColor midnightBlueColor];
 //    __weak WZVideoViewController *me = self;
 //    [self performBlock:^(id sender) {
 //        [me detail:nil];
@@ -153,17 +161,6 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-//    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
-//        CGRect headerRect = _headerView.bounds;
-//        _headerView.frame = CGRectMake(0, 20, headerRect.size.width, headerRect.size.height);
-//        
-//        CGRect buttonRect = _menuButton.frame;
-//        _menuButton.frame = CGRectMake(buttonRect.origin.x, 25, buttonRect.size.width, buttonRect.size.height);
-//        
-//        CGRect sideMenuRect = _menuView.frame;
-//        _menuView.frame = CGRectMake(sideMenuRect.origin.x, 20, sideMenuRect.size.width, sideMenuRect.size.height);
-//    }
     
     NSLog(@"_stageView.size = %lf x %lf", self.bounds.size.width, self.bounds.size.height);
 //    [self resetMenuContainerPosition];
@@ -259,36 +256,18 @@
     CGRect frame = _menuContainerView.frame;
     if (_menuContainerView.hidden) {
         frame.origin.x = self.bounds.size.width;
-        frame.origin.y = 0;
+//        frame.origin.y = 0;
     } else {
         frame.origin.x = self.bounds.size.width - frame.size.width;
-        frame.origin.y = 0;
+//        frame.origin.y = 0;
     }
     
     _menuContainerView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     _menuContainerView.frame = frame;
-    
-    NSLog(@"resetMenuContainerPosition:origin:(%lf, %lf), size:%lfx%lf, center:(%lf, %lf)",
-          _menuContainerView.frame.origin.x,
-          _menuContainerView.frame.origin.y,
-          _menuContainerView.frame.size.width,
-          _menuContainerView.frame.size.height,
-          _menuContainerView.center.x,
-          _menuContainerView.center.y
-          );
 }
 
 - (void)showSideMenuWithReset:(BOOL)reset
 {
-    NSLog(@"showSideMenuWithReset:origin:(%lf, %lf), size:%lfx%lf, center:(%lf, %lf)",
-          _menuContainerView.frame.origin.x,
-          _menuContainerView.frame.origin.y,
-          _menuContainerView.frame.size.width,
-          _menuContainerView.frame.size.height,
-          _menuContainerView.center.x,
-          _menuContainerView.center.y
-          );
-    
     // reset base position
     if (reset) {
         [self resetMenuContainerPosition];
