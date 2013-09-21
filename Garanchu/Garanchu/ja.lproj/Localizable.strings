@@ -5,8 +5,7 @@
   Copyright (c) 2013 makoto_kw. All rights reserved.
 */
 
-
-"AlertCaption" = "Garanchu";
+"DefaultAlertCaption" = "ガランチュ";
 "OkButtonLabel" = "了解";
 "CancelButtonLabel" = "キャンセル";
 
@@ -14,12 +13,10 @@
 "LoginPasswordLabel" = "パスワード";
 "LoginButtonLabel" = "ログイン";
 
-
 "SettingsViewTitle" = "設定";
 
 "HeaderProgramDateTimeFormat" = "yyyy/MM/dd HH:mm";
 "HeaderProgramTitleFormat" = "%@ (%@)";
-
 
 "ClearButtonLabel" = "削除";
 "ClearSuccessMessage" = "削除しました";
@@ -31,7 +28,7 @@
 "ClearSearchHistoryConfirmMessageFormat" = "検索履歴 %d 件を削除してよろしいですか？";
 "ClearNoSearchHistoryErrorMessage" = "検索履歴が無いか削除済みです";
 
-"GaraponTv2NotSupported" = "参号機以前はAPIの互換性がないためサポートしていません";
+"GaraponTv2NotSupported" = "ガラポンTV弐号機以前はAPIの互換性がないためサポートしていません";
 
 "IndicatorLoadProgram" = "番組を読み込み中...";
 "IndicatorLoginGaraponWeb" = "ガラポンWebに認証中...";

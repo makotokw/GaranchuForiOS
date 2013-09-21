@@ -7,7 +7,6 @@
 
 #import "WZIndexMenuViewController.h"
 #import "WZIndexMenuViewController+Static.h"
-#import "WZAlertView.h"
 #import "WZGaranchu.h"
 #import "WatchHistory.h"
 #import "VideoProgram.h"
@@ -279,7 +278,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     [_garaponTv channelWithCompletionHandler:^(NSDictionary *response, NSError *error) {
         [MBProgressHUD hideHUDForView:me.tableView animated:NO];
         if (error) {
-            [WZAlertView showAlertWithError:error];
+            [WZGaranchu showAlertWithError:error];
         } else {
             NSArray *items = [WZGaraponTvChannel arrayWithChannelResponse:response];
             [me replaceChannelsFromArray:items];
@@ -453,7 +452,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                   completionHandler:^(NSDictionary *response, NSError *error) {                      
                       NSArray *items = nil;
                       if (error) {
-                          [WZAlertView showAlertWithError:error];
+                          [WZGaranchu showAlertWithError:error];
                       } else {                          
                           WZGaraponWrapDictionary *wrap = [WZGaraponWrapDictionary wrapWithDictionary:response];
                           _totalCount = [wrap intgerValueWithKey:@"hit" defaultValue:0];

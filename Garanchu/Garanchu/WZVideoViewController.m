@@ -13,7 +13,6 @@
 #import "WZVideoDetailViewController.h"
 #import "WZSearchSuggestViewController.h"
 #import "WZStageView.h"
-#import "WZAlertView.h"
 #import "WZVideoPlayerView.h"
 #import "WZGaranchu.h"
 #import "WZGaranchuUser.h"
@@ -360,28 +359,28 @@
     
     if (count > 0) {
         NSString *message = [NSString stringWithFormat:WZGarancuLocalizedString(@"ClearWatchHistoryConfirmMessageFormat"), count];
-        [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
+        [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
                                     message:message
                           cancelButtonTitle:WZGarancuLocalizedString(@"CancelButtonLabel")
                           otherButtonTitles:@[WZGarancuLocalizedString(@"ClearButtonLabel")]
-                                    handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+                                    handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {                
                 NSUInteger deleteCount = [WatchHistory deleteAll];
                 NSString *deleteMessage = deleteCount > 0 ? WZGarancuLocalizedString(@"ClearSuccessMessage") : WZGarancuLocalizedString(@"ClearCanNotErrorMessage");
-                [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
+                [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
                                             message:deleteMessage
                                   cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                                   otherButtonTitles:nil
-                                            handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+                                            handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 }];
             }
         }];
     } else {
-        [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
+        [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
                                     message:WZGarancuLocalizedString(@"ClearNoWatchHistoryErrorMessage")
                           cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                           otherButtonTitles:nil
-                                    handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+                                    handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
         }];
     }
 }
@@ -393,28 +392,28 @@
     
     if (count > 0) {
         NSString *message = [NSString stringWithFormat:WZGarancuLocalizedString(@"ClearSearchHistoryConfirmMessageFormat"), count];
-        [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
+        [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
                                     message:message
                           cancelButtonTitle:WZGarancuLocalizedString(@"CancelButtonLabel")
                           otherButtonTitles:@[WZGarancuLocalizedString(@"ClearButtonLabel")]
-                                    handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+                                    handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 NSUInteger deleteCount = [list deleteItems];
                 NSString *deleteMessage = deleteCount > 0 ? WZGarancuLocalizedString(@"ClearSuccessMessage") : WZGarancuLocalizedString(@"ClearCanNotErrorMessage");
-                [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
+                [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
                                             message:deleteMessage
                                   cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                                   otherButtonTitles:nil
-                                            handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+                                            handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 }];
             }
         }];
     } else {
-        [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
+        [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
                                     message:WZGarancuLocalizedString(@"ClearNoSearchHistoryErrorMessage")
                           cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                           otherButtonTitles:nil
-                                    handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+                                    handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
         }];
     }
     
@@ -755,11 +754,11 @@
                                         
                                         if (error) {
                                             [MBProgressHUD hideHUDForView:loginViewController.view animated:YES];
-                                            [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"AlertCaption")
+                                            [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
                                                                         message:error.localizedDescription
                                                               cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                                                               otherButtonTitles:nil
-                                                                        handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+                                                                        handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                                                             [loginViewController setEnableControls:YES];
                                                                         }];
                                         } else {
@@ -788,24 +787,24 @@
 - (void)loginGraponTv
 {
     __weak WZVideoViewController *me = self;
+    __weak WZLoginViewController *loginViewController = _loginViewController;
+    __weak UIView *hudView = loginViewController.view ? loginViewController.view : me.view;
     
     // block old devices
     float gtvVersion = _garaponTv.gtvVersion.floatValue;
     if (gtvVersion > 0 && gtvVersion < 3.0) {
-        [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"AlertCaption")
+        [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
                                     message:WZGarancuLocalizedString(@"GaraponTv2NotSupported")
                           cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                           otherButtonTitles:nil
-                                    handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+                                    handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                         ;
+                                        [me hideGaraponIndicatorForView:hudView];
+                                        [me presentModalLoginViewController];
                                     }];
 
         return;
     }
-    
-    
-    __weak WZLoginViewController *loginViewController = _loginViewController;
-    __weak UIView *hudView = loginViewController.view ? loginViewController.view : me.view;
     
     [self showGaraponIndicatorWhiteWithMessage:WZGarancuLocalizedString(@"IndicatorLoginGaraponTv") inView:hudView];
         
@@ -813,11 +812,11 @@
     [_garaponTv loginWithLoginId:user.garaponId password:user.password completionHandler:^(NSError *error) {
         if (error) {
             [MBProgressHUD hideHUDForView:hudView animated:YES];
-            [WZAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"AlertCaption")
+            [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
                                         message:error.localizedDescription
                               cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                               otherButtonTitles:nil
-                                        handler:^(WZAlertView *alertView, NSInteger buttonIndex) {
+                                        handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                             ;
                                             if (loginViewController) {
                                                 [loginViewController setEnableControls:YES];

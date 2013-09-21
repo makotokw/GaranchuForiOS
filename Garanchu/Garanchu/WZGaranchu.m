@@ -24,6 +24,21 @@ NSString *WZGarancuLocalizedString(NSString *key)
 
 @synthesize initialURL = _initialURL;
 
++ (void)showAlertWithError:(NSError *)error
+{
+    NSString *message = error.localizedRecoverySuggestion ? [NSString stringWithFormat:@"%@\n%@",
+                                                             error.localizedDescription,
+                                                             error.localizedRecoverySuggestion
+                                                             ] : error.localizedDescription;
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
+                                                        message:message
+                                                       delegate:nil
+                                              cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
+                                              otherButtonTitles:nil];
+    [alertView show];
+}
+
 + (WZGaranchu *)current
 {
     static WZGaranchu *current = nil;

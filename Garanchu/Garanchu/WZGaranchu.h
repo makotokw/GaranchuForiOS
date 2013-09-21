@@ -18,6 +18,7 @@ FOUNDATION_EXPORT NSString *WZGarancuLocalizedString(NSString *key);
 @property (readwrite) NSURL *initialURL;
 
 + (WZGaranchu *)current;
++ (void)showAlertWithError:(NSError *)error;
 
 - (void)setup;
 - (void)storeTvAddress:(NSDictionary *)dict;
