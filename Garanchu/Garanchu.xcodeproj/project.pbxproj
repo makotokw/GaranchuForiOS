@@ -388,11 +388,6 @@
 				CLASSPREFIX = WZ;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = makoto_kw;
-				TargetAttributes = {
-					8F935B8F1791F24D001FFE01 = {
-						DevelopmentTeam = 89AY2T5R4H;
-					};
-				};
 			};
 			buildConfigurationList = 8F935B8B1791F24D001FFE01 /* Build configuration list for PBXProject "Garanchu" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -659,8 +654,8 @@
 			buildSettings = {
 				BUNDLE_DISPLAY_NAME_SUFFIX = "";
 				BUNDLE_IDENTIFIER_SUFFIX = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Makoto Kawasaki (89AY2T5R4H)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
 				INFOPLIST_FILE = "Garanchu/Garanchu-Info.plist";
