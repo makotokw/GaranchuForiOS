@@ -151,6 +151,7 @@
 		8FDDC2BE17EDF7D700D639E6 /* Default-Portrait-1024h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait-1024h@2x.png"; sourceTree = "<group>"; };
 		8FDDC2BF17EDF7D700D639E6 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
 		8FDDC2C017EDF7D700D639E6 /* Default-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x.png"; sourceTree = "<group>"; };
+		8FDDC2C917EE013100D639E6 /* WZGaranchuConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZGaranchuConfig.h; sourceTree = "<group>"; };
 		8FF1B0E9179C551100BF9785 /* GaranchuResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GaranchuResources.bundle; sourceTree = "<group>"; };
 		8FF1B0F0179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8FF1B0F1179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -241,6 +242,7 @@
 				8FAFF08017E757D1008CDA2F /* WZVideoDetailViewController.m */,
 				8F935BCA1791F570001FFE01 /* WZLoginViewController.h */,
 				8F935BCB1791F570001FFE01 /* WZLoginViewController.m */,
+				8FDDC2C917EE013100D639E6 /* WZGaranchuConfig.h */,
 				8F59FC551792CC2E00EEA418 /* WZGaranchu.h */,
 				8F59FC561792CC2E00EEA418 /* WZGaranchu.m */,
 				8F59FC521792C21E00EEA418 /* WZGaranchuUser.h */,

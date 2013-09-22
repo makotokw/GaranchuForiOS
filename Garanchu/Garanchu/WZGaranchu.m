@@ -7,6 +7,9 @@
 
 #import "WZGaranchu.h"
 
+// You shoud define your DevId to GARAPON_DEV_ID in WZGaranchuConfig.h
+#import "WZGaranchuConfig.h"
+
 #import <SDWebImage/SDImageCache.h>
 #import <TestFlightSDK/TestFlight.h>
 
