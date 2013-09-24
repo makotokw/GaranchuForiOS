@@ -25,6 +25,7 @@ compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define GARAPON_SERVICE_NAME @"garapon"
 
 #define WZGaranchuDidSelectProgram @"WZGaranchuDidSelectProgram"
+#define WZGaranchuRequiredReconnect @"WZGaranchuRequiredReconnect"
 
 #if !DEBUG
 

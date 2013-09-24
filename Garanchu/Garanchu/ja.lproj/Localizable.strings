@@ -8,6 +8,7 @@
 "DefaultAlertCaption" = "ガランチュ";
 "OkButtonLabel" = "了解";
 "CancelButtonLabel" = "キャンセル";
+"ReconnectButtonLabel" = "再検索";
 
 "SearchBarPlaceHolder" = "検索";
 "LoginGaraponIdLabel" = "ガラポンID";
@@ -30,6 +31,7 @@
 "ClearNoSearchHistoryErrorMessage" = "検索履歴が無いか削除済みです";
 
 "GaraponTv2NotSupported" = "ガラポンTV弐号機以前はAPIの互換性がないためサポートしていません";
+"GaraponTvCannotConnect" = "ガラポンTV端末に接続できませんでした。ネットワーク環境が変わっている場合は再検索してください";
 
 "IndicatorLoadProgram" = "番組を読み込み中...";
 "IndicatorLoginGaraponWeb" = "ガラポンWebに認証中...";

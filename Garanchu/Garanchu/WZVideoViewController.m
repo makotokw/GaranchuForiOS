@@ -85,6 +85,10 @@
                                                  name:WZGaranchuDidSelectProgram
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(requiredReconnect:)
+                                                 name:WZGaranchuRequiredReconnect
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(settingsDidChange:)
                                                  name:kIASKAppSettingChanged
                                                object:nil];    
@@ -117,7 +121,7 @@
 #endif
     if (user.garaponId.length && user.password.length) {
         [self performBlock:^(id sender) {
-            [me loginGaraponWebWithUsername:user.garaponId password:user.password];
+            [me reconnectGaraponTv];
         } afterDelay:0.1f];
     } else {
         [self performBlock:^(id sender) {
@@ -294,6 +298,13 @@
     return hud;
 }
 
+- (void)reconnectGaraponTv
+{
+    __weak WZVideoViewController *me = self;
+    WZGaranchuUser *user = [WZGaranchuUser defaultUser];
+    [me loginGaraponWebWithUsername:user.garaponId password:user.password];
+}
+
 #pragma mark - Search delegate, notificifation
 
 - (void)showSearchPopover
@@ -364,7 +375,7 @@
                           cancelButtonTitle:WZGarancuLocalizedString(@"CancelButtonLabel")
                           otherButtonTitles:@[WZGarancuLocalizedString(@"ClearButtonLabel")]
                                     handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-            if (buttonIndex == 1) {                
+            if (buttonIndex != alertView.cancelButtonIndex) {
                 NSUInteger deleteCount = [WatchHistory deleteAll];
                 NSString *deleteMessage = deleteCount > 0 ? WZGarancuLocalizedString(@"ClearSuccessMessage") : WZGarancuLocalizedString(@"ClearCanNotErrorMessage");
                 [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
@@ -397,7 +408,7 @@
                           cancelButtonTitle:WZGarancuLocalizedString(@"CancelButtonLabel")
                           otherButtonTitles:@[WZGarancuLocalizedString(@"ClearButtonLabel")]
                                     handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-            if (buttonIndex == 1) {
+            if (buttonIndex != alertView.cancelButtonIndex) {
                 NSUInteger deleteCount = [list deleteItems];
                 NSString *deleteMessage = deleteCount > 0 ? WZGarancuLocalizedString(@"ClearSuccessMessage") : WZGarancuLocalizedString(@"ClearCanNotErrorMessage");
                 [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
@@ -719,6 +730,11 @@
     [self close];
 }
 
+-(void)requiredReconnect:(NSNotification *)notification
+{
+    [self reconnectGaraponTv];
+}
+
 - (void)silentLogin
 {
     __weak WZVideoViewController *me = self;
@@ -752,8 +768,7 @@
     [[WZGaranchuUser defaultUser] getGaraponTvAddress:me.garaponWeb
                                             garaponId:username
                                           rawPassword:password
-                                    completionHandler:^(NSDictionary *response, NSError *error) {
-                                        
+                                    completionHandler:^(NSDictionary *response, NSError *error) {                                        
                                         if (error) {
                                             [MBProgressHUD hideHUDForView:loginViewController.view animated:YES];
                                             [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")

@@ -30,6 +30,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 @property (readonly) BOOL hasMoreItems;
 @property (readonly) BOOL isProgramMenu;
 @property (readonly) BOOL isRemoteProgramMenu;
+@property (readonly) NSDate *lastSearchedAt;
 
 @end
 
@@ -58,6 +59,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 @dynamic hasKeywordOfParams;
 @dynamic isProgramMenu;
 @dynamic isRemoteProgramMenu;
+@synthesize lastSearchedAt = _lastSearchedAt;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -120,6 +122,11 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     
     if (self.isRemoteProgramMenu) {        
         [self.tableView addPullToRefreshWithActionHandler:^{
+            NSTimeInterval interval = me.lastSearchedAt.timeIntervalSinceNow;
+            if (interval < 0 && interval > -1) {
+                [me.tableView.pullToRefreshView stopAnimating];
+                return;
+            }
             [me searchLatestItemsWithCompletionHandler:^(NSError *error) {
                 [me.tableView.pullToRefreshView stopAnimating];
             }];
@@ -127,7 +134,12 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         
         if (_indexType != WZRecordingProgramGaranchuIndexType) {
             [self.tableView addInfiniteScrollingWithActionHandler:^{
+                NSTimeInterval interval = me.lastSearchedAt.timeIntervalSinceNow;
                 if (me.hasMoreItems) {
+                    if (interval < 0 && interval > -1) {
+                        [me.tableView.infiniteScrollingView stopAnimating];
+                        return;
+                    }
                     [me searchMoreItemsWithCompletionHandler:^(NSError *error) {
                         [me.tableView.infiniteScrollingView stopAnimating];
                     }];
@@ -276,6 +288,45 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     return _items[indexPath.row];
 }
 
+- (void)showAlertWithError:(NSError *)error andReconnect:(BOOL)reconnect
+{
+    NSString *message = error.localizedRecoverySuggestion ? [NSString stringWithFormat:@"%@\n%@",
+                                                             error.localizedDescription,
+                                                             error.localizedRecoverySuggestion
+                                                             ] : error.localizedDescription;
+    
+    BOOL cannotConnectHost = NO;
+    
+    if ([error.domain isEqualToString:@"NSURLErrorDomain"]) {
+        if (error.code == NSURLErrorCannotFindHost ||
+            error.code == NSURLErrorCannotConnectToHost) {
+            cannotConnectHost = YES;
+            message = WZGarancuLocalizedString(@"GaraponTvCannotConnect");
+        }
+    }
+    
+    if (cannotConnectHost && reconnect) {
+        __weak WZIndexMenuViewController *me = self;
+        [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
+                                    message:message
+                          cancelButtonTitle:WZGarancuLocalizedString(@"CancelButtonLabel")
+                          otherButtonTitles:@[WZGarancuLocalizedString(@"ReconnectButtonLabel")]
+                                    handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                        if (buttonIndex != alertView.cancelButtonIndex) {
+                                            [[NSNotificationCenter defaultCenter] postNotificationName:WZGaranchuRequiredReconnect  object:me userInfo:nil];
+                                        }
+                                    }];
+    } else {
+        [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
+                                    message:message
+                          cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
+                          otherButtonTitles:nil
+                                    handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                    }];
+    }
+    
+}
+
 #pragma mark - Channel Source
 
 - (void)retrieveChannel
@@ -285,10 +336,11 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         [hud indicatorWhiteWithMessage:WZGarancuLocalizedString(@"IndexMenuLoading")];
     }
     __weak WZIndexMenuViewController *me = self;
+    _lastSearchedAt = [NSDate date];
     [_garaponTv channelWithCompletionHandler:^(NSDictionary *response, NSError *error) {
         [MBProgressHUD hideHUDForView:me.tableView animated:NO];
         if (error) {
-            [WZGaranchu showAlertWithError:error];
+            [me showAlertWithError:error andReconnect:YES];
         } else {
             NSArray *items = [WZGaraponTvChannel arrayWithChannelResponse:response];
             [me replaceChannelsFromArray:items];
@@ -458,11 +510,12 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     WZGaraponWrapDictionary *wrapParams = [WZGaraponWrapDictionary wrapWithDictionary:params];
     __block NSInteger numberOfPage = [wrapParams intgerValueWithKey:@"n" defaultValue:20];
     
+    _lastSearchedAt = [NSDate date];
     [_garaponTv searchWithParameter:params
                   completionHandler:^(NSDictionary *response, NSError *error) {                      
                       NSArray *items = nil;
                       if (error) {
-                          [WZGaranchu showAlertWithError:error];
+                          [me showAlertWithError:error andReconnect:YES];
                       } else {                          
                           WZGaraponWrapDictionary *wrap = [WZGaraponWrapDictionary wrapWithDictionary:response];
                           _totalCount = [wrap intgerValueWithKey:@"hit" defaultValue:0];
