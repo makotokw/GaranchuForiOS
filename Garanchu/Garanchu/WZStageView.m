@@ -162,7 +162,6 @@
 {
     [super layoutSubviews];
     
-    NSLog(@"_stageView.size = %lf x %lf", self.bounds.size.width, self.bounds.size.height);
 //    [self resetMenuContainerPosition];
 }
 

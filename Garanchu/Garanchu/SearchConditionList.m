@@ -31,7 +31,7 @@
     NSError *error;
     if (![context save:&error]) {
         // Handle the error.
-        NSLog(@"Error: %@", error);
+        WZLogD(@"Error: %@", error);
         count = 0;
     }
     return count;

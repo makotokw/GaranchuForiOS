@@ -113,7 +113,7 @@
     NSError *error;
     if (![context save:&error]) {
         // Handle the error.
-        NSLog(@"Error: %@", error);
+        WZLogD(@"Error: %@", error);
     }
 }
 
@@ -137,7 +137,7 @@
         }        
         if (![context save:&error]) {
             // Handle the error.
-            NSLog(@"Error: %@", error);
+            WZLogD(@"Error: %@", error);
         } else {
             count = fetchedObjects.count;
         }

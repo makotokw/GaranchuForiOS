@@ -59,7 +59,7 @@
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
         // TODO:
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        WZLogD(@"Unresolved error %@, %@", error, [error userInfo]);
 #if DEBUG
         abort();
 #endif
@@ -74,7 +74,7 @@
     if (managedObjectContext != nil) {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
             // TODO:
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            WZLogD(@"Unresolved error %@, %@", error, [error userInfo]);
 #if DEBUG
             abort();
 #endif
