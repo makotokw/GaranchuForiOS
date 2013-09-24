@@ -11,7 +11,7 @@
 @implementation WZActivityItemProvider
 
 @synthesize program = _program;
-@synthesize prefix = _prefix;
+@synthesize tagLine = _tagLine;
 
 - (id)initWithPlaceholderItem:(id)placeholderItem
 {
@@ -31,7 +31,7 @@
 
 - (id)activityViewController:(UIActivityViewController *)activityViewController itemForActivityType:(NSString *)activityType
 {
-    NSString *prefix = _prefix ? _prefix : @"";
+    NSString *prefix = _tagLine.length > 0 ? [NSString stringWithFormat:@"%@ ", _tagLine] : @"";
     NSString *suffix = @"";
     
     if ([activityType isEqualToString:UIActivityTypePostToTwitter]) {

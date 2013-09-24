@@ -526,6 +526,8 @@
     if (_watchingProgram && _watchingProgram.title) {
         WZActivityItemProvider *provider = [[WZActivityItemProvider alloc] initWithPlaceholderItem:_watchingProgram];
         
+        provider.tagLine = [[NSUserDefaults standardUserDefaults] stringForKey:@"share_tag_line"];
+        
         NSArray *activityItems = @[_watchingProgram.title];
         activityItems = @[provider];
         

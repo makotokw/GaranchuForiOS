@@ -25,6 +25,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 @interface WZIndexMenuViewController ()
 
 @property (readonly) BOOL hasSection;
+@property (readonly) BOOL hasMultipleSection;
 @property (readonly) BOOL hasKeywordOfParams;
 @property (readonly) BOOL hasMoreItems;
 @property (readonly) BOOL isProgramMenu;
@@ -53,6 +54,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 @synthesize indexType = _indexType;
 @dynamic context;
 @dynamic hasSection;
+@dynamic hasMultipleSection;
 @dynamic hasKeywordOfParams;
 @dynamic isProgramMenu;
 @dynamic isRemoteProgramMenu;
@@ -247,6 +249,14 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 {
     return (_indexType == WZGenreGaranchuIndexType
             || _indexType == WZRootGaranchuIndexType);
+}
+
+- (BOOL)hasMultipleSection
+{
+    if (self.hasSection) {
+        return _items.count >= 2;
+    }
+    return NO;
 }
 
 - (BOOL)hasMoreItems
@@ -546,7 +556,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    if (self.hasSection) {
+    if (self.hasMultipleSection) {
         return _items.count;
     }
     return 1;
@@ -554,7 +564,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (self.hasSection) {
+    if (self.hasMultipleSection) {
         return _items[section][@"title"];
     }
     return nil;
@@ -562,7 +572,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (!self.hasSection) {
+    if (!self.hasMultipleSection) {
         return 0;
     }
     return 40.0f;
@@ -570,7 +580,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (!self.hasSection) {
+    if (!self.hasMultipleSection) {
         return nil;
     }
     

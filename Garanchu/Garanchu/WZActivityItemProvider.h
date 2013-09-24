@@ -12,6 +12,6 @@
 @interface WZActivityItemProvider : UIActivityItemProvider
 
 @property WZGaraponTvProgram *program;
-@property NSString *prefix;
+@property NSString *tagLine;
 
 @end

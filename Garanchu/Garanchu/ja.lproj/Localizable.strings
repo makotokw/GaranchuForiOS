@@ -9,6 +9,7 @@
 "OkButtonLabel" = "了解";
 "CancelButtonLabel" = "キャンセル";
 
+"SearchBarPlaceHolder" = "検索";
 "LoginGaraponIdLabel" = "ガラポンID";
 "LoginPasswordLabel" = "パスワード";
 "LoginButtonLabel" = "ログイン";

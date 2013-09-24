@@ -6,6 +6,7 @@
 //
 
 #import "WZSearchSuggestViewController.h"
+#import "WZGaranchu.h"
 #import "WZCoreData.h"
 
 #import "SearchConditionList.h"
@@ -39,6 +40,7 @@
     [super viewDidLoad];
     
     _searchBar.delegate = self;
+    _searchBar.placeholder = WZGarancuLocalizedString(@"SearchBarPlaceHolder");
     
     _list = [SearchConditionList findOrCreateByCode:@"search_history"];
     

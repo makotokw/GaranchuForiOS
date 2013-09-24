@@ -433,7 +433,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cWG-Lw-gyB" userLabel="Password">
-                                <rect key="frame" x="51" y="121.5" width="299" height="41"/>
+                                <rect key="frame" x="51" y="121" width="299" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="ujs-YO-Yup"/>
                                 </constraints>
@@ -442,7 +442,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkq-b3-LRu" userLabel="LoginButton">
-                                <rect key="frame" x="51" y="182.5" width="299" height="44"/>
+                                <rect key="frame" x="51" y="182" width="299" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="mdO-aq-DeB"/>
                                 </constraints>
