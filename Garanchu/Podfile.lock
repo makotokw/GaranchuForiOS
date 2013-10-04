@@ -4,24 +4,13 @@ PODS:
   - FlatUIKit (1.2)
   - InAppSettingsKit (1.1)
   - libffi (3.0.13)
-  - libwebp (0.3.0-rc7):
-    - libwebp/dec
-    - libwebp/dsp
-    - libwebp/utils
-    - libwebp/webp
-  - libwebp/dec (0.3.0-rc7)
-  - libwebp/dsp (0.3.0-rc7)
-  - libwebp/utils (0.3.0-rc7)
-  - libwebp/webp (0.3.0-rc7)
   - MBProgressHUD (0.7)
   - MZAppearance (1.0.0)
   - MZFormSheetController (1.2.3):
     - MZAppearance (~> 1.0.0)
   - SDWebImage (3.4):
-    - libwebp
-    - SDWebImage/MapKit
-  - SDWebImage/MapKit (3.4):
-    - libwebp
+    - SDWebImage/Core
+  - SDWebImage/Core (3.4)
   - SFHFKeychainUtils (0.0.1)
   - SVPullToRefresh (0.4.1)
   - TestFlightSDK (2.0)
@@ -53,35 +42,34 @@ DEPENDENCIES:
   - SVPullToRefresh (= 0.4.1)
   - TestFlightSDK (= 2.0.0)
   - TMCache (= 1.2.0)
-  - WZActivityIndicatorView (from `~/arcadia/KWPods/WZActivityIndicatorView`)
-  - WZAVPlayer (from `~/arcadia/KWPods/WZAVPlayer`)
-  - WZGarapon (from `~/arcadia/KWPods/WZGarapon`)
-  - WZPlayerSlider (from `~/arcadia/KWPods/WZPlayerSlider`)
+  - WZActivityIndicatorView (from `https://github.com/makotokw/CocoaWZActivityIndicatorView.git`)
+  - WZAVPlayer (from `https://github.com/makotokw/CocoaWZAVPlayer.git`)
+  - WZGarapon (from `https://github.com/makotokw/CocoaWZGarapon.git`)
+  - WZPlayerSlider (from `https://github.com/makotokw/CocoaWZPlayerSlider.git`)
 
 EXTERNAL SOURCES:
   WZActivityIndicatorView:
-    :path: ~/arcadia/KWPods/WZActivityIndicatorView
+    :git: https://github.com/makotokw/CocoaWZActivityIndicatorView.git
   WZAVPlayer:
-    :path: ~/arcadia/KWPods/WZAVPlayer
+    :git: https://github.com/makotokw/CocoaWZAVPlayer.git
   WZGarapon:
-    :path: ~/arcadia/KWPods/WZGarapon
+    :git: https://github.com/makotokw/CocoaWZGarapon.git
   WZPlayerSlider:
-    :path: ~/arcadia/KWPods/WZPlayerSlider
+    :git: https://github.com/makotokw/CocoaWZPlayerSlider.git
 
 SPEC CHECKSUMS:
   BlocksKit: 27257f9cbbec0ea98c80ba83cc2ea7111ae62eb2
   FlatUIKit: 43b2acaa6f4ef57539b51b00e4ce62d506e33e11
   InAppSettingsKit: cf2c4193c3269d6acf996f7975f310d18a5e1e3c
   libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
-  libwebp: 40517fa1fd3716eded73b4696c45fc0b66e4b414
   MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
   MZAppearance: 92fb47f113440c9c8329a5a7acaca4e070114e0d
   MZFormSheetController: b25a0df5183bf303e771daa8151e1543fc425879
-  SDWebImage: f13f791e411c632489824aa7f129e230b52bf5c4
+  SDWebImage: 366188f04c019bfd712d45e3b36aa52070f4abd8
   SFHFKeychainUtils: e828dbd9eaa509486acf95d8de2ebd414c4b7451
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
   TestFlightSDK: 940906d4b2550cf397c6f2d2fcc4ebfdcd8ae858
-  TMCache: 78eabf36d9993431243007da2e9ba58b462eb43e
+  TMCache: 4b05e1b124d9f7e8d449640e059cff4cda17ed27
   WZActivityIndicatorView: 0831c45bbedf2dbf5411284f67439e0fed9584e0
   WZAVPlayer: 2d9c0d09676b84d413dafd7d0c0f8228f6c54fc7
   WZGarapon: 2055b7dee30d7cc8ec5ad36fc50bb3e4c903a7d1

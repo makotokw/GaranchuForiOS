@@ -3,19 +3,24 @@ Garanchu - ガラポンTV iOSアプリ
 
 ガラポンTVで録画した番組をiPadで視聴するためのアプリです。
 
+## 開発環境
+
+ * Xcode 5 + iOS SDK7
+ * [CocoaPods](http://cocoapods.org/)
+ * ガラポンTV APIのデベロッパーID
+
 ## セットアップ
 
 ```
-git clone https://github.com/makotokw/Garanchu.git
-cd Garanchu/Garanchu
+git clone https://github.com/makotokw/GaranchuForiOS.git
+cd GaranchuForiOS/Garanchu
+cp Garanchu/WZGaranchuConfig.sample.h Garanchu/WZGaranchuConfig.h
 pod install
+open Garanchu.xcworkspace
 ```
 
-## ビルド
+``WZGaranchuConfig.h`` にデベロッパーIDを入れてください。
 
- * Xcode5以降
- * ガラポンTV APIのデベロッパーIDが必要です
-  * ``WZGaranchuConfig.h`` ファイルを ``WZGaranchuConfig.h.sample`` をコピーして値を設定してください
 
 ## ライセンス
 

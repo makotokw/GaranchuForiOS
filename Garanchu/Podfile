@@ -11,8 +11,13 @@ pod 'SVPullToRefresh', '0.4.1'
 pod 'TMCache', '1.2.0'
 pod 'MZFormSheetController', '1.2.3'
 
-pod 'WZPlayerSlider', :path => '~/arcadia/KWPods/WZPlayerSlider'
-pod 'WZAVPlayer', :path => '~/arcadia/KWPods/WZAVPlayer'
-pod 'WZGarapon', :path => '~/arcadia/KWPods/WZGarapon'
-pod 'WZActivityIndicatorView', :path => '~/arcadia/KWPods/WZActivityIndicatorView'
-#pod 'FlatUIColor', :git => 'https://github.com/makotokw/CocoaFlatUIColor.git'
+# development with Pods
+#pod 'WZPlayerSlider', :path => '~/arcadia/KWPods/WZPlayerSlider'
+#pod 'WZAVPlayer', :path => '~/arcadia/KWPods/WZAVPlayer'
+#pod 'WZGarapon', :path => '~/arcadia/KWPods/WZGarapon'
+#pod 'WZActivityIndicatorView', :path => '~/arcadia/KWPods/WZActivityIndicatorView'
+
+pod 'WZPlayerSlider', :git => 'https://github.com/makotokw/CocoaWZPlayerSlider.git'
+pod 'WZAVPlayer', :git => 'https://github.com/makotokw/CocoaWZAVPlayer.git'
+pod 'WZGarapon', :git => 'https://github.com/makotokw/CocoaWZGarapon.git'
+pod 'WZActivityIndicatorView', :git => 'https://github.com/makotokw/CocoaWZActivityIndicatorView.git'
