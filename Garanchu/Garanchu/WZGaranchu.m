@@ -77,8 +77,10 @@ NSString *WZGarancuLocalizedString(NSString *key)
     SDImageCache *cache = [SDImageCache sharedImageCache];
     cache.maxCacheAge = 86400;
     [cache cleanDisk];
-    
-    [self initializeTestFlightWithTeamToken:@"bdfbcd15-b247-47a5-9998-9feeb5fec037"];
+
+#ifdef GARAPON_TESTFLIGHT_TOKEN
+    [self initializeTestFlightWithTeamToken:GARAPON_TESTFLIGHT_TOKEN];
+#endif
 }
 
 - (NSString *)applictionVersion
