@@ -136,7 +136,7 @@
 		</dict>
         <dict>
 			<key>File</key>
-			<string>library_copyrights.html</string>
+			<string>web/library_copyrights.html</string>
 			<key>IASKViewControllerClass</key>
 			<string>IASKAppSettingsWebViewController</string>
 			<key>IASKViewControllerSelector</key>
