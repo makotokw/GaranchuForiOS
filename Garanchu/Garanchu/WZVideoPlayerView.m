@@ -7,6 +7,8 @@
 
 #import "WZVideoPlayerView.h"
 
+#import <WZPlayerSlider/WZPlayerSlider.h>
+
 @implementation WZVideoPlayerView
 
 {    
@@ -51,6 +53,24 @@
     [_favButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/starEnabled.png"] forState:UIControlStateSelected];
     [_infoButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/info.png"] forState:UIControlStateNormal];
     [_shareButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/share.png"] forState:UIControlStateNormal];
+    
+    if ([self.scrubber.class isSubclassOfClass:[WZPlayerSlider class]]) {
+        __weak WZPlayerSlider *playerSlider = (WZPlayerSlider *)self.scrubber;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIImage *thumbImage = [UIImage imageNamed:@"GaranchuResources.bundle/thumbImage"];
+            [playerSlider setThumbImage:thumbImage forState:UIControlStateNormal];
+            
+            UIImage *minimumTrackImage = [[UIImage imageNamed:@"GaranchuResources.bundle/minimumTrackImage.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(1, 3, 1, 1)];
+            UIImage *maximumTrackImage = [[UIImage imageNamed:@"GaranchuResources.bundle/maximumTrackImage.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(1, 3, 1, 1)];
+            [playerSlider setMinimumTrackImage:minimumTrackImage forState:UIControlStateNormal];
+            [playerSlider setMaximumTrackImage:maximumTrackImage forState:UIControlStateNormal];
+            
+            UIImage *availableTrackImage = [[UIImage imageNamed:@"GaranchuResources.bundle/availableTrackImage.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(1, 1, 1, 1)];
+            [playerSlider setAvailableTrackImage:availableTrackImage];
+        });
+        
+    }
 }
 
 - (void)resetIdleTimer

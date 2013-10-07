@@ -13,7 +13,7 @@ PODS:
   - SDWebImage/Core (3.4)
   - SFHFKeychainUtils (0.0.1)
   - SVPullToRefresh (0.4.1)
-  - TestFlightSDK (2.0)
+  - TestFlightSDK (2.0.2)
   - TMCache (1.2.0)
   - WZActivityIndicatorView (0.1)
   - WZAVPlayer (0.1):
@@ -29,7 +29,7 @@ PODS:
     - WZAVPlayer/Core
     - WZAVPlayer/HUD
   - WZGarapon (0.0.1)
-  - WZPlayerSlider (0.1)
+  - WZPlayerSlider (0.1.2)
 
 DEPENDENCIES:
   - BlocksKit (= 1.8.3)
@@ -40,7 +40,7 @@ DEPENDENCIES:
   - SDWebImage (= 3.4)
   - SFHFKeychainUtils (= 0.0.1)
   - SVPullToRefresh (= 0.4.1)
-  - TestFlightSDK (= 2.0.0)
+  - TestFlightSDK (= 2.0.2)
   - TMCache (= 1.2.0)
   - WZActivityIndicatorView (from `https://github.com/makotokw/CocoaWZActivityIndicatorView.git`)
   - WZAVPlayer (from `https://github.com/makotokw/CocoaWZAVPlayer.git`)
@@ -68,11 +68,11 @@ SPEC CHECKSUMS:
   SDWebImage: 366188f04c019bfd712d45e3b36aa52070f4abd8
   SFHFKeychainUtils: e828dbd9eaa509486acf95d8de2ebd414c4b7451
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
-  TestFlightSDK: 940906d4b2550cf397c6f2d2fcc4ebfdcd8ae858
+  TestFlightSDK: 0811097c1f831afb71f68ccd07ae71325cb90f43
   TMCache: 4b05e1b124d9f7e8d449640e059cff4cda17ed27
   WZActivityIndicatorView: 0831c45bbedf2dbf5411284f67439e0fed9584e0
   WZAVPlayer: 2d9c0d09676b84d413dafd7d0c0f8228f6c54fc7
   WZGarapon: 2055b7dee30d7cc8ec5ad36fc50bb3e4c903a7d1
-  WZPlayerSlider: 0ecfd1bafdd722112ab2cb78077615143b90f358
+  WZPlayerSlider: 0894a94618dff7c111701a76d304cddb59d46f56
 
 COCOAPODS: 0.25.0
