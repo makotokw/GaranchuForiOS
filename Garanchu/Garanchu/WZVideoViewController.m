@@ -770,6 +770,7 @@
                                           rawPassword:password
                                     completionHandler:^(NSDictionary *response, NSError *error) {                                        
                                         if (error) {
+                                            WZLogD(@"getGaraponTvAddress:error = %@", error);
                                             [MBProgressHUD hideHUDForView:loginViewController.view animated:YES];
                                             [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
                                                                         message:error.localizedDescription

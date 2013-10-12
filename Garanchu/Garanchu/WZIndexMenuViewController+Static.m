@@ -36,8 +36,9 @@
     }    
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"JST"];
     dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
-    [dateFormatter setDateFormat:@"YYYY/MM/dd(EEE)"];
+    dateFormatter.dateFormat = @"YYYY/MM/dd(EEE)";
     
     NSMutableArray *items = [NSMutableArray array];
     for (NSInteger i = 0; i < numberOfDate; i++) {
