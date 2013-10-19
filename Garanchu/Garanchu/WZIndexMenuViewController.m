@@ -91,6 +91,10 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 
     self.view.backgroundColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.sectionIndexColor = [UIColor whiteColor];
+    
+    self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
+    self.tableView.sectionIndexTrackingBackgroundColor = [UIColor clearColor];
     
     _stage = [WZGaranchu current];
     _garaponTv = _stage.garaponTv;
@@ -613,6 +617,17 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         return _items.count;
     }
     return 1;
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    if (WZGenreGaranchuIndexType != _indexType) {
+        return nil;
+    }
+    return [_items map:^id(id obj) {
+        NSDictionary *item = obj;
+        return [item[@"title"] substringWithRange:NSMakeRange(0,2)];
+    }];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
