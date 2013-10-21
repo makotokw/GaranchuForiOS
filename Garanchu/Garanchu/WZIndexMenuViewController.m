@@ -92,9 +92,12 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     self.view.backgroundColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.sectionIndexColor = [UIColor whiteColor];
-    
-    self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
     self.tableView.sectionIndexTrackingBackgroundColor = [UIColor clearColor];
+    
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+    } else {
+        self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
+    }
     
     _stage = [WZGaranchu current];
     _garaponTv = _stage.garaponTv;
