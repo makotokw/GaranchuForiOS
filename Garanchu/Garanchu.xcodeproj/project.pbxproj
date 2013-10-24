@@ -15,6 +15,8 @@
 		8F59FCB11793D77B00EEA418 /* WZNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB01793D77B00EEA418 /* WZNaviViewController.m */; };
 		8F59FCB41793D9FC00EEA418 /* WZIndexMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB31793D9FC00EEA418 /* WZIndexMenuViewController.m */; };
 		8F59FCB71794149300EEA418 /* WZIndexMenuViewController+Static.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB61794149200EEA418 /* WZIndexMenuViewController+Static.m */; };
+		8F66B1411819D6A600867A07 /* NSURL+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F66B1401819D6A600867A07 /* NSURL+QueryString.m */; };
+		8F66B1441819E6FF00867A07 /* WZAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F66B1431819E6FF00867A07 /* WZAppSettingsWebViewController.m */; };
 		8F72AFD417E0EBD7007E1715 /* Garanchu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8F72AFD217E0EBD7007E1715 /* Garanchu.xcdatamodeld */; };
 		8F72AFD617E0EC65007E1715 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F72AFD517E0EC65007E1715 /* CoreData.framework */; };
 		8F72B01A17E58C4E007E1715 /* SearchCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F72B01917E58C4D007E1715 /* SearchCondition.m */; };
@@ -95,6 +97,10 @@
 		8F59FCB31793D9FC00EEA418 /* WZIndexMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZIndexMenuViewController.m; sourceTree = "<group>"; };
 		8F59FCB51794149100EEA418 /* WZIndexMenuViewController+Static.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WZIndexMenuViewController+Static.h"; sourceTree = "<group>"; };
 		8F59FCB61794149200EEA418 /* WZIndexMenuViewController+Static.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WZIndexMenuViewController+Static.m"; sourceTree = "<group>"; };
+		8F66B13F1819D6A600867A07 /* NSURL+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QueryString.h"; sourceTree = "<group>"; };
+		8F66B1401819D6A600867A07 /* NSURL+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QueryString.m"; sourceTree = "<group>"; };
+		8F66B1421819E6FF00867A07 /* WZAppSettingsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZAppSettingsWebViewController.h; sourceTree = "<group>"; };
+		8F66B1431819E6FF00867A07 /* WZAppSettingsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZAppSettingsWebViewController.m; sourceTree = "<group>"; };
 		8F72AFD317E0EBD7007E1715 /* Garanchu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Garanchu.xcdatamodel; sourceTree = "<group>"; };
 		8F72AFD517E0EC65007E1715 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		8F72B01817E58C4D007E1715 /* SearchCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCondition.h; sourceTree = "<group>"; };
@@ -231,6 +237,10 @@
 				8FAFF07417E5FE76008CDA2F /* NSManagedObject */,
 				8F935B9A1791F24D001FFE01 /* Supporting Files */,
 				8F935BC81791F2ED001FFE01 /* iPad.storyboard */,
+				8F66B13F1819D6A600867A07 /* NSURL+QueryString.h */,
+				8F66B1401819D6A600867A07 /* NSURL+QueryString.m */,
+				8F3C22ED17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.h */,
+				8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */,
 				8F935BA21791F24D001FFE01 /* WZAppDelegate.h */,
 				8F935BA31791F24D001FFE01 /* WZAppDelegate.m */,
 				8F59FC4F1791F73C00EEA418 /* WZVideoViewController.h */,
@@ -254,8 +264,6 @@
 				8F59FCB31793D9FC00EEA418 /* WZIndexMenuViewController.m */,
 				8F59FCB51794149100EEA418 /* WZIndexMenuViewController+Static.h */,
 				8F59FCB61794149200EEA418 /* WZIndexMenuViewController+Static.m */,
-				8F3C22ED17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.h */,
-				8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */,
 				8FFD027F17DE379600583B1E /* WZSearchSuggestViewController.h */,
 				8FFD028017DE379600583B1E /* WZSearchSuggestViewController.m */,
 				8FAD8C4117D6540E002F0D50 /* WZSearchResultViewController.h */,
@@ -264,6 +272,8 @@
 				8FFD027D17DE2D6D00583B1E /* WZGaraponTabController.m */,
 				8FAFF07817E6FFFB008CDA2F /* WZActivityItemProvider.h */,
 				8FAFF07917E6FFFB008CDA2F /* WZActivityItemProvider.m */,
+				8F66B1421819E6FF00867A07 /* WZAppSettingsWebViewController.h */,
+				8F66B1431819E6FF00867A07 /* WZAppSettingsWebViewController.m */,
 			);
 			path = Garanchu;
 			sourceTree = "<group>";
@@ -502,6 +512,7 @@
 			files = (
 				8F935BA01791F24D001FFE01 /* main.m in Sources */,
 				8F935BA41791F24D001FFE01 /* WZAppDelegate.m in Sources */,
+				8F66B1411819D6A600867A07 /* NSURL+QueryString.m in Sources */,
 				8F935BCC1791F570001FFE01 /* WZLoginViewController.m in Sources */,
 				8F59FC511791F73C00EEA418 /* WZVideoViewController.m in Sources */,
 				8F59FC541792C21E00EEA418 /* WZGaranchuUser.m in Sources */,
@@ -510,6 +521,7 @@
 				8F59FCB11793D77B00EEA418 /* WZNaviViewController.m in Sources */,
 				8F59FCB41793D9FC00EEA418 /* WZIndexMenuViewController.m in Sources */,
 				8F59FCB71794149300EEA418 /* WZIndexMenuViewController+Static.m in Sources */,
+				8F66B1441819E6FF00867A07 /* WZAppSettingsWebViewController.m in Sources */,
 				8F3C22EF17B38FE000D35CF2 /* MBProgressHUD+Garanchu.m in Sources */,
 				8FAD8C4317D6540F002F0D50 /* WZSearchResultViewController.m in Sources */,
 				8FFD027E17DE2D6D00583B1E /* WZGaraponTabController.m in Sources */,

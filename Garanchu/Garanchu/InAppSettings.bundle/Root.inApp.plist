@@ -138,7 +138,7 @@
 			<key>File</key>
 			<string>web/library_copyrights.html</string>
 			<key>IASKViewControllerClass</key>
-			<string>IASKAppSettingsWebViewController</string>
+			<string>WZAppSettingsWebViewController</string>
 			<key>IASKViewControllerSelector</key>
 			<string>initWithFile:key:</string>
 			<key>Title</key>
