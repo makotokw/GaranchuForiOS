@@ -539,8 +539,8 @@
         
         provider.tagLine = [[NSUserDefaults standardUserDefaults] stringForKey:@"share_tag_line"];
         
-        NSArray *activityItems = @[_watchingProgram.title];
-        activityItems = @[provider];
+//        NSArray *activityItems = @[_watchingProgram.title];
+        NSArray *activityItems = activityItems = @[provider];
         
         WZGaraponTvSiteActivity *tvSiteActivity = [[WZGaraponTvSiteActivity alloc] init
                                                    ];
@@ -777,7 +777,7 @@
                                                               cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                                                               otherButtonTitles:nil
                                                                         handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                                                            [loginViewController setEnableControls:YES];
+                                                                            [me presentOrEnableModalLoginViewController];
                                                                         }];
                                         } else {
                                             [me.garaponTv setHostAndPortWithAddressResponse:response];                                        
@@ -836,11 +836,7 @@
                               otherButtonTitles:nil
                                         handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                             ;
-                                            if (loginViewController) {
-                                                [loginViewController setEnableControls:YES];
-                                            } else {
-                                                [me presentModalLoginViewController];
-                                            }
+                                            [me presentOrEnableModalLoginViewController];
                                         }];
         } else {
             [me performBlock:^(id sender) {
@@ -868,6 +864,15 @@
             [me didLogoutGaraponTv];
             [me presentModalLoginViewController];
         }];
+    }
+}
+
+- (void)presentOrEnableModalLoginViewController
+{
+    if (_loginViewController) {
+        [_loginViewController setEnableControls:YES];
+    } else {
+        [self presentModalLoginViewController];
     }
 }
 
