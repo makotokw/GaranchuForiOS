@@ -6,7 +6,6 @@
 //
 
 #import "WZSearchSuggestViewController.h"
-#import "WZGaranchu.h"
 #import "WZCoreData.h"
 
 #import "SearchConditionList.h"

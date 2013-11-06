@@ -6,7 +6,6 @@
 //
 
 #import "WZAppDelegate.h"
-#import "WZGaranchu.h"
 #import "WZCoreData.h"
 
 @implementation WZAppDelegate

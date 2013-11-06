@@ -17,8 +17,13 @@
 
 "SettingsViewTitle" = "設定";
 
-"HeaderProgramDateTimeFormat" = "yyyy/MM/dd HH:mm";
-"HeaderProgramTitleFormat" = "%@ (%@)";
+"ProgramStartDateTimeFormat" = "yyyy/MM/dd(EEE) HH:mm";
+"ProgramEndDateTimeFormat" = "HH:mm";
+"ProgramDurationFormat" = "%02d時間%02d分";
+"ProgramDateAndDurationFormat" = "%@-%@ (%@)";
+"ProgramGenreFormat" = "%@ [%@]";
+
+"HeaderProgramTitleFormat" = "%@ %@";
 
 "ClearButtonLabel" = "削除";
 "ClearSuccessMessage" = "削除しました";
@@ -49,8 +54,4 @@
 "IndexMenuNoWatchHistory" = "履歴はありません";
 
 "ActivityTwitterSuffix" = " #ガラポンTV";
-
-//WZGarancuLocalizedString(@"ActivityTwitterSuffix")
-
-
 

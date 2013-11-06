@@ -6,7 +6,6 @@
 //
 
 #import "WZActivityItemProvider.h"
-#import "WZGaranchu.h"
 
 @implementation WZActivityItemProvider
 

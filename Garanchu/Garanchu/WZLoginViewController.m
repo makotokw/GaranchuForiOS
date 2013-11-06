@@ -6,7 +6,6 @@
 //
 
 #import "WZLoginViewController.h"
-#import "WZGaranchu.h"
 #import "WZGaranchuUser.h"
 
 #import <QuartzCore/QuartzCore.h>

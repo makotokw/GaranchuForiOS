@@ -7,7 +7,6 @@
 
 #import "WZIndexMenuViewController.h"
 #import "WZIndexMenuViewController+Static.h"
-#import "WZGaranchu.h"
 #import "WatchHistory.h"
 #import "VideoProgram.h"
 
@@ -214,7 +213,6 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     self.tableView.pullToRefreshView.textColor = [UIColor cloudsColor];
     self.tableView.pullToRefreshView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
     self.tableView.infiniteScrollingView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
-
 }
 
 - (void)titleViewDidTapped:(id)sender
@@ -713,7 +711,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         [thumbnailView setImageWithURL:thumbnailURL placeholderImage:_placeHolderImage options:SDWebImageCacheMemoryOnly];
                 
         titleLabel.text = item.title;
-        channelLabel.text = item.bc;
+        channelLabel.text = item.broadcastStation;
         
         // hack: ignore over 24h
         if (item.duration > 3600*24) {

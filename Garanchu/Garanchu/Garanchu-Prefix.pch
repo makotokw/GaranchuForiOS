@@ -15,6 +15,9 @@
     #import <BlocksKit/BlocksKit.h>
     #import <FlatUIKit/FlatUIKit.h>
     #import <WZGarapon/WZGarapon.h>
+    #import "WZGaraponTvProgram+Garanchu.h"
+    #import "MBProgressHUD+Garanchu.h"
+    #import "WZGaranchu.h"
 #endif
 
 FOUNDATION_EXPORT NSString *MYLocalizedString(NSString *key);

@@ -14,11 +14,8 @@
 #import "WZSearchSuggestViewController.h"
 #import "WZStageView.h"
 #import "WZVideoPlayerView.h"
-#import "WZGaranchu.h"
 #import "WZGaranchuUser.h"
 #import "WZActivityItemProvider.h"
-
-#import "MBProgressHUD+Garanchu.h"
 
 #import <BlocksKit/BlocksKit.h>
 #import <InAppSettingsKit/IASKAppSettingsViewController.h>
@@ -210,11 +207,8 @@
 - (void)setContentTitleWithProgram:(WZGaraponTvProgram *)program
 {
     if (program) {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:WZGarancuLocalizedString(@"HeaderProgramDateTimeFormat")];
-        NSString *dateString =  [dateFormatter stringFromDate:program.startdate];
-        NSString *headerContentTitle = [NSString stringWithFormat:WZGarancuLocalizedString(@"HeaderProgramTitleFormat"), program.title, dateString];
-        [_stageView setContentTitle:headerContentTitle];
+        NSString *title = [NSString stringWithFormat:WZGarancuLocalizedString(@"HeaderProgramTitleFormat"), program.title, program.dateAndDuration];
+        [_stageView setContentTitle:title];
     } else {
         [_stageView setContentTitle:nil];
     }
