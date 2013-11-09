@@ -18,6 +18,10 @@ DerivedData
 *.hmap
 */Pods/*
 
+# Ruby
+*/.bundle
+*/vendor/bundle
+
 # Garanchu
 WZGaranchuConfig.h
 Garanchu.xcworkspace/

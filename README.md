@@ -15,7 +15,8 @@ Garanchu - ガラポンTV iOSアプリ
 git clone https://github.com/makotokw/GaranchuForiOS.git
 cd GaranchuForiOS/Garanchu
 cp Garanchu/WZGaranchuConfig.sample.h Garanchu/WZGaranchuConfig.h
-pod install
+bundle install --path=vendor/bundle
+bundle exec pod install
 open Garanchu.xcworkspace
 ```
 
