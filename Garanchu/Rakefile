@@ -1,0 +1,40 @@
+# encoding: utf-8
+require 'rake'
+
+task :configure_appstore do
+  build_content = File.read('Garanchu/WZGaranchuBuild.h').gsub(/(TARGET_APP_STORE) 0/, '\1 1')
+  open('Garanchu/WZGaranchuBuild.h', 'w') do |f|
+    f.<< build_content
+  end
+  Rake::Task['disable_testflight'].invoke
+end
+
+task :configure_adhoc do
+  build_content = File.read('Garanchu/WZGaranchuBuild.h').gsub(/(TARGET_APP_STORE) 1/, '\1 0')
+  open('Garanchu/WZGaranchuBuild.h', 'w') do |f|
+    f.<< build_content
+  end
+  Rake::Task['enable_testflight'].invoke
+end
+
+task :enable_testflight do
+  build_content = File.read('Garanchu/WZGaranchuBuild.h').gsub(/(USE_TESTFLIGHT_SDK) 0/, '\1 1')
+  open('Garanchu/WZGaranchuBuild.h', 'w') do |f|
+    f.<< build_content
+  end
+  podfile_content = File.read('Podfile').gsub(/^#(pod 'TestFlightSDK')/, '\1')
+  open('Podfile', 'w') do |f|
+    f.<< podfile_content
+  end
+end
+
+task :disable_testflight do
+  build_content = File.read('Garanchu/WZGaranchuBuild.h').gsub(/(USE_TESTFLIGHT_SDK) 1/, '\1 0')
+  open('Garanchu/WZGaranchuBuild.h', 'w') do |f|
+    f.<< build_content
+  end
+  podfile_content = File.read('Podfile').gsub(/^pod 'TestFlightSDK'/, '#\0')
+  open('Podfile', 'w') do |f|
+    f.<< podfile_content
+  end
+end
