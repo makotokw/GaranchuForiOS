@@ -7,6 +7,8 @@
 
 #import "WZVideoPlayerView.h"
 
+#import <MediaPlayer/MediaPlayer.h>
+#import <WZAVPlayer/WZAirPlayDetector.h>
 #import <WZPlayerSlider/WZPlayerSlider.h>
 
 @implementation WZVideoPlayerView
@@ -18,6 +20,8 @@
     IBOutlet UIButton *_favButton;
     IBOutlet UIButton *_infoButton;
     IBOutlet UIButton *_shareButton;
+    IBOutlet UIView *_airPlayView;
+    IBOutlet NSLayoutConstraint *_airPlayViewPadddinglayoutConstraint;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -54,6 +58,9 @@
     [_infoButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/info.png"] forState:UIControlStateNormal];
     [_shareButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/share.png"] forState:UIControlStateNormal];
     
+
+    [self setupAirPlay];
+    
     if ([self.scrubber.class isSubclassOfClass:[WZPlayerSlider class]]) {
         __weak WZPlayerSlider *playerSlider = (WZPlayerSlider *)self.scrubber;
         
@@ -71,6 +78,22 @@
         });
         
     }
+}
+
+- (void)setupAirPlay
+{
+    MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:CGRectMake(-3, 4, 32, 32)];
+    volumeView.showsRouteButton = YES;
+    volumeView.showsVolumeSlider = NO;
+    
+    UIImage *airPlayImage = [UIImage imageNamed:@"GaranchuResources.bundle/airplay.png"];
+    [volumeView setRouteButtonImage:airPlayImage forState:UIControlStateNormal];
+    [_airPlayView addSubview:volumeView];
+    
+    [self setAirPlayVisibled:NO];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(airPlayAvailabilityChanged:) name:WZAirPlayAvailabilityChanged object:nil];    
+    [[WZAirPlayDetector defaultDetector] startMonitoringWithVolumeView:volumeView];
 }
 
 - (void)resetIdleTimer
@@ -147,6 +170,18 @@
     _favButton.enabled =
     _infoButton.enabled =
     _shareButton.enabled = NO;
+}
+
+-(void)airPlayAvailabilityChanged:(NSNotification *)notification
+{
+    WZAirPlayDetector *detector = notification.object;
+    [self setAirPlayVisibled:detector.isAirPlayAvailabled];
+}
+
+- (void)setAirPlayVisibled:(BOOL)visible
+{
+    _airPlayView.hidden = !visible;
+    _airPlayViewPadddinglayoutConstraint.constant = _airPlayView.hidden ? 10.0 : 60.0;
 }
 
 @end

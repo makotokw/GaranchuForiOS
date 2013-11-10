@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="ePR-Fl-IsY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="ePR-Fl-IsY">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
@@ -21,6 +21,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="_airPlayView" destination="NYK-JQ-zJw" id="DOj-fA-Ska"/>
+                                    <outlet property="_airPlayViewPadddinglayoutConstraint" destination="g3c-8o-9GV" id="rQ2-be-8Xb"/>
                                     <outlet property="_favButton" destination="D5B-fu-sVF" id="M2f-aZ-FA3"/>
                                     <outlet property="_infoButton" destination="G9j-w9-okB" id="3dJ-cZ-74w"/>
                                     <outlet property="_previousButton" destination="xga-KD-yOd" id="YBG-pA-zvr"/>
@@ -256,7 +258,7 @@
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tTS-hw-KPk" userLabel="playerSlider" customClass="WZPlayerSlider">
-                                        <rect key="frame" x="278" y="0.0" width="522" height="41"/>
+                                        <rect key="frame" x="278" y="0.0" width="470" height="41"/>
                                         <connections>
                                             <action selector="beginScrubbing:" destination="Vte-mT-Hu8" eventType="touchDown" id="Vgq-gT-xTg"/>
                                             <action selector="endScrubbing:" destination="Vte-mT-Hu8" eventType="touchUpInside" id="Riq-2Q-Poi"/>
@@ -266,7 +268,7 @@
                                         </connections>
                                     </slider>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dw1-er-aoJ" userLabel="durationLabel">
-                                        <rect key="frame" x="806" y="11" width="60" height="18"/>
+                                        <rect key="frame" x="756" y="11" width="60" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="PAw-sm-VDc"/>
                                         </constraints>
@@ -277,7 +279,7 @@
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5B-fu-sVF" userLabel="favButton">
-                                        <rect key="frame" x="874" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="824" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="0RP-AQ-MyA"/>
                                             <constraint firstAttribute="height" constant="40" id="Vvj-KC-YMT"/>
@@ -295,7 +297,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9j-w9-okB" userLabel="infoButton">
-                                        <rect key="frame" x="924" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="874" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="Ra0-ZW-7M6"/>
                                             <constraint firstAttribute="height" constant="40" id="teE-Yd-8iA"/>
@@ -312,6 +314,15 @@
                                             <action selector="detail:" destination="ePR-Fl-IsY" eventType="touchDown" id="7OI-EI-Syu"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYK-JQ-zJw" userLabel="airPlayView">
+                                        <rect key="frame" x="924" y="0.0" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="I7O-G0-vYo"/>
+                                            <constraint firstAttribute="width" constant="40" id="aQ8-Zb-Zfx"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXF-9c-qLH" userLabel="shareButton">
                                         <rect key="frame" x="974" y="0.0" width="40" height="40"/>
                                         <constraints>
@@ -343,18 +354,20 @@
                                     <constraint firstAttribute="centerY" secondItem="wXF-9c-qLH" secondAttribute="centerY" id="MM3-6O-xe3"/>
                                     <constraint firstAttribute="centerY" secondItem="xga-KD-yOd" secondAttribute="centerY" id="OsF-dH-Msf"/>
                                     <constraint firstAttribute="centerY" secondItem="Dw1-er-aoJ" secondAttribute="centerY" id="POq-mL-gL1"/>
+                                    <constraint firstItem="NYK-JQ-zJw" firstAttribute="leading" secondItem="G9j-w9-okB" secondAttribute="trailing" constant="10" id="RDa-xz-YW5"/>
                                     <constraint firstItem="G9j-w9-okB" firstAttribute="leading" secondItem="D5B-fu-sVF" secondAttribute="trailing" constant="10" id="WQL-YO-RmC"/>
                                     <constraint firstItem="xga-KD-yOd" firstAttribute="leading" secondItem="PwG-9a-UeZ" secondAttribute="trailing" constant="10" id="af8-vA-7HN"/>
                                     <constraint firstItem="ZdH-Kb-zlN" firstAttribute="bottom" secondItem="E1U-pL-hsc" secondAttribute="bottom" id="azs-e7-ypy"/>
-                                    <constraint firstItem="Dw1-er-aoJ" firstAttribute="leading" secondItem="tTS-hw-KPk" secondAttribute="trailing" constant="8" symbolic="YES" id="bt4-hR-N7K"/>
+                                    <constraint firstItem="Dw1-er-aoJ" firstAttribute="leading" secondItem="tTS-hw-KPk" secondAttribute="trailing" constant="10" id="bt4-hR-N7K"/>
                                     <constraint firstAttribute="centerY" secondItem="D5B-fu-sVF" secondAttribute="centerY" id="dJZ-Ks-9DA"/>
                                     <constraint firstItem="ZdH-Kb-zlN" firstAttribute="top" secondItem="E1U-pL-hsc" secondAttribute="top" id="eD1-ie-poj"/>
+                                    <constraint firstItem="wXF-9c-qLH" firstAttribute="leading" secondItem="G9j-w9-okB" secondAttribute="trailing" constant="60" id="g3c-8o-9GV"/>
                                     <constraint firstAttribute="height" constant="40" id="i68-xX-wQ7"/>
-                                    <constraint firstItem="wXF-9c-qLH" firstAttribute="leading" secondItem="G9j-w9-okB" secondAttribute="trailing" constant="10" id="i7P-7q-5TD"/>
                                     <constraint firstAttribute="centerY" secondItem="PwG-9a-UeZ" secondAttribute="centerY" id="ixk-Bm-ze1"/>
                                     <constraint firstAttribute="centerY" secondItem="eCa-wj-t2p" secondAttribute="centerY" id="joX-qI-HAr"/>
                                     <constraint firstAttribute="centerY" secondItem="G9j-w9-okB" secondAttribute="centerY" id="m3Q-QI-s8v"/>
                                     <constraint firstItem="eCa-wj-t2p" firstAttribute="bottom" secondItem="E1U-pL-hsc" secondAttribute="bottom" id="ooK-r9-sgx"/>
+                                    <constraint firstItem="NYK-JQ-zJw" firstAttribute="top" secondItem="E1U-pL-hsc" secondAttribute="top" id="q4U-Vz-Nrv"/>
                                     <constraint firstItem="tTS-hw-KPk" firstAttribute="leading" secondItem="txf-wt-TEz" secondAttribute="trailing" constant="10" id="sFT-Fv-Hl9"/>
                                     <constraint firstItem="xga-KD-yOd" firstAttribute="bottom" secondItem="E1U-pL-hsc" secondAttribute="bottom" id="xZn-uc-Aa5"/>
                                     <constraint firstItem="ZdH-Kb-zlN" firstAttribute="leading" secondItem="xga-KD-yOd" secondAttribute="trailing" constant="10" id="z8l-4M-PI9"/>
