@@ -372,7 +372,7 @@
 				8F935B8D1791F24D001FFE01 /* Frameworks */,
 				8F935B8E1791F24D001FFE01 /* Resources */,
 				BEDB7EB589314F4F827CECE1 /* Copy Pods Resources */,
-				8F8C4972182F9B9400329DFC /* ShellScript */,
+				8F8C4972182F9B9400329DFC /* Remove English Resouces */,
 			);
 			buildRules = (
 			);
@@ -475,18 +475,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8F8C4972182F9B9400329DFC /* ShellScript */ = {
+		8F8C4972182F9B9400329DFC /* Remove English Resouces */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Remove English Resouces";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rm -r \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/en.lproj\"";
+			shellScript = "if [ -d ${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/en.lproj ] ; then\n    rm -r \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/en.lproj\"\nfi";
 		};
 		8F935BAE1791F24D001FFE01 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
