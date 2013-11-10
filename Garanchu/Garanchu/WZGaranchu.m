@@ -11,7 +11,10 @@
 #import "WZGaranchuConfig.h"
 
 #import <SDWebImage/SDImageCache.h>
+
+#if USE_TESTFLIGHT_SDK
 #import <TestFlightSDK/TestFlight.h>
+#endif
 
 NSString *WZGarancuLocalizedString(NSString *key)
 {
