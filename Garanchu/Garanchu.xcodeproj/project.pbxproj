@@ -20,6 +20,7 @@
 		8F72AFD417E0EBD7007E1715 /* Garanchu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8F72AFD217E0EBD7007E1715 /* Garanchu.xcdatamodeld */; };
 		8F72AFD617E0EC65007E1715 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F72AFD517E0EC65007E1715 /* CoreData.framework */; };
 		8F72B01A17E58C4E007E1715 /* SearchCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F72B01917E58C4D007E1715 /* SearchCondition.m */; };
+		8F8C4975182F9CF600329DFC /* WZVideoCaptionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8C4974182F9CF600329DFC /* WZVideoCaptionListViewController.m */; };
 		8F935B941791F24D001FFE01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B931791F24D001FFE01 /* UIKit.framework */; };
 		8F935B961791F24D001FFE01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B951791F24D001FFE01 /* Foundation.framework */; };
 		8F935B981791F24D001FFE01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B971791F24D001FFE01 /* CoreGraphics.framework */; };
@@ -106,6 +107,8 @@
 		8F72AFD517E0EC65007E1715 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		8F72B01817E58C4D007E1715 /* SearchCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCondition.h; sourceTree = "<group>"; };
 		8F72B01917E58C4D007E1715 /* SearchCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCondition.m; sourceTree = "<group>"; };
+		8F8C4973182F9CF600329DFC /* WZVideoCaptionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZVideoCaptionListViewController.h; sourceTree = "<group>"; };
+		8F8C4974182F9CF600329DFC /* WZVideoCaptionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZVideoCaptionListViewController.m; sourceTree = "<group>"; };
 		8F935B901791F24D001FFE01 /* Garanchu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Garanchu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F935B931791F24D001FFE01 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8F935B951791F24D001FFE01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -248,12 +251,14 @@
 				8F935BA31791F24D001FFE01 /* WZAppDelegate.m */,
 				8F59FC4F1791F73C00EEA418 /* WZVideoViewController.h */,
 				8F59FC501791F73C00EEA418 /* WZVideoViewController.m */,
+				8FAFF07F17E757D0008CDA2F /* WZVideoDetailViewController.h */,
+				8FAFF08017E757D1008CDA2F /* WZVideoDetailViewController.m */,
+				8F8C4973182F9CF600329DFC /* WZVideoCaptionListViewController.h */,
+				8F8C4974182F9CF600329DFC /* WZVideoCaptionListViewController.m */,
 				8FAFF05F17E5E7BD008CDA2F /* WZStageView.h */,
 				8FAFF06017E5E7BE008CDA2F /* WZStageView.m */,
 				8F59FC5C1792DFA700EEA418 /* WZVideoPlayerView.h */,
 				8F59FC5D1792DFA700EEA418 /* WZVideoPlayerView.m */,
-				8FAFF07F17E757D0008CDA2F /* WZVideoDetailViewController.h */,
-				8FAFF08017E757D1008CDA2F /* WZVideoDetailViewController.m */,
 				8F935BCA1791F570001FFE01 /* WZLoginViewController.h */,
 				8F935BCB1791F570001FFE01 /* WZLoginViewController.m */,
 				8FDDC2C917EE013100D639E6 /* WZGaranchuConfig.h */,
@@ -365,6 +370,7 @@
 				8F935B8D1791F24D001FFE01 /* Frameworks */,
 				8F935B8E1791F24D001FFE01 /* Resources */,
 				BEDB7EB589314F4F827CECE1 /* Copy Pods Resources */,
+				8F8C4972182F9B9400329DFC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -467,6 +473,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8F8C4972182F9B9400329DFC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "rm -r \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/en.lproj\"";
+		};
 		8F935BAE1791F24D001FFE01 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -535,6 +554,7 @@
 				8F72AFD417E0EBD7007E1715 /* Garanchu.xcdatamodeld in Sources */,
 				8F72B01A17E58C4E007E1715 /* SearchCondition.m in Sources */,
 				8FAFF06117E5E7BE008CDA2F /* WZStageView.m in Sources */,
+				8F8C4975182F9CF600329DFC /* WZVideoCaptionListViewController.m in Sources */,
 				8FAFF06417E5FDAA008CDA2F /* SearchConditionList.m in Sources */,
 				8FAFF07217E5FE3A008CDA2F /* VideoProgram.m in Sources */,
 				8FAFF07317E5FE3A008CDA2F /* WatchHistory.m in Sources */,

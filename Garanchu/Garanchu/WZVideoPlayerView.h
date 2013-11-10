@@ -11,5 +11,7 @@
 
 - (void)enableInfoControls;
 - (void)disableInfoControls;
+- (void)enableCaptionList;
+- (void)disableCaptionList;
 
 @end

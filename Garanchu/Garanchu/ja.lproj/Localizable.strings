@@ -23,6 +23,7 @@
 "ProgramDurationFormat" = "%02d時間%02d分";
 "ProgramShortDurationFormat" = "%d分";
 "ProgramDateAndDurationFormat" = "%@-%@ (%@)";
+"ProgramCaptionListTitle" = "字幕一覧";
 
 "HeaderProgramTitleFormat" = "%@ %@";
 

@@ -11,6 +11,7 @@
 #import "WZNaviViewController.h"
 #import "WZLoginViewController.h"
 #import "WZVideoDetailViewController.h"
+#import "WZVideoCaptionListViewController.h"
 #import "WZSearchSuggestViewController.h"
 #import "WZStageView.h"
 #import "WZVideoPlayerView.h"
@@ -23,6 +24,7 @@
 #import <InAppSettingsKit/IASKAppSettingsViewController.h>
 #import <InAppSettingsKit/IASKSettingsReader.h>
 #import <WZGarapon/WZGaraponTvSiteActivity.h>
+#import <WZAVPlayer/WZPlayTimeFormatter.h>
 #import <MZFormSheetController/MZFormSheetController.h>
 #import <GRMustache/GRMustache.h>
 
@@ -581,16 +583,22 @@
 - (IBAction)stepBackward:(id)sender
 {
     [_videoPlayerView seekFromCurrentTime:-10.0f completionHandler:^{
-        [_videoPlayerView dismissOverlayWithDuration:0.25f];
+        // leave control
     }];
 }
 
 - (IBAction)stepForward:(id)sender
 {
     [_videoPlayerView seekFromCurrentTime:15.0f completionHandler:^{
-        [_videoPlayerView dismissOverlayWithDuration:0.25f];
+        // leave control
     }];
 }
+
+- (IBAction)captionList:(id)sender
+{
+    [self presentModalCaptionListViewController];
+}
+
 
 - (IBAction)favorite:(id)sender
 {
@@ -778,6 +786,32 @@
         [self loadingProgram:program reload:YES];
     }
     [WZGaranchu current].watchingProgram = program;
+}
+
+- (void)presentModalCaptionListViewController
+{
+    WZVideoCaptionListViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"videoCaptionListViewController"];
+    viewController.program = _playingProgram;
+    viewController.currentPosition = _videoPlayerView.currentPosition;
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    navController.modalPresentationStyle = UIModalPresentationFormSheet;
+    navController.view.backgroundColor = [UIColor clearColor];
+    
+    __weak WZVideoPlayerView *videoPlayerView = _videoPlayerView;
+    viewController.selectionHandler = ^(NSDictionary *caption) {
+        if (caption) {
+            NSTimeInterval position = [WZPlayTimeFormatter timeIntervalFromPlayTime:caption[@"caption_time"]];
+            if (position > 0) {
+                [videoPlayerView seekToTime:position completionHandler:^{
+                    [videoPlayerView dismissOverlayWithDuration:0.25f];
+                }];
+            }
+        }
+    };
+    
+    [self presentViewController:navController animated:YES completion:^{
+    }];
 }
 
 - (void)presentModalDetailViewController

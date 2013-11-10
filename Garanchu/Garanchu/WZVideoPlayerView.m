@@ -17,6 +17,7 @@
     IBOutlet UIButton *_previousButton;
     IBOutlet UIButton *_stepBackwardButton;
     IBOutlet UIButton *_stepForwardButton;
+    IBOutlet UIButton *_captionListButton;
     IBOutlet UIButton *_favButton;
     IBOutlet UIButton *_infoButton;
     IBOutlet UIButton *_shareButton;
@@ -53,6 +54,7 @@
     [_previousButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/previous.png"] forState:UIControlStateNormal];
     [_stepBackwardButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepBackward.png"] forState:UIControlStateNormal];
     [_stepForwardButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/stepForward.png"] forState:UIControlStateNormal];
+    [_captionListButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/captionList.png"] forState:UIControlStateNormal];
     [_favButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/star.png"] forState:UIControlStateNormal];
     [_favButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/starEnabled.png"] forState:UIControlStateSelected];
     [_infoButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/info.png"] forState:UIControlStateNormal];
@@ -92,7 +94,7 @@
     
     [self setAirPlayVisibled:NO];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(airPlayAvailabilityChanged:) name:WZAirPlayAvailabilityChanged object:nil];    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(airPlayAvailabilityChanged:) name:WZAirPlayAvailabilityChanged object:nil];
     [[WZAirPlayDetector defaultDetector] startMonitoringWithVolumeView:volumeView];
 }
 
@@ -155,7 +157,8 @@
     
     _previousButton.enabled =
     _stepBackwardButton.enabled =
-    _stepForwardButton.enabled = NO;
+    _stepForwardButton.enabled =
+    _captionListButton.enabled = NO;
 }
 
 - (void)enableInfoControls
@@ -169,7 +172,18 @@
 {
     _favButton.enabled =
     _infoButton.enabled =
-    _shareButton.enabled = NO;
+    _shareButton.enabled =
+    _captionListButton.enabled = NO;
+}
+
+- (void)enableCaptionList
+{
+    _captionListButton.enabled = YES;
+}
+
+- (void)disableCaptionList
+{
+    _captionListButton.enabled = NO;
 }
 
 -(void)airPlayAvailabilityChanged:(NSNotification *)notification

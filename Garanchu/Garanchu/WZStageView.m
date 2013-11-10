@@ -338,6 +338,11 @@
         } else {
             _videoPlayerView.estimateDuration = program.duration;
         }
+        if (program.captionHit > 0) {
+            [_videoPlayerView enableCaptionList];
+        } else {
+            [_videoPlayerView disableCaptionList];
+        }
         _favButton.selected = program.favorite == 1;
     } else {
         [_videoPlayerView disableInfoControls];
