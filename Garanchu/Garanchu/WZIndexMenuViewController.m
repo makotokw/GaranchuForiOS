@@ -717,7 +717,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         if (item.duration > 3600*24) {
             durationLabel.text = nil;
         } else {
-            durationLabel.text = [NSString stringWithFormat:WZGarancuLocalizedString(@"IndexMenuProgramCellDurationFormat"), (int)item.duration/60];
+            durationLabel.text = [NSString stringWithFormat:WZGarancuLocalizedString(@"ProgramShortDurationFormat"), (int)item.duration/60];
         }
         dateLabel.text = [_programCellDateFormatter stringFromDate:item.startdate];
         

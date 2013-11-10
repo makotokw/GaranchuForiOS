@@ -2,7 +2,10 @@ PODS:
   - BlocksKit (1.8.3):
     - libffi
   - FlatUIKit (1.2)
+  - GRMustache (6.8.3):
+    - JRSwizzle (~> 1.0)
   - InAppSettingsKit (2.0)
+  - JRSwizzle (1.0)
   - libffi (3.0.13)
   - MBProgressHUD (0.8)
   - MZAppearance (1.1.1)
@@ -36,6 +39,7 @@ PODS:
 DEPENDENCIES:
   - BlocksKit (= 1.8.3)
   - FlatUIKit (= 1.2)
+  - GRMustache (= 6.8.3)
   - InAppSettingsKit (= 2.0)
   - MBProgressHUD (= 0.8)
   - MZFormSheetController (= 1.3.1)
@@ -62,7 +66,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   BlocksKit: 27257f9cbbec0ea98c80ba83cc2ea7111ae62eb2
   FlatUIKit: 43b2acaa6f4ef57539b51b00e4ce62d506e33e11
+  GRMustache: 90fc77ae45a5b8b5a4cf13874cae811461a1c930
   InAppSettingsKit: 2b85ba925a81634860461c21274f54b130c84614
+  JRSwizzle: 6242ff38485d870fc2636899048ee1ab883ae587
   libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   MZAppearance: 8b02683f0019f725557ae9839ed6cab153fff669
@@ -74,7 +80,7 @@ SPEC CHECKSUMS:
   TMCache: 4b05e1b124d9f7e8d449640e059cff4cda17ed27
   WZActivityIndicatorView: 0831c45bbedf2dbf5411284f67439e0fed9584e0
   WZAVPlayer: 4ab77221fe56f245532f9e19b72475022bfa8013
-  WZGarapon: 2055b7dee30d7cc8ec5ad36fc50bb3e4c903a7d1
+  WZGarapon: 138cc0d4bef9ebb2617c3be8148281d2c55144b8
   WZPlayerSlider: f1cd182f37b16a798d8ab133e12f0f40b2e88cd6
 
 COCOAPODS: 0.27.1

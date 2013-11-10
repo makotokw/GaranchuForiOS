@@ -84,6 +84,16 @@
 		</dict>
         <dict>
 			<key>Key</key>
+			<string>data_copy_watch_history</string>
+			<key>Title</key>
+			<string>DataGroupCopyWatchHistory</string>
+			<key>Type</key>
+			<string>IASKButtonSpecifier</string>
+            <key>IASKTextAlignment</key>
+            <string>IASKUITextAlignmentLeft</string>
+		</dict>
+        <dict>
+			<key>Key</key>
 			<string>data_clear_watch_history</string>
 			<key>Title</key>
 			<string>DataGroupClearWatchHistory</string>

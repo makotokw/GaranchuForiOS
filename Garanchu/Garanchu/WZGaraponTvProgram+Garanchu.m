@@ -14,9 +14,10 @@
 - (NSString *)dateAndDuration
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:WZGarancuLocalizedString(@"ProgramStartDateTimeFormat")];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"JST"];
+    dateFormatter.dateFormat = WZGarancuLocalizedString(@"ProgramStartDateTimeFormat");
     NSString *startDateString =  [dateFormatter stringFromDate:self.startdate];
-    [dateFormatter setDateFormat:WZGarancuLocalizedString(@"ProgramEndDateTimeFormat")];
+    dateFormatter.dateFormat = WZGarancuLocalizedString(@"ProgramEndDateTimeFormat");
     NSString *endDateString =  [dateFormatter stringFromDate:self.enddate];
     
     int seconds = self.duration;

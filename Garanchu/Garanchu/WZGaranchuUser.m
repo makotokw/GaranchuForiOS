@@ -57,6 +57,8 @@
         _garaponId = garaponId;
         [userDefaults setValue:garaponId forKey:@"garaponId"];
         [userDefaults synchronize];
+    } else {
+         WZLogD(@"WZGaranchuUser:storePassword:error = %@", error);
     }
 }
 
@@ -86,9 +88,11 @@
 {
     __weak WZGaranchuUser *me = self;
     [garaponWeb getGaraponTvAddressWithUserId:garaponId rawPassword:rawPassword completionHandler:^(NSDictionary *response, NSError *error) {
-        if (!error) {            
+        if (!error) {
             [me storeTvAddress:response];
             [me storePassword:rawPassword garaponId:garaponId];
+        } else {
+            WZLogD(@"WZGaranchuUser:getGaraponTvAddress:error = %@", error);
         }
         if (completionHandler) {
             completionHandler(response, error);

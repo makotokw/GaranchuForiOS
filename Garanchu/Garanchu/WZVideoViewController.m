@@ -17,15 +17,19 @@
 #import "WZGaranchuUser.h"
 #import "WZActivityItemProvider.h"
 
+#import "NSURL+QueryString.h"
+
 #import <BlocksKit/BlocksKit.h>
 #import <InAppSettingsKit/IASKAppSettingsViewController.h>
 #import <InAppSettingsKit/IASKSettingsReader.h>
 #import <WZGarapon/WZGaraponTvSiteActivity.h>
 #import <MZFormSheetController/MZFormSheetController.h>
+#import <GRMustache/GRMustache.h>
 
 #import "SearchConditionList.h"
 #import "SearchCondition.h"
 #import "WatchHistory.h"
+#import "VideoProgram.h"
 
 @interface WZVideoViewController ()<IASKSettingsDelegate, UIPopoverControllerDelegate>
 @property (readonly) WZGaraponWeb *garaponWeb;
@@ -242,9 +246,12 @@
                 }
                 
                 if (gtvid) {
+                    NSDictionary *params = [stage.initialURL queryAsDictionary];
                     stage.initialURL = nil;
-                    [me loadingProgramWithGtvid:gtvid];
+                    [me loadingProgramWithGtvid:gtvid parameter:params];
                 }
+                
+                stage.initialURL = nil;
             }
         });
     }
@@ -358,6 +365,80 @@
     }];
 }
 
+- (void)copyWatchHistory
+{
+    NSDate *since = [NSDate dateWithTimeIntervalSinceNow:-14 * 86400];
+    
+    NSMutableArray *histories = [NSMutableArray array];
+    NSArray *records = [WatchHistory findRecentSince:since];
+   
+    __block NSString *historyString = @"";
+    
+    if (records.count > 0) {
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"JST"];
+        dateFormatter.dateFormat = WZGarancuLocalizedString(@"ProgramWatchDateTimeFormat");
+        
+        for (WatchHistory *history in records) {
+            VideoProgram *program = (VideoProgram *)history.program;
+            NSInteger position = (history.done.boolValue) ? program.duration.integerValue : history.position.integerValue;
+            [histories addObject: @{
+                @"title": program.title,
+                @"recorddate": [dateFormatter stringFromDate:program.startdate],
+                @"watchdate": [dateFormatter stringFromDate:history.watchdate],
+                @"position": [NSString stringWithFormat:WZGarancuLocalizedString(@"ProgramShortDurationFormat"), position/60],
+                @"duration": [NSString stringWithFormat:WZGarancuLocalizedString(@"ProgramShortDurationFormat"), program.duration.integerValue/60],
+                @"socialURL": [WZGaraponTvProgram socialURLWithGtvid: program.gtvid]
+                
+            }];
+        }
+        
+        NSString *historyTemplate = @""
+        "{{#history}}"
+            "視聴日: {{watchdate}}\n"
+            "タイトル: {{title}}\n"
+            "放送日: {{recorddate}}\n"
+            "最終再生位置: {{position}}/{{duration}}\n"
+            "{{socialURL}}\n"
+            "-------\n"
+            "\n"
+        "{{/history}}"
+        ;
+        historyString = [GRMustacheTemplate renderObject:@{ @"history": histories }
+                                              fromString:historyTemplate
+                                                   error:NULL];
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        [pasteboard setValue:historyString forPasteboardType:@"public.utf8-plain-text"];
+    }
+    
+    
+    
+    NSLog(@"historyString = %@", historyString);
+    
+    NSString *message = (records.count == 0)
+        ? WZGarancuLocalizedString(@"CopyNoWatchHistoryErrorMessage")
+        : [NSString stringWithFormat:WZGarancuLocalizedString(@"CopyWatchHistoryMessageFormat"), records.count];
+    
+    NSArray *otherButtonTitles = (records.count == 0)
+        ? nil
+        : @[WZGarancuLocalizedString(@"CopyWatchHistorySendMailTitle")];
+    
+    [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"CopyWatchHistoryAlertCaption")
+                                message:message
+                      cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
+                      otherButtonTitles:otherButtonTitles
+                                handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                    if (alertView.cancelButtonIndex != buttonIndex) {
+                                        NSString *mailQuery = [NSURL buildParameters:@{@"Subject": WZGarancuLocalizedString(@"CopyWatchHistorySendMailSubject"),
+                                                                 @"body": historyString
+                                                                 }];
+                                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mailto:?%@", mailQuery]]];
+                                    }
+                                    historyString = nil;
+                                }];
+}
+
 - (void)clearWatchHistory
 {
     NSUInteger count = [WatchHistory count];
@@ -429,6 +510,9 @@
     if ([specifier.key isEqualToString:@"account_logout"]) {
         [self logoutInSettings];
 	}
+    else if ([specifier.key isEqualToString:@"data_copy_watch_history"]) {
+        [self copyWatchHistory];
+    }
     else if ([specifier.key isEqualToString:@"data_clear_watch_history"]) {
         [self clearWatchHistory];
     }
@@ -615,23 +699,32 @@
 
 #pragma mark - Program
 
-- (void)loadingProgramWithGtvid:(NSString *)gtvid
+- (void)loadingProgramWithGtvid:(NSString *)gtvid parameter:(NSDictionary *)parameter
 {
-    __weak WZVideoViewController *me = self;    
+    __weak WZVideoViewController *me = self;
+    __block WZGaraponWrapDictionary *wrap = [WZGaraponWrapDictionary wrapWithDictionary:parameter];
+    
     [_garaponTv searchWithGtvid:gtvid completionHandler:^(NSDictionary *response, NSError *error) {
         if (!error) {
             NSArray *items = [WZGaraponTvProgram arrayWithSearchResponse:response];
             if (items.count > 0) {
                 WZGaraponTvProgram *item = items[0];
                 if (item) {
-                    [me loadingProgram:item reload:NO];
+                    NSInteger initialPlaybackPosition = [wrap intgerValueWithKey:@"t" defaultValue:0];
+                    [me loadingProgram:item initialPlaybackPosition:initialPlaybackPosition reload:NO];
                 }
             }
         }
+        wrap = nil;
     }];
 }
 
 - (void)loadingProgram:(WZGaraponTvProgram *)program reload:(BOOL)reload
+{
+    [self loadingProgram:program initialPlaybackPosition:-1.0 reload:reload];
+}
+
+- (void)loadingProgram:(WZGaraponTvProgram *)program initialPlaybackPosition:(NSTimeInterval)initialPlaybackPosition reload:(BOOL)reload
 {
     _watchingProgram = program;
     _initialPlaybackPosition = 0.0;
@@ -641,9 +734,13 @@
         [self setContentTitleWithProgram:program];
         [self setContentURL:[NSURL URLWithString:mediaUrl]];
         
-        WatchHistory *history = [WatchHistory findByGtvid:program.gtvid];
-        if (history != nil && !history.done.boolValue) {
-            _initialPlaybackPosition = history.position.floatValue;
+        if (initialPlaybackPosition >= 0) {
+            _initialPlaybackPosition = initialPlaybackPosition;
+        } else {
+            WatchHistory *history = [WatchHistory findByGtvid:program.gtvid];
+            if (history != nil && !history.done.boolValue) {
+                _initialPlaybackPosition = history.position.floatValue;
+            }
         }
         
     } else {
@@ -764,10 +861,15 @@
                                           rawPassword:password
                                     completionHandler:^(NSDictionary *response, NSError *error) {                                        
                                         if (error) {
-                                            WZLogD(@"getGaraponTvAddress:error = %@", error);
                                             [MBProgressHUD hideHUDForView:loginViewController.view animated:YES];
+                                            
+                                            NSString *message = error.localizedRecoverySuggestion ? [NSString stringWithFormat:@"%@\n%@",
+                                                                                                     error.localizedDescription,
+                                                                                                     error.localizedRecoverySuggestion
+                                                                                                     ] : error.localizedDescription;
+                                            
                                             [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
-                                                                        message:error.localizedDescription
+                                                                        message:message
                                                               cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                                                               otherButtonTitles:nil
                                                                         handler:^(UIAlertView *alertView, NSInteger buttonIndex) {

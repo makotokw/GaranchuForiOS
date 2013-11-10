@@ -8,6 +8,7 @@
 #import "WZVideoDetailViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
+#import <GRMustache/GRMustache.h>
 
 @interface WZVideoDetailViewController ()
 
@@ -38,28 +39,33 @@
     
     self.textView.editable = NO;
     
-    NSString *title = _program.title ? _program.title : @"";
-    NSString *dateAndDuration = _program.dateAndDuration;
-    NSArray *genres = _program.genres;
-    NSString *station = _program.broadcastStation;
+    NSMutableArray *genres = [NSMutableArray array];
     
-    NSString *detail = [NSString stringWithFormat:@"%@\n%@", title, dateAndDuration];
-    if (_program.descriptionText.length > 0) {
-        detail = [detail stringByAppendingFormat:@"\n\n%@", _program.descriptionText];
+    NSString *template = @"{{title}}\n"
+    "{{dateAndDuration}}\n"
+    "\n"
+    "{{description}}\n"
+    "\n"
+    "{{#genre}}"
+        "{{parent}} [{{name}}]\n"
+    "{{/genre}}"
+    "\n"
+    "{{station}}"
+    ;
+    
+    for (NSString *genreKey in _program.genres) {
+        [genres addObject:@{@"parent":[WZGaraponTvGenre majorGenreNameWithKey:genreKey], @"name":[WZGaraponTvGenre genreNameWithKey:genreKey] }];
     }
     
-    if (genres.count > 0) {
-        NSMutableArray *genreStrings = [NSMutableArray arrayWithCapacity:genres.count];
-        for (NSString *genreKey in genres) {
-            [genreStrings addObject: [NSString stringWithFormat:WZGarancuLocalizedString(@"ProgramGenreFormat"), [WZGaraponTvGenre majorGenreNameWithKey:genreKey], [WZGaraponTvGenre genreNameWithKey:genreKey]]];
-        }
-        detail = [detail stringByAppendingFormat:@"\n\n%@", [genreStrings componentsJoinedByString:@"\n"]];
-    }
-    if (station.length > 0) {
-        detail = [detail stringByAppendingFormat:@"\n\n%@", station];
-    }
-    
-    self.textView.text = detail;
+    self.textView.text = [GRMustacheTemplate renderObject:@{
+                                                            @"title": _program.title,
+                                                            @"dateAndDuration": _program.dateAndDuration,
+                                                            @"description": _program.descriptionText,
+                                                            @"genre": genres,
+                                                            @"station": _program.broadcastStation,
+                                                            }
+                                               fromString:template
+                                                    error:NULL];
 }
 
 - (void)viewDidAppear:(BOOL)animated

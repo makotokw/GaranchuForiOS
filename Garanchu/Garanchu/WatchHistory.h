@@ -22,6 +22,7 @@
 + (WatchHistory *)findByGtvid:(NSString *)gtvid;
 + (NSUInteger)count;
 + (NSArray *)findWithLimit:(NSInteger)limit;
++ (NSArray *)findRecentSince:(NSDate *)date;
 + (void)updateHistoryWithProgram:(WZGaraponTvProgram *)program position:(NSTimeInterval)position done:(BOOL)done;
 + (NSUInteger)deleteAll;
 

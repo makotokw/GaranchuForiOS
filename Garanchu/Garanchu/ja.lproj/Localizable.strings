@@ -17,11 +17,12 @@
 
 "SettingsViewTitle" = "設定";
 
+"ProgramWatchDateTimeFormat" = "yyyy/MM/dd(EEE) HH:mm";
 "ProgramStartDateTimeFormat" = "yyyy/MM/dd(EEE) HH:mm";
 "ProgramEndDateTimeFormat" = "HH:mm";
 "ProgramDurationFormat" = "%02d時間%02d分";
+"ProgramShortDurationFormat" = "%d分";
 "ProgramDateAndDurationFormat" = "%@-%@ (%@)";
-"ProgramGenreFormat" = "%@ [%@]";
 
 "HeaderProgramTitleFormat" = "%@ %@";
 
@@ -35,6 +36,12 @@
 "ClearSearchHistoryConfirmMessageFormat" = "検索履歴 %d 件を削除してよろしいですか？";
 "ClearNoSearchHistoryErrorMessage" = "検索履歴が無いか削除済みです";
 
+"CopyWatchHistoryAlertCaption" = "視聴履歴のコピー";
+"CopyWatchHistoryMessageFormat" = "%d 件の視聴履歴をクリップボードにコピーしました";
+"CopyNoWatchHistoryErrorMessage" = "期間内の視聴履歴がありませんでした";
+"CopyWatchHistorySendMailTitle" = "メールを起動";
+"CopyWatchHistorySendMailSubject" = "ガランチュ視聴履歴";
+
 "GaraponTv2NotSupported" = "ガラポンTV弐号機以前はAPIの互換性がないためサポートしていません";
 "GaraponTvCannotConnect" = "ガラポンTV端末に接続できませんでした。ネットワーク環境が変わっている場合は再検索してください";
 
@@ -47,7 +54,6 @@
 "IndexMenuSearchResultTitle" = "検索";
 "IndexMenuProgramCellDateLocale" = "ja_JP";
 "IndexMenuProgramCellDateFormat" = "M/d(EEE) HH:mm";
-"IndexMenuProgramCellDurationFormat" = "%d分";
 "IndexMenuLoading" = "読み込み中...";
 
 "IndexMenuNoProgram" = "番組が見つかりません";

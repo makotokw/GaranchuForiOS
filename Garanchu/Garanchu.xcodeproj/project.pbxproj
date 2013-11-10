@@ -52,6 +52,7 @@
 		8FC3C6FD17ECCEE8008A5CCD /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC3C6F917ECCEE8008A5CCD /* Icon-60@2x.png */; };
 		8FC3C6FE17ECCEE8008A5CCD /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC3C6FA17ECCEE8008A5CCD /* Icon-76.png */; };
 		8FC3C6FF17ECCEE8008A5CCD /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC3C6FB17ECCEE8008A5CCD /* Icon-76@2x.png */; };
+		8FD7D8FA182AE75700A5DF2A /* WZGaraponTvProgram+Garanchu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD7D8F9182AE75700A5DF2A /* WZGaraponTvProgram+Garanchu.m */; };
 		8FD92BAA18031C0B0017172F /* web in Resources */ = {isa = PBXBuildFile; fileRef = 8FD92BA918031C0B0017172F /* web */; };
 		8FDDC2C117EDF7D700D639E6 /* Default-Landscape-768h.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2B917EDF7D700D639E6 /* Default-Landscape-768h.png */; };
 		8FDDC2C217EDF7D700D639E6 /* Default-Landscape-768h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2BA17EDF7D700D639E6 /* Default-Landscape-768h@2x.png */; };
@@ -149,6 +150,8 @@
 		8FC3C6F917ECCEE8008A5CCD /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
 		8FC3C6FA17ECCEE8008A5CCD /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
 		8FC3C6FB17ECCEE8008A5CCD /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
+		8FD7D8F8182AE75700A5DF2A /* WZGaraponTvProgram+Garanchu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WZGaraponTvProgram+Garanchu.h"; sourceTree = "<group>"; };
+		8FD7D8F9182AE75700A5DF2A /* WZGaraponTvProgram+Garanchu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WZGaraponTvProgram+Garanchu.m"; sourceTree = "<group>"; };
 		8FD92BA918031C0B0017172F /* web */ = {isa = PBXFileReference; lastKnownFileType = folder; path = web; sourceTree = "<group>"; };
 		8FDDC2B917EDF7D700D639E6 /* Default-Landscape-768h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-768h.png"; sourceTree = "<group>"; };
 		8FDDC2BA17EDF7D700D639E6 /* Default-Landscape-768h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-768h@2x.png"; sourceTree = "<group>"; };
@@ -274,6 +277,8 @@
 				8FAFF07917E6FFFB008CDA2F /* WZActivityItemProvider.m */,
 				8F66B1421819E6FF00867A07 /* WZAppSettingsWebViewController.h */,
 				8F66B1431819E6FF00867A07 /* WZAppSettingsWebViewController.m */,
+				8FD7D8F8182AE75700A5DF2A /* WZGaraponTvProgram+Garanchu.h */,
+				8FD7D8F9182AE75700A5DF2A /* WZGaraponTvProgram+Garanchu.m */,
 			);
 			path = Garanchu;
 			sourceTree = "<group>";
@@ -517,6 +522,7 @@
 				8F59FC511791F73C00EEA418 /* WZVideoViewController.m in Sources */,
 				8F59FC541792C21E00EEA418 /* WZGaranchuUser.m in Sources */,
 				8F59FC571792CC2F00EEA418 /* WZGaranchu.m in Sources */,
+				8FD7D8FA182AE75700A5DF2A /* WZGaraponTvProgram+Garanchu.m in Sources */,
 				8F59FC5E1792DFA700EEA418 /* WZVideoPlayerView.m in Sources */,
 				8F59FCB11793D77B00EEA418 /* WZNaviViewController.m in Sources */,
 				8F59FCB41793D9FC00EEA418 /* WZIndexMenuViewController.m in Sources */,
