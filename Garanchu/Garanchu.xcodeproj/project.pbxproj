@@ -109,6 +109,7 @@
 		8F72B01917E58C4D007E1715 /* SearchCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCondition.m; sourceTree = "<group>"; };
 		8F8C4973182F9CF600329DFC /* WZVideoCaptionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZVideoCaptionListViewController.h; sourceTree = "<group>"; };
 		8F8C4974182F9CF600329DFC /* WZVideoCaptionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZVideoCaptionListViewController.m; sourceTree = "<group>"; };
+		8F8C4976183019F700329DFC /* WZGaranchuBuild.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WZGaranchuBuild.h; sourceTree = "<group>"; };
 		8F935B901791F24D001FFE01 /* Garanchu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Garanchu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F935B931791F24D001FFE01 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8F935B951791F24D001FFE01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -243,6 +244,7 @@
 				8FAFF07417E5FE76008CDA2F /* NSManagedObject */,
 				8F935B9A1791F24D001FFE01 /* Supporting Files */,
 				8F935BC81791F2ED001FFE01 /* iPad.storyboard */,
+				8F8C4976183019F700329DFC /* WZGaranchuBuild.h */,
 				8F66B13F1819D6A600867A07 /* NSURL+QueryString.h */,
 				8F66B1401819D6A600867A07 /* NSURL+QueryString.m */,
 				8F3C22ED17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.h */,
