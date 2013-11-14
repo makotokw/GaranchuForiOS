@@ -74,6 +74,9 @@
 
 - (NSIndexPath *)indexPathWithPosition:(NSTimeInterval)position
 {
+    if (_captions.count == 0) {
+        return nil;
+    }
     NSInteger row = 0;
     for (NSDictionary *caption in _captions) {
         NSNumber *time = caption[@"time"];
@@ -94,7 +97,9 @@
 - (void)scrollToRowAtPosition:(NSTimeInterval)position animated:(BOOL)animated
 {
     NSIndexPath *indexPath = [self indexPathWithPosition:position];
-    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:animated];
+    if (indexPath) {
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:animated];
+    }
 }
 
 #pragma mark - Table view data source

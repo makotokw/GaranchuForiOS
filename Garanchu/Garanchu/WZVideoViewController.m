@@ -603,12 +603,14 @@
 - (IBAction)favorite:(id)sender
 {
     __weak WZStageView *stageView = _stageView;
-    __weak WZGaraponTvProgram *tvProgram = _watchingProgram;
-    __block NSInteger rank = _watchingProgram.favorite == 0 ? 1 : 0;
-    [_garaponTv favoriteWithGtvid:_watchingProgram.gtvid rank:rank completionHandler:^(NSDictionary *response, NSError *error) {
+    __weak WZGaraponTvProgram *tvProgram = _playingProgram;
+    __block NSInteger rank = _playingProgram.favorite == 0 ? 1 : 0;
+    [_garaponTv favoriteWithGtvid:_playingProgram.gtvid rank:rank completionHandler:^(NSDictionary *response, NSError *error) {
         if (!error) {
             tvProgram.favorite = rank;
-            [stageView refreshControlButtonsWithProgram:tvProgram];
+            if ([_playingProgram isEqualGtvid:tvProgram]) {
+                [stageView refreshControlButtonsWithProgram:tvProgram];
+            }
         }
     }];
 }
@@ -755,8 +757,6 @@
         [self setContentTitleWithProgram:nil];
     }
     
-    [_stageView refreshControlButtonsWithProgram:program];
-    
     if (program && reload) {
         
         // download current properies of program
@@ -770,7 +770,9 @@
                     if (item) {
                         [tvProgram mergeFrom:item];
                         tvProgram.isProxy = NO;
-                        [_stageView refreshControlButtonsWithProgram:tvProgram];
+                        if ([_playingProgram isEqualGtvid:tvProgram]) {
+                            [_stageView refreshControlButtonsWithProgram:tvProgram];
+                        }
                     }
                 }
             }
