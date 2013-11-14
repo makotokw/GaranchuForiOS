@@ -46,6 +46,7 @@
                 <integer>1500</integer>
 				<integer>2000</integer>
                 <integer>3000</integer>
+                <integer>4000</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -54,6 +55,7 @@
                 <string>1.5TB</string>
 				<string>2.0TB</string>
                 <string>3.0TB</string>
+                <string>4.0TB</string>
 			</array>
 		</dict>
         <dict>
