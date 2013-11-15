@@ -764,6 +764,7 @@
         
         [_garaponTv searchWithGtvid:tvProgram.gtvid completionHandler:^(NSDictionary *response, NSError *error) {
             if (!error) {
+                WZLogD(@"searchWithGtvid: %@", tvProgram.gtvid);
                 NSArray *items = [WZGaraponTvProgram arrayWithSearchResponse:response];
                 if (items.count > 0) {
                     WZGaraponTvProgram *item = items[0];
@@ -775,6 +776,8 @@
                         }
                     }
                 }
+            } else {
+                WZLogD(@"searchWithGtvid:error %@", error);
             }
         }];
     }
@@ -895,9 +898,9 @@
     [[WZGaranchuUser defaultUser] getGaraponTvAddress:me.garaponWeb
                                             garaponId:username
                                           rawPassword:password
-                                    completionHandler:^(NSDictionary *response, NSError *error) {                                        
+                                    completionHandler:^(NSDictionary *response, NSError *error) {
                                         if (error) {
-                                            [MBProgressHUD hideHUDForView:loginViewController.view animated:YES];
+                                            [MBProgressHUD hideHUDForView:hudView animated:YES];
                                             
                                             NSString *message = error.localizedRecoverySuggestion ? [NSString stringWithFormat:@"%@\n%@",
                                                                                                      error.localizedDescription,
