@@ -338,8 +338,12 @@
         } else {
             _videoPlayerView.estimateDuration = program.duration;
         }
-        if (program.captionHit > 0 && program.caption.count > 0) {
-            [_videoPlayerView enableCaptionList];
+        if (_videoPlayerView.isPlayerOpened) {
+            if (program.captionHit > 0 && program.caption.count > 0) {
+                [_videoPlayerView enableCaptionList];
+            } else {
+                [_videoPlayerView disableCaptionList];
+            }
         } else {
             [_videoPlayerView disableCaptionList];
         }
