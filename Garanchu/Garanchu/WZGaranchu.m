@@ -89,11 +89,7 @@ NSString *WZGarancuLocalizedString(NSString *key)
 - (NSString *)applictionVersion
 {
     NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
-#if DEBUG
     return [NSString stringWithFormat:@"%@ (%@)", info[@"CFBundleShortVersionString"], info[(NSString *)kCFBundleVersionKey]];
-#else
-    return info[@"CFBundleShortVersionString"];
-#endif
 }
 
 - (void)storeTvAddress:(NSDictionary *)dict
