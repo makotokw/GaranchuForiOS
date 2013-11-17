@@ -415,9 +415,6 @@
     }
     
     
-    
-    NSLog(@"historyString = %@", historyString);
-    
     NSString *message = (records.count == 0)
         ? WZGarancuLocalizedString(@"CopyNoWatchHistoryErrorMessage")
         : [NSString stringWithFormat:WZGarancuLocalizedString(@"CopyWatchHistoryMessageFormat"), records.count];
@@ -576,7 +573,6 @@
 - (IBAction)previous:(id)sender
 {
     [_videoPlayerView seekToTime:0 completionHandler:^{
-        [_videoPlayerView dismissOverlayWithDuration:0.25f];
     }];
 }
 
@@ -809,7 +805,6 @@
             NSTimeInterval position = [WZPlayTimeFormatter timeIntervalFromPlayTime:caption[@"caption_time"]];
             if (position > 0) {
                 [videoPlayerView seekToTime:position completionHandler:^{
-                    [videoPlayerView dismissOverlayWithDuration:0.25f];
                 }];
             }
         }
