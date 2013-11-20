@@ -58,6 +58,7 @@
 "IndexMenuLoading" = "読み込み中...";
 
 "IndexMenuNoProgram" = "番組が見つかりません";
+"IndexMenuNoChannel" = "情報が取得できません";
 "IndexMenuNoWatchHistory" = "履歴はありません";
 
 "ActivityTwitterSuffix" = " #ガラポンTV";

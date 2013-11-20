@@ -364,6 +364,10 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
          }];
     }
     [self.tableView reloadData];
+    
+    if (_items.count == 0) {
+        [self showTextHUDWithMessage:WZGarancuLocalizedString(@"IndexMenuNoChannel") detail:nil];
+    }
 }
 
 #pragma mark - Program Source
@@ -377,11 +381,15 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     [hud indicatorWhiteWithMessage:WZGarancuLocalizedString(@"IndexMenuLoading")];
 }
 
-- (void)showTextHUDWithMessage:(NSString *)message
+- (void)showTextHUDWithMessage:(NSString *)message detail:(NSString *)detailMessage
 {
     MBProgressHUD *hud = [MBProgressHUD HUDForView:self.tableView];
+    if (!hud) {
+        hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+    }
     hud.mode = MBProgressHUDModeText;
     hud.labelText = message;
+    hud.detailsLabelText = detailMessage;
 }
 
 - (void)hideHUD
@@ -415,7 +423,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     [self performBlock:^(id sender) {
         _items = [me watchHistoryItems];
         if (_items.count == 0) {
-            [me showTextHUDWithMessage:WZGarancuLocalizedString(@"IndexMenuNoWatchHistory")];
+            [me showTextHUDWithMessage:WZGarancuLocalizedString(@"IndexMenuNoWatchHistory") detail:nil];
         } else {
             [me hideHUD];
         }
@@ -529,7 +537,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                       }
                       
                       if (_items.count == 0 && items.count == 0) {
-                          [me showTextHUDWithMessage:WZGarancuLocalizedString(@"IndexMenuNoProgram")];
+                          [me showTextHUDWithMessage:WZGarancuLocalizedString(@"IndexMenuNoProgram") detail:nil];
                       } else {
                           [me hideHUD];
                       }
