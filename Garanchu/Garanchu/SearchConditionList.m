@@ -9,7 +9,6 @@
 #import "SearchConditionList.h"
 #import "SearchCondition.h"
 
-
 @implementation SearchConditionList
 
 @dynamic code;

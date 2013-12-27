@@ -51,7 +51,7 @@
     }
     
     _captions = captions;
-    [self performBlock:^(id sender) {
+    [self bk_performBlock:^(id sender) {
         WZVideoCaptionListViewController *me = sender;
         [me scrollToRowAtPosition:me.currentPosition + 5.0 animated:YES];
     } afterDelay:0.5];
