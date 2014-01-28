@@ -61,5 +61,6 @@
 "IndexMenuNoChannel" = "情報が取得できません";
 "IndexMenuNoWatchHistory" = "履歴はありません";
 
+"ActivitySharePrefix" = "見てる";
 "ActivityTwitterSuffix" = " #ガラポンTV";
 

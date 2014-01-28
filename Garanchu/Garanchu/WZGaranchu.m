@@ -74,7 +74,7 @@ NSString *WZGarancuLocalizedString(NSString *key)
 
     NSString *tagValue = [userDefaults stringForKey:@"share_tag_line"];
     if (!tagValue) {
-        [userDefaults setValue:@"見てる" forKey:@"share_tag_line"];
+        [userDefaults setValue:WZGarancuLocalizedString(@"ActivitySharePrefix") forKey:@"share_tag_line"];
     }
     
     SDImageCache *cache = [SDImageCache sharedImageCache];
