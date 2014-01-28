@@ -229,31 +229,13 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if (_isLogined) {
                 
-                NSString *gtvid = nil;
-                NSString *URLString = stage.initialURL.absoluteString;
-                if (URLString.length > 0) {
-                    NSError *error = nil;
-                    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"gtvid=([\\w]+)"
-                                                                                           options:0
-                                                                                             error:&error];
-                    
-                    NSArray *matches = [regex matchesInString:URLString
-                                                      options:0
-                                                        range:NSMakeRange(0, [URLString length])];
-                    for (NSTextCheckingResult *match in matches) {
-                        NSRange range = [match rangeAtIndex:1];
-                        gtvid = [URLString substringWithRange:range];
-                        break;
-                    }
-                }
-                
-                if (gtvid) {
-                    NSDictionary *params = [stage.initialURL queryAsDictionary];
-                    stage.initialURL = nil;
+                NSURL *initialURL = stage.initialURL;
+                stage.initialURL = nil;
+                NSString *gtvid = [WZGaraponTvSite gtvidOfURLString:initialURL.absoluteString];
+                if (gtvid.length > 0) {
+                    NSDictionary *params = [initialURL queryAsDictionary];
                     [me loadingProgramWithGtvid:gtvid parameter:params];
                 }
-                
-                stage.initialURL = nil;
             }
         });
     }
@@ -972,7 +954,7 @@
                 [me hideGaraponIndicatorForView:hudView];
                 [me didLoginGaraponTv];
                 
-                [me dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+                [me mz_dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
                      _loginViewController = nil;
                 }];
 //                [_loginViewController dismissViewControllerAnimated:YES completion:^{
@@ -1026,7 +1008,7 @@
     formSheet.portraitTopInset = 100;
     formSheet.shouldCenterVerticallyWhenKeyboardAppears = YES;
     
-    [self presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+    [self mz_presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
         
     }];
 //    _loginViewController.modalPresentationStyle = UIModalPresentationFormSheet;
