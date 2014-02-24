@@ -8,25 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		8F3C22EF17B38FE000D35CF2 /* MBProgressHUD+Garanchu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */; };
-		8F59FC511791F73C00EEA418 /* WZVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC501791F73C00EEA418 /* WZVideoViewController.m */; };
-		8F59FC541792C21E00EEA418 /* WZGaranchuUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC531792C21E00EEA418 /* WZGaranchuUser.m */; };
-		8F59FC571792CC2F00EEA418 /* WZGaranchu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC561792CC2E00EEA418 /* WZGaranchu.m */; };
-		8F59FC5E1792DFA700EEA418 /* WZVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC5D1792DFA700EEA418 /* WZVideoPlayerView.m */; };
-		8F59FCB11793D77B00EEA418 /* WZNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB01793D77B00EEA418 /* WZNaviViewController.m */; };
-		8F59FCB41793D9FC00EEA418 /* WZIndexMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB31793D9FC00EEA418 /* WZIndexMenuViewController.m */; };
-		8F59FCB71794149300EEA418 /* WZIndexMenuViewController+Static.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB61794149200EEA418 /* WZIndexMenuViewController+Static.m */; };
+		8F59FC511791F73C00EEA418 /* GRCVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC501791F73C00EEA418 /* GRCVideoViewController.m */; };
+		8F59FC541792C21E00EEA418 /* GRCGaranchuUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC531792C21E00EEA418 /* GRCGaranchuUser.m */; };
+		8F59FC571792CC2F00EEA418 /* GRCGaranchu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC561792CC2E00EEA418 /* GRCGaranchu.m */; };
+		8F59FC5E1792DFA700EEA418 /* GRCVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC5D1792DFA700EEA418 /* GRCVideoPlayerView.m */; };
+		8F59FCB11793D77B00EEA418 /* GRCNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB01793D77B00EEA418 /* GRCNaviViewController.m */; };
+		8F59FCB41793D9FC00EEA418 /* GRCIndexMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB31793D9FC00EEA418 /* GRCIndexMenuViewController.m */; };
+		8F59FCB71794149300EEA418 /* GRCIndexMenuViewController+Static.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB61794149200EEA418 /* GRCIndexMenuViewController+Static.m */; };
 		8F66B1411819D6A600867A07 /* NSURL+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F66B1401819D6A600867A07 /* NSURL+QueryString.m */; };
-		8F66B1441819E6FF00867A07 /* WZAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F66B1431819E6FF00867A07 /* WZAppSettingsWebViewController.m */; };
+		8F66B1441819E6FF00867A07 /* GRCAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F66B1431819E6FF00867A07 /* GRCAppSettingsWebViewController.m */; };
 		8F72AFD417E0EBD7007E1715 /* Garanchu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8F72AFD217E0EBD7007E1715 /* Garanchu.xcdatamodeld */; };
 		8F72AFD617E0EC65007E1715 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F72AFD517E0EC65007E1715 /* CoreData.framework */; };
 		8F72B01A17E58C4E007E1715 /* SearchCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F72B01917E58C4D007E1715 /* SearchCondition.m */; };
-		8F8C4975182F9CF600329DFC /* WZVideoCaptionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8C4974182F9CF600329DFC /* WZVideoCaptionListViewController.m */; };
+		8F8C4975182F9CF600329DFC /* GRCVideoCaptionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8C4974182F9CF600329DFC /* GRCVideoCaptionListViewController.m */; };
 		8F935B941791F24D001FFE01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B931791F24D001FFE01 /* UIKit.framework */; };
 		8F935B961791F24D001FFE01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B951791F24D001FFE01 /* Foundation.framework */; };
 		8F935B981791F24D001FFE01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B971791F24D001FFE01 /* CoreGraphics.framework */; };
 		8F935B9E1791F24D001FFE01 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F935B9C1791F24D001FFE01 /* InfoPlist.strings */; };
 		8F935BA01791F24D001FFE01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935B9F1791F24D001FFE01 /* main.m */; };
-		8F935BA41791F24D001FFE01 /* WZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BA31791F24D001FFE01 /* WZAppDelegate.m */; };
+		8F935BA41791F24D001FFE01 /* GRCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BA31791F24D001FFE01 /* GRCAppDelegate.m */; };
 		8F935BA61791F24D001FFE01 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BA51791F24D001FFE01 /* Default.png */; };
 		8F935BA81791F24D001FFE01 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BA71791F24D001FFE01 /* Default@2x.png */; };
 		8F935BAA1791F24D001FFE01 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BA91791F24D001FFE01 /* Default-568h@2x.png */; };
@@ -36,15 +36,15 @@
 		8F935BBC1791F24D001FFE01 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BBA1791F24D001FFE01 /* InfoPlist.strings */; };
 		8F935BBF1791F24D001FFE01 /* GaranchuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BBE1791F24D001FFE01 /* GaranchuTests.m */; };
 		8F935BC91791F2ED001FFE01 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BC81791F2ED001FFE01 /* iPad.storyboard */; };
-		8F935BCC1791F570001FFE01 /* WZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BCB1791F570001FFE01 /* WZLoginViewController.m */; };
-		8FAD8C4317D6540F002F0D50 /* WZSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD8C4217D6540E002F0D50 /* WZSearchResultViewController.m */; };
-		8FAFF06117E5E7BE008CDA2F /* WZStageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF06017E5E7BE008CDA2F /* WZStageView.m */; };
+		8F935BCC1791F570001FFE01 /* GRCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BCB1791F570001FFE01 /* GRCLoginViewController.m */; };
+		8FAD8C4317D6540F002F0D50 /* GRCSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD8C4217D6540E002F0D50 /* GRCSearchResultViewController.m */; };
+		8FAFF06117E5E7BE008CDA2F /* GRCStageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF06017E5E7BE008CDA2F /* GRCStageView.m */; };
 		8FAFF06417E5FDAA008CDA2F /* SearchConditionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF06317E5FDAA008CDA2F /* SearchConditionList.m */; };
 		8FAFF07217E5FE3A008CDA2F /* VideoProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF06F17E5FE3A008CDA2F /* VideoProgram.m */; };
 		8FAFF07317E5FE3A008CDA2F /* WatchHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF07117E5FE3A008CDA2F /* WatchHistory.m */; };
-		8FAFF07717E6066D008CDA2F /* WZCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF07617E6066C008CDA2F /* WZCoreData.m */; };
-		8FAFF07A17E6FFFB008CDA2F /* WZActivityItemProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF07917E6FFFB008CDA2F /* WZActivityItemProvider.m */; };
-		8FAFF08117E757D1008CDA2F /* WZVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF08017E757D1008CDA2F /* WZVideoDetailViewController.m */; };
+		8FAFF07717E6066D008CDA2F /* GRCCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF07617E6066C008CDA2F /* GRCCoreData.m */; };
+		8FAFF07A17E6FFFB008CDA2F /* GRCActivityItemProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF07917E6FFFB008CDA2F /* GRCActivityItemProvider.m */; };
+		8FAFF08117E757D1008CDA2F /* GRCVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF08017E757D1008CDA2F /* GRCVideoDetailViewController.m */; };
 		8FB6262B17C5037800EC5A0E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262717C5037800EC5A0E /* Icon-72.png */; };
 		8FB6262C17C5037800EC5A0E /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262817C5037800EC5A0E /* Icon-72@2x.png */; };
 		8FB6262D17C5037800EC5A0E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262917C5037800EC5A0E /* Icon.png */; };
@@ -53,7 +53,7 @@
 		8FC3C6FD17ECCEE8008A5CCD /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC3C6F917ECCEE8008A5CCD /* Icon-60@2x.png */; };
 		8FC3C6FE17ECCEE8008A5CCD /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC3C6FA17ECCEE8008A5CCD /* Icon-76.png */; };
 		8FC3C6FF17ECCEE8008A5CCD /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC3C6FB17ECCEE8008A5CCD /* Icon-76@2x.png */; };
-		8FD7D8FA182AE75700A5DF2A /* WZGaraponTvProgram+Garanchu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD7D8F9182AE75700A5DF2A /* WZGaraponTvProgram+Garanchu.m */; };
+		8FD7D8FA182AE75700A5DF2A /* WZYGaraponTvProgram+Garanchu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD7D8F9182AE75700A5DF2A /* WZYGaraponTvProgram+Garanchu.m */; };
 		8FD92BAA18031C0B0017172F /* web in Resources */ = {isa = PBXBuildFile; fileRef = 8FD92BA918031C0B0017172F /* web */; };
 		8FDDC2C117EDF7D700D639E6 /* Default-Landscape-768h.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2B917EDF7D700D639E6 /* Default-Landscape-768h.png */; };
 		8FDDC2C217EDF7D700D639E6 /* Default-Landscape-768h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2BA17EDF7D700D639E6 /* Default-Landscape-768h@2x.png */; };
@@ -66,8 +66,8 @@
 		8FF1B0EA179C551100BF9785 /* GaranchuResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0E9179C551100BF9785 /* GaranchuResources.bundle */; };
 		8FF1B0ED179CD32A00BF9785 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0EF179CD32A00BF9785 /* Localizable.strings */; };
 		8FF5973517C98B0200A9E8E9 /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8FF5973417C98B0200A9E8E9 /* InAppSettings.bundle */; };
-		8FFD027E17DE2D6D00583B1E /* WZGaraponTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFD027D17DE2D6D00583B1E /* WZGaraponTabController.m */; };
-		8FFD028117DE379600583B1E /* WZSearchSuggestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFD028017DE379600583B1E /* WZSearchSuggestViewController.m */; };
+		8FFD027E17DE2D6D00583B1E /* GRCGaraponTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFD027D17DE2D6D00583B1E /* GRCGaraponTabController.m */; };
+		8FFD028117DE379600583B1E /* GRCSearchSuggestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFD028017DE379600583B1E /* GRCSearchSuggestViewController.m */; };
 		DEAD08CC53D6433E97303441 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FD30FE5BBFD4D808BB97071 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -85,31 +85,31 @@
 		5FD30FE5BBFD4D808BB97071 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F3C22ED17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Garanchu.h"; sourceTree = "<group>"; };
 		8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Garanchu.m"; sourceTree = "<group>"; };
-		8F59FC4F1791F73C00EEA418 /* WZVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZVideoViewController.h; sourceTree = "<group>"; };
-		8F59FC501791F73C00EEA418 /* WZVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZVideoViewController.m; sourceTree = "<group>"; };
-		8F59FC521792C21E00EEA418 /* WZGaranchuUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZGaranchuUser.h; sourceTree = "<group>"; };
-		8F59FC531792C21E00EEA418 /* WZGaranchuUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZGaranchuUser.m; sourceTree = "<group>"; };
-		8F59FC551792CC2E00EEA418 /* WZGaranchu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZGaranchu.h; sourceTree = "<group>"; };
-		8F59FC561792CC2E00EEA418 /* WZGaranchu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZGaranchu.m; sourceTree = "<group>"; };
-		8F59FC5C1792DFA700EEA418 /* WZVideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZVideoPlayerView.h; sourceTree = "<group>"; };
-		8F59FC5D1792DFA700EEA418 /* WZVideoPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZVideoPlayerView.m; sourceTree = "<group>"; };
-		8F59FCAF1793D77A00EEA418 /* WZNaviViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZNaviViewController.h; sourceTree = "<group>"; };
-		8F59FCB01793D77B00EEA418 /* WZNaviViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZNaviViewController.m; sourceTree = "<group>"; };
-		8F59FCB21793D9FB00EEA418 /* WZIndexMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZIndexMenuViewController.h; sourceTree = "<group>"; };
-		8F59FCB31793D9FC00EEA418 /* WZIndexMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZIndexMenuViewController.m; sourceTree = "<group>"; };
-		8F59FCB51794149100EEA418 /* WZIndexMenuViewController+Static.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WZIndexMenuViewController+Static.h"; sourceTree = "<group>"; };
-		8F59FCB61794149200EEA418 /* WZIndexMenuViewController+Static.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WZIndexMenuViewController+Static.m"; sourceTree = "<group>"; };
+		8F59FC4F1791F73C00EEA418 /* GRCVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCVideoViewController.h; sourceTree = "<group>"; };
+		8F59FC501791F73C00EEA418 /* GRCVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCVideoViewController.m; sourceTree = "<group>"; };
+		8F59FC521792C21E00EEA418 /* GRCGaranchuUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCGaranchuUser.h; sourceTree = "<group>"; };
+		8F59FC531792C21E00EEA418 /* GRCGaranchuUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCGaranchuUser.m; sourceTree = "<group>"; };
+		8F59FC551792CC2E00EEA418 /* GRCGaranchu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCGaranchu.h; sourceTree = "<group>"; };
+		8F59FC561792CC2E00EEA418 /* GRCGaranchu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCGaranchu.m; sourceTree = "<group>"; };
+		8F59FC5C1792DFA700EEA418 /* GRCVideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCVideoPlayerView.h; sourceTree = "<group>"; };
+		8F59FC5D1792DFA700EEA418 /* GRCVideoPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCVideoPlayerView.m; sourceTree = "<group>"; };
+		8F59FCAF1793D77A00EEA418 /* GRCNaviViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCNaviViewController.h; sourceTree = "<group>"; };
+		8F59FCB01793D77B00EEA418 /* GRCNaviViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCNaviViewController.m; sourceTree = "<group>"; };
+		8F59FCB21793D9FB00EEA418 /* GRCIndexMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCIndexMenuViewController.h; sourceTree = "<group>"; };
+		8F59FCB31793D9FC00EEA418 /* GRCIndexMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCIndexMenuViewController.m; sourceTree = "<group>"; };
+		8F59FCB51794149100EEA418 /* GRCIndexMenuViewController+Static.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GRCIndexMenuViewController+Static.h"; sourceTree = "<group>"; };
+		8F59FCB61794149200EEA418 /* GRCIndexMenuViewController+Static.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GRCIndexMenuViewController+Static.m"; sourceTree = "<group>"; };
 		8F66B13F1819D6A600867A07 /* NSURL+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QueryString.h"; sourceTree = "<group>"; };
 		8F66B1401819D6A600867A07 /* NSURL+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QueryString.m"; sourceTree = "<group>"; };
-		8F66B1421819E6FF00867A07 /* WZAppSettingsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZAppSettingsWebViewController.h; sourceTree = "<group>"; };
-		8F66B1431819E6FF00867A07 /* WZAppSettingsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZAppSettingsWebViewController.m; sourceTree = "<group>"; };
+		8F66B1421819E6FF00867A07 /* GRCAppSettingsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCAppSettingsWebViewController.h; sourceTree = "<group>"; };
+		8F66B1431819E6FF00867A07 /* GRCAppSettingsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCAppSettingsWebViewController.m; sourceTree = "<group>"; };
 		8F72AFD317E0EBD7007E1715 /* Garanchu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Garanchu.xcdatamodel; sourceTree = "<group>"; };
 		8F72AFD517E0EC65007E1715 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		8F72B01817E58C4D007E1715 /* SearchCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCondition.h; sourceTree = "<group>"; };
 		8F72B01917E58C4D007E1715 /* SearchCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCondition.m; sourceTree = "<group>"; };
-		8F8C4973182F9CF600329DFC /* WZVideoCaptionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZVideoCaptionListViewController.h; sourceTree = "<group>"; };
-		8F8C4974182F9CF600329DFC /* WZVideoCaptionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZVideoCaptionListViewController.m; sourceTree = "<group>"; };
-		8F8C4976183019F700329DFC /* WZGaranchuBuild.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WZGaranchuBuild.h; sourceTree = "<group>"; };
+		8F8C4973182F9CF600329DFC /* GRCVideoCaptionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCVideoCaptionListViewController.h; sourceTree = "<group>"; };
+		8F8C4974182F9CF600329DFC /* GRCVideoCaptionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCVideoCaptionListViewController.m; sourceTree = "<group>"; };
+		8F8C4976183019F700329DFC /* GRCGaranchuBuild.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GRCGaranchuBuild.h; sourceTree = "<group>"; };
 		8F935B901791F24D001FFE01 /* Garanchu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Garanchu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F935B931791F24D001FFE01 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8F935B951791F24D001FFE01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -117,8 +117,8 @@
 		8F935B9B1791F24D001FFE01 /* Garanchu-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Garanchu-Info.plist"; sourceTree = "<group>"; };
 		8F935B9F1791F24D001FFE01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8F935BA11791F24D001FFE01 /* Garanchu-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Garanchu-Prefix.pch"; sourceTree = "<group>"; };
-		8F935BA21791F24D001FFE01 /* WZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WZAppDelegate.h; sourceTree = "<group>"; };
-		8F935BA31791F24D001FFE01 /* WZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WZAppDelegate.m; sourceTree = "<group>"; };
+		8F935BA21791F24D001FFE01 /* GRCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GRCAppDelegate.h; sourceTree = "<group>"; };
+		8F935BA31791F24D001FFE01 /* GRCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GRCAppDelegate.m; sourceTree = "<group>"; };
 		8F935BA51791F24D001FFE01 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8F935BA71791F24D001FFE01 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8F935BA91791F24D001FFE01 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -128,24 +128,24 @@
 		8F935BBD1791F24D001FFE01 /* GaranchuTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GaranchuTests.h; sourceTree = "<group>"; };
 		8F935BBE1791F24D001FFE01 /* GaranchuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GaranchuTests.m; sourceTree = "<group>"; };
 		8F935BC81791F2ED001FFE01 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
-		8F935BCA1791F570001FFE01 /* WZLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZLoginViewController.h; sourceTree = "<group>"; };
-		8F935BCB1791F570001FFE01 /* WZLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZLoginViewController.m; sourceTree = "<group>"; };
-		8FAD8C4117D6540E002F0D50 /* WZSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZSearchResultViewController.h; sourceTree = "<group>"; };
-		8FAD8C4217D6540E002F0D50 /* WZSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZSearchResultViewController.m; sourceTree = "<group>"; };
-		8FAFF05F17E5E7BD008CDA2F /* WZStageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZStageView.h; sourceTree = "<group>"; };
-		8FAFF06017E5E7BE008CDA2F /* WZStageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZStageView.m; sourceTree = "<group>"; };
+		8F935BCA1791F570001FFE01 /* GRCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCLoginViewController.h; sourceTree = "<group>"; };
+		8F935BCB1791F570001FFE01 /* GRCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCLoginViewController.m; sourceTree = "<group>"; };
+		8FAD8C4117D6540E002F0D50 /* GRCSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCSearchResultViewController.h; sourceTree = "<group>"; };
+		8FAD8C4217D6540E002F0D50 /* GRCSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCSearchResultViewController.m; sourceTree = "<group>"; };
+		8FAFF05F17E5E7BD008CDA2F /* GRCStageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCStageView.h; sourceTree = "<group>"; };
+		8FAFF06017E5E7BE008CDA2F /* GRCStageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCStageView.m; sourceTree = "<group>"; };
 		8FAFF06217E5FDAA008CDA2F /* SearchConditionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionList.h; sourceTree = "<group>"; };
 		8FAFF06317E5FDAA008CDA2F /* SearchConditionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchConditionList.m; sourceTree = "<group>"; };
 		8FAFF06E17E5FE3A008CDA2F /* VideoProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoProgram.h; sourceTree = "<group>"; };
 		8FAFF06F17E5FE3A008CDA2F /* VideoProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoProgram.m; sourceTree = "<group>"; };
 		8FAFF07017E5FE3A008CDA2F /* WatchHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchHistory.h; sourceTree = "<group>"; };
 		8FAFF07117E5FE3A008CDA2F /* WatchHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchHistory.m; sourceTree = "<group>"; };
-		8FAFF07517E6066C008CDA2F /* WZCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZCoreData.h; sourceTree = "<group>"; };
-		8FAFF07617E6066C008CDA2F /* WZCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZCoreData.m; sourceTree = "<group>"; };
-		8FAFF07817E6FFFB008CDA2F /* WZActivityItemProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZActivityItemProvider.h; sourceTree = "<group>"; };
-		8FAFF07917E6FFFB008CDA2F /* WZActivityItemProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZActivityItemProvider.m; sourceTree = "<group>"; };
-		8FAFF07F17E757D0008CDA2F /* WZVideoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZVideoDetailViewController.h; sourceTree = "<group>"; };
-		8FAFF08017E757D1008CDA2F /* WZVideoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZVideoDetailViewController.m; sourceTree = "<group>"; };
+		8FAFF07517E6066C008CDA2F /* GRCCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCCoreData.h; sourceTree = "<group>"; };
+		8FAFF07617E6066C008CDA2F /* GRCCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCCoreData.m; sourceTree = "<group>"; };
+		8FAFF07817E6FFFB008CDA2F /* GRCActivityItemProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCActivityItemProvider.h; sourceTree = "<group>"; };
+		8FAFF07917E6FFFB008CDA2F /* GRCActivityItemProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCActivityItemProvider.m; sourceTree = "<group>"; };
+		8FAFF07F17E757D0008CDA2F /* GRCVideoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCVideoDetailViewController.h; sourceTree = "<group>"; };
+		8FAFF08017E757D1008CDA2F /* GRCVideoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCVideoDetailViewController.m; sourceTree = "<group>"; };
 		8FB6262717C5037800EC5A0E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		8FB6262817C5037800EC5A0E /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		8FB6262917C5037800EC5A0E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -154,8 +154,8 @@
 		8FC3C6F917ECCEE8008A5CCD /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
 		8FC3C6FA17ECCEE8008A5CCD /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
 		8FC3C6FB17ECCEE8008A5CCD /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
-		8FD7D8F8182AE75700A5DF2A /* WZGaraponTvProgram+Garanchu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WZGaraponTvProgram+Garanchu.h"; sourceTree = "<group>"; };
-		8FD7D8F9182AE75700A5DF2A /* WZGaraponTvProgram+Garanchu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WZGaraponTvProgram+Garanchu.m"; sourceTree = "<group>"; };
+		8FD7D8F8182AE75700A5DF2A /* WZYGaraponTvProgram+Garanchu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WZYGaraponTvProgram+Garanchu.h"; sourceTree = "<group>"; };
+		8FD7D8F9182AE75700A5DF2A /* WZYGaraponTvProgram+Garanchu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WZYGaraponTvProgram+Garanchu.m"; sourceTree = "<group>"; };
 		8FD92BA918031C0B0017172F /* web */ = {isa = PBXFileReference; lastKnownFileType = folder; path = web; sourceTree = "<group>"; };
 		8FDDC2B917EDF7D700D639E6 /* Default-Landscape-768h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-768h.png"; sourceTree = "<group>"; };
 		8FDDC2BA17EDF7D700D639E6 /* Default-Landscape-768h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-768h@2x.png"; sourceTree = "<group>"; };
@@ -165,16 +165,16 @@
 		8FDDC2BE17EDF7D700D639E6 /* Default-Portrait-1024h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait-1024h@2x.png"; sourceTree = "<group>"; };
 		8FDDC2BF17EDF7D700D639E6 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
 		8FDDC2C017EDF7D700D639E6 /* Default-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x.png"; sourceTree = "<group>"; };
-		8FDDC2C917EE013100D639E6 /* WZGaranchuConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZGaranchuConfig.h; sourceTree = "<group>"; };
+		8FDDC2C917EE013100D639E6 /* GRCGaranchuConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCGaranchuConfig.h; sourceTree = "<group>"; };
 		8FF1B0E9179C551100BF9785 /* GaranchuResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GaranchuResources.bundle; sourceTree = "<group>"; };
 		8FF1B0F0179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8FF1B0F1179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8FF1B0F2179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8FF5973417C98B0200A9E8E9 /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppSettings.bundle; sourceTree = "<group>"; };
-		8FFD027C17DE2D6D00583B1E /* WZGaraponTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZGaraponTabController.h; sourceTree = "<group>"; };
-		8FFD027D17DE2D6D00583B1E /* WZGaraponTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZGaraponTabController.m; sourceTree = "<group>"; };
-		8FFD027F17DE379600583B1E /* WZSearchSuggestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZSearchSuggestViewController.h; sourceTree = "<group>"; };
-		8FFD028017DE379600583B1E /* WZSearchSuggestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZSearchSuggestViewController.m; sourceTree = "<group>"; };
+		8FFD027C17DE2D6D00583B1E /* GRCGaraponTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCGaraponTabController.h; sourceTree = "<group>"; };
+		8FFD027D17DE2D6D00583B1E /* GRCGaraponTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCGaraponTabController.m; sourceTree = "<group>"; };
+		8FFD027F17DE379600583B1E /* GRCSearchSuggestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCSearchSuggestViewController.h; sourceTree = "<group>"; };
+		8FFD028017DE379600583B1E /* GRCSearchSuggestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCSearchSuggestViewController.m; sourceTree = "<group>"; };
 		96F8EB6C90064691BC69EB19 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -244,48 +244,48 @@
 				8FAFF07417E5FE76008CDA2F /* NSManagedObject */,
 				8F935B9A1791F24D001FFE01 /* Supporting Files */,
 				8F935BC81791F2ED001FFE01 /* iPad.storyboard */,
-				8F8C4976183019F700329DFC /* WZGaranchuBuild.h */,
+				8F8C4976183019F700329DFC /* GRCGaranchuBuild.h */,
 				8F66B13F1819D6A600867A07 /* NSURL+QueryString.h */,
 				8F66B1401819D6A600867A07 /* NSURL+QueryString.m */,
 				8F3C22ED17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.h */,
 				8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */,
-				8F935BA21791F24D001FFE01 /* WZAppDelegate.h */,
-				8F935BA31791F24D001FFE01 /* WZAppDelegate.m */,
-				8F59FC4F1791F73C00EEA418 /* WZVideoViewController.h */,
-				8F59FC501791F73C00EEA418 /* WZVideoViewController.m */,
-				8FAFF07F17E757D0008CDA2F /* WZVideoDetailViewController.h */,
-				8FAFF08017E757D1008CDA2F /* WZVideoDetailViewController.m */,
-				8F8C4973182F9CF600329DFC /* WZVideoCaptionListViewController.h */,
-				8F8C4974182F9CF600329DFC /* WZVideoCaptionListViewController.m */,
-				8FAFF05F17E5E7BD008CDA2F /* WZStageView.h */,
-				8FAFF06017E5E7BE008CDA2F /* WZStageView.m */,
-				8F59FC5C1792DFA700EEA418 /* WZVideoPlayerView.h */,
-				8F59FC5D1792DFA700EEA418 /* WZVideoPlayerView.m */,
-				8F935BCA1791F570001FFE01 /* WZLoginViewController.h */,
-				8F935BCB1791F570001FFE01 /* WZLoginViewController.m */,
-				8FDDC2C917EE013100D639E6 /* WZGaranchuConfig.h */,
-				8F59FC551792CC2E00EEA418 /* WZGaranchu.h */,
-				8F59FC561792CC2E00EEA418 /* WZGaranchu.m */,
-				8F59FC521792C21E00EEA418 /* WZGaranchuUser.h */,
-				8F59FC531792C21E00EEA418 /* WZGaranchuUser.m */,
-				8F59FCAF1793D77A00EEA418 /* WZNaviViewController.h */,
-				8F59FCB01793D77B00EEA418 /* WZNaviViewController.m */,
-				8F59FCB21793D9FB00EEA418 /* WZIndexMenuViewController.h */,
-				8F59FCB31793D9FC00EEA418 /* WZIndexMenuViewController.m */,
-				8F59FCB51794149100EEA418 /* WZIndexMenuViewController+Static.h */,
-				8F59FCB61794149200EEA418 /* WZIndexMenuViewController+Static.m */,
-				8FFD027F17DE379600583B1E /* WZSearchSuggestViewController.h */,
-				8FFD028017DE379600583B1E /* WZSearchSuggestViewController.m */,
-				8FAD8C4117D6540E002F0D50 /* WZSearchResultViewController.h */,
-				8FAD8C4217D6540E002F0D50 /* WZSearchResultViewController.m */,
-				8FFD027C17DE2D6D00583B1E /* WZGaraponTabController.h */,
-				8FFD027D17DE2D6D00583B1E /* WZGaraponTabController.m */,
-				8FAFF07817E6FFFB008CDA2F /* WZActivityItemProvider.h */,
-				8FAFF07917E6FFFB008CDA2F /* WZActivityItemProvider.m */,
-				8F66B1421819E6FF00867A07 /* WZAppSettingsWebViewController.h */,
-				8F66B1431819E6FF00867A07 /* WZAppSettingsWebViewController.m */,
-				8FD7D8F8182AE75700A5DF2A /* WZGaraponTvProgram+Garanchu.h */,
-				8FD7D8F9182AE75700A5DF2A /* WZGaraponTvProgram+Garanchu.m */,
+				8FD7D8F8182AE75700A5DF2A /* WZYGaraponTvProgram+Garanchu.h */,
+				8FD7D8F9182AE75700A5DF2A /* WZYGaraponTvProgram+Garanchu.m */,
+				8F935BA21791F24D001FFE01 /* GRCAppDelegate.h */,
+				8F935BA31791F24D001FFE01 /* GRCAppDelegate.m */,
+				8F59FC4F1791F73C00EEA418 /* GRCVideoViewController.h */,
+				8F59FC501791F73C00EEA418 /* GRCVideoViewController.m */,
+				8FAFF07F17E757D0008CDA2F /* GRCVideoDetailViewController.h */,
+				8FAFF08017E757D1008CDA2F /* GRCVideoDetailViewController.m */,
+				8F8C4973182F9CF600329DFC /* GRCVideoCaptionListViewController.h */,
+				8F8C4974182F9CF600329DFC /* GRCVideoCaptionListViewController.m */,
+				8FAFF05F17E5E7BD008CDA2F /* GRCStageView.h */,
+				8FAFF06017E5E7BE008CDA2F /* GRCStageView.m */,
+				8F59FC5C1792DFA700EEA418 /* GRCVideoPlayerView.h */,
+				8F59FC5D1792DFA700EEA418 /* GRCVideoPlayerView.m */,
+				8F935BCA1791F570001FFE01 /* GRCLoginViewController.h */,
+				8F935BCB1791F570001FFE01 /* GRCLoginViewController.m */,
+				8FDDC2C917EE013100D639E6 /* GRCGaranchuConfig.h */,
+				8F59FC551792CC2E00EEA418 /* GRCGaranchu.h */,
+				8F59FC561792CC2E00EEA418 /* GRCGaranchu.m */,
+				8F59FC521792C21E00EEA418 /* GRCGaranchuUser.h */,
+				8F59FC531792C21E00EEA418 /* GRCGaranchuUser.m */,
+				8F59FCAF1793D77A00EEA418 /* GRCNaviViewController.h */,
+				8F59FCB01793D77B00EEA418 /* GRCNaviViewController.m */,
+				8F59FCB21793D9FB00EEA418 /* GRCIndexMenuViewController.h */,
+				8F59FCB31793D9FC00EEA418 /* GRCIndexMenuViewController.m */,
+				8F59FCB51794149100EEA418 /* GRCIndexMenuViewController+Static.h */,
+				8F59FCB61794149200EEA418 /* GRCIndexMenuViewController+Static.m */,
+				8FFD027F17DE379600583B1E /* GRCSearchSuggestViewController.h */,
+				8FFD028017DE379600583B1E /* GRCSearchSuggestViewController.m */,
+				8FAD8C4117D6540E002F0D50 /* GRCSearchResultViewController.h */,
+				8FAD8C4217D6540E002F0D50 /* GRCSearchResultViewController.m */,
+				8FFD027C17DE2D6D00583B1E /* GRCGaraponTabController.h */,
+				8FFD027D17DE2D6D00583B1E /* GRCGaraponTabController.m */,
+				8FAFF07817E6FFFB008CDA2F /* GRCActivityItemProvider.h */,
+				8FAFF07917E6FFFB008CDA2F /* GRCActivityItemProvider.m */,
+				8F66B1421819E6FF00867A07 /* GRCAppSettingsWebViewController.h */,
+				8F66B1431819E6FF00867A07 /* GRCAppSettingsWebViewController.m */,
 			);
 			path = Garanchu;
 			sourceTree = "<group>";
@@ -346,8 +346,8 @@
 			isa = PBXGroup;
 			children = (
 				8F72AFD217E0EBD7007E1715 /* Garanchu.xcdatamodeld */,
-				8FAFF07517E6066C008CDA2F /* WZCoreData.h */,
-				8FAFF07617E6066C008CDA2F /* WZCoreData.m */,
+				8FAFF07517E6066C008CDA2F /* GRCCoreData.h */,
+				8FAFF07617E6066C008CDA2F /* GRCCoreData.m */,
 				8FAFF06E17E5FE3A008CDA2F /* VideoProgram.h */,
 				8FAFF06F17E5FE3A008CDA2F /* VideoProgram.m */,
 				8FAFF07017E5FE3A008CDA2F /* WatchHistory.h */,
@@ -408,7 +408,7 @@
 		8F935B881791F24D001FFE01 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = WZ;
+				CLASSPREFIX = GRC;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = makoto_kw;
 			};
@@ -538,32 +538,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F935BA01791F24D001FFE01 /* main.m in Sources */,
-				8F935BA41791F24D001FFE01 /* WZAppDelegate.m in Sources */,
+				8F935BA41791F24D001FFE01 /* GRCAppDelegate.m in Sources */,
 				8F66B1411819D6A600867A07 /* NSURL+QueryString.m in Sources */,
-				8F935BCC1791F570001FFE01 /* WZLoginViewController.m in Sources */,
-				8F59FC511791F73C00EEA418 /* WZVideoViewController.m in Sources */,
-				8F59FC541792C21E00EEA418 /* WZGaranchuUser.m in Sources */,
-				8F59FC571792CC2F00EEA418 /* WZGaranchu.m in Sources */,
-				8FD7D8FA182AE75700A5DF2A /* WZGaraponTvProgram+Garanchu.m in Sources */,
-				8F59FC5E1792DFA700EEA418 /* WZVideoPlayerView.m in Sources */,
-				8F59FCB11793D77B00EEA418 /* WZNaviViewController.m in Sources */,
-				8F59FCB41793D9FC00EEA418 /* WZIndexMenuViewController.m in Sources */,
-				8F59FCB71794149300EEA418 /* WZIndexMenuViewController+Static.m in Sources */,
-				8F66B1441819E6FF00867A07 /* WZAppSettingsWebViewController.m in Sources */,
+				8F935BCC1791F570001FFE01 /* GRCLoginViewController.m in Sources */,
+				8F59FC511791F73C00EEA418 /* GRCVideoViewController.m in Sources */,
+				8F59FC541792C21E00EEA418 /* GRCGaranchuUser.m in Sources */,
+				8F59FC571792CC2F00EEA418 /* GRCGaranchu.m in Sources */,
+				8FD7D8FA182AE75700A5DF2A /* WZYGaraponTvProgram+Garanchu.m in Sources */,
+				8F59FC5E1792DFA700EEA418 /* GRCVideoPlayerView.m in Sources */,
+				8F59FCB11793D77B00EEA418 /* GRCNaviViewController.m in Sources */,
+				8F59FCB41793D9FC00EEA418 /* GRCIndexMenuViewController.m in Sources */,
+				8F59FCB71794149300EEA418 /* GRCIndexMenuViewController+Static.m in Sources */,
+				8F66B1441819E6FF00867A07 /* GRCAppSettingsWebViewController.m in Sources */,
 				8F3C22EF17B38FE000D35CF2 /* MBProgressHUD+Garanchu.m in Sources */,
-				8FAD8C4317D6540F002F0D50 /* WZSearchResultViewController.m in Sources */,
-				8FFD027E17DE2D6D00583B1E /* WZGaraponTabController.m in Sources */,
-				8FFD028117DE379600583B1E /* WZSearchSuggestViewController.m in Sources */,
+				8FAD8C4317D6540F002F0D50 /* GRCSearchResultViewController.m in Sources */,
+				8FFD027E17DE2D6D00583B1E /* GRCGaraponTabController.m in Sources */,
+				8FFD028117DE379600583B1E /* GRCSearchSuggestViewController.m in Sources */,
 				8F72AFD417E0EBD7007E1715 /* Garanchu.xcdatamodeld in Sources */,
 				8F72B01A17E58C4E007E1715 /* SearchCondition.m in Sources */,
-				8FAFF06117E5E7BE008CDA2F /* WZStageView.m in Sources */,
-				8F8C4975182F9CF600329DFC /* WZVideoCaptionListViewController.m in Sources */,
+				8FAFF06117E5E7BE008CDA2F /* GRCStageView.m in Sources */,
+				8F8C4975182F9CF600329DFC /* GRCVideoCaptionListViewController.m in Sources */,
 				8FAFF06417E5FDAA008CDA2F /* SearchConditionList.m in Sources */,
 				8FAFF07217E5FE3A008CDA2F /* VideoProgram.m in Sources */,
 				8FAFF07317E5FE3A008CDA2F /* WatchHistory.m in Sources */,
-				8FAFF07717E6066D008CDA2F /* WZCoreData.m in Sources */,
-				8FAFF07A17E6FFFB008CDA2F /* WZActivityItemProvider.m in Sources */,
-				8FAFF08117E757D1008CDA2F /* WZVideoDetailViewController.m in Sources */,
+				8FAFF07717E6066D008CDA2F /* GRCCoreData.m in Sources */,
+				8FAFF07A17E6FFFB008CDA2F /* GRCActivityItemProvider.m in Sources */,
+				8FAFF08117E757D1008CDA2F /* GRCVideoDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,7 +5,7 @@
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
-#import "WZCoreData.h"
+#import "GRCCoreData.h"
 #import "WatchHistory.h"
 #import "VideoProgram.h"
 
@@ -22,7 +22,7 @@
 {
     WatchHistory *record = nil;
     
-    WZCoreData *data = [WZCoreData sharedInstance];
+    GRCCoreData *data = [GRCCoreData sharedInstance];
     NSManagedObjectContext *context = data.managedObjectContext;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -41,11 +41,11 @@
     return record;
 }
 
-+ (WatchHistory *)findOrCreateByProgram:(WZGaraponTvProgram *)program
++ (WatchHistory *)findOrCreateByProgram:(WZYGaraponTvProgram *)program
 {
     WatchHistory *record = [self findByGtvid:program.gtvid];
     
-    WZCoreData *data = [WZCoreData sharedInstance];
+    GRCCoreData *data = [GRCCoreData sharedInstance];
     NSManagedObjectContext *context = data.managedObjectContext;
     
     if (!record) {
@@ -64,7 +64,7 @@
 
 + (NSUInteger)count
 {
-    WZCoreData *data = [WZCoreData sharedInstance];
+    GRCCoreData *data = [GRCCoreData sharedInstance];
     NSManagedObjectContext *context = data.managedObjectContext;
     
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
@@ -82,7 +82,7 @@
 
 + (NSArray *)findWithLimit:(NSInteger)limit
 {
-    WZCoreData *data = [WZCoreData sharedInstance];
+    GRCCoreData *data = [GRCCoreData sharedInstance];
     NSManagedObjectContext *context = data.managedObjectContext;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -102,7 +102,7 @@
 
 + (NSArray *)findRecentSince:(NSDate *)date
 {
-    WZCoreData *data = [WZCoreData sharedInstance];
+    GRCCoreData *data = [GRCCoreData sharedInstance];
     NSManagedObjectContext *context = data.managedObjectContext;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -123,20 +123,20 @@
 
 }
 
-+ (void)updateHistoryWithProgram:(WZGaraponTvProgram *)program position:(NSTimeInterval)position done:(BOOL)done
++ (void)updateHistoryWithProgram:(WZYGaraponTvProgram *)program position:(NSTimeInterval)position done:(BOOL)done
 {
     WatchHistory *history = [self findOrCreateByProgram:program];
     history.position = [NSNumber numberWithFloat:position];
     history.done = [NSNumber numberWithBool:done];
     history.watchdate = [NSDate date];
     
-    WZCoreData *data = [WZCoreData sharedInstance];
+    GRCCoreData *data = [GRCCoreData sharedInstance];
     NSManagedObjectContext *context = data.managedObjectContext;
     
     NSError *error;
     if (![context save:&error]) {
         // Handle the error.
-        WZLogD(@"Error: %@", error);
+        GRCLogD(@"Error: %@", error);
     }
 }
 
@@ -144,7 +144,7 @@
 {
     NSUInteger count = 0;
     
-    WZCoreData *data = [WZCoreData sharedInstance];
+    GRCCoreData *data = [GRCCoreData sharedInstance];
     NSManagedObjectContext *context = data.managedObjectContext;
     
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
@@ -160,7 +160,7 @@
         }        
         if (![context save:&error]) {
             // Handle the error.
-            WZLogD(@"Error: %@", error);
+            GRCLogD(@"Error: %@", error);
         } else {
             count = fetchedObjects.count;
         }

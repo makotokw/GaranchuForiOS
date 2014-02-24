@@ -16,8 +16,8 @@
 @property (nonatomic, retain) NSNumber * duration;
 @property (nonatomic, retain) NSNumber * ch;
 
-- (void)copyFromProgram:(WZGaraponTvProgram *)program;
-- (void)copyToProgram:(WZGaraponTvProgram *)program;
-+ (VideoProgram *)findOrCreateByProgram:(WZGaraponTvProgram *)program;
+- (void)copyFromProgram:(WZYGaraponTvProgram *)program;
+- (void)copyToProgram:(WZYGaraponTvProgram *)program;
++ (VideoProgram *)findOrCreateByProgram:(WZYGaraponTvProgram *)program;
 
 @end

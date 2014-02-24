@@ -14,10 +14,10 @@
     #import <CoreData/CoreData.h>
     #import <BlocksKit/BlocksKit.h>
     #import <FlatUIKit/FlatUIKit.h>
-    #import <WZGarapon/WZGarapon.h>
-    #import "WZGaraponTvProgram+Garanchu.h"
+    #import <WZYGarapon/WZYGarapon.h>
+    #import "WZYGaraponTvProgram+Garanchu.h"
     #import "MBProgressHUD+Garanchu.h"
-    #import "WZGaranchu.h"
+    #import "GRCGaranchu.h"
 #endif
 
 FOUNDATION_EXPORT NSString *MYLocalizedString(NSString *key);
@@ -27,18 +27,18 @@ compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 #define GARAPON_SERVICE_NAME @"garapon"
 
-#define WZGaranchuDidSelectProgram @"WZGaranchuDidSelectProgram"
-#define WZGaranchuRequiredReconnect @"WZGaranchuRequiredReconnect"
+#define GRCDidSelectProgram @"WZGaranchuDidSelectProgram"
+#define GRCRequiredReconnect @"WZGaranchuRequiredReconnect"
 
-#import "WZGaranchuBuild.h"
+#import "GRCGaranchuBuild.h"
 
 #if USE_TESTFLIGHT_SDK
-#define WZLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#define GRCLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 #else
-#define WZLog(...) NSLog(__VA_ARGS__)
+#define GRCLog(...) NSLog(__VA_ARGS__)
 #endif
 #if DEBUG
-#define WZLogD(...) NSLog(__VA_ARGS__)
+#define GRCLogD(...) NSLog(__VA_ARGS__)
 #else
-#define WZLogD(...) ;
+#define GRCLogD(...) ;
 #endif

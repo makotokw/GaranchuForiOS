@@ -5,7 +5,7 @@
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
-#import "WZCoreData.h"
+#import "GRCCoreData.h"
 #import "VideoProgram.h"
 
 @implementation VideoProgram
@@ -16,7 +16,7 @@
 @dynamic duration;
 @dynamic ch;
 
-- (void)copyFromProgram:(WZGaraponTvProgram *)program
+- (void)copyFromProgram:(WZYGaraponTvProgram *)program
 {
     self.gtvid = program.gtvid;
     self.title = program.title;
@@ -25,7 +25,7 @@
     self.startdate = program.startdate;
 }
 
-- (void)copyToProgram:(WZGaraponTvProgram *)program
+- (void)copyToProgram:(WZYGaraponTvProgram *)program
 {
     program.gtvid = self.gtvid;
     program.title = self.title;
@@ -34,11 +34,11 @@
     program.startdate = self.startdate;
 }
 
-+ (VideoProgram *)findOrCreateByProgram:(WZGaraponTvProgram *)program
++ (VideoProgram *)findOrCreateByProgram:(WZYGaraponTvProgram *)program
 {
     VideoProgram *record = nil;
     
-    WZCoreData *data = [WZCoreData sharedInstance];
+    GRCCoreData *data = [GRCCoreData sharedInstance];
     NSManagedObjectContext *context = data.managedObjectContext;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

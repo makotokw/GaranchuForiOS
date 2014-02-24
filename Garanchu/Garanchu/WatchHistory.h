@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class WZGaraponTvProgram;
+@class WZYGaraponTvProgram;
 
 @interface WatchHistory : NSManagedObject
 
@@ -23,7 +23,7 @@
 + (NSUInteger)count;
 + (NSArray *)findWithLimit:(NSInteger)limit;
 + (NSArray *)findRecentSince:(NSDate *)date;
-+ (void)updateHistoryWithProgram:(WZGaraponTvProgram *)program position:(NSTimeInterval)position done:(BOOL)done;
++ (void)updateHistoryWithProgram:(WZYGaraponTvProgram *)program position:(NSTimeInterval)position done:(BOOL)done;
 + (NSUInteger)deleteAll;
 
 @end

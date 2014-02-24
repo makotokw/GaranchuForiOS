@@ -5,7 +5,7 @@
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
-#import "WZCoreData.h"
+#import "GRCCoreData.h"
 #import "SearchConditionList.h"
 #import "SearchCondition.h"
 
@@ -18,7 +18,7 @@
 {
     NSUInteger count = 0;
     
-    WZCoreData *data = [WZCoreData sharedInstance];
+    GRCCoreData *data = [GRCCoreData sharedInstance];
     NSManagedObjectContext *context = data.managedObjectContext;
     
     NSSet *items = self.items;
@@ -30,7 +30,7 @@
     NSError *error;
     if (![context save:&error]) {
         // Handle the error.
-        WZLogD(@"Error: %@", error);
+        GRCLogD(@"Error: %@", error);
         count = 0;
     }
     return count;
@@ -40,7 +40,7 @@
 {
     SearchConditionList *record = nil;
     
-    WZCoreData *data = [WZCoreData sharedInstance];
+    GRCCoreData *data = [GRCCoreData sharedInstance];
     NSManagedObjectContext *context = data.managedObjectContext;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

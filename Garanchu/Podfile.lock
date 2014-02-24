@@ -16,7 +16,7 @@ PODS:
   - FlatUIKit (1.2)
   - GRMustache (6.8.4):
     - JRSwizzle (~> 1.0)
-  - InAppSettingsKit (2.0)
+  - InAppSettingsKit (2.0.1)
   - JRSwizzle (1.0)
   - libffi (3.0.13)
   - MBProgressHUD (0.8)
@@ -28,58 +28,63 @@ PODS:
   - SDWebImage/Core (3.5.2)
   - SFHFKeychainUtils (0.0.1)
   - SVPullToRefresh (0.4.1)
-  - TestFlightSDK (2.1.3)
+  - TestFlightSDK (3.0.0)
   - TMCache (1.2.0)
-  - WZActivityIndicatorView (0.1)
-  - WZAVPlayer (0.1):
-    - WZAVPlayer/AirPlay
-    - WZAVPlayer/Core
-    - WZAVPlayer/HUD
-    - WZAVPlayer/Player
-  - WZAVPlayer/AirPlay (0.1)
-  - WZAVPlayer/Core (0.1):
+  - WZYActivityIndicatorView (0.1)
+  - WZYAVPlayer (0.1):
+    - WZYAVPlayer/AirPlay
+    - WZYAVPlayer/Core
+    - WZYAVPlayer/HUD
+    - WZYAVPlayer/Player
+    - WZYAVPlayer/Player
+  - WZYAVPlayer/AirPlay (0.1):
+    - WZYAVPlayer/Player
+  - WZYAVPlayer/Core (0.1):
     - BlocksKit/UIKit (~> 2.0.0)
-  - WZAVPlayer/HUD (0.1):
+    - WZYAVPlayer/Player
+  - WZYAVPlayer/HUD (0.1):
     - MBProgressHUD
-  - WZAVPlayer/Player (0.1):
-    - WZAVPlayer/AirPlay
-    - WZAVPlayer/Core
-    - WZAVPlayer/HUD
-  - WZGarapon (0.0.1)
-  - WZPlayerSlider (0.1.2)
+    - WZYAVPlayer/Player
+  - WZYAVPlayer/Player (0.1):
+    - WZYAVPlayer/AirPlay
+    - WZYAVPlayer/Core
+    - WZYAVPlayer/HUD
+    - WZYAVPlayer/Player
+  - WZYGarapon (0.0.1)
+  - WZYPlayerSlider (0.1.2)
 
 DEPENDENCIES:
   - BlocksKit (= 2.0.0)
   - FlatUIKit (= 1.2)
   - GRMustache (= 6.8.4)
-  - InAppSettingsKit (= 2.0)
+  - InAppSettingsKit (= 2.0.1)
   - MBProgressHUD (= 0.8)
   - MZFormSheetController (= 2.2.2)
   - SDWebImage (= 3.5.2)
   - SFHFKeychainUtils (= 0.0.1)
   - SVPullToRefresh (= 0.4.1)
-  - TestFlightSDK (= 2.1.3)
+  - TestFlightSDK (= 3.0.0)
   - TMCache (= 1.2.0)
-  - WZActivityIndicatorView (from `https://github.com/makotokw/CocoaWZActivityIndicatorView.git`)
-  - WZAVPlayer (from `~/arcadia/KWPods/WZAVPlayer`)
-  - WZGarapon (from `~/arcadia/KWPods/WZGarapon`)
-  - WZPlayerSlider (from `https://github.com/makotokw/CocoaWZPlayerSlider.git`)
+  - WZYActivityIndicatorView (from `~/arcadia/KWPods/WZYActivityIndicatorView`)
+  - WZYAVPlayer (from `~/arcadia/KWPods/WZYAVPlayer`)
+  - WZYGarapon (from `~/arcadia/KWPods/WZYGarapon`)
+  - WZYPlayerSlider (from `~/arcadia/KWPods/WZYPlayerSlider`)
 
 EXTERNAL SOURCES:
-  WZActivityIndicatorView:
-    :git: https://github.com/makotokw/CocoaWZActivityIndicatorView.git
-  WZAVPlayer:
-    :path: ~/arcadia/KWPods/WZAVPlayer
-  WZGarapon:
-    :path: ~/arcadia/KWPods/WZGarapon
-  WZPlayerSlider:
-    :git: https://github.com/makotokw/CocoaWZPlayerSlider.git
+  WZYActivityIndicatorView:
+    :path: ~/arcadia/KWPods/WZYActivityIndicatorView
+  WZYAVPlayer:
+    :path: ~/arcadia/KWPods/WZYAVPlayer
+  WZYGarapon:
+    :path: ~/arcadia/KWPods/WZYGarapon
+  WZYPlayerSlider:
+    :path: ~/arcadia/KWPods/WZYPlayerSlider
 
 SPEC CHECKSUMS:
   BlocksKit: b29ee3f28ba06a09f5c64987314ce5b75b2c3962
   FlatUIKit: 43b2acaa6f4ef57539b51b00e4ce62d506e33e11
   GRMustache: 7b2520d67b6373484c8b2c08b9788af90a461d61
-  InAppSettingsKit: 2b85ba925a81634860461c21274f54b130c84614
+  InAppSettingsKit: 5e42f626b9be9c33e3b04c0cc9523ca5eabe7ad3
   JRSwizzle: 6242ff38485d870fc2636899048ee1ab883ae587
   libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
@@ -88,11 +93,11 @@ SPEC CHECKSUMS:
   SDWebImage: fe7ce01ae4e0a884d168f59c9dd82d35baf8429e
   SFHFKeychainUtils: e828dbd9eaa509486acf95d8de2ebd414c4b7451
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
-  TestFlightSDK: 7fa7962e63693780915fad0a4743e0febd5a4d17
+  TestFlightSDK: 71e3e78d3a46144dbad975a4bf80a14dae6a818a
   TMCache: 4b05e1b124d9f7e8d449640e059cff4cda17ed27
-  WZActivityIndicatorView: 0831c45bbedf2dbf5411284f67439e0fed9584e0
-  WZAVPlayer: c522c7e15801f60b96a87db5da464b71ea70aea3
-  WZGarapon: 138cc0d4bef9ebb2617c3be8148281d2c55144b8
-  WZPlayerSlider: f1cd182f37b16a798d8ab133e12f0f40b2e88cd6
+  WZYActivityIndicatorView: 32e4785c5b4fda97618bc11d665ddbe5294d0f74
+  WZYAVPlayer: 7f2e6f4142216a546167677126abf8c16124d888
+  WZYGarapon: 6407a374632ff0e2e74cd2921e4300e9cc92c54a
+  WZYPlayerSlider: 05c14c366126c8e1d5bddcd77c71ea36121cc5fc
 
 COCOAPODS: 0.29.0

@@ -7,11 +7,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "WZAppDelegate.h"
+#import "GRCAppDelegate.h"
 
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([WZAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([GRCAppDelegate class]));
     }
 }

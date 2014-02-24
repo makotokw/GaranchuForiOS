@@ -5,7 +5,7 @@
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
-#import "WZCoreData.h"
+#import "GRCCoreData.h"
 #import "SearchCondition.h"
 #import "SearchConditionList.h"
 
@@ -21,7 +21,7 @@
 
 + (SearchCondition *)conditionWithKeyword:(NSString *)keyword addTo:(SearchConditionList *)list
 {
-    WZCoreData *data = [WZCoreData sharedInstance];
+    GRCCoreData *data = [GRCCoreData sharedInstance];
     NSManagedObjectContext *context = data.managedObjectContext;
     SearchCondition *condtion = [NSEntityDescription
                                  insertNewObjectForEntityForName:@"SearchCondition"
@@ -35,7 +35,7 @@
 
 + (NSArray *)findByList:(SearchConditionList *)list
 {
-    WZCoreData *data = [WZCoreData sharedInstance];
+    GRCCoreData *data = [GRCCoreData sharedInstance];
     
     NSManagedObjectContext *context = data.managedObjectContext;
     
@@ -58,27 +58,27 @@
 
 + (void)deleteWithCondition:(SearchCondition *)condition
 {
-    WZCoreData *data = [WZCoreData sharedInstance];
+    GRCCoreData *data = [GRCCoreData sharedInstance];
     NSManagedObjectContext *context = data.managedObjectContext;
     [context deleteObject:condition];
     
     NSError *error;
     if (![context save:&error]) {
         // Handle the error.
-        WZLogD(@"Error: %@", error);
+        GRCLogD(@"Error: %@", error);
     }
 }
 
 + (void)updatedSearchedAtWithCondition:(SearchCondition *)condition
 {
-    WZCoreData *data = [WZCoreData sharedInstance];
+    GRCCoreData *data = [GRCCoreData sharedInstance];
     NSManagedObjectContext *context = data.managedObjectContext;
     condition.searchdate = [NSDate date];
     
     NSError *error;
     if (![context save:&error]) {
         // Handle the error.
-        WZLogD(@"Error: %@", error);
+        GRCLogD(@"Error: %@", error);
     }
 }
 

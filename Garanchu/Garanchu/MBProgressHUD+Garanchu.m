@@ -6,27 +6,27 @@
 //
 
 #import "MBProgressHUD+Garanchu.h"
-#import <WZActivityIndicatorView/WZActivityIndicatorView.h>
+#import <WZYActivityIndicatorView/WZYActivityIndicatorView.h>
 
 @implementation MBProgressHUD (Garanchu)
 
-- (void)indicatoryViewWithImageNamed:(NSString *)imageNamed
+- (void)grc_indicatoryViewWithImageNamed:(NSString *)imageNamed
 {
     self.mode = MBProgressHUDModeCustomView;
     
-    WZActivityIndicatorView *view = [[WZActivityIndicatorView alloc] initWithActivityIndicatorImage:[UIImage imageNamed:imageNamed]];
+    WZYActivityIndicatorView *view = [[WZYActivityIndicatorView alloc] initWithActivityIndicatorImage:[UIImage imageNamed:imageNamed]];
     self.customView = view;
 }
 
-- (void)indicatorWhiteWithMessage:(NSString *)message
+- (void)grc_indicatorWhiteWithMessage:(NSString *)message
 {
-    [self indicatoryViewWithImageNamed:@"GaranchuResources.bundle/indicator_white.png"];
+    [self grc_indicatoryViewWithImageNamed:@"GaranchuResources.bundle/indicator_white.png"];
     self.labelText = message;
 }
 
-- (void)indicatorWhiteSmallWithMessage:(NSString *)message
+- (void)grc_indicatorWhiteSmallWithMessage:(NSString *)message
 {
-    [self indicatoryViewWithImageNamed:@"GaranchuResources.bundle/indicator_white_small.png"];
+    [self grc_indicatoryViewWithImageNamed:@"GaranchuResources.bundle/indicator_white_small.png"];
     self.labelText = message;
 }
 
