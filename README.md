@@ -25,4 +25,5 @@ open Garanchu.xcworkspace
 
 ## ライセンス
 
+Copyright (c) 2013 Makoto Kawasaki
 GNU GENERAL PUBLIC LICENSE Version 3 (GPL v3)
