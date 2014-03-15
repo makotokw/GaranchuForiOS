@@ -27,8 +27,18 @@ compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 #define GARAPON_SERVICE_NAME @"garapon"
 
-#define GRCDidSelectProgram @"WZGaranchuDidSelectProgram"
-#define GRCRequiredReconnect @"WZGaranchuRequiredReconnect"
+#define GRCProgramDidSelect @"GRCProgramDidSelect"
+#define GRCRequiredReconnect @"GRCRequiredReconnect"
+
+#define GRCNaviWillAppear @"GRCNaviWillAppear"
+#define GRCNaviDidAppear @"GRCNaviDidAppear"
+#define GRCNaviWillDisappear @"GRCNaviWillDisappear"
+#define GRCNaviDidDisappear @"GRCNaviDidDisappear"
+
+#define GRCPlayerOverlayWillAppear @"GRCPlayerOverlayWillAppear"
+#define GRCPlayerOverlayDidAppear @"GRCPlayerOverlayDidAppear"
+#define GRCPlayerOverlayWillDisappear @"GRCPlayerOverlayWillDisappear"
+#define GRCPlayerOverlayDidDisappear @"GRCPlayerOverlayiDidDisappear"
 
 #import "GRCGaranchuBuild.h"
 

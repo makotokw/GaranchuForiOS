@@ -8,10 +8,10 @@
 #import <Foundation/Foundation.h>
 
 @interface NSURL (QueryString)
-+ (NSString *)urlEncode:(NSString *)text;
-+ (NSString *)urlDecode:(NSString *)text;
-+ (NSString *)buildParameters:(NSDictionary *)params;
-- (NSURL *)URLByAppendingQueryString:(NSString *)query overwrite:(BOOL)overwrite;
-- (NSURL *)URLByAppendingParameters:(NSDictionary *)params overwrite:(BOOL)overwrite;
-- (NSDictionary *)queryAsDictionary;
++ (NSString *)grc_urlEncode:(NSString *)text;
++ (NSString *)grc_urlDecode:(NSString *)text;
++ (NSString *)grc_buildParameters:(NSDictionary *)params;
+- (NSURL *)grc_URLByAppendingQueryString:(NSString *)query overwrite:(BOOL)overwrite;
+- (NSURL *)grc_URLByAppendingParameters:(NSDictionary *)params overwrite:(BOOL)overwrite;
+- (NSDictionary *)grc_queryAsDictionary;
 @end

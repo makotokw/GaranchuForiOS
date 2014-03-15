@@ -9,7 +9,7 @@
 
 @implementation NSURL (QueryString)
 
-+ (NSString *)urlEncode:(NSString *)text
++ (NSString *)grc_urlEncode:(NSString *)text
 {
     return (__bridge_transfer NSString*)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                                                 (__bridge CFStringRef)text,
@@ -19,12 +19,12 @@
 //    return [text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
-+ (NSString *)urlDecode:(NSString *)text
++ (NSString *)grc_urlDecode:(NSString *)text
 {
 	return [text stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
-+ (NSString *)buildParameters:(NSDictionary *)params
++ (NSString *)grc_buildParameters:(NSDictionary *)params
 {
     NSMutableString *s = [NSMutableString string];    
     NSString *key;
@@ -33,7 +33,7 @@
         if ([value isKindOfClass:[NSNull class]]) {
             [s appendFormat:@"%@=&", key];
         } else {
-            NSString *uriEncodedValue = [NSURL urlEncode:[value description]];
+            NSString *uriEncodedValue = [NSURL grc_urlEncode:[value description]];
             [s appendFormat:@"%@=%@&", key, uriEncodedValue];
         }
     }    
@@ -43,26 +43,26 @@
     return s;
 }
 
-+ (NSDictionary *)queryToDictionary:(NSString *)query
++ (NSDictionary *)grc_queryToDictionary:(NSString *)query
 {    
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
 	NSArray *pairs = [query componentsSeparatedByString:@"&"];
 	for (NSString *pair in pairs) {
 		NSArray *components = [pair componentsSeparatedByString:@"="];
-		[params setObject:[NSURL urlDecode:[components objectAtIndex:1]]
-				   forKey:[NSURL urlDecode:[components objectAtIndex:0]]];
+		[params setObject:[NSURL grc_urlDecode:[components objectAtIndex:1]]
+				   forKey:[NSURL grc_urlDecode:[components objectAtIndex:0]]];
 	}
 	return params;
 }
 
-- (NSURL *)URLByAppendingQueryString:(NSString *)query overwrite:(BOOL)overwrite
+- (NSURL *)grc_URLByAppendingQueryString:(NSString *)query overwrite:(BOOL)overwrite
 {
-    return [self URLByAppendingParameters:[NSURL queryToDictionary:query] overwrite:overwrite];
+    return [self grc_URLByAppendingParameters:[NSURL grc_queryToDictionary:query] overwrite:overwrite];
 }
 
-- (NSURL *)URLByAppendingParameters:(NSDictionary *)params overwrite:(BOOL)overwrite
+- (NSURL *)grc_URLByAppendingParameters:(NSDictionary *)params overwrite:(BOOL)overwrite
 {
-    NSMutableDictionary *mergedParams = [self.queryAsDictionary mutableCopy];
+    NSMutableDictionary *mergedParams = [self.grc_queryAsDictionary mutableCopy];
     NSEnumerator* e = [params keyEnumerator];
 
     id key = nil;
@@ -73,7 +73,7 @@
     }
         
     NSString *urlString = nil;
-    NSString *queryString = [NSURL buildParameters:mergedParams];
+    NSString *queryString = [NSURL grc_buildParameters:mergedParams];
     if (self.query) {
         NSRange queryPrefixRange = [self.absoluteString rangeOfString:@"?"];
         urlString = [NSString stringWithFormat:@"%@?%@", 
@@ -85,9 +85,9 @@
     return [NSURL URLWithString:urlString];
 }
 
-- (NSDictionary *)queryAsDictionary
+- (NSDictionary *)grc_queryAsDictionary
 {
-    return [NSURL queryToDictionary:self.query];
+    return [NSURL grc_queryToDictionary:self.query];
 }
             
 @end

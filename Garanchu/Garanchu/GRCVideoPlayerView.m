@@ -106,20 +106,34 @@
 - (void)toggleOverlayWithDuration:(NSTimeInterval)duration
 {
     __weak GRCVideoPlayerView *me = self;
-    [UIView animateWithDuration:duration
-                     animations:^{
-                         if (me.headerView.alpha == 0.0) {
+    if (me.headerView.alpha == 0.0) {
+        NSDictionary *userInfo = @{@"duration": [NSNumber numberWithDouble:duration]};
+        [[NSNotificationCenter defaultCenter] postNotificationName:GRCPlayerOverlayWillAppear object:self userInfo:userInfo];
+        [UIView animateWithDuration:duration
+                         animations:^{
                              me.headerView.alpha = 1.0;
                              me.controlView.alpha = 1.0;
-                         } else {
+                         }
+                         completion:^(BOOL finished) {
+                             if (finished) {
+                                 [[NSNotificationCenter defaultCenter] postNotificationName:GRCPlayerOverlayDidAppear object:self userInfo:nil];
+
+                             }
+                         }];
+    } else {
+        NSDictionary *userInfo = @{@"duration": [NSNumber numberWithDouble:duration]};
+        [[NSNotificationCenter defaultCenter] postNotificationName:GRCPlayerOverlayWillDisappear object:self userInfo:userInfo];
+        [UIView animateWithDuration:duration
+                         animations:^{
                              me.headerView.alpha = 0.0;
                              me.controlView.alpha = 0.0;
                          }
-                     }
-                     completion:^(BOOL finished) {
-                         if (finished) {
-                         }
-                     }];
+                         completion:^(BOOL finished) {
+                             if (finished) {
+                                 [[NSNotificationCenter defaultCenter] postNotificationName:GRCPlayerOverlayDidDisappear object:self userInfo:nil];
+                             }
+                         }];
+    }
 }
 
 - (void)enableControls

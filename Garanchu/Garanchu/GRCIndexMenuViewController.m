@@ -784,7 +784,7 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         WZYGaraponTvProgram *program = [self objectAtIndexPath:indexPath];
         if (program) {
             NSDictionary *dic = @{@"program":program};
-            [[NSNotificationCenter defaultCenter] postNotificationName:GRCDidSelectProgram  object:self userInfo:dic];
+            [[NSNotificationCenter defaultCenter] postNotificationName:GRCProgramDidSelect  object:self userInfo:dic];
         }        
     } else {
         GRCIndexMenuViewController *subViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"indexMenuViewController"];

@@ -85,7 +85,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(didSelectProgram:)
-                                                 name:GRCDidSelectProgram
+                                                 name:GRCProgramDidSelect
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(requiredReconnect:)
@@ -233,7 +233,7 @@
                 stage.initialURL = nil;
                 NSString *gtvid = [WZYGaraponTvSite gtvidOfURLString:initialURL.absoluteString];
                 if (gtvid.length > 0) {
-                    NSDictionary *params = [initialURL queryAsDictionary];
+                    NSDictionary *params = [initialURL grc_queryAsDictionary];
                     [me loadingProgramWithGtvid:gtvid parameter:params];
                 }
             }
@@ -411,7 +411,7 @@
                       otherButtonTitles:otherButtonTitles
                                 handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                     if (alertView.cancelButtonIndex != buttonIndex) {
-                                        NSString *mailQuery = [NSURL buildParameters:@{@"Subject": GRCLocalizedString(@"CopyWatchHistorySendMailSubject"),
+                                        NSString *mailQuery = [NSURL grc_buildParameters:@{@"Subject": GRCLocalizedString(@"CopyWatchHistorySendMailSubject"),
                                                                  @"body": historyString
                                                                  }];
                                         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mailto:?%@", mailQuery]]];

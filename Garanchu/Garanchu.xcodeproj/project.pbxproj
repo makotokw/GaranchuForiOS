@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F1A26B118D46909005DB79A /* GRCTabletStageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A26B018D46909005DB79A /* GRCTabletStageViewController.m */; };
+		8F1A26B418D46BF2005DB79A /* GRCStageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A26B318D46BF2005DB79A /* GRCStageViewController.m */; };
+		8F1A26B718D46FC9005DB79A /* GRCNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A26B618D46FC9005DB79A /* GRCNaviViewController.m */; };
+		8F1A26BA18D4988A005DB79A /* GRCPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A26B918D4988A005DB79A /* GRCPlayerViewController.m */; };
+		8F1A26BD18D4A625005DB79A /* GRCTabletPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A26BC18D4A625005DB79A /* GRCTabletPlayerViewController.m */; };
 		8F3C22EF17B38FE000D35CF2 /* MBProgressHUD+Garanchu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */; };
 		8F59FC511791F73C00EEA418 /* GRCVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC501791F73C00EEA418 /* GRCVideoViewController.m */; };
 		8F59FC541792C21E00EEA418 /* GRCGaranchuUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC531792C21E00EEA418 /* GRCGaranchuUser.m */; };
 		8F59FC571792CC2F00EEA418 /* GRCGaranchu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC561792CC2E00EEA418 /* GRCGaranchu.m */; };
 		8F59FC5E1792DFA700EEA418 /* GRCVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC5D1792DFA700EEA418 /* GRCVideoPlayerView.m */; };
-		8F59FCB11793D77B00EEA418 /* GRCNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB01793D77B00EEA418 /* GRCNaviViewController.m */; };
+		8F59FCB11793D77B00EEA418 /* GRCMenuNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB01793D77B00EEA418 /* GRCMenuNavigationViewController.m */; };
 		8F59FCB41793D9FC00EEA418 /* GRCIndexMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB31793D9FC00EEA418 /* GRCIndexMenuViewController.m */; };
 		8F59FCB71794149300EEA418 /* GRCIndexMenuViewController+Static.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB61794149200EEA418 /* GRCIndexMenuViewController+Static.m */; };
 		8F66B1411819D6A600867A07 /* NSURL+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F66B1401819D6A600867A07 /* NSURL+QueryString.m */; };
@@ -83,6 +88,16 @@
 
 /* Begin PBXFileReference section */
 		5FD30FE5BBFD4D808BB97071 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F1A26AF18D46909005DB79A /* GRCTabletStageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCTabletStageViewController.h; sourceTree = "<group>"; };
+		8F1A26B018D46909005DB79A /* GRCTabletStageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCTabletStageViewController.m; sourceTree = "<group>"; };
+		8F1A26B218D46BF2005DB79A /* GRCStageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCStageViewController.h; sourceTree = "<group>"; };
+		8F1A26B318D46BF2005DB79A /* GRCStageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCStageViewController.m; sourceTree = "<group>"; };
+		8F1A26B518D46FC9005DB79A /* GRCNaviViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCNaviViewController.h; sourceTree = "<group>"; };
+		8F1A26B618D46FC9005DB79A /* GRCNaviViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCNaviViewController.m; sourceTree = "<group>"; };
+		8F1A26B818D4988A005DB79A /* GRCPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCPlayerViewController.h; sourceTree = "<group>"; };
+		8F1A26B918D4988A005DB79A /* GRCPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCPlayerViewController.m; sourceTree = "<group>"; };
+		8F1A26BB18D4A625005DB79A /* GRCTabletPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCTabletPlayerViewController.h; sourceTree = "<group>"; };
+		8F1A26BC18D4A625005DB79A /* GRCTabletPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCTabletPlayerViewController.m; sourceTree = "<group>"; };
 		8F3C22ED17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Garanchu.h"; sourceTree = "<group>"; };
 		8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Garanchu.m"; sourceTree = "<group>"; };
 		8F59FC4F1791F73C00EEA418 /* GRCVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCVideoViewController.h; sourceTree = "<group>"; };
@@ -93,8 +108,8 @@
 		8F59FC561792CC2E00EEA418 /* GRCGaranchu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCGaranchu.m; sourceTree = "<group>"; };
 		8F59FC5C1792DFA700EEA418 /* GRCVideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCVideoPlayerView.h; sourceTree = "<group>"; };
 		8F59FC5D1792DFA700EEA418 /* GRCVideoPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCVideoPlayerView.m; sourceTree = "<group>"; };
-		8F59FCAF1793D77A00EEA418 /* GRCNaviViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCNaviViewController.h; sourceTree = "<group>"; };
-		8F59FCB01793D77B00EEA418 /* GRCNaviViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCNaviViewController.m; sourceTree = "<group>"; };
+		8F59FCAF1793D77A00EEA418 /* GRCMenuNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCMenuNavigationViewController.h; sourceTree = "<group>"; };
+		8F59FCB01793D77B00EEA418 /* GRCMenuNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCMenuNavigationViewController.m; sourceTree = "<group>"; };
 		8F59FCB21793D9FB00EEA418 /* GRCIndexMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCIndexMenuViewController.h; sourceTree = "<group>"; };
 		8F59FCB31793D9FC00EEA418 /* GRCIndexMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCIndexMenuViewController.m; sourceTree = "<group>"; };
 		8F59FCB51794149100EEA418 /* GRCIndexMenuViewController+Static.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GRCIndexMenuViewController+Static.h"; sourceTree = "<group>"; };
@@ -270,8 +285,8 @@
 				8F59FC561792CC2E00EEA418 /* GRCGaranchu.m */,
 				8F59FC521792C21E00EEA418 /* GRCGaranchuUser.h */,
 				8F59FC531792C21E00EEA418 /* GRCGaranchuUser.m */,
-				8F59FCAF1793D77A00EEA418 /* GRCNaviViewController.h */,
-				8F59FCB01793D77B00EEA418 /* GRCNaviViewController.m */,
+				8F59FCAF1793D77A00EEA418 /* GRCMenuNavigationViewController.h */,
+				8F59FCB01793D77B00EEA418 /* GRCMenuNavigationViewController.m */,
 				8F59FCB21793D9FB00EEA418 /* GRCIndexMenuViewController.h */,
 				8F59FCB31793D9FC00EEA418 /* GRCIndexMenuViewController.m */,
 				8F59FCB51794149100EEA418 /* GRCIndexMenuViewController+Static.h */,
@@ -286,6 +301,16 @@
 				8FAFF07917E6FFFB008CDA2F /* GRCActivityItemProvider.m */,
 				8F66B1421819E6FF00867A07 /* GRCAppSettingsWebViewController.h */,
 				8F66B1431819E6FF00867A07 /* GRCAppSettingsWebViewController.m */,
+				8F1A26B218D46BF2005DB79A /* GRCStageViewController.h */,
+				8F1A26B318D46BF2005DB79A /* GRCStageViewController.m */,
+				8F1A26AF18D46909005DB79A /* GRCTabletStageViewController.h */,
+				8F1A26B018D46909005DB79A /* GRCTabletStageViewController.m */,
+				8F1A26B518D46FC9005DB79A /* GRCNaviViewController.h */,
+				8F1A26B618D46FC9005DB79A /* GRCNaviViewController.m */,
+				8F1A26B818D4988A005DB79A /* GRCPlayerViewController.h */,
+				8F1A26B918D4988A005DB79A /* GRCPlayerViewController.m */,
+				8F1A26BB18D4A625005DB79A /* GRCTabletPlayerViewController.h */,
+				8F1A26BC18D4A625005DB79A /* GRCTabletPlayerViewController.m */,
 			);
 			path = Garanchu;
 			sourceTree = "<group>";
@@ -540,15 +565,19 @@
 				8F935BA01791F24D001FFE01 /* main.m in Sources */,
 				8F935BA41791F24D001FFE01 /* GRCAppDelegate.m in Sources */,
 				8F66B1411819D6A600867A07 /* NSURL+QueryString.m in Sources */,
+				8F1A26B718D46FC9005DB79A /* GRCNaviViewController.m in Sources */,
 				8F935BCC1791F570001FFE01 /* GRCLoginViewController.m in Sources */,
 				8F59FC511791F73C00EEA418 /* GRCVideoViewController.m in Sources */,
 				8F59FC541792C21E00EEA418 /* GRCGaranchuUser.m in Sources */,
+				8F1A26B418D46BF2005DB79A /* GRCStageViewController.m in Sources */,
 				8F59FC571792CC2F00EEA418 /* GRCGaranchu.m in Sources */,
 				8FD7D8FA182AE75700A5DF2A /* WZYGaraponTvProgram+Garanchu.m in Sources */,
+				8F1A26B118D46909005DB79A /* GRCTabletStageViewController.m in Sources */,
 				8F59FC5E1792DFA700EEA418 /* GRCVideoPlayerView.m in Sources */,
-				8F59FCB11793D77B00EEA418 /* GRCNaviViewController.m in Sources */,
+				8F59FCB11793D77B00EEA418 /* GRCMenuNavigationViewController.m in Sources */,
 				8F59FCB41793D9FC00EEA418 /* GRCIndexMenuViewController.m in Sources */,
 				8F59FCB71794149300EEA418 /* GRCIndexMenuViewController+Static.m in Sources */,
+				8F1A26BA18D4988A005DB79A /* GRCPlayerViewController.m in Sources */,
 				8F66B1441819E6FF00867A07 /* GRCAppSettingsWebViewController.m in Sources */,
 				8F3C22EF17B38FE000D35CF2 /* MBProgressHUD+Garanchu.m in Sources */,
 				8FAD8C4317D6540F002F0D50 /* GRCSearchResultViewController.m in Sources */,
@@ -563,6 +592,7 @@
 				8FAFF07317E5FE3A008CDA2F /* WatchHistory.m in Sources */,
 				8FAFF07717E6066D008CDA2F /* GRCCoreData.m in Sources */,
 				8FAFF07A17E6FFFB008CDA2F /* GRCActivityItemProvider.m in Sources */,
+				8F1A26BD18D4A625005DB79A /* GRCTabletPlayerViewController.m in Sources */,
 				8FAFF08117E757D1008CDA2F /* GRCVideoDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,6 +6,7 @@
 //
 
 #import "GRCTabletStageViewController.h"
+#import "GRCNaviViewController.h"
 
 @interface GRCTabletStageViewController ()
 
@@ -25,24 +26,83 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - GRCStageViewController (Protected)
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)addObservers
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [super addObservers];
+    
+    __weak GRCTabletStageViewController *me = self;
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserverForName:GRCPlayerOverlayWillAppear
+                        object:nil
+                         queue:nil
+                    usingBlock:^(NSNotification *notification) {
+                        NSNumber *duration = notification.userInfo[@"duration"];
+                        [UIView animateWithDuration:duration.doubleValue
+                                         animations:^{
+                                             if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+                                                 for (NSLayoutConstraint *footerConstraint in me.footerConstraints) {
+                                                     footerConstraint.constant = 40;
+                                                 }
+                                             }
+                                         }
+                                         completion:^(BOOL finished) {
+                                             if (finished) {
+                                             }
+                                         }];
+                    }];
+    [center addObserverForName:GRCPlayerOverlayWillDisappear
+                        object:nil
+                         queue:nil
+                    usingBlock:^(NSNotification *notification) {
+                        NSNumber *duration = notification.userInfo[@"duration"];
+                        [UIView animateWithDuration:duration.doubleValue
+                                         animations:^{
+                                             if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+                                                 for (NSLayoutConstraint *footerConstraint in me.footerConstraints) {
+                                                     footerConstraint.constant = 0;
+                                                 }
+                                             }
+                                         }
+                                         completion:^(BOOL finished) {
+                                             if (finished) {
+                                             }
+                                         }];
+                    }];
 }
-*/
+
+- (void)removeObservers
+{
+    [super removeObservers];
+}
+
+- (void)setUpBeforeLodingView
+{
+    [super setUpBeforeLodingView];
+}
+
+- (void)fetchChildViewController
+{
+    [super fetchChildViewController];
+}
+
+- (void)hideViewsAtNotLogin
+{
+    [super hideViewsAtNotLogin];
+}
+
+- (void)showViewsAtDidLogin
+{
+    [super showViewsAtDidLogin];
+}
+
 
 @end

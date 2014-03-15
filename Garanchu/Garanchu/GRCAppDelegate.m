@@ -6,6 +6,7 @@
 //
 
 #import "GRCAppDelegate.h"
+#import "GRCStageViewController.h"
 #import "GRCCoreData.h"
 
 @implementation GRCAppDelegate
@@ -15,15 +16,14 @@
     GRCLogD(@"application:didFinishLaunchingWithOptions");
     GRCGaranchu *stage = [GRCGaranchu current];
     [stage setup];
+            
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPad" bundle:nil];
+    GRCStageViewController *stageViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabletStageViewController"];
+    [stageViewController setUpBeforeLodingView];
     
-    
-//    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-//    
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPad" bundle:nil];
-//    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"tabletStageViewController"];
-//    
-//    self.window.rootViewController = viewController;
-//    [self.window makeKeyAndVisible];
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    self.window.rootViewController = stageViewController;
+    [self.window makeKeyAndVisible];
     
     return YES;
 }
