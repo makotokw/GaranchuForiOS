@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="ePR-Fl-IsY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="ePR-Fl-IsY">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Video View Controller-->
         <scene sceneID="fxR-E1-ziJ">
             <objects>
-                <viewController id="ePR-Fl-IsY" customClass="WZVideoViewController" sceneMemberID="viewController">
+                <viewController id="ePR-Fl-IsY" customClass="GRCVideoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BGp-eq-4Og"/>
                         <viewControllerLayoutGuide type="bottom" id="bs6-hd-hCx"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="gnR-vG-h8B" customClass="WZStageView">
+                    <view key="view" contentMode="scaleToFill" id="gnR-vG-h8B" customClass="GRCStageView">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vte-mT-Hu8" userLabel="playerView" customClass="WZVideoPlayerView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vte-mT-Hu8" userLabel="playerView" customClass="GRCVideoPlayerView">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
@@ -276,7 +276,7 @@
                                         <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tTS-hw-KPk" userLabel="playerSlider" customClass="WZPlayerSlider">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tTS-hw-KPk" userLabel="playerSlider" customClass="WZYPlayerSlider">
                                         <rect key="frame" x="328" y="0.0" width="420" height="41"/>
                                         <connections>
                                             <action selector="beginScrubbing:" destination="Vte-mT-Hu8" eventType="touchDown" id="Vgq-gT-xTg"/>
@@ -449,7 +449,7 @@
         <!--Login-->
         <scene sceneID="4JE-9B-xff">
             <objects>
-                <viewController storyboardIdentifier="loginViewController" modalPresentationStyle="formSheet" id="KiP-7w-peg" userLabel="Login" customClass="WZLoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" modalPresentationStyle="formSheet" id="KiP-7w-peg" userLabel="Login" customClass="GRCLoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6cG-SW-V14"/>
                         <viewControllerLayoutGuide type="bottom" id="jFk-fj-Pt0"/>
@@ -504,6 +504,7 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="420"/>
                     <connections>
                         <outlet property="loginButton" destination="nkq-b3-LRu" id="Omw-Me-tVi"/>
                         <outlet property="passwordField" destination="cWG-Lw-gyB" id="Ziu-Jg-Tu8"/>
@@ -517,7 +518,7 @@
         <!--Search Suggest View Controller-->
         <scene sceneID="bRr-oj-HIx">
             <objects>
-                <tableViewController storyboardIdentifier="searchSuggestViewController" id="pUa-kQ-zwL" customClass="WZSearchSuggestViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="searchSuggestViewController" id="pUa-kQ-zwL" customClass="GRCSearchSuggestViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2sN-8M-WOH">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="1804"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -551,6 +552,7 @@
                         </connections>
                     </tableView>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="1804"/>
                     <connections>
                         <outlet property="_searchBar" destination="LOq-Z1-65h" id="Twu-vD-ejx"/>
                     </connections>
@@ -562,7 +564,7 @@
         <!--Video Caption List View Controller-->
         <scene sceneID="lIU-0L-ZMd">
             <objects>
-                <tableViewController storyboardIdentifier="videoCaptionListViewController" id="p5D-M5-aPx" customClass="WZVideoCaptionListViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="videoCaptionListViewController" id="p5D-M5-aPx" customClass="GRCVideoCaptionListViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="n4t-V6-XmW">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -616,7 +618,7 @@
         <!--VideoDetail-->
         <scene sceneID="JNI-1e-Ha6">
             <objects>
-                <viewController storyboardIdentifier="videoDetailViewController" id="8eS-WJ-Vfg" userLabel="VideoDetail" customClass="WZVideoDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="videoDetailViewController" id="8eS-WJ-Vfg" userLabel="VideoDetail" customClass="GRCVideoDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ijG-H6-V3y"/>
                         <viewControllerLayoutGuide type="bottom" id="ax0-0H-zxu"/>
@@ -656,7 +658,7 @@
         <!--Index Menu View Controller - Root View Controller-->
         <scene sceneID="ap5-jG-i6L">
             <objects>
-                <tableViewController storyboardIdentifier="indexMenuViewController" id="5xy-yA-bBM" customClass="WZIndexMenuViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="indexMenuViewController" id="5xy-yA-bBM" customClass="GRCIndexMenuViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="606-xF-lDl">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="2960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -753,6 +755,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="Xxq-CU-UzJ"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="250" height="2960"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcH-eA-fqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -761,7 +764,7 @@
         <!--Navi View Controller-->
         <scene sceneID="1ck-Xj-3Nr">
             <objects>
-                <navigationController storyboardIdentifier="naviViewController" definesPresentationContext="YES" id="70N-6j-pJy" customClass="WZNaviViewController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="naviViewController" definesPresentationContext="YES" id="70N-6j-pJy" customClass="GRCNaviViewController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="562-nm-Mfn">
                         <autoresizingMask key="autoresizingMask"/>
