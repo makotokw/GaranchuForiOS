@@ -15,6 +15,16 @@
     GRCLogD(@"application:didFinishLaunchingWithOptions");
     GRCGaranchu *stage = [GRCGaranchu current];
     [stage setup];
+    
+    
+//    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+//    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPad" bundle:nil];
+//    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"tabletStageViewController"];
+//    
+//    self.window.rootViewController = viewController;
+//    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

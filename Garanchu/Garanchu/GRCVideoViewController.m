@@ -8,7 +8,7 @@
 #import "GRCVideoViewController.h"
 #import "GRCGaraponTabController.h"
 #import "GRCIndexMenuViewController.h"
-#import "GRCNaviViewController.h"
+#import "GRCMenuNavigationViewController.h"
 #import "GRCLoginViewController.h"
 #import "GRCVideoDetailViewController.h"
 #import "GRCVideoCaptionListViewController.h"
@@ -46,8 +46,8 @@
     IBOutlet GRCVideoPlayerView *_videoPlayerView;
     
     GRCGaraponTabController *_tabController;
-    GRCNaviViewController *_naviViewController;
-    GRCNaviViewController *_searchNaviViewController;
+    GRCMenuNavigationViewController *_naviViewController;
+    GRCMenuNavigationViewController *_searchNaviViewController;
     GRCIndexMenuViewController *_searchResultViewController;
     GRCLoginViewController *_loginViewController;
     IASKAppSettingsViewController *_appSettingsViewController;

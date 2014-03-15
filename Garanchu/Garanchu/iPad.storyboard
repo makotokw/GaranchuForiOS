@@ -761,10 +761,45 @@
             </objects>
             <point key="canvasLocation" x="393" y="813"/>
         </scene>
-        <!--Navi View Controller-->
+        <!--Tablet Stage View Controller-->
+        <scene sceneID="VAi-6f-2t9">
+            <objects>
+                <viewController storyboardIdentifier="tabletStageViewController" id="q31-fg-p8F" customClass="GRCTabletStageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IMR-AH-eRh"/>
+                        <viewControllerLayoutGuide type="bottom" id="b61-NP-32A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="x4w-UZ-EHr">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukw-mN-ifg">
+                                <rect key="frame" x="774" y="0.0" width="250" height="768"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="Po3-05-RLN"/>
+                                </constraints>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ukw-mN-ifg" secondAttribute="trailing" id="42W-XA-nq6"/>
+                            <constraint firstItem="b61-NP-32A" firstAttribute="top" secondItem="ukw-mN-ifg" secondAttribute="bottom" id="aeR-Vq-c7A"/>
+                            <constraint firstItem="ukw-mN-ifg" firstAttribute="top" secondItem="x4w-UZ-EHr" secondAttribute="top" id="dHb-bu-3Jn"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pHr-ew-tIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2106" y="-171"/>
+        </scene>
+        <!--Menu Navigation View Controller-->
         <scene sceneID="1ck-Xj-3Nr">
             <objects>
-                <navigationController storyboardIdentifier="naviViewController" definesPresentationContext="YES" id="70N-6j-pJy" customClass="GRCNaviViewController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="naviViewController" definesPresentationContext="YES" id="70N-6j-pJy" customClass="GRCMenuNavigationViewController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="562-nm-Mfn">
                         <autoresizingMask key="autoresizingMask"/>
@@ -775,7 +810,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RCb-iq-SUR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-684" y="925"/>
+            <point key="canvasLocation" x="-624" y="833"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

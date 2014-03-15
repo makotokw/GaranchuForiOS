@@ -1,17 +1,17 @@
 //
-//  GRCNaviViewController.m
+//  GRCMenuNavigationViewController
 //  Garanchu
 //
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
-#import "GRCNaviViewController.h"
+#import "GRCMenuNavigationViewController.h"
 
-@interface GRCNaviViewController ()
+@interface GRCMenuNavigationViewController ()
 
 @end
 
-@implementation GRCNaviViewController
+@implementation GRCMenuNavigationViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,7 +32,7 @@
     [UIBarButtonItem configureFlatButtonsWithColor:[UIColor turquoiseColor]
                                   highlightedColor:[UIColor greenSeaColor]
                                       cornerRadius:3
-                                   whenContainedIn:[GRCNaviViewController class], nil];
+                                   whenContainedIn:[GRCMenuNavigationViewController class], nil];
     
 
     [self.navigationBar configureFlatNavigationBarWithColor:[UIColor clearColor]];
