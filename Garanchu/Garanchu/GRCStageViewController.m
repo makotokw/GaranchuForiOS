@@ -6,6 +6,7 @@
 //
 
 #import "GRCStageViewController.h"
+#import "GRCModalViewManager.h"
 #import "GRCNaviViewController.h"
 #import "GRCPlayerViewController.h"
 #import "GRCLoginViewController.h"
@@ -17,7 +18,12 @@
 #import <BlocksKit/BlocksKit+UIKit.h>
 #import <MZFormSheetController/MZFormSheetController.h>
 
-@interface GRCStageViewController ()
+@interface GRCStageViewController () <GRCModalViewManager, UIPopoverControllerDelegate>
+
+{
+    UIPopoverController *_currentPopoverController;
+}
+
 @end
 
 @implementation GRCStageViewController
@@ -78,8 +84,6 @@
     [super didReceiveMemoryWarning];
 }
 
-
-
 #pragma mark - Player
 
 - (void)executeInitialURL
@@ -136,56 +140,37 @@
     [GRCGaranchu current].watchingProgram = program;
 }
 
-- (void)presentModalCaptionListViewController
-{
-        // TODO: move to videoViewController
-#if false
-    GRCVideoCaptionListViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"videoCaptionListViewController"];
-    viewController.program = _playingProgram;
-    viewController.currentPosition = _videoPlayerView.currentPosition;
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    navController.modalPresentationStyle = UIModalPresentationFormSheet;
-    navController.view.backgroundColor = [UIColor clearColor];
-    
-    __weak GRCVideoPlayerView *videoPlayerView = _videoPlayerView;
-    viewController.selectionHandler = ^(NSDictionary *caption) {
-        if (caption) {
-            NSTimeInterval position = [WZYPlayTimeFormatter timeIntervalFromPlayTime:caption[@"caption_time"]];
-            if (position > 0) {
-                [videoPlayerView seekToTime:position completionHandler:^{
-                }];
-            }
-        }
-    };
-    
-    [self presentViewController:navController animated:YES completion:^{
-    }];
-#endif
-}
-
-- (void)presentModalDetailViewController
-{
-    // TODO: move to videoViewController
-#if false
-    GRCVideoDetailViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"videoDetailViewController"];
-    viewController.program = _playingProgram;
-    viewController.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.6];
-    
-    MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:viewController];
-    
-    formSheet.transitionStyle = MZFormSheetTransitionStyleSlideFromBottom;
-    formSheet.presentedFormSheetSize = CGSizeMake(400, 280);
-    formSheet.shouldCenterVertically = YES;
-    formSheet.shouldDismissOnBackgroundViewTap = YES;
-    
-    [formSheet presentAnimated:YES completionHandler:^(UIViewController *presentedFSViewController) {
-    }];
-#endif
-}
-
 #pragma mark - Navi
 
+
+#pragma mark - UIPopoverController
+
+- (UIPopoverController *)currentPopoverController
+{
+    return _currentPopoverController;
+}
+
+- (void)setCurrentPopoverController:(UIPopoverController *)currentPopoverController
+{
+    if (_currentPopoverController == currentPopoverController) {
+        return;
+    }
+    _currentPopoverController = currentPopoverController;
+    _currentPopoverController.delegate = self;
+}
+
+- (void)dismissCurrentPopover
+{
+	[_currentPopoverController dismissPopoverAnimated:YES];
+	_currentPopoverController = nil;
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    if (_currentPopoverController == popoverController) {
+        _currentPopoverController = nil;
+    }
+}
 
 
 #pragma mark - GaraponTv Session
@@ -209,8 +194,7 @@
     
     [self hideViewsAtNotLogin];
     
-    // TODO: call close of childViewControllers
-//    [self close];
+    [_playerViewController close];
 }
 
 - (void)reconnectGaraponTv
@@ -336,9 +320,9 @@
                 [me mz_dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
                     _loginViewController = nil;
                 }];
-                //                [_loginViewController dismissViewControllerAnimated:YES completion:^{
-                //                    _loginViewController = nil;
-                //                }];
+//                [_loginViewController dismissViewControllerAnimated:YES completion:^{
+//                    _loginViewController = nil;
+//                }];
             } afterDelay:1.0f];
         }
     }];
@@ -405,6 +389,15 @@
 {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     __weak GRCStageViewController *me = self;
+        
+    [center addObserverForName:UIApplicationDidBecomeActiveNotification
+                        object:nil
+                         queue:nil
+                    usingBlock:^(NSNotification *notification) {
+
+                        [me executeInitialURL];
+                    }];
+    
     [center addObserverForName:GRCRequiredReconnect
                         object:nil
                          queue:nil
@@ -439,10 +432,12 @@
 
 - (void)fetchChildViewController
 {
+    __weak GRCStageViewController *me = self;
     [self.childViewControllers bk_apply:^(id obj) {
         if ([obj isMemberOfClass:[GRCNaviViewController class]]) {
             _naviViewController = obj;
             _naviViewController.overlayBackgroundColor = _overlayBackgroundColor;
+            _naviViewController.modalViewManager = me;
         } else if ([obj isKindOfClass:[GRCPlayerViewController class]]) {
             _playerViewController = obj;
             _playerViewController.overlayBackgroundColor = _overlayBackgroundColor;

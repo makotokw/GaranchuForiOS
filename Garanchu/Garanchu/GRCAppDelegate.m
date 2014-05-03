@@ -22,6 +22,7 @@
     [stageViewController setUpBeforeLodingView];
     
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    self.window.backgroundColor = [UIColor blackColor];
     self.window.rootViewController = stageViewController;
     [self.window makeKeyAndVisible];
     

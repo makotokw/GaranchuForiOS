@@ -7,9 +7,13 @@
 
 #import "GRCNaviViewController.h"
 
+#import "GRCModalViewManager.h"
 #import "GRCGaraponTabController.h"
 #import "GRCMenuNavigationViewController.h"
 #import "GRCIndexMenuViewController.h"
+#import "GRCSearchSuggestViewController.h"
+
+#import "SearchCondition.h"
 
 #import <BlocksKit/BlocksKit+UIKit.h>
 
@@ -21,8 +25,13 @@
 
 {
     GRCGaraponTabController *_tabController;
+    
+    // TabContent
     GRCMenuNavigationViewController *_tvMenuViewController;
     GRCMenuNavigationViewController *_searchMenuViewController;
+
+    //
+    GRCIndexMenuViewController *_searchResultViewController;
     
     UIPanGestureRecognizer *_menuPanGesture;
 }
@@ -44,30 +53,10 @@
 
 - (void)setUpViews
 {
-    [self setUpMenuViews];
     [self setUpChildMenuViewController];
-    [self addGestures];
+    [self setUpMenuViews];
+    [self setUpGestures];
     [self refreshViews];
-}
-
-- (void)setUpMenuViews
-{
-    _menuHeaderView.backgroundColor = _overlayBackgroundColor;
-    _menuContentView.backgroundColor = [_overlayBackgroundColor colorWithAlphaComponent:0.4];
-    
-    [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menu.png"] forState:UIControlStateNormal];
-    
-    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tv.png"] forState:UIControlStateNormal];
-    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tvActive.png"] forState:UIControlStateHighlighted];
-    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tvActive.png"] forState:UIControlStateSelected];
-    
-    [_menuSearchButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/search"] forState:UIControlStateNormal];
-    [_menuSearchButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/searchActive.png"] forState:UIControlStateHighlighted];
-    [_menuSearchButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/searchActive.png"] forState:UIControlStateSelected];
-    
-    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cog"] forState:UIControlStateNormal];
-    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateHighlighted];
-    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateSelected];
 }
 
 - (void)setUpChildMenuViewController
@@ -82,37 +71,13 @@
     [self addSubMenuViewController:_searchMenuViewController];
     
     _searchMenuViewController.view.hidden = YES;
-    
-    // TODO: StageViewControllerで管理?
-//    _searchResultViewController = (GRCIndexMenuViewController *)(_searchNaviViewController.topViewController);
-//    _searchResultViewController.indexType = GRCSearchResultGaranchuIndexType;
+    _searchResultViewController = (GRCIndexMenuViewController *)(_searchMenuViewController.topViewController);
+    _searchResultViewController.indexType = GRCSearchResultGaranchuIndexType;
     
     [_tabController addTabWithId:GRCGaraponTabGaraponTv button:_menuTvButton viewController:_tvMenuViewController];
     [_tabController addTabWithId:GRCGaraponTabSearch button:_menuSearchButton viewController:_searchMenuViewController];
     [_tabController addTabWithId:GRCGaraponTabOption button:_menuOptionButton viewController:nil];
     [_tabController selectWithId:GRCGaraponTabGaraponTv];
-    
-    __weak GRCNaviViewController *me = self;
-    __weak GRCGaraponTabController *tabController = _tabController;
-    
-    [_menuTvButton bk_addEventHandler:^(id sender) {
-        [tabController selectWithId:GRCGaraponTabGaraponTv];
-    } forControlEvents:UIControlEventTouchDown];
-    
-    [_menuSearchButton bk_addEventHandler:^(id sender) {
-        // TODO: StageViewControllerで管理?
-//        [me showSearchPopover];
-    } forControlEvents:UIControlEventTouchDown];
-    
-    [_menuOptionButton bk_addEventHandler:^(id sender) {
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            // TODO: StageViewControllerで管理?
-//            [me showSettingsModal];
-        } else {
-            // TODO: StageViewControllerで管理?
-//            [me showSettingsModal];
-        }
-    } forControlEvents:UIControlEventTouchDown];
 }
 
 - (void)addSubMenuViewController:(UIViewController *)viewController
@@ -123,7 +88,43 @@
     viewController.view.frame = _menuContentView.bounds;
 }
 
-- (void)addGestures
+- (void)setUpMenuViews
+{
+    __weak GRCNaviViewController *me = self;
+    __weak GRCGaraponTabController *tabController = _tabController;
+    
+    _menuHeaderView.backgroundColor = _overlayBackgroundColor;
+    _menuContentView.backgroundColor = [_overlayBackgroundColor colorWithAlphaComponent:0.4];
+    
+    [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menu.png"] forState:UIControlStateNormal];
+    
+    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tv.png"] forState:UIControlStateNormal];
+    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tvActive.png"] forState:UIControlStateHighlighted];
+    [_menuTvButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/tvActive.png"] forState:UIControlStateSelected];
+    [_menuTvButton bk_addEventHandler:^(id sender) {
+        [tabController selectWithId:GRCGaraponTabGaraponTv];
+    } forControlEvents:UIControlEventTouchDown];
+    
+    [_menuSearchButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/search"] forState:UIControlStateNormal];
+    [_menuSearchButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/searchActive.png"] forState:UIControlStateHighlighted];
+    [_menuSearchButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/searchActive.png"] forState:UIControlStateSelected];
+    [_menuSearchButton bk_addEventHandler:^(id sender) {
+        [me showSearchSuggestView];
+    } forControlEvents:UIControlEventTouchDown];
+    
+    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cog"] forState:UIControlStateNormal];
+    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateHighlighted];
+    [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateSelected];
+    [_menuOptionButton bk_addEventHandler:^(id sender) {
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            //            [me showSettingsModal];
+        } else {
+            // TODO: iPhone
+        }
+    } forControlEvents:UIControlEventTouchDown];
+}
+
+- (void)setUpGestures
 {
     // create a UIPanGestureRecognizer to detect when the screenshot is touched and dragged
     _menuPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureMoveAround:)];
@@ -275,5 +276,42 @@
                      }];
 }
 
+
+#pragma mark - Search delegate, notificifation
+
+- (void)showSearchSuggestView
+{
+    GRCSearchSuggestViewController *searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"searchSuggestViewController"];
+    
+    __weak GRCGaraponTabController *tabController = _tabController;
+    __weak GRCIndexMenuViewController *searchResultViewController = _searchResultViewController;
+    searchViewController.submitHandler = ^(SearchCondition *condition) {
+        [_modalViewManager dismissCurrentPopover];
+        
+        NSString *text = condition.keyword;
+        if (!text) {
+            text = @"";
+        }
+        NSDictionary *searchParams = @{
+                                       @"s":@"e",
+                                       @"key":text,
+                                       @"sort": @"std",
+                                       };
+        
+        searchResultViewController.context = @{@"title":text, @"indexType": [NSNumber numberWithInteger:GRCSearchResultGaranchuIndexType], @"params":searchParams};
+        [tabController selectWithId:GRCGaraponTabSearch];
+    };
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:searchViewController];
+        CGRect rect = [_menuSearchButton convertRect:_menuSearchButton.bounds toView:self.view];
+        [popover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+        _modalViewManager.currentPopoverController = popover;
+    } else {
+        // TODO: iPhone
+//        [self presentViewController:searchViewController animated:YES completion:nil];
+    }
+    
+}
 
 @end

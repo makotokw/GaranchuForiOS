@@ -7,6 +7,8 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol GRCModalViewManager;
+
 @interface GRCNaviViewController : UIViewController
 
 @property (weak) IBOutlet UIButton *menuButton;
@@ -16,6 +18,8 @@
 @property (weak) IBOutlet UIButton *menuTvButton;
 @property (weak) IBOutlet UIButton *menuSearchButton;
 @property (weak) IBOutlet UIButton *menuOptionButton;
+
+@property (weak) id<GRCModalViewManager> modalViewManager;
 
 @property UIColor *overlayBackgroundColor;
 

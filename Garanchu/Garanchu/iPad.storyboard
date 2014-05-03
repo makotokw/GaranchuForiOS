@@ -1062,7 +1062,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="playOrPause:" destination="ePR-Fl-IsY" eventType="touchDown" id="Zfi-fi-2bT"/>
+                                            <action selector="playOrPause:" destination="OK8-KW-BS5" eventType="touchDown" id="WVb-YV-aEy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mA2-dZ-EdF" userLabel="prevButton">
@@ -1080,7 +1080,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="previous:" destination="ePR-Fl-IsY" eventType="touchDown" id="NAi-JD-dpq"/>
+                                            <action selector="previous:" destination="OK8-KW-BS5" eventType="touchDown" id="qqj-fd-HHZ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEj-DS-x79" userLabel="stepBackwardButton">
@@ -1098,7 +1098,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="stepBackward:" destination="ePR-Fl-IsY" eventType="touchDown" id="jIz-UX-iSs"/>
+                                            <action selector="stepBackward:" destination="OK8-KW-BS5" eventType="touchDown" id="nz3-fk-3gp"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCZ-TE-ePS" userLabel="stepForwardButton">
@@ -1134,7 +1134,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="captionList:" destination="ePR-Fl-IsY" eventType="touchDown" id="nn7-Qj-j7O"/>
+                                            <action selector="captionList:" destination="OK8-KW-BS5" eventType="touchDown" id="3ZS-NK-oqG"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kqj-db-2GK" userLabel="currentTimeLabel">
@@ -1184,7 +1184,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="favorite:" destination="ePR-Fl-IsY" eventType="touchDown" id="ApD-LX-DK9"/>
+                                            <action selector="favorite:" destination="OK8-KW-BS5" eventType="touchDown" id="5h4-mt-XV7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcq-xd-fM1" userLabel="infoButton">
@@ -1202,7 +1202,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="detail:" destination="ePR-Fl-IsY" eventType="touchDown" id="rlM-DU-zB7"/>
+                                            <action selector="detail:" destination="OK8-KW-BS5" eventType="touchDown" id="4wh-wQ-N2e"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2m-31-Ufd" userLabel="airPlayView">
@@ -1229,7 +1229,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="share:" destination="ePR-Fl-IsY" eventType="touchDown" id="AVX-5p-mWf"/>
+                                            <action selector="share:" destination="OK8-KW-BS5" eventType="touchDown" id="MGn-iO-AE7"/>
                                         </connections>
                                     </button>
                                 </subviews>
