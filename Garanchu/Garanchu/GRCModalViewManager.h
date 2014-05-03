@@ -11,7 +11,9 @@
 
 @property UIPopoverController *currentPopoverController;
 
-- (void)showSettingsModal;
 - (void)dismissCurrentModal;
+
+@optional
+- (void)showSettingsModal;
 
 @end

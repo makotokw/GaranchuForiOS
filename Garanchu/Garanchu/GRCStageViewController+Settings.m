@@ -5,11 +5,11 @@
 //  Copyright (c) 2014 makoto_kw. All rights reserved.
 //
 
+#import <objc/runtime.h>
+
 #import "GRCStageViewController.h"
 #import "GRCStageViewController+Settings.h"
 #import "GRCGaranchuUser.h"
-
-#import "NSURL+QueryString.h"
 
 #import "SearchConditionList.h"
 #import "WatchHistory.h"
@@ -220,10 +220,13 @@
 
 - (void)logoutInSettings
 {
+    __weak GRCStageViewController *me = self;
     [self dismissViewControllerAnimated:NO completion:^{
-        [self logoutGraponTv];
-        GRCGaranchuUser *user = [GRCGaranchuUser defaultUser];
-        [user clearGaraponIdAndPassword];
+        if ([me respondsToSelector:@selector(logoutGraponTv)]) {
+            [me performSelector:@selector(logoutGraponTv)];
+            GRCGaranchuUser *user = [GRCGaranchuUser defaultUser];
+            [user clearGaraponIdAndPassword];
+        }
     }];
 }
 

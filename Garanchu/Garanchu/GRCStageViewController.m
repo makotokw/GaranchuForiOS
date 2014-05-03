@@ -13,8 +13,6 @@
 
 #import "GRCGaranchuUser.h"
 
-#import "NSURL+QueryString.h"
-
 #import <BlocksKit/BlocksKit+UIKit.h>
 #import <MZFormSheetController/MZFormSheetController.h>
 
@@ -368,7 +366,7 @@
     formSheet.presentedFormSheetSize = CGSizeMake(400, 280);
     formSheet.landscapeTopInset = 100;
     formSheet.portraitTopInset = 100;
-    formSheet.shouldCenterVerticallyWhenKeyboardAppears = YES;
+    formSheet.movementWhenKeyboardAppears = MZFormSheetWhenKeyboardAppearsCenterVertically;
     
     [self mz_presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
         

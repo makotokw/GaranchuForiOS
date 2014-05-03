@@ -17,6 +17,7 @@
     #import <WZYGarapon/WZYGarapon.h>
     #import "WZYGaraponTvProgram+Garanchu.h"
     #import "MBProgressHUD+Garanchu.h"
+    #import "NSURL+QueryString.h"
     #import "GRCGaranchu.h"
 #endif
 

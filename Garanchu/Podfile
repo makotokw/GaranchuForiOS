@@ -1,16 +1,16 @@
 platform :ios,'6.0'
 
 pod 'TestFlightSDK', '3.0.0'
-pod 'BlocksKit', '2.0.0'
-pod 'SDWebImage', '3.5.2'
+pod 'BlocksKit', '2.2.2'
+pod 'SDWebImage', '3.6'
 pod 'SFHFKeychainUtils', '0.0.1'
 pod 'InAppSettingsKit', '2.0.1'
-pod 'FlatUIKit', '1.2'
+pod 'FlatUIKit', '1.3'
 pod 'MBProgressHUD', '0.8'
 pod 'SVPullToRefresh', '0.4.1'
 pod 'TMCache', '1.2.0'
-pod 'MZFormSheetController', '2.2.2'
-pod 'GRMustache', '6.8.4'
+pod 'MZFormSheetController', '2.3.4'
+pod 'GRMustache', '7.0.2'
 
 # development with Pods
 # pod 'WZYPlayerSlider', :path => '~/arcadia/KWPods/WZYPlayerSlider'

@@ -7,7 +7,7 @@
 
 #import "GRCStageViewController.h"
 
-@interface GRCStageViewController (Settings)
+@interface GRCStageViewController (Settings) 
 
 @property IASKAppSettingsViewController *appSettingsViewController;
 

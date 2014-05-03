@@ -28,8 +28,6 @@
 
 @property UIColor *overlayBackgroundColor;
 
-- (void)logoutGraponTv;
-
 @end
 
 @interface GRCStageViewController (Protected)

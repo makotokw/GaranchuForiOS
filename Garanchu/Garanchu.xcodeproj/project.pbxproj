@@ -441,6 +441,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = GRC;
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = makoto_kw;
 			};
@@ -748,6 +749,7 @@
 		};
 		8F935BC61791F24D001FFE01 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96F8EB6C90064691BC69EB19 /* Pods.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Garanchu.app/Garanchu";
 				FRAMEWORK_SEARCH_PATHS = (
