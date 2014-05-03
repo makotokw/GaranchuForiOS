@@ -91,10 +91,6 @@
                                              selector:@selector(requiredReconnect:)
                                                  name:GRCRequiredReconnect
                                                object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(settingsDidChange:)
-                                                 name:kIASKAppSettingChanged
-                                               object:nil];    
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(aplicationDidBecomeActive:)
                                                 name:UIApplicationDidBecomeActiveNotification
@@ -514,10 +510,6 @@
     }];
 }
 
-- (void)settingsDidChange:(NSNotification*)notification
-{
-	
-}
 
 #pragma mark - UIPopoverController
 

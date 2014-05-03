@@ -9,7 +9,10 @@
 
 #import "GRCVideoPlayerView.h"
 
+#import "GRCActivityItemProvider.h"
+
 #import "WatchHistory.h"
+#import <WZYAVPlayer/WZYPlayTimeFormatter.h>
 
 @interface GRCPlayerViewController ()<UIGestureRecognizerDelegate>
 
@@ -25,6 +28,8 @@
     IBOutlet UIButton *_favButton;
 }
 
+@dynamic currentPosition;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,6 +42,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor blackColor];
 }
 
 - (void)setUpViews
@@ -49,6 +56,11 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (NSTimeInterval)currentPosition
+{
+    return _videoPlayerView.currentPosition;
 }
 
 - (id)showProgressWithText:(NSString *)text
@@ -160,8 +172,96 @@
     }
 }
 
-#pragma mark - PlayHistory
+#pragma mark - Player Controller
 
+- (void)seekWithCaption:(NSDictionary *)caption
+{
+    if (caption) {
+        NSTimeInterval position = [WZYPlayTimeFormatter timeIntervalFromPlayTime:caption[@"caption_time"]];
+        if (position > 0) {
+            [_videoPlayerView seekToTime:position completionHandler:^{
+            }];
+        }
+    }
+}
+
+- (void)pause
+{
+    [super pause];
+    [self updateHistoryOfWathingProgram];
+}
+
+- (void)close
+{
+    [super close];
+}
+
+#pragma mark - Player Controller by UI
+
+- (IBAction)previous:(id)sender
+{
+    [_videoPlayerView seekToTime:0 completionHandler:^{
+    }];
+}
+
+- (IBAction)stepBackward:(id)sender
+{
+    [_videoPlayerView seekFromCurrentTime:-10.0f completionHandler:^{
+        // leave control
+    }];
+}
+
+- (IBAction)stepForward:(id)sender
+{
+    [_videoPlayerView seekFromCurrentTime:15.0f completionHandler:^{
+        // leave control
+    }];
+}
+
+- (IBAction)favorite:(id)sender
+{
+    __weak GRCPlayerViewController *me = self;
+    __weak WZYGaraponTvProgram *tvProgram = _playingProgram;
+    __block NSInteger rank = _playingProgram.favorite == 0 ? 1 : 0;
+    [_garaponTv favoriteWithGtvid:_playingProgram.gtvid rank:rank completionHandler:^(NSDictionary *response, NSError *error) {
+        if (!error) {
+            tvProgram.favorite = rank;
+            if ([_playingProgram isEqualGtvid:tvProgram]) {
+                [me refreshControlButtonsWithProgram:tvProgram];
+            }
+        }
+    }];
+}
+
+- (IBAction)share:(id)sender
+{
+    if (_watchingProgram && _watchingProgram.title) {
+        GRCActivityItemProvider *provider = [[GRCActivityItemProvider alloc] initWithPlaceholderItem:_watchingProgram];
+        
+        provider.tagLine = [[NSUserDefaults standardUserDefaults] stringForKey:@"share_tag_line"];
+        
+        //        NSArray *activityItems = @[_watchingProgram.title];
+        NSArray *activityItems = activityItems = @[provider];
+        
+        WZYGaraponTvSiteActivity *tvSiteActivity = [[WZYGaraponTvSiteActivity alloc] init
+                                                    ];
+        NSArray *applicationActivities = @[tvSiteActivity];
+        
+        UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:applicationActivities];
+        [self presentViewController:activityView animated:YES completion:^{
+        }];
+    } else {
+#if DEBUG
+        NSArray *activityItems = @[@"ActivityMessage"];
+        UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+        [self presentViewController:activityView animated:YES completion:^{
+        }];
+#endif
+    }
+}
+
+
+#pragma mark - PlayHistory
 
 - (void)updateHistoryOfWathingProgram
 {
@@ -223,6 +323,5 @@
 {
     [self updateHistoryOfWathingProgram];
 }
-
 
 @end
