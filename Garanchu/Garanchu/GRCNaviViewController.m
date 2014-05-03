@@ -26,12 +26,9 @@
 {
     GRCGaraponTabController *_tabController;
     
-    // TabContent
     GRCMenuNavigationViewController *_tvMenuViewController;
     GRCMenuNavigationViewController *_searchMenuViewController;
-
-    //
-    GRCIndexMenuViewController *_searchResultViewController;
+    GRCIndexMenuViewController *_searchMenuTopViewController;
     
     UIPanGestureRecognizer *_menuPanGesture;
 }
@@ -71,8 +68,8 @@
     [self addSubMenuViewController:_searchMenuViewController];
     
     _searchMenuViewController.view.hidden = YES;
-    _searchResultViewController = (GRCIndexMenuViewController *)(_searchMenuViewController.topViewController);
-    _searchResultViewController.indexType = GRCSearchResultGaranchuIndexType;
+    _searchMenuTopViewController = (GRCIndexMenuViewController *)(_searchMenuViewController.topViewController);
+    _searchMenuTopViewController.indexType = GRCSearchResultGaranchuIndexType;
     
     [_tabController addTabWithId:GRCGaraponTabGaraponTv button:_menuTvButton viewController:_tvMenuViewController];
     [_tabController addTabWithId:GRCGaraponTabSearch button:_menuSearchButton viewController:_searchMenuViewController];
@@ -116,11 +113,7 @@
     [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateHighlighted];
     [_menuOptionButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/cogActive.png"] forState:UIControlStateSelected];
     [_menuOptionButton bk_addEventHandler:^(id sender) {
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            //            [me showSettingsModal];
-        } else {
-            // TODO: iPhone
-        }
+        [_modalViewManager showSettingsModal];
     } forControlEvents:UIControlEventTouchDown];
 }
 
@@ -284,9 +277,9 @@
     GRCSearchSuggestViewController *searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"searchSuggestViewController"];
     
     __weak GRCGaraponTabController *tabController = _tabController;
-    __weak GRCIndexMenuViewController *searchResultViewController = _searchResultViewController;
+    __weak GRCIndexMenuViewController *searchResultViewController = _searchMenuTopViewController;
     searchViewController.submitHandler = ^(SearchCondition *condition) {
-        [_modalViewManager dismissCurrentPopover];
+        [_modalViewManager dismissCurrentModal];
         
         NSString *text = condition.keyword;
         if (!text) {

@@ -42,6 +42,7 @@
 		8F935BBF1791F24D001FFE01 /* GaranchuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BBE1791F24D001FFE01 /* GaranchuTests.m */; };
 		8F935BC91791F2ED001FFE01 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BC81791F2ED001FFE01 /* iPad.storyboard */; };
 		8F935BCC1791F570001FFE01 /* GRCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BCB1791F570001FFE01 /* GRCLoginViewController.m */; };
+		8FA5BB0419151409003CF694 /* GRCStageViewController+Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5BB0319151409003CF694 /* GRCStageViewController+Settings.m */; };
 		8FAD8C4317D6540F002F0D50 /* GRCSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD8C4217D6540E002F0D50 /* GRCSearchResultViewController.m */; };
 		8FAFF06117E5E7BE008CDA2F /* GRCStageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF06017E5E7BE008CDA2F /* GRCStageView.m */; };
 		8FAFF06417E5FDAA008CDA2F /* SearchConditionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF06317E5FDAA008CDA2F /* SearchConditionList.m */; };
@@ -145,6 +146,9 @@
 		8F935BC81791F2ED001FFE01 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		8F935BCA1791F570001FFE01 /* GRCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCLoginViewController.h; sourceTree = "<group>"; };
 		8F935BCB1791F570001FFE01 /* GRCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCLoginViewController.m; sourceTree = "<group>"; };
+		8FA5BB011915094F003CF694 /* GRCModalViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GRCModalViewManager.h; sourceTree = "<group>"; };
+		8FA5BB0219151409003CF694 /* GRCStageViewController+Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GRCStageViewController+Settings.h"; sourceTree = "<group>"; };
+		8FA5BB0319151409003CF694 /* GRCStageViewController+Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GRCStageViewController+Settings.m"; sourceTree = "<group>"; };
 		8FAD8C4117D6540E002F0D50 /* GRCSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCSearchResultViewController.h; sourceTree = "<group>"; };
 		8FAD8C4217D6540E002F0D50 /* GRCSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCSearchResultViewController.m; sourceTree = "<group>"; };
 		8FAFF05F17E5E7BD008CDA2F /* GRCStageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCStageView.h; sourceTree = "<group>"; };
@@ -270,14 +274,8 @@
 				8F935BA31791F24D001FFE01 /* GRCAppDelegate.m */,
 				8F59FC4F1791F73C00EEA418 /* GRCVideoViewController.h */,
 				8F59FC501791F73C00EEA418 /* GRCVideoViewController.m */,
-				8FAFF07F17E757D0008CDA2F /* GRCVideoDetailViewController.h */,
-				8FAFF08017E757D1008CDA2F /* GRCVideoDetailViewController.m */,
-				8F8C4973182F9CF600329DFC /* GRCVideoCaptionListViewController.h */,
-				8F8C4974182F9CF600329DFC /* GRCVideoCaptionListViewController.m */,
 				8FAFF05F17E5E7BD008CDA2F /* GRCStageView.h */,
 				8FAFF06017E5E7BE008CDA2F /* GRCStageView.m */,
-				8F59FC5C1792DFA700EEA418 /* GRCVideoPlayerView.h */,
-				8F59FC5D1792DFA700EEA418 /* GRCVideoPlayerView.m */,
 				8F935BCA1791F570001FFE01 /* GRCLoginViewController.h */,
 				8F935BCB1791F570001FFE01 /* GRCLoginViewController.m */,
 				8FDDC2C917EE013100D639E6 /* GRCGaranchuConfig.h */,
@@ -301,8 +299,11 @@
 				8FAFF07917E6FFFB008CDA2F /* GRCActivityItemProvider.m */,
 				8F66B1421819E6FF00867A07 /* GRCAppSettingsWebViewController.h */,
 				8F66B1431819E6FF00867A07 /* GRCAppSettingsWebViewController.m */,
+				8FA5BB011915094F003CF694 /* GRCModalViewManager.h */,
 				8F1A26B218D46BF2005DB79A /* GRCStageViewController.h */,
 				8F1A26B318D46BF2005DB79A /* GRCStageViewController.m */,
+				8FA5BB0219151409003CF694 /* GRCStageViewController+Settings.h */,
+				8FA5BB0319151409003CF694 /* GRCStageViewController+Settings.m */,
 				8F1A26AF18D46909005DB79A /* GRCTabletStageViewController.h */,
 				8F1A26B018D46909005DB79A /* GRCTabletStageViewController.m */,
 				8F1A26B518D46FC9005DB79A /* GRCNaviViewController.h */,
@@ -311,6 +312,12 @@
 				8F1A26B918D4988A005DB79A /* GRCPlayerViewController.m */,
 				8F1A26BB18D4A625005DB79A /* GRCTabletPlayerViewController.h */,
 				8F1A26BC18D4A625005DB79A /* GRCTabletPlayerViewController.m */,
+				8FAFF07F17E757D0008CDA2F /* GRCVideoDetailViewController.h */,
+				8FAFF08017E757D1008CDA2F /* GRCVideoDetailViewController.m */,
+				8F8C4973182F9CF600329DFC /* GRCVideoCaptionListViewController.h */,
+				8F8C4974182F9CF600329DFC /* GRCVideoCaptionListViewController.m */,
+				8F59FC5C1792DFA700EEA418 /* GRCVideoPlayerView.h */,
+				8F59FC5D1792DFA700EEA418 /* GRCVideoPlayerView.m */,
 			);
 			path = Garanchu;
 			sourceTree = "<group>";
@@ -591,6 +598,7 @@
 				8FAFF07217E5FE3A008CDA2F /* VideoProgram.m in Sources */,
 				8FAFF07317E5FE3A008CDA2F /* WatchHistory.m in Sources */,
 				8FAFF07717E6066D008CDA2F /* GRCCoreData.m in Sources */,
+				8FA5BB0419151409003CF694 /* GRCStageViewController+Settings.m in Sources */,
 				8FAFF07A17E6FFFB008CDA2F /* GRCActivityItemProvider.m in Sources */,
 				8F1A26BD18D4A625005DB79A /* GRCTabletPlayerViewController.m in Sources */,
 				8FAFF08117E757D1008CDA2F /* GRCVideoDetailViewController.m in Sources */,

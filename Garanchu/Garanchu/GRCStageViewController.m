@@ -159,12 +159,6 @@
     _currentPopoverController.delegate = self;
 }
 
-- (void)dismissCurrentPopover
-{
-	[_currentPopoverController dismissPopoverAnimated:YES];
-	_currentPopoverController = nil;
-}
-
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
     if (_currentPopoverController == popoverController) {
@@ -172,6 +166,11 @@
     }
 }
 
+- (void)dismissCurrentModal
+{
+	[_currentPopoverController dismissPopoverAnimated:YES];
+	_currentPopoverController = nil;
+}
 
 #pragma mark - GaraponTv Session
 

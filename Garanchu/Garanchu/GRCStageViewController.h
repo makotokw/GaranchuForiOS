@@ -10,6 +10,7 @@
 @class GRCPlayerViewController;
 @class GRCNaviViewController;
 @class GRCLoginViewController;
+@class IASKAppSettingsViewController;
 
 @interface GRCStageViewController : UIViewController
 
@@ -26,6 +27,8 @@
 @property GRCLoginViewController *loginViewController;
 
 @property UIColor *overlayBackgroundColor;
+
+- (void)logoutGraponTv;
 
 @end
 
