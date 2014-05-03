@@ -60,7 +60,7 @@
 
 - (void)dealloc
 {
-    [self remoteGestures];
+    [self removeGestures];
 }
 
 - (void)setUpSubViews
@@ -99,7 +99,7 @@
     [_menuContainerView addGestureRecognizer:_menuPanGesture];
 }
 
-- (void)remoteGestures
+- (void)removeGestures
 {
     // remove the gesture recognizers
     [_menuContainerView removeGestureRecognizer:_menuPanGesture];

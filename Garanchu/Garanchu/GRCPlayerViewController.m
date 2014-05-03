@@ -51,8 +51,6 @@
     _headerTitleLabel.text = nil;
 }
 
-//                             _headerLabelRightMargin.constant = 50.f;
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -125,7 +123,6 @@
 
 - (void)loadingProgram:(WZYGaraponTvProgram *)program initialPlaybackPosition:(NSTimeInterval)initialPlaybackPosition reload:(BOOL)reload
 {
-    // TODO: move to videoViewController
     _watchingProgram = program;
     _initialPlaybackPosition = 0.0;
     if (program) {
@@ -302,7 +299,7 @@
 
 - (void)playerDidBeginPlayback
 {
-    //    [super playerDidBeginPlayback];
+//    [super playerDidBeginPlayback];
     [self tryAutoPlayWithDelay:0.5];
     [self refreshControlButtonsWithProgram:_playingProgram];
 }

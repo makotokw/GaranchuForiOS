@@ -7,12 +7,22 @@
 
 #import "GRCTabletStageViewController.h"
 #import "GRCNaviViewController.h"
+#import "GRCPlayerViewController.h"
 
 @interface GRCTabletStageViewController ()
 
 @end
 
 @implementation GRCTabletStageViewController
+
+{
+    IBOutlet UIView *_playerView;
+    IBOutlet UIView *_naviView;
+    
+    UITapGestureRecognizer *_naviTapGesture;
+    UITapGestureRecognizer *_playerTapGesture;
+    UISwipeGestureRecognizer *_playerSwipeGesture;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +36,47 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self addGestures];
+}
+
+- (void)addGestures
+{
+    [self.playerViewController.playerView disableScreenTapRecognizer];
+
+//    _naviTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(naviViewDidTapped:)];
+//    [_naviView addGestureRecognizer:_naviTapGesture];
+    
+    _playerTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playerViewDidTapped:)];
+    [_playerView addGestureRecognizer:_playerTapGesture];
+    
+    _playerSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(playerViewDidSwiped:)];
+    _playerSwipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:_playerSwipeGesture];
+}
+
+- (void)removeGestures
+{
+    // remove the gesture recognizers
+    [self.view removeGestureRecognizer:_playerSwipeGesture];
+    [_playerView removeGestureRecognizer:_playerTapGesture];
+    [_naviView removeGestureRecognizer:_naviTapGesture];
+}
+
+- (void)naviViewDidTapped:(UITapGestureRecognizer *)sender
+{
+    if (self.naviViewController.isMenuHidden) {
+        [self.playerViewController.playerView toggleOverlayWithDuration:0.25];
+    }
+}
+
+- (void)playerViewDidTapped:(UITapGestureRecognizer *)sender
+{
+    [self.playerViewController.playerView toggleOverlayWithDuration:0.25];
+}
+
+- (void)playerViewDidSwiped:(UISwipeGestureRecognizer *)sender
+{
+    [self.naviViewController showSideMenuWithReset:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,6 +154,5 @@
 {
     [super showViewsAtDidLogin];
 }
-
 
 @end

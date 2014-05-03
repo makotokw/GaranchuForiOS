@@ -19,6 +19,8 @@
 @property (weak) IBOutlet UIButton *menuSearchButton;
 @property (weak) IBOutlet UIButton *menuOptionButton;
 
+@property (readonly) BOOL isMenuHidden;
+
 @property (weak) id<GRCModalViewManager> modalViewManager;
 
 @property UIColor *overlayBackgroundColor;

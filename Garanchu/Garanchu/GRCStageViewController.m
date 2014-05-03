@@ -138,9 +138,6 @@
     [GRCGaranchu current].watchingProgram = program;
 }
 
-#pragma mark - Navi
-
-
 #pragma mark - UIPopoverController
 
 - (UIPopoverController *)currentPopoverController
@@ -369,13 +366,13 @@
     formSheet.movementWhenKeyboardAppears = MZFormSheetWhenKeyboardAppearsCenterVertically;
     
     [self mz_presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
-        
     }];
-    //    _loginViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-    //    _loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    //    [self presentViewController:_loginViewController animated:YES completion:^{
-    //    }];
-    //    _loginViewController.view.superview.bounds = CGRectMake(0, 0, 400, 300);
+    
+//    _loginViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+//    _loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//    [self presentViewController:_loginViewController animated:YES completion:^{
+//    }];
+//    _loginViewController.view.superview.bounds = CGRectMake(0, 0, 400, 300);
 }
 
 @end
@@ -450,7 +447,7 @@
 
 - (void)showViewsAtDidLogin
 {
-    [_naviViewController showSideMenuWithReset:YES];
+    [_naviViewController showViewsAtDidLogin];
 }
 
 @end

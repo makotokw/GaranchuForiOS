@@ -165,6 +165,11 @@
     _menuButton.selected = _menuContainerView.alpha == 1.0;
 }
 
+- (BOOL)isMenuHidden
+{
+    return _menuContainerView.isHidden;
+}
+
 - (void)hideViewsAtNotLogin
 {
     _menuButton.hidden = YES;
@@ -199,10 +204,10 @@
     CGRect frame = _menuContainerView.frame;
     if (_menuContainerView.hidden) {
         frame.origin.x = self.view.bounds.size.width;
-        //        frame.origin.y = 0;
+//        frame.origin.y = 0;
     } else {
         frame.origin.x = self.view.bounds.size.width - frame.size.width;
-        //        frame.origin.y = 0;
+//        frame.origin.y = 0;
     }
     
     _menuContainerView.layer.anchorPoint = CGPointMake(0.5, 0.5);
