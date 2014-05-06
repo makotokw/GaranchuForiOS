@@ -781,7 +781,7 @@
                                     <segue destination="OK8-KW-BS5" kind="embed" id="bEZ-ed-RU1"/>
                                 </connections>
                             </containerView>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukw-mN-ifg" userLabel="NaviView">
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukw-mN-ifg" userLabel="NaviView" customClass="GRCContainerView">
                                 <rect key="frame" x="734" y="0.0" width="290" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -826,7 +826,7 @@
                         <viewControllerLayoutGuide type="top" id="KS3-kO-Kcc"/>
                         <viewControllerLayoutGuide type="bottom" id="gL7-Zq-WfW"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lLL-fX-3AR">
+                    <view key="view" contentMode="scaleToFill" id="lLL-fX-3AR" customClass="GRCContainerView">
                         <rect key="frame" x="0.0" y="0.0" width="290" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>

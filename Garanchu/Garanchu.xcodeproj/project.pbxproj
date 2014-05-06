@@ -43,6 +43,7 @@
 		8F935BC91791F2ED001FFE01 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BC81791F2ED001FFE01 /* iPad.storyboard */; };
 		8F935BCC1791F570001FFE01 /* GRCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BCB1791F570001FFE01 /* GRCLoginViewController.m */; };
 		8FA5BB0419151409003CF694 /* GRCStageViewController+Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5BB0319151409003CF694 /* GRCStageViewController+Settings.m */; };
+		8FA5BB071918FE65003CF694 /* GRCContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5BB061918FE65003CF694 /* GRCContainerView.m */; };
 		8FAD8C4317D6540F002F0D50 /* GRCSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD8C4217D6540E002F0D50 /* GRCSearchResultViewController.m */; };
 		8FAFF06117E5E7BE008CDA2F /* GRCStageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF06017E5E7BE008CDA2F /* GRCStageView.m */; };
 		8FAFF06417E5FDAA008CDA2F /* SearchConditionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF06317E5FDAA008CDA2F /* SearchConditionList.m */; };
@@ -149,6 +150,8 @@
 		8FA5BB011915094F003CF694 /* GRCModalViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GRCModalViewManager.h; sourceTree = "<group>"; };
 		8FA5BB0219151409003CF694 /* GRCStageViewController+Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GRCStageViewController+Settings.h"; sourceTree = "<group>"; };
 		8FA5BB0319151409003CF694 /* GRCStageViewController+Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GRCStageViewController+Settings.m"; sourceTree = "<group>"; };
+		8FA5BB051918FE65003CF694 /* GRCContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCContainerView.h; sourceTree = "<group>"; };
+		8FA5BB061918FE65003CF694 /* GRCContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCContainerView.m; sourceTree = "<group>"; };
 		8FAD8C4117D6540E002F0D50 /* GRCSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCSearchResultViewController.h; sourceTree = "<group>"; };
 		8FAD8C4217D6540E002F0D50 /* GRCSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCSearchResultViewController.m; sourceTree = "<group>"; };
 		8FAFF05F17E5E7BD008CDA2F /* GRCStageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCStageView.h; sourceTree = "<group>"; };
@@ -318,6 +321,8 @@
 				8F8C4974182F9CF600329DFC /* GRCVideoCaptionListViewController.m */,
 				8F59FC5C1792DFA700EEA418 /* GRCVideoPlayerView.h */,
 				8F59FC5D1792DFA700EEA418 /* GRCVideoPlayerView.m */,
+				8FA5BB051918FE65003CF694 /* GRCContainerView.h */,
+				8FA5BB061918FE65003CF694 /* GRCContainerView.m */,
 			);
 			path = Garanchu;
 			sourceTree = "<group>";
@@ -589,6 +594,7 @@
 				8F66B1441819E6FF00867A07 /* GRCAppSettingsWebViewController.m in Sources */,
 				8F3C22EF17B38FE000D35CF2 /* MBProgressHUD+Garanchu.m in Sources */,
 				8FAD8C4317D6540F002F0D50 /* GRCSearchResultViewController.m in Sources */,
+				8FA5BB071918FE65003CF694 /* GRCContainerView.m in Sources */,
 				8FFD027E17DE2D6D00583B1E /* GRCGaraponTabController.m in Sources */,
 				8FFD028117DE379600583B1E /* GRCSearchSuggestViewController.m in Sources */,
 				8F72AFD417E0EBD7007E1715 /* Garanchu.xcdatamodeld in Sources */,
