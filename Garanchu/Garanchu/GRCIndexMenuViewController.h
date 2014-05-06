@@ -11,7 +11,7 @@ typedef enum : NSInteger {
     GRCRootGaranchuIndexType,
     GRCRecordingProgramGaranchuIndexType,
     GRCProgramGaranchuIndexType,
-    GRCDateGaranchuIndexType,
+    GRCRecordedDateGaranchuIndexType,
     GRCGenreGaranchuIndexType,
     GRCChannelGaranchuIndexType,
     GRCWatchHistoryGaranchuIndexType,

@@ -10,7 +10,7 @@
 @interface GRCIndexMenuViewController (Static)
 
 - (NSMutableArray *)rootItems;
-- (NSMutableArray *)dateItems;
+- (NSMutableArray *)recordedDateItems;
 - (NSMutableArray *)genreItems;
 
 @end

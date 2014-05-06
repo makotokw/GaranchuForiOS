@@ -6,6 +6,7 @@
 */
 
 "DefaultAlertCaption" = "ガランチュ";
+"DateLocale" = "ja_JP";
 "OkButtonLabel" = "了解";
 "CancelButtonLabel" = "キャンセル";
 "ReconnectButtonLabel" = "再検索";
@@ -53,7 +54,7 @@
 
 "IndexMenuRootTitle" = "ガラポンTV";
 "IndexMenuSearchResultTitle" = "検索";
-"IndexMenuProgramCellDateLocale" = "ja_JP";
+"IndexMenuRecordedDateFormat" = "yyyy/MM/dd (EEE)";
 "IndexMenuProgramCellDateFormat" = "M/d(EEE) HH:mm";
 "IndexMenuLoading" = "読み込み中...";
 

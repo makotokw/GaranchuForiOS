@@ -105,7 +105,7 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     _placeHolderImage = [UIImage imageNamed:@"GaranchuResources.bundle/thumbnail.png"];
     
     _programCellDateFormatter = [[NSDateFormatter alloc] init];
-    _programCellDateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:GRCLocalizedString(@"IndexMenuProgramCellDateLocale")];
+    _programCellDateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:GRCLocalizedString(@"DateLocale")];
     [_programCellDateFormatter setDateFormat:GRCLocalizedString(@"IndexMenuProgramCellDateFormat")];
 //    _cellBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
 //    _oddCellBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
@@ -164,8 +164,8 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                 [self retrieveChannel];
                 break;
                 
-            case GRCDateGaranchuIndexType:
-                _items = [self dateItems];
+            case GRCRecordedDateGaranchuIndexType:
+                _items = [self recordedDateItems];
                 break;
                 
             case GRCGenreGaranchuIndexType:
@@ -265,6 +265,7 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 - (BOOL)hasSection
 {
     return (_indexType == GRCGenreGaranchuIndexType
+            || _indexType == GRCRecordedDateGaranchuIndexType
             || _indexType == GRCRootGaranchuIndexType);
 }
 
@@ -630,13 +631,20 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    if (GRCGenreGaranchuIndexType != _indexType) {
-        return nil;
+    if (GRCRecordedDateGaranchuIndexType == _indexType) {
+        return [_items bk_map:^id (id obj) {
+            NSDictionary *item = obj;
+            return [item[@"title"] substringWithRange:NSMakeRange(5, 2)];
+        }];
     }
-    return [_items bk_map:^id(id obj) {
-        NSDictionary *item = obj;
-        return [item[@"title"] substringWithRange:NSMakeRange(0,2)];
-    }];
+    else if (GRCGenreGaranchuIndexType == _indexType) {
+        return [_items bk_map:^id (id obj) {
+                    NSDictionary *item = obj;
+                    return [item[@"title"] substringWithRange:NSMakeRange(0, 2)];
+                }];
+    }
+
+    return nil;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
