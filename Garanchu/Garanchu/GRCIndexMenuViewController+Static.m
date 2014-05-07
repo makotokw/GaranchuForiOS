@@ -15,9 +15,9 @@
                 @{ @"title": @"インデックス", @"items": @[
                        @{ @"title": @"録画番組", @"indexType": [NSNumber numberWithInteger:GRCProgramGaranchuIndexType] },
                        @{ @"title": @"現在録画中の番組", @"indexType": [NSNumber numberWithInteger:GRCRecordingProgramGaranchuIndexType] },
-                       @{ @"title": @"録画日別", @"indexType": [NSNumber numberWithInteger:GRCRecordedDateGaranchuIndexType] },
+                       @{ @"title": @"日付別", @"indexType": [NSNumber numberWithInteger:GRCRecordedDateGaranchuIndexType] },
                        @{ @"title": @"ジャンル", @"indexType": [NSNumber numberWithInteger:GRCGenreGaranchuIndexType] },
-                       @{ @"title": @"放送局", @"indexType": [NSNumber numberWithInteger:GRCChannelGaranchuIndexType] },
+                       @{ @"title": @"放送局別", @"indexType": [NSNumber numberWithInteger:GRCChannelGaranchuIndexType] },
                        @{ @"title": @"お気に入り", @"indexType": [NSNumber numberWithInteger:GRCProgramGaranchuIndexType], @"params": @{ @"rank": @"all" } },
                        @{ @"title": @"視聴履歴", @"indexType": [NSNumber numberWithInteger:GRCWatchHistoryGaranchuIndexType] },
                    ] }
@@ -37,20 +37,28 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.timeZone   = [NSTimeZone timeZoneWithAbbreviation:@"JST"];
     dateFormatter.locale     = [[NSLocale alloc] initWithLocaleIdentifier:GRCLocalizedString(@"DateLocale")];
-    dateFormatter.dateFormat = GRCLocalizedString(@"IndexMenuRecordedDateFormat");
+    dateFormatter.dateFormat = GRCLocalizedString(@"IndexMenuRecordedDateCellDateFormat");
 
     NSMutableDictionary *monthDictionary       = [NSMutableDictionary dictionary];
     NSDateFormatter     *monthKeyDateFormatter = [[NSDateFormatter alloc] init];
     monthKeyDateFormatter.timeZone   = [NSTimeZone timeZoneWithAbbreviation:@"JST"];
     monthKeyDateFormatter.dateFormat = @"yyyy/MM";
     
+    NSDateFormatter *monthSectionDateFormatter = [[NSDateFormatter alloc] init];
+    monthSectionDateFormatter.timeZone   = [NSTimeZone timeZoneWithAbbreviation:@"JST"];
+    monthSectionDateFormatter.dateFormat = GRCLocalizedString(@"IndexMenuRecordedDateSectionDateFormat");
+    
     NSMutableArray *items = [NSMutableArray array];
     for (NSInteger i = 0; i < numberOfDate; i++) {
         NSString *monthKey = [monthKeyDateFormatter stringFromDate:date];
         if (!monthDictionary[monthKey]) {
             monthDictionary[monthKey] = [NSMutableArray array];
+            monthDictionary[monthKey] = @{ @"title": [monthSectionDateFormatter stringFromDate:date],
+                                           @"indexLabel": [monthKey substringWithRange:NSMakeRange(5, 2)],
+                                           @"items": [NSMutableArray array]
+                                           };
         }
-        [monthDictionary[monthKey] addObject:@{ @"title": [dateFormatter stringFromDate:date],
+        [monthDictionary[monthKey][@"items"] addObject:@{ @"title": [dateFormatter stringFromDate:date],
                             @"indexType": [NSNumber numberWithInteger:GRCProgramGaranchuIndexType],
                             @"params": @{ @"dt": @"e", @"sdate": [WZYGaraponTv formatDate:date.timeIntervalSince1970], @"edate": [WZYGaraponTv formatDate:date.timeIntervalSince1970 + 86400] } }];
         date = [date dateByAddingTimeInterval:-86400];
@@ -60,10 +68,7 @@
         return [obj2 caseInsensitiveCompare:obj1];
     }];
     [sortedKeys bk_each:^(id obj) {
-        [items addObject: @{ @"title": obj,
-           @"items": monthDictionary[obj]
-           }
-         ];
+        [items addObject:monthDictionary[obj]];
     }];
     
     return items;

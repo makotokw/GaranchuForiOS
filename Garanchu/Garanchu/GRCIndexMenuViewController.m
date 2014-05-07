@@ -104,9 +104,10 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     
     _placeHolderImage = [UIImage imageNamed:@"GaranchuResources.bundle/thumbnail.png"];
     
-    _programCellDateFormatter = [[NSDateFormatter alloc] init];
-    _programCellDateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:GRCLocalizedString(@"DateLocale")];
-    [_programCellDateFormatter setDateFormat:GRCLocalizedString(@"IndexMenuProgramCellDateFormat")];
+    _programCellDateFormatter            = [[NSDateFormatter alloc] init];
+    _programCellDateFormatter.timeZone   = [NSTimeZone timeZoneWithAbbreviation:@"JST"];
+    _programCellDateFormatter.locale     = [[NSLocale alloc] initWithLocaleIdentifier:GRCLocalizedString(@"DateLocale")];
+    _programCellDateFormatter.dateFormat = GRCLocalizedString(@"IndexMenuProgramCellDateFormat");
 //    _cellBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
 //    _oddCellBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
     
@@ -634,7 +635,7 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     if (GRCRecordedDateGaranchuIndexType == _indexType) {
         return [_items bk_map:^id (id obj) {
             NSDictionary *item = obj;
-            return [item[@"title"] substringWithRange:NSMakeRange(5, 2)];
+            return item[@"indexLabel"];
         }];
     }
     else if (GRCGenreGaranchuIndexType == _indexType) {

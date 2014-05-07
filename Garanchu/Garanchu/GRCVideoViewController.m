@@ -355,7 +355,8 @@
     if (records.count > 0) {
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"JST"];
+        dateFormatter.timeZone   = [NSTimeZone timeZoneWithAbbreviation:@"JST"];
+        dateFormatter.locale     = [[NSLocale alloc] initWithLocaleIdentifier:GRCLocalizedString(@"DateLocale")];
         dateFormatter.dateFormat = GRCLocalizedString(@"ProgramWatchDateTimeFormat");
         
         for (WatchHistory *history in records) {

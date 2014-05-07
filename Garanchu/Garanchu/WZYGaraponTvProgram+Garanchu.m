@@ -14,7 +14,8 @@
 - (NSString *)grc_dateAndDuration
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"JST"];
+    dateFormatter.timeZone   = [NSTimeZone timeZoneWithAbbreviation:@"JST"];
+    dateFormatter.locale     = [[NSLocale alloc] initWithLocaleIdentifier:GRCLocalizedString(@"DateLocale")];
     dateFormatter.dateFormat = GRCLocalizedString(@"ProgramStartDateTimeFormat");
     NSString *startDateString =  [dateFormatter stringFromDate:self.startdate];
     dateFormatter.dateFormat = GRCLocalizedString(@"ProgramEndDateTimeFormat");

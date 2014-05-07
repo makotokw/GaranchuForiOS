@@ -18,8 +18,8 @@
 
 "SettingsViewTitle" = "設定";
 
-"ProgramWatchDateTimeFormat" = "yyyy/MM/dd(EEE) HH:mm";
-"ProgramStartDateTimeFormat" = "yyyy/MM/dd(EEE) HH:mm";
+"ProgramWatchDateTimeFormat" = "yyyy年MM月dd日 (EEE) HH:mm";
+"ProgramStartDateTimeFormat" = "yyyy年MM月dd日 (EEE) HH:mm";
 "ProgramEndDateTimeFormat" = "HH:mm";
 "ProgramDurationFormat" = "%02d時間%02d分";
 "ProgramShortDurationFormat" = "%d分";
@@ -54,8 +54,9 @@
 
 "IndexMenuRootTitle" = "ガラポンTV";
 "IndexMenuSearchResultTitle" = "検索";
-"IndexMenuRecordedDateFormat" = "yyyy/MM/dd (EEE)";
-"IndexMenuProgramCellDateFormat" = "M/d(EEE) HH:mm";
+"IndexMenuRecordedDateSectionDateFormat" = "yyyy年MM月";
+"IndexMenuRecordedDateCellDateFormat" = "MM月dd日 (EEE)";
+"IndexMenuProgramCellDateFormat" = "M月d日(EEE) HH:mm";
 "IndexMenuLoading" = "読み込み中...";
 
 "IndexMenuNoProgram" = "番組が見つかりません";
