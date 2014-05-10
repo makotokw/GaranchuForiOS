@@ -741,6 +741,9 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     } else {
         NSDictionary *item = [self objectAtIndexPath:indexPath];
         cell.textLabel.text = item[@"title"];
+        cell.textLabel.numberOfLines = 1;
+        cell.textLabel.adjustsFontSizeToFitWidth = YES;
+        cell.textLabel.minimumScaleFactor = 0.7;
         cell.textLabel.shadowColor = [UIColor blackColor];
     }
     
