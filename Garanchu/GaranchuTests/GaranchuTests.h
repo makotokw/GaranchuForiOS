@@ -5,8 +5,8 @@
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface GaranchuTests : SenTestCase
+@interface GaranchuTests : XCTestCase
 
 @end

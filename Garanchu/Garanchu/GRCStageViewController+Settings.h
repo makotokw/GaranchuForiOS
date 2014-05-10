@@ -6,8 +6,7 @@
 //
 
 #import "GRCStageViewController.h"
-
-@protocol IASKSettingsDelegate;
+#import <InAppSettingsKit/IASKAppSettingsViewController.h>
 
 @interface GRCStageViewController (Settings) <IASKSettingsDelegate>
 

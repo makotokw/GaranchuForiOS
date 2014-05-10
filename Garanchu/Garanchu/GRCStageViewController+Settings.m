@@ -16,7 +16,6 @@
 #import "VideoProgram.h"
 
 #import <BlocksKit/BlocksKit+UIKit.h>
-#import <InAppSettingsKit/IASKAppSettingsViewController.h>
 #import <InAppSettingsKit/IASKSettingsReader.h>
 #import <GRMustache/GRMustache.h>
 

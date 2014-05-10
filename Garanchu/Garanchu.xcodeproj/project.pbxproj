@@ -35,7 +35,6 @@
 		8F935BA61791F24D001FFE01 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BA51791F24D001FFE01 /* Default.png */; };
 		8F935BA81791F24D001FFE01 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BA71791F24D001FFE01 /* Default@2x.png */; };
 		8F935BAA1791F24D001FFE01 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BA91791F24D001FFE01 /* Default-568h@2x.png */; };
-		8F935BB21791F24D001FFE01 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935BB11791F24D001FFE01 /* SenTestingKit.framework */; };
 		8F935BB31791F24D001FFE01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B931791F24D001FFE01 /* UIKit.framework */; };
 		8F935BB41791F24D001FFE01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B951791F24D001FFE01 /* Foundation.framework */; };
 		8F935BBC1791F24D001FFE01 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BBA1791F24D001FFE01 /* InfoPlist.strings */; };
@@ -52,8 +51,6 @@
 		8FAFF07717E6066D008CDA2F /* GRCCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF07617E6066C008CDA2F /* GRCCoreData.m */; };
 		8FAFF07A17E6FFFB008CDA2F /* GRCActivityItemProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF07917E6FFFB008CDA2F /* GRCActivityItemProvider.m */; };
 		8FAFF08117E757D1008CDA2F /* GRCVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF08017E757D1008CDA2F /* GRCVideoDetailViewController.m */; };
-		8FB6262B17C5037800EC5A0E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262717C5037800EC5A0E /* Icon-72.png */; };
-		8FB6262C17C5037800EC5A0E /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262817C5037800EC5A0E /* Icon-72@2x.png */; };
 		8FB6262D17C5037800EC5A0E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262917C5037800EC5A0E /* Icon.png */; };
 		8FB6262E17C5037800EC5A0E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262A17C5037800EC5A0E /* Icon@2x.png */; };
 		8FC3C6FC17ECCEE8008A5CCD /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC3C6F817ECCEE8008A5CCD /* Icon-60.png */; };
@@ -64,12 +61,8 @@
 		8FD92BAA18031C0B0017172F /* web in Resources */ = {isa = PBXBuildFile; fileRef = 8FD92BA918031C0B0017172F /* web */; };
 		8FDDC2C117EDF7D700D639E6 /* Default-Landscape-768h.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2B917EDF7D700D639E6 /* Default-Landscape-768h.png */; };
 		8FDDC2C217EDF7D700D639E6 /* Default-Landscape-768h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2BA17EDF7D700D639E6 /* Default-Landscape-768h@2x.png */; };
-		8FDDC2C317EDF7D700D639E6 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2BB17EDF7D700D639E6 /* Default-Landscape.png */; };
-		8FDDC2C417EDF7D700D639E6 /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2BC17EDF7D700D639E6 /* Default-Landscape@2x.png */; };
 		8FDDC2C517EDF7D700D639E6 /* Default-Portrait-1024h.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2BD17EDF7D700D639E6 /* Default-Portrait-1024h.png */; };
 		8FDDC2C617EDF7D700D639E6 /* Default-Portrait-1024h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2BE17EDF7D700D639E6 /* Default-Portrait-1024h@2x.png */; };
-		8FDDC2C717EDF7D700D639E6 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2BF17EDF7D700D639E6 /* Default-Portrait.png */; };
-		8FDDC2C817EDF7D700D639E6 /* Default-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2C017EDF7D700D639E6 /* Default-Portrait@2x.png */; };
 		8FF1B0EA179C551100BF9785 /* GaranchuResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0E9179C551100BF9785 /* GaranchuResources.bundle */; };
 		8FF1B0ED179CD32A00BF9785 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0EF179CD32A00BF9785 /* Localizable.strings */; };
 		8FF5973517C98B0200A9E8E9 /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8FF5973417C98B0200A9E8E9 /* InAppSettings.bundle */; };
@@ -139,8 +132,7 @@
 		8F935BA51791F24D001FFE01 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8F935BA71791F24D001FFE01 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8F935BA91791F24D001FFE01 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		8F935BB01791F24D001FFE01 /* GaranchuTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GaranchuTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F935BB11791F24D001FFE01 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		8F935BB01791F24D001FFE01 /* GaranchuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GaranchuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F935BB91791F24D001FFE01 /* GaranchuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GaranchuTests-Info.plist"; sourceTree = "<group>"; };
 		8F935BBD1791F24D001FFE01 /* GaranchuTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GaranchuTests.h; sourceTree = "<group>"; };
 		8F935BBE1791F24D001FFE01 /* GaranchuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GaranchuTests.m; sourceTree = "<group>"; };
@@ -168,8 +160,6 @@
 		8FAFF07917E6FFFB008CDA2F /* GRCActivityItemProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCActivityItemProvider.m; sourceTree = "<group>"; };
 		8FAFF07F17E757D0008CDA2F /* GRCVideoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCVideoDetailViewController.h; sourceTree = "<group>"; };
 		8FAFF08017E757D1008CDA2F /* GRCVideoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCVideoDetailViewController.m; sourceTree = "<group>"; };
-		8FB6262717C5037800EC5A0E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		8FB6262817C5037800EC5A0E /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		8FB6262917C5037800EC5A0E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		8FB6262A17C5037800EC5A0E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		8FC3C6F817ECCEE8008A5CCD /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
@@ -181,12 +171,8 @@
 		8FD92BA918031C0B0017172F /* web */ = {isa = PBXFileReference; lastKnownFileType = folder; path = web; sourceTree = "<group>"; };
 		8FDDC2B917EDF7D700D639E6 /* Default-Landscape-768h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-768h.png"; sourceTree = "<group>"; };
 		8FDDC2BA17EDF7D700D639E6 /* Default-Landscape-768h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-768h@2x.png"; sourceTree = "<group>"; };
-		8FDDC2BB17EDF7D700D639E6 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
-		8FDDC2BC17EDF7D700D639E6 /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
 		8FDDC2BD17EDF7D700D639E6 /* Default-Portrait-1024h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait-1024h.png"; sourceTree = "<group>"; };
 		8FDDC2BE17EDF7D700D639E6 /* Default-Portrait-1024h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait-1024h@2x.png"; sourceTree = "<group>"; };
-		8FDDC2BF17EDF7D700D639E6 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
-		8FDDC2C017EDF7D700D639E6 /* Default-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x.png"; sourceTree = "<group>"; };
 		8FDDC2C917EE013100D639E6 /* GRCGaranchuConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCGaranchuConfig.h; sourceTree = "<group>"; };
 		8FF1B0E9179C551100BF9785 /* GaranchuResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GaranchuResources.bundle; sourceTree = "<group>"; };
 		8FF1B0F0179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -217,7 +203,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F935BB21791F24D001FFE01 /* SenTestingKit.framework in Frameworks */,
 				8F935BB31791F24D001FFE01 /* UIKit.framework in Frameworks */,
 				8F935BB41791F24D001FFE01 /* Foundation.framework in Frameworks */,
 			);
@@ -241,7 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				8F935B901791F24D001FFE01 /* Garanchu.app */,
-				8F935BB01791F24D001FFE01 /* GaranchuTests.octest */,
+				8F935BB01791F24D001FFE01 /* GaranchuTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -253,7 +238,6 @@
 				8F935B931791F24D001FFE01 /* UIKit.framework */,
 				8F935B951791F24D001FFE01 /* Foundation.framework */,
 				8F935B971791F24D001FFE01 /* CoreGraphics.framework */,
-				8F935BB11791F24D001FFE01 /* SenTestingKit.framework */,
 				5FD30FE5BBFD4D808BB97071 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -335,18 +319,12 @@
 				8F935BA91791F24D001FFE01 /* Default-568h@2x.png */,
 				8FDDC2B917EDF7D700D639E6 /* Default-Landscape-768h.png */,
 				8FDDC2BA17EDF7D700D639E6 /* Default-Landscape-768h@2x.png */,
-				8FDDC2BB17EDF7D700D639E6 /* Default-Landscape.png */,
-				8FDDC2BC17EDF7D700D639E6 /* Default-Landscape@2x.png */,
 				8FDDC2BD17EDF7D700D639E6 /* Default-Portrait-1024h.png */,
 				8FDDC2BE17EDF7D700D639E6 /* Default-Portrait-1024h@2x.png */,
-				8FDDC2BF17EDF7D700D639E6 /* Default-Portrait.png */,
-				8FDDC2C017EDF7D700D639E6 /* Default-Portrait@2x.png */,
 				8FC3C6F817ECCEE8008A5CCD /* Icon-60.png */,
 				8FC3C6F917ECCEE8008A5CCD /* Icon-60@2x.png */,
 				8FC3C6FA17ECCEE8008A5CCD /* Icon-76.png */,
 				8FC3C6FB17ECCEE8008A5CCD /* Icon-76@2x.png */,
-				8FB6262717C5037800EC5A0E /* Icon-72.png */,
-				8FB6262817C5037800EC5A0E /* Icon-72@2x.png */,
 				8FB6262917C5037800EC5A0E /* Icon.png */,
 				8FB6262A17C5037800EC5A0E /* Icon@2x.png */,
 				8FF1B0E9179C551100BF9785 /* GaranchuResources.bundle */,
@@ -436,8 +414,8 @@
 			);
 			name = GaranchuTests;
 			productName = GaranchuTests;
-			productReference = 8F935BB01791F24D001FFE01 /* GaranchuTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 8F935BB01791F24D001FFE01 /* GaranchuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -480,8 +458,6 @@
 				8FC3C6FE17ECCEE8008A5CCD /* Icon-76.png in Resources */,
 				8F935BA61791F24D001FFE01 /* Default.png in Resources */,
 				8F935BA81791F24D001FFE01 /* Default@2x.png in Resources */,
-				8FDDC2C717EDF7D700D639E6 /* Default-Portrait.png in Resources */,
-				8FDDC2C817EDF7D700D639E6 /* Default-Portrait@2x.png in Resources */,
 				8FDDC2C117EDF7D700D639E6 /* Default-Landscape-768h.png in Resources */,
 				8F935BAA1791F24D001FFE01 /* Default-568h@2x.png in Resources */,
 				8FD92BAA18031C0B0017172F /* web in Resources */,
@@ -489,13 +465,9 @@
 				8FC3C6FF17ECCEE8008A5CCD /* Icon-76@2x.png in Resources */,
 				8FF1B0EA179C551100BF9785 /* GaranchuResources.bundle in Resources */,
 				8FF1B0ED179CD32A00BF9785 /* Localizable.strings in Resources */,
-				8FB6262B17C5037800EC5A0E /* Icon-72.png in Resources */,
-				8FB6262C17C5037800EC5A0E /* Icon-72@2x.png in Resources */,
 				8FB6262D17C5037800EC5A0E /* Icon.png in Resources */,
-				8FDDC2C317EDF7D700D639E6 /* Default-Landscape.png in Resources */,
 				8FB6262E17C5037800EC5A0E /* Icon@2x.png in Resources */,
 				8FC3C6FD17ECCEE8008A5CCD /* Icon-60@2x.png in Resources */,
-				8FDDC2C417EDF7D700D639E6 /* Default-Landscape@2x.png in Resources */,
 				8FF5973517C98B0200A9E8E9 /* InAppSettings.bundle in Resources */,
 				8FC3C6FC17ECCEE8008A5CCD /* Icon-60.png in Resources */,
 				8FDDC2C217EDF7D700D639E6 /* Default-Landscape-768h@2x.png in Resources */,
@@ -726,7 +698,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
 				INFOPLIST_FILE = "Garanchu/Garanchu-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -745,7 +717,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
 				INFOPLIST_FILE = "Garanchu/Garanchu-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -761,13 +733,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
 				INFOPLIST_FILE = "GaranchuTests/GaranchuTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -778,13 +750,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
 				INFOPLIST_FILE = "GaranchuTests/GaranchuTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
