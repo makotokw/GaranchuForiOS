@@ -18,7 +18,13 @@
     [stage setup];
             
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPad" bundle:nil];
-    GRCStageViewController *stageViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabletStageViewController"];
+
+    UIDevice *device = [UIDevice currentDevice];
+    NSString *initialViewControllerId = device.userInterfaceIdiom == UIUserInterfaceIdiomPad ?
+                                        @"tabletStageViewController"
+                                        : @"phoneStageViewController";
+    
+    GRCStageViewController *stageViewController = [storyboard instantiateViewControllerWithIdentifier:initialViewControllerId];
     [stageViewController setUpBeforeLodingView];
     
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];

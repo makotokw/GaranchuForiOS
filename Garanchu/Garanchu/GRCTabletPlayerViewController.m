@@ -70,7 +70,6 @@
 
 #pragma mark - Program Infomation
 
-
 - (void)presentModalDetailViewController
 {
     GRCVideoDetailViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"videoDetailViewController"];
@@ -105,6 +104,5 @@
     [self presentViewController:navController animated:YES completion:^{
     }];
 }
-
 
 @end

@@ -25,6 +25,7 @@
 		8F72AFD417E0EBD7007E1715 /* Garanchu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8F72AFD217E0EBD7007E1715 /* Garanchu.xcdatamodeld */; };
 		8F72AFD617E0EC65007E1715 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F72AFD517E0EC65007E1715 /* CoreData.framework */; };
 		8F72B01A17E58C4E007E1715 /* SearchCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F72B01917E58C4D007E1715 /* SearchCondition.m */; };
+		8F809667191DDD9600A2D01B /* GRCPhoneStageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F809666191DDD9600A2D01B /* GRCPhoneStageViewController.m */; };
 		8F8C4975182F9CF600329DFC /* GRCVideoCaptionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8C4974182F9CF600329DFC /* GRCVideoCaptionListViewController.m */; };
 		8F935B941791F24D001FFE01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B931791F24D001FFE01 /* UIKit.framework */; };
 		8F935B961791F24D001FFE01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B951791F24D001FFE01 /* Foundation.framework */; };
@@ -117,6 +118,8 @@
 		8F72AFD517E0EC65007E1715 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		8F72B01817E58C4D007E1715 /* SearchCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCondition.h; sourceTree = "<group>"; };
 		8F72B01917E58C4D007E1715 /* SearchCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCondition.m; sourceTree = "<group>"; };
+		8F809665191DDD9600A2D01B /* GRCPhoneStageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCPhoneStageViewController.h; sourceTree = "<group>"; };
+		8F809666191DDD9600A2D01B /* GRCPhoneStageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCPhoneStageViewController.m; sourceTree = "<group>"; };
 		8F8C4973182F9CF600329DFC /* GRCVideoCaptionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCVideoCaptionListViewController.h; sourceTree = "<group>"; };
 		8F8C4974182F9CF600329DFC /* GRCVideoCaptionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCVideoCaptionListViewController.m; sourceTree = "<group>"; };
 		8F8C4976183019F700329DFC /* GRCGaranchuBuild.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GRCGaranchuBuild.h; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 				8F1A26B318D46BF2005DB79A /* GRCStageViewController.m */,
 				8FA5BB0219151409003CF694 /* GRCStageViewController+Settings.h */,
 				8FA5BB0319151409003CF694 /* GRCStageViewController+Settings.m */,
+				8F809665191DDD9600A2D01B /* GRCPhoneStageViewController.h */,
+				8F809666191DDD9600A2D01B /* GRCPhoneStageViewController.m */,
 				8F1A26AF18D46909005DB79A /* GRCTabletStageViewController.h */,
 				8F1A26B018D46909005DB79A /* GRCTabletStageViewController.m */,
 				8F1A26B518D46FC9005DB79A /* GRCNaviViewController.h */,
@@ -580,6 +585,7 @@
 				8FA5BB0419151409003CF694 /* GRCStageViewController+Settings.m in Sources */,
 				8FAFF07A17E6FFFB008CDA2F /* GRCActivityItemProvider.m in Sources */,
 				8F1A26BD18D4A625005DB79A /* GRCTabletPlayerViewController.m in Sources */,
+				8F809667191DDD9600A2D01B /* GRCPhoneStageViewController.m in Sources */,
 				8FAFF08117E757D1008CDA2F /* GRCVideoDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -701,7 +707,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -720,7 +726,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
