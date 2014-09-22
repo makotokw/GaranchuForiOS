@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8F935BAF1791F24D001FFE01"
-               BuildableName = "GaranchuTests.octest"
+               BuildableName = "GaranchuTests.xctest"
                BlueprintName = "GaranchuTests"
                ReferencedContainer = "container:Garanchu.xcodeproj">
             </BuildableReference>
