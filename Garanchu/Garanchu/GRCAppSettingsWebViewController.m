@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     
-    webView.dataDetectorTypes = UIDataDetectorTypeNone;
+    self.webView.dataDetectorTypes = UIDataDetectorTypeNone;
 }
 
 - (void)didReceiveMemoryWarning

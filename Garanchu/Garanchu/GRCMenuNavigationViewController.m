@@ -7,6 +7,9 @@
 
 #import "GRCMenuNavigationViewController.h"
 
+#import <WZYFlatUIColor/WZYFlatUIColor.h>
+#import <FlatUIKit/FlatUIKit.h>
+
 @interface GRCMenuNavigationViewController ()
 
 @end
@@ -27,10 +30,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.navigationBar.tintColor = [UIColor greenSeaColor];
+    self.navigationBar.tintColor = [UIColor wzy_greenSeaFlatColor];
     
-    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor turquoiseColor]
-                                  highlightedColor:[UIColor greenSeaColor]
+    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor wzy_turquoiseFlatColor]
+                                  highlightedColor:[UIColor wzy_greenSeaFlatColor]
                                       cornerRadius:3
                                    whenContainedIn:[GRCMenuNavigationViewController class], nil];
     

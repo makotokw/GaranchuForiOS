@@ -1,815 +1,2676 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		8F1A26B118D46909005DB79A /* GRCTabletStageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A26B018D46909005DB79A /* GRCTabletStageViewController.m */; };
-		8F1A26B418D46BF2005DB79A /* GRCStageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A26B318D46BF2005DB79A /* GRCStageViewController.m */; };
-		8F1A26B718D46FC9005DB79A /* GRCNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A26B618D46FC9005DB79A /* GRCNaviViewController.m */; };
-		8F1A26BA18D4988A005DB79A /* GRCPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A26B918D4988A005DB79A /* GRCPlayerViewController.m */; };
-		8F1A26BD18D4A625005DB79A /* GRCTabletPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A26BC18D4A625005DB79A /* GRCTabletPlayerViewController.m */; };
-		8F3C22EF17B38FE000D35CF2 /* MBProgressHUD+Garanchu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */; };
-		8F59FC511791F73C00EEA418 /* GRCVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC501791F73C00EEA418 /* GRCVideoViewController.m */; };
-		8F59FC541792C21E00EEA418 /* GRCGaranchuUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC531792C21E00EEA418 /* GRCGaranchuUser.m */; };
-		8F59FC571792CC2F00EEA418 /* GRCGaranchu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC561792CC2E00EEA418 /* GRCGaranchu.m */; };
-		8F59FC5E1792DFA700EEA418 /* GRCVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC5D1792DFA700EEA418 /* GRCVideoPlayerView.m */; };
-		8F59FCB11793D77B00EEA418 /* GRCMenuNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB01793D77B00EEA418 /* GRCMenuNavigationViewController.m */; };
-		8F59FCB41793D9FC00EEA418 /* GRCIndexMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB31793D9FC00EEA418 /* GRCIndexMenuViewController.m */; };
-		8F59FCB71794149300EEA418 /* GRCIndexMenuViewController+Static.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FCB61794149200EEA418 /* GRCIndexMenuViewController+Static.m */; };
-		8F66B1411819D6A600867A07 /* NSURL+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F66B1401819D6A600867A07 /* NSURL+QueryString.m */; };
-		8F66B1441819E6FF00867A07 /* GRCAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F66B1431819E6FF00867A07 /* GRCAppSettingsWebViewController.m */; };
-		8F72AFD417E0EBD7007E1715 /* Garanchu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8F72AFD217E0EBD7007E1715 /* Garanchu.xcdatamodeld */; };
-		8F72AFD617E0EC65007E1715 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F72AFD517E0EC65007E1715 /* CoreData.framework */; };
-		8F72B01A17E58C4E007E1715 /* SearchCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F72B01917E58C4D007E1715 /* SearchCondition.m */; };
-		8F809667191DDD9600A2D01B /* GRCPhoneStageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F809666191DDD9600A2D01B /* GRCPhoneStageViewController.m */; };
-		8F8C4975182F9CF600329DFC /* GRCVideoCaptionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8C4974182F9CF600329DFC /* GRCVideoCaptionListViewController.m */; };
-		8F935B941791F24D001FFE01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B931791F24D001FFE01 /* UIKit.framework */; };
-		8F935B961791F24D001FFE01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B951791F24D001FFE01 /* Foundation.framework */; };
-		8F935B981791F24D001FFE01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B971791F24D001FFE01 /* CoreGraphics.framework */; };
-		8F935B9E1791F24D001FFE01 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F935B9C1791F24D001FFE01 /* InfoPlist.strings */; };
-		8F935BA01791F24D001FFE01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935B9F1791F24D001FFE01 /* main.m */; };
-		8F935BA41791F24D001FFE01 /* GRCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BA31791F24D001FFE01 /* GRCAppDelegate.m */; };
-		8F935BA61791F24D001FFE01 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BA51791F24D001FFE01 /* Default.png */; };
-		8F935BA81791F24D001FFE01 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BA71791F24D001FFE01 /* Default@2x.png */; };
-		8F935BAA1791F24D001FFE01 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BA91791F24D001FFE01 /* Default-568h@2x.png */; };
-		8F935BB31791F24D001FFE01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B931791F24D001FFE01 /* UIKit.framework */; };
-		8F935BB41791F24D001FFE01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B951791F24D001FFE01 /* Foundation.framework */; };
-		8F935BBC1791F24D001FFE01 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BBA1791F24D001FFE01 /* InfoPlist.strings */; };
-		8F935BBF1791F24D001FFE01 /* GaranchuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BBE1791F24D001FFE01 /* GaranchuTests.m */; };
-		8F935BC91791F2ED001FFE01 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F935BC81791F2ED001FFE01 /* iPad.storyboard */; };
-		8F935BCC1791F570001FFE01 /* GRCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935BCB1791F570001FFE01 /* GRCLoginViewController.m */; };
-		8FA5BB0419151409003CF694 /* GRCStageViewController+Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5BB0319151409003CF694 /* GRCStageViewController+Settings.m */; };
-		8FA5BB071918FE65003CF694 /* GRCContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5BB061918FE65003CF694 /* GRCContainerView.m */; };
-		8FAD8C4317D6540F002F0D50 /* GRCSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD8C4217D6540E002F0D50 /* GRCSearchResultViewController.m */; };
-		8FAFF06117E5E7BE008CDA2F /* GRCStageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF06017E5E7BE008CDA2F /* GRCStageView.m */; };
-		8FAFF06417E5FDAA008CDA2F /* SearchConditionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF06317E5FDAA008CDA2F /* SearchConditionList.m */; };
-		8FAFF07217E5FE3A008CDA2F /* VideoProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF06F17E5FE3A008CDA2F /* VideoProgram.m */; };
-		8FAFF07317E5FE3A008CDA2F /* WatchHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF07117E5FE3A008CDA2F /* WatchHistory.m */; };
-		8FAFF07717E6066D008CDA2F /* GRCCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF07617E6066C008CDA2F /* GRCCoreData.m */; };
-		8FAFF07A17E6FFFB008CDA2F /* GRCActivityItemProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF07917E6FFFB008CDA2F /* GRCActivityItemProvider.m */; };
-		8FAFF08117E757D1008CDA2F /* GRCVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAFF08017E757D1008CDA2F /* GRCVideoDetailViewController.m */; };
-		8FB6262D17C5037800EC5A0E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262917C5037800EC5A0E /* Icon.png */; };
-		8FB6262E17C5037800EC5A0E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6262A17C5037800EC5A0E /* Icon@2x.png */; };
-		8FC3C6FC17ECCEE8008A5CCD /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC3C6F817ECCEE8008A5CCD /* Icon-60.png */; };
-		8FC3C6FD17ECCEE8008A5CCD /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC3C6F917ECCEE8008A5CCD /* Icon-60@2x.png */; };
-		8FC3C6FE17ECCEE8008A5CCD /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC3C6FA17ECCEE8008A5CCD /* Icon-76.png */; };
-		8FC3C6FF17ECCEE8008A5CCD /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC3C6FB17ECCEE8008A5CCD /* Icon-76@2x.png */; };
-		8FD7D8FA182AE75700A5DF2A /* WZYGaraponTvProgram+Garanchu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD7D8F9182AE75700A5DF2A /* WZYGaraponTvProgram+Garanchu.m */; };
-		8FD92BAA18031C0B0017172F /* web in Resources */ = {isa = PBXBuildFile; fileRef = 8FD92BA918031C0B0017172F /* web */; };
-		8FDDC2C117EDF7D700D639E6 /* Default-Landscape-768h.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2B917EDF7D700D639E6 /* Default-Landscape-768h.png */; };
-		8FDDC2C217EDF7D700D639E6 /* Default-Landscape-768h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2BA17EDF7D700D639E6 /* Default-Landscape-768h@2x.png */; };
-		8FDDC2C517EDF7D700D639E6 /* Default-Portrait-1024h.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2BD17EDF7D700D639E6 /* Default-Portrait-1024h.png */; };
-		8FDDC2C617EDF7D700D639E6 /* Default-Portrait-1024h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDDC2BE17EDF7D700D639E6 /* Default-Portrait-1024h@2x.png */; };
-		8FF1B0EA179C551100BF9785 /* GaranchuResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0E9179C551100BF9785 /* GaranchuResources.bundle */; };
-		8FF1B0ED179CD32A00BF9785 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1B0EF179CD32A00BF9785 /* Localizable.strings */; };
-		8FF5973517C98B0200A9E8E9 /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8FF5973417C98B0200A9E8E9 /* InAppSettings.bundle */; };
-		8FFD027E17DE2D6D00583B1E /* GRCGaraponTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFD027D17DE2D6D00583B1E /* GRCGaraponTabController.m */; };
-		8FFD028117DE379600583B1E /* GRCSearchSuggestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFD028017DE379600583B1E /* GRCSearchSuggestViewController.m */; };
-		DEAD08CC53D6433E97303441 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FD30FE5BBFD4D808BB97071 /* libPods.a */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		8F935BB51791F24D001FFE01 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8F935B881791F24D001FFE01 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8F935B8F1791F24D001FFE01;
-			remoteInfo = Garanchu;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		5FD30FE5BBFD4D808BB97071 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F1A26AF18D46909005DB79A /* GRCTabletStageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCTabletStageViewController.h; sourceTree = "<group>"; };
-		8F1A26B018D46909005DB79A /* GRCTabletStageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCTabletStageViewController.m; sourceTree = "<group>"; };
-		8F1A26B218D46BF2005DB79A /* GRCStageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCStageViewController.h; sourceTree = "<group>"; };
-		8F1A26B318D46BF2005DB79A /* GRCStageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCStageViewController.m; sourceTree = "<group>"; };
-		8F1A26B518D46FC9005DB79A /* GRCNaviViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCNaviViewController.h; sourceTree = "<group>"; };
-		8F1A26B618D46FC9005DB79A /* GRCNaviViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCNaviViewController.m; sourceTree = "<group>"; };
-		8F1A26B818D4988A005DB79A /* GRCPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCPlayerViewController.h; sourceTree = "<group>"; };
-		8F1A26B918D4988A005DB79A /* GRCPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCPlayerViewController.m; sourceTree = "<group>"; };
-		8F1A26BB18D4A625005DB79A /* GRCTabletPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCTabletPlayerViewController.h; sourceTree = "<group>"; };
-		8F1A26BC18D4A625005DB79A /* GRCTabletPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCTabletPlayerViewController.m; sourceTree = "<group>"; };
-		8F3C22ED17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Garanchu.h"; sourceTree = "<group>"; };
-		8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Garanchu.m"; sourceTree = "<group>"; };
-		8F59FC4F1791F73C00EEA418 /* GRCVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCVideoViewController.h; sourceTree = "<group>"; };
-		8F59FC501791F73C00EEA418 /* GRCVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCVideoViewController.m; sourceTree = "<group>"; };
-		8F59FC521792C21E00EEA418 /* GRCGaranchuUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCGaranchuUser.h; sourceTree = "<group>"; };
-		8F59FC531792C21E00EEA418 /* GRCGaranchuUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCGaranchuUser.m; sourceTree = "<group>"; };
-		8F59FC551792CC2E00EEA418 /* GRCGaranchu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCGaranchu.h; sourceTree = "<group>"; };
-		8F59FC561792CC2E00EEA418 /* GRCGaranchu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCGaranchu.m; sourceTree = "<group>"; };
-		8F59FC5C1792DFA700EEA418 /* GRCVideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCVideoPlayerView.h; sourceTree = "<group>"; };
-		8F59FC5D1792DFA700EEA418 /* GRCVideoPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCVideoPlayerView.m; sourceTree = "<group>"; };
-		8F59FCAF1793D77A00EEA418 /* GRCMenuNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCMenuNavigationViewController.h; sourceTree = "<group>"; };
-		8F59FCB01793D77B00EEA418 /* GRCMenuNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCMenuNavigationViewController.m; sourceTree = "<group>"; };
-		8F59FCB21793D9FB00EEA418 /* GRCIndexMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCIndexMenuViewController.h; sourceTree = "<group>"; };
-		8F59FCB31793D9FC00EEA418 /* GRCIndexMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCIndexMenuViewController.m; sourceTree = "<group>"; };
-		8F59FCB51794149100EEA418 /* GRCIndexMenuViewController+Static.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GRCIndexMenuViewController+Static.h"; sourceTree = "<group>"; };
-		8F59FCB61794149200EEA418 /* GRCIndexMenuViewController+Static.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GRCIndexMenuViewController+Static.m"; sourceTree = "<group>"; };
-		8F66B13F1819D6A600867A07 /* NSURL+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QueryString.h"; sourceTree = "<group>"; };
-		8F66B1401819D6A600867A07 /* NSURL+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QueryString.m"; sourceTree = "<group>"; };
-		8F66B1421819E6FF00867A07 /* GRCAppSettingsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCAppSettingsWebViewController.h; sourceTree = "<group>"; };
-		8F66B1431819E6FF00867A07 /* GRCAppSettingsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCAppSettingsWebViewController.m; sourceTree = "<group>"; };
-		8F72AFD317E0EBD7007E1715 /* Garanchu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Garanchu.xcdatamodel; sourceTree = "<group>"; };
-		8F72AFD517E0EC65007E1715 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		8F72B01817E58C4D007E1715 /* SearchCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCondition.h; sourceTree = "<group>"; };
-		8F72B01917E58C4D007E1715 /* SearchCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCondition.m; sourceTree = "<group>"; };
-		8F809665191DDD9600A2D01B /* GRCPhoneStageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCPhoneStageViewController.h; sourceTree = "<group>"; };
-		8F809666191DDD9600A2D01B /* GRCPhoneStageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCPhoneStageViewController.m; sourceTree = "<group>"; };
-		8F8C4973182F9CF600329DFC /* GRCVideoCaptionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCVideoCaptionListViewController.h; sourceTree = "<group>"; };
-		8F8C4974182F9CF600329DFC /* GRCVideoCaptionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCVideoCaptionListViewController.m; sourceTree = "<group>"; };
-		8F8C4976183019F700329DFC /* GRCGaranchuBuild.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GRCGaranchuBuild.h; sourceTree = "<group>"; };
-		8F935B901791F24D001FFE01 /* Garanchu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Garanchu.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F935B931791F24D001FFE01 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		8F935B951791F24D001FFE01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		8F935B971791F24D001FFE01 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		8F935B9B1791F24D001FFE01 /* Garanchu-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Garanchu-Info.plist"; sourceTree = "<group>"; };
-		8F935B9F1791F24D001FFE01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8F935BA11791F24D001FFE01 /* Garanchu-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Garanchu-Prefix.pch"; sourceTree = "<group>"; };
-		8F935BA21791F24D001FFE01 /* GRCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GRCAppDelegate.h; sourceTree = "<group>"; };
-		8F935BA31791F24D001FFE01 /* GRCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GRCAppDelegate.m; sourceTree = "<group>"; };
-		8F935BA51791F24D001FFE01 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		8F935BA71791F24D001FFE01 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		8F935BA91791F24D001FFE01 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		8F935BB01791F24D001FFE01 /* GaranchuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GaranchuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F935BB91791F24D001FFE01 /* GaranchuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GaranchuTests-Info.plist"; sourceTree = "<group>"; };
-		8F935BBD1791F24D001FFE01 /* GaranchuTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GaranchuTests.h; sourceTree = "<group>"; };
-		8F935BBE1791F24D001FFE01 /* GaranchuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GaranchuTests.m; sourceTree = "<group>"; };
-		8F935BC81791F2ED001FFE01 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
-		8F935BCA1791F570001FFE01 /* GRCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCLoginViewController.h; sourceTree = "<group>"; };
-		8F935BCB1791F570001FFE01 /* GRCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCLoginViewController.m; sourceTree = "<group>"; };
-		8FA5BB011915094F003CF694 /* GRCModalViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GRCModalViewManager.h; sourceTree = "<group>"; };
-		8FA5BB0219151409003CF694 /* GRCStageViewController+Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GRCStageViewController+Settings.h"; sourceTree = "<group>"; };
-		8FA5BB0319151409003CF694 /* GRCStageViewController+Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GRCStageViewController+Settings.m"; sourceTree = "<group>"; };
-		8FA5BB051918FE65003CF694 /* GRCContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCContainerView.h; sourceTree = "<group>"; };
-		8FA5BB061918FE65003CF694 /* GRCContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCContainerView.m; sourceTree = "<group>"; };
-		8FAD8C4117D6540E002F0D50 /* GRCSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCSearchResultViewController.h; sourceTree = "<group>"; };
-		8FAD8C4217D6540E002F0D50 /* GRCSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCSearchResultViewController.m; sourceTree = "<group>"; };
-		8FAFF05F17E5E7BD008CDA2F /* GRCStageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCStageView.h; sourceTree = "<group>"; };
-		8FAFF06017E5E7BE008CDA2F /* GRCStageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCStageView.m; sourceTree = "<group>"; };
-		8FAFF06217E5FDAA008CDA2F /* SearchConditionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConditionList.h; sourceTree = "<group>"; };
-		8FAFF06317E5FDAA008CDA2F /* SearchConditionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchConditionList.m; sourceTree = "<group>"; };
-		8FAFF06E17E5FE3A008CDA2F /* VideoProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoProgram.h; sourceTree = "<group>"; };
-		8FAFF06F17E5FE3A008CDA2F /* VideoProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoProgram.m; sourceTree = "<group>"; };
-		8FAFF07017E5FE3A008CDA2F /* WatchHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchHistory.h; sourceTree = "<group>"; };
-		8FAFF07117E5FE3A008CDA2F /* WatchHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchHistory.m; sourceTree = "<group>"; };
-		8FAFF07517E6066C008CDA2F /* GRCCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCCoreData.h; sourceTree = "<group>"; };
-		8FAFF07617E6066C008CDA2F /* GRCCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCCoreData.m; sourceTree = "<group>"; };
-		8FAFF07817E6FFFB008CDA2F /* GRCActivityItemProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCActivityItemProvider.h; sourceTree = "<group>"; };
-		8FAFF07917E6FFFB008CDA2F /* GRCActivityItemProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCActivityItemProvider.m; sourceTree = "<group>"; };
-		8FAFF07F17E757D0008CDA2F /* GRCVideoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCVideoDetailViewController.h; sourceTree = "<group>"; };
-		8FAFF08017E757D1008CDA2F /* GRCVideoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCVideoDetailViewController.m; sourceTree = "<group>"; };
-		8FB6262917C5037800EC5A0E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		8FB6262A17C5037800EC5A0E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		8FC3C6F817ECCEE8008A5CCD /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
-		8FC3C6F917ECCEE8008A5CCD /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
-		8FC3C6FA17ECCEE8008A5CCD /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
-		8FC3C6FB17ECCEE8008A5CCD /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
-		8FD7D8F8182AE75700A5DF2A /* WZYGaraponTvProgram+Garanchu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WZYGaraponTvProgram+Garanchu.h"; sourceTree = "<group>"; };
-		8FD7D8F9182AE75700A5DF2A /* WZYGaraponTvProgram+Garanchu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WZYGaraponTvProgram+Garanchu.m"; sourceTree = "<group>"; };
-		8FD92BA918031C0B0017172F /* web */ = {isa = PBXFileReference; lastKnownFileType = folder; path = web; sourceTree = "<group>"; };
-		8FDDC2B917EDF7D700D639E6 /* Default-Landscape-768h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-768h.png"; sourceTree = "<group>"; };
-		8FDDC2BA17EDF7D700D639E6 /* Default-Landscape-768h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-768h@2x.png"; sourceTree = "<group>"; };
-		8FDDC2BD17EDF7D700D639E6 /* Default-Portrait-1024h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait-1024h.png"; sourceTree = "<group>"; };
-		8FDDC2BE17EDF7D700D639E6 /* Default-Portrait-1024h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait-1024h@2x.png"; sourceTree = "<group>"; };
-		8FDDC2C917EE013100D639E6 /* GRCGaranchuConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCGaranchuConfig.h; sourceTree = "<group>"; };
-		8FF1B0E9179C551100BF9785 /* GaranchuResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GaranchuResources.bundle; sourceTree = "<group>"; };
-		8FF1B0F0179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8FF1B0F1179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8FF1B0F2179CD36A00BF9785 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8FF5973417C98B0200A9E8E9 /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppSettings.bundle; sourceTree = "<group>"; };
-		8FFD027C17DE2D6D00583B1E /* GRCGaraponTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCGaraponTabController.h; sourceTree = "<group>"; };
-		8FFD027D17DE2D6D00583B1E /* GRCGaraponTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCGaraponTabController.m; sourceTree = "<group>"; };
-		8FFD027F17DE379600583B1E /* GRCSearchSuggestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCSearchSuggestViewController.h; sourceTree = "<group>"; };
-		8FFD028017DE379600583B1E /* GRCSearchSuggestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCSearchSuggestViewController.m; sourceTree = "<group>"; };
-		96F8EB6C90064691BC69EB19 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		8F935B8D1791F24D001FFE01 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8F72AFD617E0EC65007E1715 /* CoreData.framework in Frameworks */,
-				8F935B941791F24D001FFE01 /* UIKit.framework in Frameworks */,
-				8F935B961791F24D001FFE01 /* Foundation.framework in Frameworks */,
-				8F935B981791F24D001FFE01 /* CoreGraphics.framework in Frameworks */,
-				DEAD08CC53D6433E97303441 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8F935BAC1791F24D001FFE01 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8F935BB31791F24D001FFE01 /* UIKit.framework in Frameworks */,
-				8F935BB41791F24D001FFE01 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		8F935B871791F24D001FFE01 = {
-			isa = PBXGroup;
-			children = (
-				8F935B991791F24D001FFE01 /* Garanchu */,
-				8F935BB71791F24D001FFE01 /* GaranchuTests */,
-				8F935B921791F24D001FFE01 /* Frameworks */,
-				8F935B911791F24D001FFE01 /* Products */,
-				96F8EB6C90064691BC69EB19 /* Pods.xcconfig */,
-			);
-			sourceTree = "<group>";
-		};
-		8F935B911791F24D001FFE01 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8F935B901791F24D001FFE01 /* Garanchu.app */,
-				8F935BB01791F24D001FFE01 /* GaranchuTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		8F935B921791F24D001FFE01 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8F72AFD517E0EC65007E1715 /* CoreData.framework */,
-				8F935B931791F24D001FFE01 /* UIKit.framework */,
-				8F935B951791F24D001FFE01 /* Foundation.framework */,
-				8F935B971791F24D001FFE01 /* CoreGraphics.framework */,
-				5FD30FE5BBFD4D808BB97071 /* libPods.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8F935B991791F24D001FFE01 /* Garanchu */ = {
-			isa = PBXGroup;
-			children = (
-				8FD92BA918031C0B0017172F /* web */,
-				8FAFF07417E5FE76008CDA2F /* NSManagedObject */,
-				8F935B9A1791F24D001FFE01 /* Supporting Files */,
-				8F935BC81791F2ED001FFE01 /* iPad.storyboard */,
-				8F8C4976183019F700329DFC /* GRCGaranchuBuild.h */,
-				8F66B13F1819D6A600867A07 /* NSURL+QueryString.h */,
-				8F66B1401819D6A600867A07 /* NSURL+QueryString.m */,
-				8F3C22ED17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.h */,
-				8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */,
-				8FD7D8F8182AE75700A5DF2A /* WZYGaraponTvProgram+Garanchu.h */,
-				8FD7D8F9182AE75700A5DF2A /* WZYGaraponTvProgram+Garanchu.m */,
-				8F935BA21791F24D001FFE01 /* GRCAppDelegate.h */,
-				8F935BA31791F24D001FFE01 /* GRCAppDelegate.m */,
-				8F59FC4F1791F73C00EEA418 /* GRCVideoViewController.h */,
-				8F59FC501791F73C00EEA418 /* GRCVideoViewController.m */,
-				8FAFF05F17E5E7BD008CDA2F /* GRCStageView.h */,
-				8FAFF06017E5E7BE008CDA2F /* GRCStageView.m */,
-				8F935BCA1791F570001FFE01 /* GRCLoginViewController.h */,
-				8F935BCB1791F570001FFE01 /* GRCLoginViewController.m */,
-				8FDDC2C917EE013100D639E6 /* GRCGaranchuConfig.h */,
-				8F59FC551792CC2E00EEA418 /* GRCGaranchu.h */,
-				8F59FC561792CC2E00EEA418 /* GRCGaranchu.m */,
-				8F59FC521792C21E00EEA418 /* GRCGaranchuUser.h */,
-				8F59FC531792C21E00EEA418 /* GRCGaranchuUser.m */,
-				8F59FCAF1793D77A00EEA418 /* GRCMenuNavigationViewController.h */,
-				8F59FCB01793D77B00EEA418 /* GRCMenuNavigationViewController.m */,
-				8F59FCB21793D9FB00EEA418 /* GRCIndexMenuViewController.h */,
-				8F59FCB31793D9FC00EEA418 /* GRCIndexMenuViewController.m */,
-				8F59FCB51794149100EEA418 /* GRCIndexMenuViewController+Static.h */,
-				8F59FCB61794149200EEA418 /* GRCIndexMenuViewController+Static.m */,
-				8FFD027F17DE379600583B1E /* GRCSearchSuggestViewController.h */,
-				8FFD028017DE379600583B1E /* GRCSearchSuggestViewController.m */,
-				8FAD8C4117D6540E002F0D50 /* GRCSearchResultViewController.h */,
-				8FAD8C4217D6540E002F0D50 /* GRCSearchResultViewController.m */,
-				8FFD027C17DE2D6D00583B1E /* GRCGaraponTabController.h */,
-				8FFD027D17DE2D6D00583B1E /* GRCGaraponTabController.m */,
-				8FAFF07817E6FFFB008CDA2F /* GRCActivityItemProvider.h */,
-				8FAFF07917E6FFFB008CDA2F /* GRCActivityItemProvider.m */,
-				8F66B1421819E6FF00867A07 /* GRCAppSettingsWebViewController.h */,
-				8F66B1431819E6FF00867A07 /* GRCAppSettingsWebViewController.m */,
-				8FA5BB011915094F003CF694 /* GRCModalViewManager.h */,
-				8F1A26B218D46BF2005DB79A /* GRCStageViewController.h */,
-				8F1A26B318D46BF2005DB79A /* GRCStageViewController.m */,
-				8FA5BB0219151409003CF694 /* GRCStageViewController+Settings.h */,
-				8FA5BB0319151409003CF694 /* GRCStageViewController+Settings.m */,
-				8F809665191DDD9600A2D01B /* GRCPhoneStageViewController.h */,
-				8F809666191DDD9600A2D01B /* GRCPhoneStageViewController.m */,
-				8F1A26AF18D46909005DB79A /* GRCTabletStageViewController.h */,
-				8F1A26B018D46909005DB79A /* GRCTabletStageViewController.m */,
-				8F1A26B518D46FC9005DB79A /* GRCNaviViewController.h */,
-				8F1A26B618D46FC9005DB79A /* GRCNaviViewController.m */,
-				8F1A26B818D4988A005DB79A /* GRCPlayerViewController.h */,
-				8F1A26B918D4988A005DB79A /* GRCPlayerViewController.m */,
-				8F1A26BB18D4A625005DB79A /* GRCTabletPlayerViewController.h */,
-				8F1A26BC18D4A625005DB79A /* GRCTabletPlayerViewController.m */,
-				8FAFF07F17E757D0008CDA2F /* GRCVideoDetailViewController.h */,
-				8FAFF08017E757D1008CDA2F /* GRCVideoDetailViewController.m */,
-				8F8C4973182F9CF600329DFC /* GRCVideoCaptionListViewController.h */,
-				8F8C4974182F9CF600329DFC /* GRCVideoCaptionListViewController.m */,
-				8F59FC5C1792DFA700EEA418 /* GRCVideoPlayerView.h */,
-				8F59FC5D1792DFA700EEA418 /* GRCVideoPlayerView.m */,
-				8FA5BB051918FE65003CF694 /* GRCContainerView.h */,
-				8FA5BB061918FE65003CF694 /* GRCContainerView.m */,
-			);
-			path = Garanchu;
-			sourceTree = "<group>";
-		};
-		8F935B9A1791F24D001FFE01 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				8F935BA51791F24D001FFE01 /* Default.png */,
-				8F935BA71791F24D001FFE01 /* Default@2x.png */,
-				8F935BA91791F24D001FFE01 /* Default-568h@2x.png */,
-				8FDDC2B917EDF7D700D639E6 /* Default-Landscape-768h.png */,
-				8FDDC2BA17EDF7D700D639E6 /* Default-Landscape-768h@2x.png */,
-				8FDDC2BD17EDF7D700D639E6 /* Default-Portrait-1024h.png */,
-				8FDDC2BE17EDF7D700D639E6 /* Default-Portrait-1024h@2x.png */,
-				8FC3C6F817ECCEE8008A5CCD /* Icon-60.png */,
-				8FC3C6F917ECCEE8008A5CCD /* Icon-60@2x.png */,
-				8FC3C6FA17ECCEE8008A5CCD /* Icon-76.png */,
-				8FC3C6FB17ECCEE8008A5CCD /* Icon-76@2x.png */,
-				8FB6262917C5037800EC5A0E /* Icon.png */,
-				8FB6262A17C5037800EC5A0E /* Icon@2x.png */,
-				8FF1B0E9179C551100BF9785 /* GaranchuResources.bundle */,
-				8F935B9B1791F24D001FFE01 /* Garanchu-Info.plist */,
-				8F935B9C1791F24D001FFE01 /* InfoPlist.strings */,
-				8F935B9F1791F24D001FFE01 /* main.m */,
-				8F935BA11791F24D001FFE01 /* Garanchu-Prefix.pch */,
-				8FF1B0EF179CD32A00BF9785 /* Localizable.strings */,
-				8FF5973417C98B0200A9E8E9 /* InAppSettings.bundle */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8F935BB71791F24D001FFE01 /* GaranchuTests */ = {
-			isa = PBXGroup;
-			children = (
-				8F935BBD1791F24D001FFE01 /* GaranchuTests.h */,
-				8F935BBE1791F24D001FFE01 /* GaranchuTests.m */,
-				8F935BB81791F24D001FFE01 /* Supporting Files */,
-			);
-			path = GaranchuTests;
-			sourceTree = "<group>";
-		};
-		8F935BB81791F24D001FFE01 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				8F935BB91791F24D001FFE01 /* GaranchuTests-Info.plist */,
-				8F935BBA1791F24D001FFE01 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8FAFF07417E5FE76008CDA2F /* NSManagedObject */ = {
-			isa = PBXGroup;
-			children = (
-				8F72AFD217E0EBD7007E1715 /* Garanchu.xcdatamodeld */,
-				8FAFF07517E6066C008CDA2F /* GRCCoreData.h */,
-				8FAFF07617E6066C008CDA2F /* GRCCoreData.m */,
-				8FAFF06E17E5FE3A008CDA2F /* VideoProgram.h */,
-				8FAFF06F17E5FE3A008CDA2F /* VideoProgram.m */,
-				8FAFF07017E5FE3A008CDA2F /* WatchHistory.h */,
-				8FAFF07117E5FE3A008CDA2F /* WatchHistory.m */,
-				8F72B01817E58C4D007E1715 /* SearchCondition.h */,
-				8F72B01917E58C4D007E1715 /* SearchCondition.m */,
-				8FAFF06217E5FDAA008CDA2F /* SearchConditionList.h */,
-				8FAFF06317E5FDAA008CDA2F /* SearchConditionList.m */,
-			);
-			name = NSManagedObject;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		8F935B8F1791F24D001FFE01 /* Garanchu */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8F935BC21791F24D001FFE01 /* Build configuration list for PBXNativeTarget "Garanchu" */;
-			buildPhases = (
-				AB20749BE8BF42EAB916ED49 /* Check Pods Manifest.lock */,
-				8F935B8C1791F24D001FFE01 /* Sources */,
-				8F935B8D1791F24D001FFE01 /* Frameworks */,
-				8F935B8E1791F24D001FFE01 /* Resources */,
-				BEDB7EB589314F4F827CECE1 /* Copy Pods Resources */,
-				8F8C4972182F9B9400329DFC /* Remove English Resouces */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Garanchu;
-			productName = Garanchu;
-			productReference = 8F935B901791F24D001FFE01 /* Garanchu.app */;
-			productType = "com.apple.product-type.application";
-		};
-		8F935BAF1791F24D001FFE01 /* GaranchuTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8F935BC51791F24D001FFE01 /* Build configuration list for PBXNativeTarget "GaranchuTests" */;
-			buildPhases = (
-				8F935BAB1791F24D001FFE01 /* Sources */,
-				8F935BAC1791F24D001FFE01 /* Frameworks */,
-				8F935BAD1791F24D001FFE01 /* Resources */,
-				8F935BAE1791F24D001FFE01 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8F935BB61791F24D001FFE01 /* PBXTargetDependency */,
-			);
-			name = GaranchuTests;
-			productName = GaranchuTests;
-			productReference = 8F935BB01791F24D001FFE01 /* GaranchuTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		8F935B881791F24D001FFE01 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				CLASSPREFIX = GRC;
-				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = makoto_kw;
-			};
-			buildConfigurationList = 8F935B8B1791F24D001FFE01 /* Build configuration list for PBXProject "Garanchu" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				ja,
-			);
-			mainGroup = 8F935B871791F24D001FFE01;
-			productRefGroup = 8F935B911791F24D001FFE01 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				8F935B8F1791F24D001FFE01 /* Garanchu */,
-				8F935BAF1791F24D001FFE01 /* GaranchuTests */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		8F935B8E1791F24D001FFE01 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8FDDC2C517EDF7D700D639E6 /* Default-Portrait-1024h.png in Resources */,
-				8F935B9E1791F24D001FFE01 /* InfoPlist.strings in Resources */,
-				8FDDC2C617EDF7D700D639E6 /* Default-Portrait-1024h@2x.png in Resources */,
-				8FC3C6FE17ECCEE8008A5CCD /* Icon-76.png in Resources */,
-				8F935BA61791F24D001FFE01 /* Default.png in Resources */,
-				8F935BA81791F24D001FFE01 /* Default@2x.png in Resources */,
-				8FDDC2C117EDF7D700D639E6 /* Default-Landscape-768h.png in Resources */,
-				8F935BAA1791F24D001FFE01 /* Default-568h@2x.png in Resources */,
-				8FD92BAA18031C0B0017172F /* web in Resources */,
-				8F935BC91791F2ED001FFE01 /* iPad.storyboard in Resources */,
-				8FC3C6FF17ECCEE8008A5CCD /* Icon-76@2x.png in Resources */,
-				8FF1B0EA179C551100BF9785 /* GaranchuResources.bundle in Resources */,
-				8FF1B0ED179CD32A00BF9785 /* Localizable.strings in Resources */,
-				8FB6262D17C5037800EC5A0E /* Icon.png in Resources */,
-				8FB6262E17C5037800EC5A0E /* Icon@2x.png in Resources */,
-				8FC3C6FD17ECCEE8008A5CCD /* Icon-60@2x.png in Resources */,
-				8FF5973517C98B0200A9E8E9 /* InAppSettings.bundle in Resources */,
-				8FC3C6FC17ECCEE8008A5CCD /* Icon-60.png in Resources */,
-				8FDDC2C217EDF7D700D639E6 /* Default-Landscape-768h@2x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8F935BAD1791F24D001FFE01 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8F935BBC1791F24D001FFE01 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		8F8C4972182F9B9400329DFC /* Remove English Resouces */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Remove English Resouces";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ -d ${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/en.lproj ] ; then\n    rm -r \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/en.lproj\"\nfi";
-		};
-		8F935BAE1791F24D001FFE01 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-		AB20749BE8BF42EAB916ED49 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-		};
-		BEDB7EB589314F4F827CECE1 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		8F935B8C1791F24D001FFE01 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8F935BA01791F24D001FFE01 /* main.m in Sources */,
-				8F935BA41791F24D001FFE01 /* GRCAppDelegate.m in Sources */,
-				8F66B1411819D6A600867A07 /* NSURL+QueryString.m in Sources */,
-				8F1A26B718D46FC9005DB79A /* GRCNaviViewController.m in Sources */,
-				8F935BCC1791F570001FFE01 /* GRCLoginViewController.m in Sources */,
-				8F59FC511791F73C00EEA418 /* GRCVideoViewController.m in Sources */,
-				8F59FC541792C21E00EEA418 /* GRCGaranchuUser.m in Sources */,
-				8F1A26B418D46BF2005DB79A /* GRCStageViewController.m in Sources */,
-				8F59FC571792CC2F00EEA418 /* GRCGaranchu.m in Sources */,
-				8FD7D8FA182AE75700A5DF2A /* WZYGaraponTvProgram+Garanchu.m in Sources */,
-				8F1A26B118D46909005DB79A /* GRCTabletStageViewController.m in Sources */,
-				8F59FC5E1792DFA700EEA418 /* GRCVideoPlayerView.m in Sources */,
-				8F59FCB11793D77B00EEA418 /* GRCMenuNavigationViewController.m in Sources */,
-				8F59FCB41793D9FC00EEA418 /* GRCIndexMenuViewController.m in Sources */,
-				8F59FCB71794149300EEA418 /* GRCIndexMenuViewController+Static.m in Sources */,
-				8F1A26BA18D4988A005DB79A /* GRCPlayerViewController.m in Sources */,
-				8F66B1441819E6FF00867A07 /* GRCAppSettingsWebViewController.m in Sources */,
-				8F3C22EF17B38FE000D35CF2 /* MBProgressHUD+Garanchu.m in Sources */,
-				8FAD8C4317D6540F002F0D50 /* GRCSearchResultViewController.m in Sources */,
-				8FA5BB071918FE65003CF694 /* GRCContainerView.m in Sources */,
-				8FFD027E17DE2D6D00583B1E /* GRCGaraponTabController.m in Sources */,
-				8FFD028117DE379600583B1E /* GRCSearchSuggestViewController.m in Sources */,
-				8F72AFD417E0EBD7007E1715 /* Garanchu.xcdatamodeld in Sources */,
-				8F72B01A17E58C4E007E1715 /* SearchCondition.m in Sources */,
-				8FAFF06117E5E7BE008CDA2F /* GRCStageView.m in Sources */,
-				8F8C4975182F9CF600329DFC /* GRCVideoCaptionListViewController.m in Sources */,
-				8FAFF06417E5FDAA008CDA2F /* SearchConditionList.m in Sources */,
-				8FAFF07217E5FE3A008CDA2F /* VideoProgram.m in Sources */,
-				8FAFF07317E5FE3A008CDA2F /* WatchHistory.m in Sources */,
-				8FAFF07717E6066D008CDA2F /* GRCCoreData.m in Sources */,
-				8FA5BB0419151409003CF694 /* GRCStageViewController+Settings.m in Sources */,
-				8FAFF07A17E6FFFB008CDA2F /* GRCActivityItemProvider.m in Sources */,
-				8F1A26BD18D4A625005DB79A /* GRCTabletPlayerViewController.m in Sources */,
-				8F809667191DDD9600A2D01B /* GRCPhoneStageViewController.m in Sources */,
-				8FAFF08117E757D1008CDA2F /* GRCVideoDetailViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8F935BAB1791F24D001FFE01 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8F935BBF1791F24D001FFE01 /* GaranchuTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		8F935BB61791F24D001FFE01 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8F935B8F1791F24D001FFE01 /* Garanchu */;
-			targetProxy = 8F935BB51791F24D001FFE01 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		8F935B9C1791F24D001FFE01 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8FF1B0F0179CD36A00BF9785 /* ja */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		8F935BBA1791F24D001FFE01 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8FF1B0F2179CD36A00BF9785 /* ja */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		8FF1B0EF179CD32A00BF9785 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8FF1B0F1179CD36A00BF9785 /* ja */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		8F935BC01791F24D001FFE01 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		8F935BC11791F24D001FFE01 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		8F935BC31791F24D001FFE01 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96F8EB6C90064691BC69EB19 /* Pods.xcconfig */;
-			buildSettings = {
-				BUNDLE_DISPLAY_NAME_SUFFIX = D;
-				BUNDLE_IDENTIFIER_SUFFIX = .debug;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
-				INFOPLIST_FILE = "Garanchu/Garanchu-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		8F935BC41791F24D001FFE01 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96F8EB6C90064691BC69EB19 /* Pods.xcconfig */;
-			buildSettings = {
-				BUNDLE_DISPLAY_NAME_SUFFIX = "";
-				BUNDLE_IDENTIFIER_SUFFIX = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
-				INFOPLIST_FILE = "Garanchu/Garanchu-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		8F935BC61791F24D001FFE01 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96F8EB6C90064691BC69EB19 /* Pods.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Garanchu.app/Garanchu";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
-				INFOPLIST_FILE = "GaranchuTests/GaranchuTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Debug;
-		};
-		8F935BC71791F24D001FFE01 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Garanchu.app/Garanchu";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
-				INFOPLIST_FILE = "GaranchuTests/GaranchuTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		8F935B8B1791F24D001FFE01 /* Build configuration list for PBXProject "Garanchu" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8F935BC01791F24D001FFE01 /* Debug */,
-				8F935BC11791F24D001FFE01 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8F935BC21791F24D001FFE01 /* Build configuration list for PBXNativeTarget "Garanchu" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8F935BC31791F24D001FFE01 /* Debug */,
-				8F935BC41791F24D001FFE01 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8F935BC51791F24D001FFE01 /* Build configuration list for PBXNativeTarget "GaranchuTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8F935BC61791F24D001FFE01 /* Debug */,
-				8F935BC71791F24D001FFE01 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		8F72AFD217E0EBD7007E1715 /* Garanchu.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				8F72AFD317E0EBD7007E1715 /* Garanchu.xcdatamodel */,
-			);
-			currentVersion = 8F72AFD317E0EBD7007E1715 /* Garanchu.xcdatamodel */;
-			path = Garanchu.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
-	};
-	rootObject = 8F935B881791F24D001FFE01 /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>5FD30FE5BBFD4D808BB97071</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>84E71A080F79A064121200BC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F1A26AF18D46909005DB79A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCTabletStageViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F1A26B018D46909005DB79A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCTabletStageViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F1A26B118D46909005DB79A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F1A26B018D46909005DB79A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F1A26B218D46BF2005DB79A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCStageViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F1A26B318D46BF2005DB79A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCStageViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F1A26B418D46BF2005DB79A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F1A26B318D46BF2005DB79A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F1A26B518D46FC9005DB79A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCNaviViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F1A26B618D46FC9005DB79A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCNaviViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F1A26B718D46FC9005DB79A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F1A26B618D46FC9005DB79A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F1A26B818D4988A005DB79A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCPlayerViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F1A26B918D4988A005DB79A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCPlayerViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F1A26BA18D4988A005DB79A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F1A26B918D4988A005DB79A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F1A26BB18D4A625005DB79A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCTabletPlayerViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F1A26BC18D4A625005DB79A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCTabletPlayerViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F1A26BD18D4A625005DB79A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F1A26BC18D4A625005DB79A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F3C22ED17B38FDF00D35CF2</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>MBProgressHUD+Garanchu.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F3C22EE17B38FDF00D35CF2</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>MBProgressHUD+Garanchu.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F3C22EF17B38FE000D35CF2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F3C22EE17B38FDF00D35CF2</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F59FC4F1791F73C00EEA418</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCVideoViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F59FC501791F73C00EEA418</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCVideoViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F59FC511791F73C00EEA418</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F59FC501791F73C00EEA418</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F59FC521792C21E00EEA418</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCGaranchuUser.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F59FC531792C21E00EEA418</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCGaranchuUser.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F59FC541792C21E00EEA418</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F59FC531792C21E00EEA418</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F59FC551792CC2E00EEA418</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCGaranchu.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F59FC561792CC2E00EEA418</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCGaranchu.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F59FC571792CC2F00EEA418</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F59FC561792CC2E00EEA418</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F59FC5C1792DFA700EEA418</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCVideoPlayerView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F59FC5D1792DFA700EEA418</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCVideoPlayerView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F59FC5E1792DFA700EEA418</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F59FC5D1792DFA700EEA418</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F59FCAF1793D77A00EEA418</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCMenuNavigationViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F59FCB01793D77B00EEA418</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCMenuNavigationViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F59FCB11793D77B00EEA418</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F59FCB01793D77B00EEA418</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F59FCB21793D9FB00EEA418</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCIndexMenuViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F59FCB31793D9FC00EEA418</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCIndexMenuViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F59FCB41793D9FC00EEA418</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F59FCB31793D9FC00EEA418</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F59FCB51794149100EEA418</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCIndexMenuViewController+Static.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F59FCB61794149200EEA418</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCIndexMenuViewController+Static.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F59FCB71794149300EEA418</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F59FCB61794149200EEA418</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F66B13F1819D6A600867A07</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>NSURL+QueryString.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F66B1401819D6A600867A07</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>NSURL+QueryString.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F66B1411819D6A600867A07</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F66B1401819D6A600867A07</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F66B1421819E6FF00867A07</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCAppSettingsWebViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F66B1431819E6FF00867A07</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCAppSettingsWebViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F66B1441819E6FF00867A07</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F66B1431819E6FF00867A07</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F72AFD217E0EBD7007E1715</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8F72AFD317E0EBD7007E1715</string>
+			</array>
+			<key>currentVersion</key>
+			<string>8F72AFD317E0EBD7007E1715</string>
+			<key>isa</key>
+			<string>XCVersionGroup</string>
+			<key>path</key>
+			<string>Garanchu.xcdatamodeld</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+			<key>versionGroupType</key>
+			<string>wrapper.xcdatamodel</string>
+		</dict>
+		<key>8F72AFD317E0EBD7007E1715</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.xcdatamodel</string>
+			<key>path</key>
+			<string>Garanchu.xcdatamodel</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F72AFD417E0EBD7007E1715</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F72AFD217E0EBD7007E1715</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F72AFD517E0EC65007E1715</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CoreData.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/CoreData.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>8F72AFD617E0EC65007E1715</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F72AFD517E0EC65007E1715</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F72B01817E58C4D007E1715</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>SearchCondition.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F72B01917E58C4D007E1715</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>SearchCondition.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F72B01A17E58C4E007E1715</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F72B01917E58C4D007E1715</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F809665191DDD9600A2D01B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCPhoneStageViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F809666191DDD9600A2D01B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCPhoneStageViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F809667191DDD9600A2D01B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F809666191DDD9600A2D01B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F8C4972182F9B9400329DFC</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Remove English Resouces</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>if [ -d ${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/en.lproj ] ; then
+    rm -r "${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/en.lproj"
+fi</string>
+		</dict>
+		<key>8F8C4973182F9CF600329DFC</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCVideoCaptionListViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F8C4974182F9CF600329DFC</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCVideoCaptionListViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F8C4975182F9CF600329DFC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F8C4974182F9CF600329DFC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F8C4976183019F700329DFC</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCGaranchuBuild.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935B871791F24D001FFE01</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8F935B991791F24D001FFE01</string>
+				<string>8F935BB71791F24D001FFE01</string>
+				<string>8F935B921791F24D001FFE01</string>
+				<string>8F935B911791F24D001FFE01</string>
+				<string>AAE889374C38BB125FFD0795</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935B881791F24D001FFE01</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>CLASSPREFIX</key>
+				<string>GRC</string>
+				<key>LastTestingUpgradeCheck</key>
+				<string>0510</string>
+				<key>LastUpgradeCheck</key>
+				<string>0460</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>makoto_kw</string>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>8F935B8B1791F24D001FFE01</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>ja</string>
+			</array>
+			<key>mainGroup</key>
+			<string>8F935B871791F24D001FFE01</string>
+			<key>productRefGroup</key>
+			<string>8F935B911791F24D001FFE01</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>8F935B8F1791F24D001FFE01</string>
+				<string>8F935BAF1791F24D001FFE01</string>
+			</array>
+		</dict>
+		<key>8F935B8B1791F24D001FFE01</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>8F935BC01791F24D001FFE01</string>
+				<string>8F935BC11791F24D001FFE01</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>8F935B8C1791F24D001FFE01</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>8F935BA01791F24D001FFE01</string>
+				<string>8F935BA41791F24D001FFE01</string>
+				<string>8F66B1411819D6A600867A07</string>
+				<string>8F1A26B718D46FC9005DB79A</string>
+				<string>8F935BCC1791F570001FFE01</string>
+				<string>8F59FC511791F73C00EEA418</string>
+				<string>8F59FC541792C21E00EEA418</string>
+				<string>8F1A26B418D46BF2005DB79A</string>
+				<string>8F59FC571792CC2F00EEA418</string>
+				<string>8FD7D8FA182AE75700A5DF2A</string>
+				<string>8F1A26B118D46909005DB79A</string>
+				<string>8F59FC5E1792DFA700EEA418</string>
+				<string>8F59FCB11793D77B00EEA418</string>
+				<string>8F59FCB41793D9FC00EEA418</string>
+				<string>8F59FCB71794149300EEA418</string>
+				<string>8F1A26BA18D4988A005DB79A</string>
+				<string>8F66B1441819E6FF00867A07</string>
+				<string>8F3C22EF17B38FE000D35CF2</string>
+				<string>8FAD8C4317D6540F002F0D50</string>
+				<string>8FA5BB071918FE65003CF694</string>
+				<string>8FFD027E17DE2D6D00583B1E</string>
+				<string>8FFD028117DE379600583B1E</string>
+				<string>8F72AFD417E0EBD7007E1715</string>
+				<string>8F72B01A17E58C4E007E1715</string>
+				<string>8FAFF06117E5E7BE008CDA2F</string>
+				<string>8F8C4975182F9CF600329DFC</string>
+				<string>8FAFF06417E5FDAA008CDA2F</string>
+				<string>8FAFF07217E5FE3A008CDA2F</string>
+				<string>8FAFF07317E5FE3A008CDA2F</string>
+				<string>8FAFF07717E6066D008CDA2F</string>
+				<string>8FA5BB0419151409003CF694</string>
+				<string>8FAFF07A17E6FFFB008CDA2F</string>
+				<string>8F1A26BD18D4A625005DB79A</string>
+				<string>8F809667191DDD9600A2D01B</string>
+				<string>8FAFF08117E757D1008CDA2F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8F935B8D1791F24D001FFE01</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>8F72AFD617E0EC65007E1715</string>
+				<string>8F935B941791F24D001FFE01</string>
+				<string>8F935B961791F24D001FFE01</string>
+				<string>8F935B981791F24D001FFE01</string>
+				<string>DEAD08CC53D6433E97303441</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8F935B8E1791F24D001FFE01</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>8FDDC2C517EDF7D700D639E6</string>
+				<string>8F935B9E1791F24D001FFE01</string>
+				<string>8FDDC2C617EDF7D700D639E6</string>
+				<string>8FC3C6FE17ECCEE8008A5CCD</string>
+				<string>8F935BA61791F24D001FFE01</string>
+				<string>8F935BA81791F24D001FFE01</string>
+				<string>8FDDC2C117EDF7D700D639E6</string>
+				<string>8F935BAA1791F24D001FFE01</string>
+				<string>8FD92BAA18031C0B0017172F</string>
+				<string>8F935BC91791F2ED001FFE01</string>
+				<string>8FC3C6FF17ECCEE8008A5CCD</string>
+				<string>8FF1B0EA179C551100BF9785</string>
+				<string>8FF1B0ED179CD32A00BF9785</string>
+				<string>8FB6262D17C5037800EC5A0E</string>
+				<string>8FB6262E17C5037800EC5A0E</string>
+				<string>8FC3C6FD17ECCEE8008A5CCD</string>
+				<string>8FF5973517C98B0200A9E8E9</string>
+				<string>8FC3C6FC17ECCEE8008A5CCD</string>
+				<string>8FDDC2C217EDF7D700D639E6</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8F935B8F1791F24D001FFE01</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>8F935BC21791F24D001FFE01</string>
+			<key>buildPhases</key>
+			<array>
+				<string>AB20749BE8BF42EAB916ED49</string>
+				<string>8F935B8C1791F24D001FFE01</string>
+				<string>8F935B8D1791F24D001FFE01</string>
+				<string>8F935B8E1791F24D001FFE01</string>
+				<string>BEDB7EB589314F4F827CECE1</string>
+				<string>8F8C4972182F9B9400329DFC</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Garanchu</string>
+			<key>productName</key>
+			<string>Garanchu</string>
+			<key>productReference</key>
+			<string>8F935B901791F24D001FFE01</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>8F935B901791F24D001FFE01</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Garanchu.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>8F935B911791F24D001FFE01</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8F935B901791F24D001FFE01</string>
+				<string>8F935BB01791F24D001FFE01</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935B921791F24D001FFE01</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8F72AFD517E0EC65007E1715</string>
+				<string>8F935B931791F24D001FFE01</string>
+				<string>8F935B951791F24D001FFE01</string>
+				<string>8F935B971791F24D001FFE01</string>
+				<string>5FD30FE5BBFD4D808BB97071</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935B931791F24D001FFE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>UIKit.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/UIKit.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>8F935B941791F24D001FFE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F935B931791F24D001FFE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F935B951791F24D001FFE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>8F935B961791F24D001FFE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F935B951791F24D001FFE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F935B971791F24D001FFE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CoreGraphics.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/CoreGraphics.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>8F935B981791F24D001FFE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F935B971791F24D001FFE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F935B991791F24D001FFE01</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8FD92BA918031C0B0017172F</string>
+				<string>8FAFF07417E5FE76008CDA2F</string>
+				<string>8F935B9A1791F24D001FFE01</string>
+				<string>8F935BC81791F2ED001FFE01</string>
+				<string>8F8C4976183019F700329DFC</string>
+				<string>8F66B13F1819D6A600867A07</string>
+				<string>8F66B1401819D6A600867A07</string>
+				<string>8F3C22ED17B38FDF00D35CF2</string>
+				<string>8F3C22EE17B38FDF00D35CF2</string>
+				<string>8FD7D8F8182AE75700A5DF2A</string>
+				<string>8FD7D8F9182AE75700A5DF2A</string>
+				<string>8F935BA21791F24D001FFE01</string>
+				<string>8F935BA31791F24D001FFE01</string>
+				<string>8F59FC4F1791F73C00EEA418</string>
+				<string>8F59FC501791F73C00EEA418</string>
+				<string>8FAFF05F17E5E7BD008CDA2F</string>
+				<string>8FAFF06017E5E7BE008CDA2F</string>
+				<string>8F935BCA1791F570001FFE01</string>
+				<string>8F935BCB1791F570001FFE01</string>
+				<string>8FDDC2C917EE013100D639E6</string>
+				<string>8F59FC551792CC2E00EEA418</string>
+				<string>8F59FC561792CC2E00EEA418</string>
+				<string>8F59FC521792C21E00EEA418</string>
+				<string>8F59FC531792C21E00EEA418</string>
+				<string>8F59FCAF1793D77A00EEA418</string>
+				<string>8F59FCB01793D77B00EEA418</string>
+				<string>8F59FCB21793D9FB00EEA418</string>
+				<string>8F59FCB31793D9FC00EEA418</string>
+				<string>8F59FCB51794149100EEA418</string>
+				<string>8F59FCB61794149200EEA418</string>
+				<string>8FFD027F17DE379600583B1E</string>
+				<string>8FFD028017DE379600583B1E</string>
+				<string>8FAD8C4117D6540E002F0D50</string>
+				<string>8FAD8C4217D6540E002F0D50</string>
+				<string>8FFD027C17DE2D6D00583B1E</string>
+				<string>8FFD027D17DE2D6D00583B1E</string>
+				<string>8FAFF07817E6FFFB008CDA2F</string>
+				<string>8FAFF07917E6FFFB008CDA2F</string>
+				<string>8F66B1421819E6FF00867A07</string>
+				<string>8F66B1431819E6FF00867A07</string>
+				<string>8FA5BB011915094F003CF694</string>
+				<string>8F1A26B218D46BF2005DB79A</string>
+				<string>8F1A26B318D46BF2005DB79A</string>
+				<string>8FA5BB0219151409003CF694</string>
+				<string>8FA5BB0319151409003CF694</string>
+				<string>8F809665191DDD9600A2D01B</string>
+				<string>8F809666191DDD9600A2D01B</string>
+				<string>8F1A26AF18D46909005DB79A</string>
+				<string>8F1A26B018D46909005DB79A</string>
+				<string>8F1A26B518D46FC9005DB79A</string>
+				<string>8F1A26B618D46FC9005DB79A</string>
+				<string>8F1A26B818D4988A005DB79A</string>
+				<string>8F1A26B918D4988A005DB79A</string>
+				<string>8F1A26BB18D4A625005DB79A</string>
+				<string>8F1A26BC18D4A625005DB79A</string>
+				<string>8FAFF07F17E757D0008CDA2F</string>
+				<string>8FAFF08017E757D1008CDA2F</string>
+				<string>8F8C4973182F9CF600329DFC</string>
+				<string>8F8C4974182F9CF600329DFC</string>
+				<string>8F59FC5C1792DFA700EEA418</string>
+				<string>8F59FC5D1792DFA700EEA418</string>
+				<string>8FA5BB051918FE65003CF694</string>
+				<string>8FA5BB061918FE65003CF694</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Garanchu</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935B9A1791F24D001FFE01</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8F935BA51791F24D001FFE01</string>
+				<string>8F935BA71791F24D001FFE01</string>
+				<string>8F935BA91791F24D001FFE01</string>
+				<string>8FDDC2B917EDF7D700D639E6</string>
+				<string>8FDDC2BA17EDF7D700D639E6</string>
+				<string>8FDDC2BD17EDF7D700D639E6</string>
+				<string>8FDDC2BE17EDF7D700D639E6</string>
+				<string>8FC3C6F817ECCEE8008A5CCD</string>
+				<string>8FC3C6F917ECCEE8008A5CCD</string>
+				<string>8FC3C6FA17ECCEE8008A5CCD</string>
+				<string>8FC3C6FB17ECCEE8008A5CCD</string>
+				<string>8FB6262917C5037800EC5A0E</string>
+				<string>8FB6262A17C5037800EC5A0E</string>
+				<string>8FF1B0E9179C551100BF9785</string>
+				<string>8F935B9B1791F24D001FFE01</string>
+				<string>8F935B9C1791F24D001FFE01</string>
+				<string>8F935B9F1791F24D001FFE01</string>
+				<string>8F935BA11791F24D001FFE01</string>
+				<string>8FF1B0EF179CD32A00BF9785</string>
+				<string>8FF5973417C98B0200A9E8E9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935B9B1791F24D001FFE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Garanchu-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935B9C1791F24D001FFE01</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8FF1B0F0179CD36A00BF9785</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935B9E1791F24D001FFE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F935B9C1791F24D001FFE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F935B9F1791F24D001FFE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>main.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BA01791F24D001FFE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F935B9F1791F24D001FFE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F935BA11791F24D001FFE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Garanchu-Prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BA21791F24D001FFE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCAppDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BA31791F24D001FFE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCAppDelegate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BA41791F24D001FFE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F935BA31791F24D001FFE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F935BA51791F24D001FFE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Default.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BA61791F24D001FFE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F935BA51791F24D001FFE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F935BA71791F24D001FFE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Default@2x.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BA81791F24D001FFE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F935BA71791F24D001FFE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F935BA91791F24D001FFE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Default-568h@2x.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BAA1791F24D001FFE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F935BA91791F24D001FFE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F935BAB1791F24D001FFE01</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>8F935BBF1791F24D001FFE01</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8F935BAC1791F24D001FFE01</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>8F935BB31791F24D001FFE01</string>
+				<string>8F935BB41791F24D001FFE01</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8F935BAD1791F24D001FFE01</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>8F935BBC1791F24D001FFE01</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8F935BAE1791F24D001FFE01</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string># Run the unit tests in this test bundle.
+"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests"
+</string>
+		</dict>
+		<key>8F935BAF1791F24D001FFE01</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>8F935BC51791F24D001FFE01</string>
+			<key>buildPhases</key>
+			<array>
+				<string>8F935BAB1791F24D001FFE01</string>
+				<string>8F935BAC1791F24D001FFE01</string>
+				<string>8F935BAD1791F24D001FFE01</string>
+				<string>8F935BAE1791F24D001FFE01</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>8F935BB61791F24D001FFE01</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>GaranchuTests</string>
+			<key>productName</key>
+			<string>GaranchuTests</string>
+			<key>productReference</key>
+			<string>8F935BB01791F24D001FFE01</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.unit-test</string>
+		</dict>
+		<key>8F935BB01791F24D001FFE01</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>GaranchuTests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>8F935BB31791F24D001FFE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F935B931791F24D001FFE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F935BB41791F24D001FFE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F935B951791F24D001FFE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F935BB51791F24D001FFE01</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>8F935B881791F24D001FFE01</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>8F935B8F1791F24D001FFE01</string>
+			<key>remoteInfo</key>
+			<string>Garanchu</string>
+		</dict>
+		<key>8F935BB61791F24D001FFE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>8F935B8F1791F24D001FFE01</string>
+			<key>targetProxy</key>
+			<string>8F935BB51791F24D001FFE01</string>
+		</dict>
+		<key>8F935BB71791F24D001FFE01</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8F935BBD1791F24D001FFE01</string>
+				<string>8F935BBE1791F24D001FFE01</string>
+				<string>8F935BB81791F24D001FFE01</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>GaranchuTests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BB81791F24D001FFE01</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8F935BB91791F24D001FFE01</string>
+				<string>8F935BBA1791F24D001FFE01</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BB91791F24D001FFE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>GaranchuTests-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BBA1791F24D001FFE01</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8FF1B0F2179CD36A00BF9785</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BBC1791F24D001FFE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F935BBA1791F24D001FFE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F935BBD1791F24D001FFE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GaranchuTests.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BBE1791F24D001FFE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GaranchuTests.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BBF1791F24D001FFE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F935BBE1791F24D001FFE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F935BC01791F24D001FFE01</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>6.1</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>8F935BC11791F24D001FFE01</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>6.1</string>
+				<key>OTHER_CFLAGS</key>
+				<string>-DNS_BLOCK_ASSERTIONS=1</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>8F935BC21791F24D001FFE01</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>8F935BC31791F24D001FFE01</string>
+				<string>8F935BC41791F24D001FFE01</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>8F935BC31791F24D001FFE01</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>84E71A080F79A064121200BC</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_DISPLAY_NAME_SUFFIX</key>
+				<string>D</string>
+				<key>BUNDLE_IDENTIFIER_SUFFIX</key>
+				<string>.debug</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Garanchu/Garanchu-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Garanchu/Garanchu-Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.0</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>8F935BC41791F24D001FFE01</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>CEB1692F158CA2E014229B56</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_DISPLAY_NAME_SUFFIX</key>
+				<string></string>
+				<key>BUNDLE_IDENTIFIER_SUFFIX</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Distribution</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Distribution</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Garanchu/Garanchu-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Garanchu/Garanchu-Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.0</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE[sdk=iphoneos*]</key>
+				<string></string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>8F935BC51791F24D001FFE01</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>8F935BC61791F24D001FFE01</string>
+				<string>8F935BC71791F24D001FFE01</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>8F935BC61791F24D001FFE01</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(BUILT_PRODUCTS_DIR)/Garanchu.app/Garanchu</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>"$(SDKROOT)/Developer/Library/Frameworks"</string>
+					<string>"$(DEVELOPER_LIBRARY_DIR)/Frameworks"</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Garanchu/Garanchu-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>GaranchuTests/GaranchuTests-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUNDLE_LOADER)</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>8F935BC71791F24D001FFE01</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(BUILT_PRODUCTS_DIR)/Garanchu.app/Garanchu</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>"$(SDKROOT)/Developer/Library/Frameworks"</string>
+					<string>"$(DEVELOPER_LIBRARY_DIR)/Frameworks"</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Garanchu/Garanchu-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>GaranchuTests/GaranchuTests-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUNDLE_LOADER)</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>8F935BC81791F2ED001FFE01</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>path</key>
+			<string>iPad.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BC91791F2ED001FFE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F935BC81791F2ED001FFE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F935BCA1791F570001FFE01</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCLoginViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BCB1791F570001FFE01</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCLoginViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F935BCC1791F570001FFE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F935BCB1791F570001FFE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FA5BB011915094F003CF694</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCModalViewManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FA5BB0219151409003CF694</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCStageViewController+Settings.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FA5BB0319151409003CF694</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCStageViewController+Settings.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FA5BB0419151409003CF694</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FA5BB0319151409003CF694</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FA5BB051918FE65003CF694</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCContainerView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FA5BB061918FE65003CF694</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCContainerView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FA5BB071918FE65003CF694</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FA5BB061918FE65003CF694</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FAD8C4117D6540E002F0D50</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCSearchResultViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAD8C4217D6540E002F0D50</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCSearchResultViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAD8C4317D6540F002F0D50</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FAD8C4217D6540E002F0D50</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FAFF05F17E5E7BD008CDA2F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCStageView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAFF06017E5E7BE008CDA2F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCStageView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAFF06117E5E7BE008CDA2F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FAFF06017E5E7BE008CDA2F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FAFF06217E5FDAA008CDA2F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>SearchConditionList.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAFF06317E5FDAA008CDA2F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>SearchConditionList.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAFF06417E5FDAA008CDA2F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FAFF06317E5FDAA008CDA2F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FAFF06E17E5FE3A008CDA2F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VideoProgram.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAFF06F17E5FE3A008CDA2F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VideoProgram.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAFF07017E5FE3A008CDA2F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>WatchHistory.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAFF07117E5FE3A008CDA2F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>WatchHistory.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAFF07217E5FE3A008CDA2F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FAFF06F17E5FE3A008CDA2F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FAFF07317E5FE3A008CDA2F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FAFF07117E5FE3A008CDA2F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FAFF07417E5FE76008CDA2F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8F72AFD217E0EBD7007E1715</string>
+				<string>8FAFF07517E6066C008CDA2F</string>
+				<string>8FAFF07617E6066C008CDA2F</string>
+				<string>8FAFF06E17E5FE3A008CDA2F</string>
+				<string>8FAFF06F17E5FE3A008CDA2F</string>
+				<string>8FAFF07017E5FE3A008CDA2F</string>
+				<string>8FAFF07117E5FE3A008CDA2F</string>
+				<string>8F72B01817E58C4D007E1715</string>
+				<string>8F72B01917E58C4D007E1715</string>
+				<string>8FAFF06217E5FDAA008CDA2F</string>
+				<string>8FAFF06317E5FDAA008CDA2F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>NSManagedObject</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAFF07517E6066C008CDA2F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCCoreData.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAFF07617E6066C008CDA2F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCCoreData.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAFF07717E6066D008CDA2F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FAFF07617E6066C008CDA2F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FAFF07817E6FFFB008CDA2F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCActivityItemProvider.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAFF07917E6FFFB008CDA2F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCActivityItemProvider.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAFF07A17E6FFFB008CDA2F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FAFF07917E6FFFB008CDA2F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FAFF07F17E757D0008CDA2F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCVideoDetailViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAFF08017E757D1008CDA2F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCVideoDetailViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FAFF08117E757D1008CDA2F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FAFF08017E757D1008CDA2F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FB6262917C5037800EC5A0E</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Icon.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FB6262A17C5037800EC5A0E</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Icon@2x.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FB6262D17C5037800EC5A0E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FB6262917C5037800EC5A0E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FB6262E17C5037800EC5A0E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FB6262A17C5037800EC5A0E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FC3C6F817ECCEE8008A5CCD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Icon-60.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FC3C6F917ECCEE8008A5CCD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Icon-60@2x.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FC3C6FA17ECCEE8008A5CCD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Icon-76.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FC3C6FB17ECCEE8008A5CCD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Icon-76@2x.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FC3C6FC17ECCEE8008A5CCD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FC3C6F817ECCEE8008A5CCD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FC3C6FD17ECCEE8008A5CCD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FC3C6F917ECCEE8008A5CCD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FC3C6FE17ECCEE8008A5CCD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FC3C6FA17ECCEE8008A5CCD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FC3C6FF17ECCEE8008A5CCD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FC3C6FB17ECCEE8008A5CCD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FD7D8F8182AE75700A5DF2A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>WZYGaraponTvProgram+Garanchu.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FD7D8F9182AE75700A5DF2A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>WZYGaraponTvProgram+Garanchu.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FD7D8FA182AE75700A5DF2A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FD7D8F9182AE75700A5DF2A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FD92BA918031C0B0017172F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder</string>
+			<key>path</key>
+			<string>web</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FD92BAA18031C0B0017172F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FD92BA918031C0B0017172F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FDDC2B917EDF7D700D639E6</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Default-Landscape-768h.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FDDC2BA17EDF7D700D639E6</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Default-Landscape-768h@2x.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FDDC2BD17EDF7D700D639E6</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Default-Portrait-1024h.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FDDC2BE17EDF7D700D639E6</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Default-Portrait-1024h@2x.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FDDC2C117EDF7D700D639E6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FDDC2B917EDF7D700D639E6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FDDC2C217EDF7D700D639E6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FDDC2BA17EDF7D700D639E6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FDDC2C517EDF7D700D639E6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FDDC2BD17EDF7D700D639E6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FDDC2C617EDF7D700D639E6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FDDC2BE17EDF7D700D639E6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FDDC2C917EE013100D639E6</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCGaranchuConfig.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FF1B0E9179C551100BF9785</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.plug-in</string>
+			<key>path</key>
+			<string>GaranchuResources.bundle</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FF1B0EA179C551100BF9785</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FF1B0E9179C551100BF9785</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FF1B0ED179CD32A00BF9785</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FF1B0EF179CD32A00BF9785</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FF1B0EF179CD32A00BF9785</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8FF1B0F1179CD36A00BF9785</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Localizable.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FF1B0F0179CD36A00BF9785</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>ja</string>
+			<key>path</key>
+			<string>ja.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FF1B0F1179CD36A00BF9785</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>ja</string>
+			<key>path</key>
+			<string>ja.lproj/Localizable.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FF1B0F2179CD36A00BF9785</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>ja</string>
+			<key>path</key>
+			<string>ja.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FF5973417C98B0200A9E8E9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.plug-in</string>
+			<key>path</key>
+			<string>InAppSettings.bundle</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FF5973517C98B0200A9E8E9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FF5973417C98B0200A9E8E9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FFD027C17DE2D6D00583B1E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCGaraponTabController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FFD027D17DE2D6D00583B1E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCGaraponTabController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FFD027E17DE2D6D00583B1E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FFD027D17DE2D6D00583B1E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8FFD027F17DE379600583B1E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GRCSearchSuggestViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FFD028017DE379600583B1E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GRCSearchSuggestViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FFD028117DE379600583B1E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FFD028017DE379600583B1E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AAE889374C38BB125FFD0795</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>84E71A080F79A064121200BC</string>
+				<string>CEB1692F158CA2E014229B56</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AB20749BE8BF42EAB916ED49</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+		</dict>
+		<key>BEDB7EB589314F4F827CECE1</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh"
+</string>
+		</dict>
+		<key>CEB1692F158CA2E014229B56</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DEAD08CC53D6433E97303441</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5FD30FE5BBFD4D808BB97071</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>8F935B881791F24D001FFE01</string>
+</dict>
+</plist>

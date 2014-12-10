@@ -1,72 +1,67 @@
 PODS:
-  - BlocksKit (2.2.2):
-    - BlocksKit/All
-  - BlocksKit/All (2.2.2):
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
     - BlocksKit/MessageUI
     - BlocksKit/UIKit
-  - BlocksKit/Core (2.2.2)
-  - BlocksKit/DynamicDelegate (2.2.2)
-  - BlocksKit/MessageUI (2.2.2):
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - BlocksKit/UIKit (2.2.2):
+  - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - FlatUIKit (1.3)
-  - GRMustache (7.0.2):
+  - FlatUIKit (1.5)
+  - GRMustache (7.3.0):
     - JRSwizzle (~> 1.0)
-  - InAppSettingsKit (2.0.1)
+  - InAppSettingsKit (2.3.2)
   - JRSwizzle (1.0)
-  - MBProgressHUD (0.8)
+  - MBProgressHUD (0.9)
   - MZAppearance (1.1.3)
-  - MZFormSheetController (2.3.4):
+  - MZFormSheetController (2.4.1):
     - MZAppearance (~> 1.1.3)
-  - SDWebImage (3.6):
-    - SDWebImage/Core
-  - SDWebImage/Core (3.6)
+    - MZFormSheetController/Core (= 2.4.1)
+  - MZFormSheetController/Core (2.4.1):
+    - MZAppearance (~> 1.1.3)
+  - SDWebImage (3.7.1):
+    - SDWebImage/Core (= 3.7.1)
+  - SDWebImage/Core (3.7.1)
   - SFHFKeychainUtils (0.0.1)
   - SVPullToRefresh (0.4.1)
-  - TestFlightSDK (3.0.0)
-  - TMCache (1.2.0)
+  - TestFlightSDK (3.0.2)
+  - TMCache (1.2.2)
   - WZYActivityIndicatorView (0.1)
   - WZYAVPlayer (0.1):
-    - WZYAVPlayer/AirPlay
-    - WZYAVPlayer/Core
-    - WZYAVPlayer/HUD
-    - WZYAVPlayer/Player
-    - WZYAVPlayer/Player
-  - WZYAVPlayer/AirPlay (0.1):
-    - WZYAVPlayer/Player
+    - WZYAVPlayer/Player (= 0.1)
+  - WZYAVPlayer/AirPlay (0.1)
   - WZYAVPlayer/Core (0.1):
     - BlocksKit/UIKit (~> 2.0)
-    - WZYAVPlayer/Player
-  - WZYAVPlayer/HUD (0.1):
     - MBProgressHUD
-    - WZYAVPlayer/Player
   - WZYAVPlayer/Player (0.1):
     - WZYAVPlayer/AirPlay
     - WZYAVPlayer/Core
-    - WZYAVPlayer/HUD
-    - WZYAVPlayer/Player
-  - WZYGarapon (0.0.1)
-  - WZYPlayerSlider (0.1.2)
+  - WZYFlatUIColor (1.0.0)
+  - WZYGarapon (0.1)
+  - WZYPlayerSlider (0.1.3)
 
 DEPENDENCIES:
-  - BlocksKit (= 2.2.2)
-  - FlatUIKit (= 1.3)
-  - GRMustache (= 7.0.2)
-  - InAppSettingsKit (= 2.0.1)
-  - MBProgressHUD (= 0.8)
-  - MZFormSheetController (= 2.3.4)
-  - SDWebImage (= 3.6)
+  - BlocksKit (= 2.2.5)
+  - FlatUIKit (= 1.5)
+  - GRMustache (= 7.3.0)
+  - InAppSettingsKit (= 2.3.2)
+  - MBProgressHUD (= 0.9)
+  - MZFormSheetController (= 2.4.1)
+  - SDWebImage (= 3.7.1)
   - SFHFKeychainUtils (= 0.0.1)
   - SVPullToRefresh (= 0.4.1)
-  - TestFlightSDK (= 3.0.0)
-  - TMCache (= 1.2.0)
+  - TestFlightSDK (= 3.0.2)
+  - TMCache (= 1.2.2)
   - WZYActivityIndicatorView (from `https://github.com/makotokw/CocoaWZYActivityIndicatorView.git`)
   - WZYAVPlayer (from `https://github.com/makotokw/CocoaWZYAVPlayer.git`)
+  - WZYFlatUIColor (from `https://github.com/makotokw/CocoaWZYFlatUIColor.git`)
   - WZYGarapon (from `https://github.com/makotokw/CocoaWZYGarapon.git`)
   - WZYPlayerSlider (from `https://github.com/makotokw/CocoaWZYPlayerSlider.git`)
 
@@ -75,28 +70,48 @@ EXTERNAL SOURCES:
     :git: https://github.com/makotokw/CocoaWZYActivityIndicatorView.git
   WZYAVPlayer:
     :git: https://github.com/makotokw/CocoaWZYAVPlayer.git
+  WZYFlatUIColor:
+    :git: https://github.com/makotokw/CocoaWZYFlatUIColor.git
   WZYGarapon:
     :git: https://github.com/makotokw/CocoaWZYGarapon.git
   WZYPlayerSlider:
     :git: https://github.com/makotokw/CocoaWZYPlayerSlider.git
 
-SPEC CHECKSUMS:
-  BlocksKit: 125e4e69a62e3b85bacc5175737dae000b00b9fb
-  FlatUIKit: 3b32b52bb3c266477709cfe4812ab2c877ae942b
-  GRMustache: e17b24646727b52576b2b51fb878efbed820ae5a
-  InAppSettingsKit: 5e42f626b9be9c33e3b04c0cc9523ca5eabe7ad3
-  JRSwizzle: 6242ff38485d870fc2636899048ee1ab883ae587
-  MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
-  MZAppearance: 490bcde824c00598eb62efe732f2786d9342b907
-  MZFormSheetController: 631fda39fe80df606a5a5c44b804a0c0edc5afd5
-  SDWebImage: 7eb273e54ca8a2e506ad9bd5e80c35b2a4d7c95e
-  SFHFKeychainUtils: d1ae332c4ef51a67d7e6e9292a060b42329316fd
-  SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
-  TestFlightSDK: fe0567a897456b6f65b180541892ef0154986e01
-  TMCache: 4b05e1b124d9f7e8d449640e059cff4cda17ed27
-  WZYActivityIndicatorView: 32e4785c5b4fda97618bc11d665ddbe5294d0f74
-  WZYAVPlayer: d7d87f5c698183d5246cf6dcacd24f916b58298d
-  WZYGarapon: 6407a374632ff0e2e74cd2921e4300e9cc92c54a
-  WZYPlayerSlider: 05c14c366126c8e1d5bddcd77c71ea36121cc5fc
+CHECKOUT OPTIONS:
+  WZYActivityIndicatorView:
+    :commit: d24a679116f73598879162bb05a5ed94fdfefc63
+    :git: https://github.com/makotokw/CocoaWZYActivityIndicatorView.git
+  WZYAVPlayer:
+    :commit: c9fb4cd477884e40a5e54cf4557b0f789266467c
+    :git: https://github.com/makotokw/CocoaWZYAVPlayer.git
+  WZYFlatUIColor:
+    :commit: b88fdd89195827d7fe9b25c8a3333f8da8a3acdf
+    :git: https://github.com/makotokw/CocoaWZYFlatUIColor.git
+  WZYGarapon:
+    :commit: 4553d550741d0a3088dfb9a515028eaae1065902
+    :git: https://github.com/makotokw/CocoaWZYGarapon.git
+  WZYPlayerSlider:
+    :commit: 7581f56230cc289a3b09ff1c48e46265fec28df4
+    :git: https://github.com/makotokw/CocoaWZYPlayerSlider.git
 
-COCOAPODS: 0.32.1
+SPEC CHECKSUMS:
+  BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
+  FlatUIKit: 5452fa3fca41e6f04014cca6e81b4c2f961f623c
+  GRMustache: efecd3b603f0a7a99cf6bdf3998782ee0c465726
+  InAppSettingsKit: 4bae27eb319bf350af5f933196ebc68dbfc65538
+  JRSwizzle: 30da7a2c539a4ebf954b16d15f6dd8221c9f6fa5
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+  MZAppearance: c88502c0c2345120630c34e09d5ff09e2969ba30
+  MZFormSheetController: 4b58486f5f1562b3905310b02e8dbbb5a0a94128
+  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  SFHFKeychainUtils: 6fdda05a86d035db406c7662ec1054814b68f0fd
+  SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
+  TestFlightSDK: 0c24c533748d0d84bfe7a3cb6036fa79124d84ee
+  TMCache: e2c9225de7a107b529d1d04baa58eb5eab3051f3
+  WZYActivityIndicatorView: 32e4785c5b4fda97618bc11d665ddbe5294d0f74
+  WZYAVPlayer: ec49780e14cf0191dc1e1047a092f92588167889
+  WZYFlatUIColor: 1bd86815faf4737ed05e58721e8843918b7be115
+  WZYGarapon: 36e0d7652f984b49f1fde9ec2a11a2da73417fe6
+  WZYPlayerSlider: 4b15e413bd1cabc94cfb707ce2b6c2d1b368efc2
+
+COCOAPODS: 0.35.0

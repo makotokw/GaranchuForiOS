@@ -17,7 +17,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <SDWebImage/SDWebImageManager.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <FlatUIKit/UIColor+FlatUI.h>
+#import <WZYFlatUIColor/WZYFlatUIColor.h>
 
 typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 
@@ -211,7 +211,7 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.tableView.pullToRefreshView.textColor = [UIColor cloudsColor];
+    self.tableView.pullToRefreshView.textColor = [UIColor wzy_cloudsFlatColor];
     self.tableView.pullToRefreshView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
     self.tableView.infiniteScrollingView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
 }
@@ -362,7 +362,7 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         [_items addObject:@{
          @"title": c.name,
          @"indexType": [NSNumber numberWithInteger:GRCProgramGaranchuIndexType],
-         @"params": @{@"ch": [NSString stringWithFormat:@"%d", c.TSID]}
+         @"params": @{@"ch": [NSString stringWithFormat:@"%d", (int)c.TSID]}
          }];
     }
     [self.tableView reloadData];
@@ -464,10 +464,10 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         dict = [WZYGaraponTv recordingProgramParams];
     }
     if (!dict) {
-        return @{@"p": [NSString stringWithFormat:@"%d", page]};
+        return @{@"p": [NSString stringWithFormat:@"%d", (int)page]};
     }
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:dict];
-    params[@"p"] = [NSString stringWithFormat:@"%d", page];
+    params[@"p"] = [NSString stringWithFormat:@"%d", (int)page];
     return params;
 }
 
@@ -721,11 +721,11 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         UILabel *channelLabel = (UILabel*)[cell viewWithTag:3];
         UILabel *dateLabel = (UILabel*)[cell viewWithTag:4];
         UILabel *durationLabel = (UILabel*)[cell viewWithTag:5];
-        channelLabel.textColor = [UIColor cloudsColor];
+        channelLabel.textColor = [UIColor wzy_cloudsFlatColor];
                 
         NSURL *thumbnailURL = [NSURL URLWithString:[_garaponTv thumbnailURLStringWithProgram:item]];
 
-        [thumbnailView setImageWithURL:thumbnailURL placeholderImage:_placeHolderImage options:SDWebImageCacheMemoryOnly];
+        [thumbnailView sd_setImageWithURL:thumbnailURL placeholderImage:_placeHolderImage options:SDWebImageCacheMemoryOnly];
                 
         titleLabel.text = item.title;
         channelLabel.text = item.grc_broadcastStation;
@@ -748,7 +748,7 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     }
     
     UIView *_selectedBackgroundView = [[UIView alloc] init];    
-    _selectedBackgroundView.backgroundColor = [UIColor greenSeaColor];
+    _selectedBackgroundView.backgroundColor = [UIColor wzy_greenSeaFlatColor];
     cell.selectedBackgroundView = _selectedBackgroundView;
     
     return cell;

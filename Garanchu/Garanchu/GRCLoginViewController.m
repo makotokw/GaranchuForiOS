@@ -9,6 +9,7 @@
 #import "GRCGaranchuUser.h"
 
 #import <QuartzCore/QuartzCore.h>
+#import <WZYFlatUIColor/WZYFlatUIColor.h>
 
 @interface GRCLoginViewController ()
 
@@ -42,8 +43,8 @@
     // Do any additional setup after loading the view.
     
     UIColor *whiteColor = [UIColor whiteColor];
-    UIColor *mainColor = [UIColor emerlandColor];
-    UIColor *darkColor = [UIColor nephritisColor];
+    UIColor *mainColor = [UIColor wzy_emeraldFlatColor];
+    UIColor *darkColor = [UIColor wzy_nephritisFlatColor];
     
     NSString *fontName     = @"Avenir-Book";
     NSString *boldFontName = @"Avenir-Black";
@@ -87,7 +88,7 @@
     _loginButton.titleLabel.font    = [UIFont fontWithName:boldFontName size:20.0f];
     [_loginButton setTitle:GRCLocalizedString(@"LoginButtonLabel") forState:UIControlStateNormal];
     [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_loginButton setTitleColor:[UIColor silverColor] forState:UIControlStateDisabled];
+    [_loginButton setTitleColor:[UIColor wzy_silverFlatColor] forState:UIControlStateDisabled];
     [_loginButton setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.5f] forState:UIControlStateHighlighted];
         
     GRCGaranchuUser *user = [GRCGaranchuUser defaultUser];

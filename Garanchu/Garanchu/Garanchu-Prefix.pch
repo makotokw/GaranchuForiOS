@@ -13,7 +13,6 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
     #import <BlocksKit/BlocksKit.h>
-    #import <FlatUIKit/FlatUIKit.h>
     #import <WZYGarapon/WZYGarapon.h>
     #import "WZYGaraponTvProgram+Garanchu.h"
     #import "MBProgressHUD+Garanchu.h"

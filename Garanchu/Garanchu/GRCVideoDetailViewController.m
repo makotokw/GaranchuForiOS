@@ -9,6 +9,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import <GRMustache/GRMustache.h>
+#import <WZYFlatUIColor/WZYFlatUIColor.h>
 
 @interface GRCVideoDetailViewController ()
 
@@ -33,7 +34,7 @@
     
 	// Do any additional setup after loading the view.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        self.textView.textColor = [UIColor cloudsColor];
+        self.textView.textColor = [UIColor wzy_cloudsFlatColor];
         self.textView.backgroundColor = [UIColor clearColor];
     }
     
