@@ -211,6 +211,8 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     self.tableView.pullToRefreshView.textColor = [UIColor wzy_cloudsFlatColor];
     self.tableView.pullToRefreshView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
     self.tableView.infiniteScrollingView.activityIndicatorViewStyle =  UIActivityIndicatorViewStyleWhite;
@@ -362,7 +364,7 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         [_items addObject:@{
          @"title": c.name,
          @"indexType": [NSNumber numberWithInteger:GRCProgramGaranchuIndexType],
-         @"params": @{@"ch": [NSString stringWithFormat:@"%d", (int)c.TSID]}
+         @"params": @{@"ch": [NSString stringWithFormat:@"%zd", c.TSID]}
          }];
     }
     [self.tableView reloadData];
@@ -464,10 +466,10 @@ typedef void (^GRCGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         dict = [WZYGaraponTv recordingProgramParams];
     }
     if (!dict) {
-        return @{@"p": [NSString stringWithFormat:@"%d", (int)page]};
+        return @{@"p": [NSString stringWithFormat:@"%zd", page]};
     }
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:dict];
-    params[@"p"] = [NSString stringWithFormat:@"%d", (int)page];
+    params[@"p"] = [NSString stringWithFormat:@"%zd", page];
     return params;
 }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="ePR-Fl-IsY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="ePR-Fl-IsY">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Video View Controller-->
@@ -143,7 +143,6 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="We6-tB-SGp" userLabel="menuToggleContainer">
                                 <rect key="frame" x="984" y="0.0" width="40" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gA-JN-H4i" userLabel="sideMenuButton">
                                         <rect key="frame" x="4" y="6" width="32" height="32"/>
@@ -335,7 +334,6 @@
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYK-JQ-zJw" userLabel="airPlayView">
                                         <rect key="frame" x="924" y="0.0" width="40" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="I7O-G0-vYo"/>
@@ -369,6 +367,7 @@
                                     <constraint firstItem="PwG-9a-UeZ" firstAttribute="leading" secondItem="E1U-pL-hsc" secondAttribute="leading" constant="10" id="D23-FS-Xbv"/>
                                     <constraint firstAttribute="centerY" secondItem="tTS-hw-KPk" secondAttribute="centerY" id="GOr-y9-CmN"/>
                                     <constraint firstItem="eCa-wj-t2p" firstAttribute="leading" secondItem="ZdH-Kb-zlN" secondAttribute="trailing" constant="10" id="Gt2-zD-01d"/>
+                                    <constraint firstItem="tTS-hw-KPk" firstAttribute="top" secondItem="E1U-pL-hsc" secondAttribute="top" id="J8L-kr-Ldm"/>
                                     <constraint firstAttribute="centerY" secondItem="wXF-9c-qLH" secondAttribute="centerY" id="MM3-6O-xe3"/>
                                     <constraint firstAttribute="centerY" secondItem="xga-KD-yOd" secondAttribute="centerY" id="OsF-dH-Msf"/>
                                     <constraint firstAttribute="centerY" secondItem="Dw1-er-aoJ" secondAttribute="centerY" id="POq-mL-gL1"/>
@@ -379,12 +378,14 @@
                                     <constraint firstItem="lWM-pN-Bzc" firstAttribute="leading" secondItem="eCa-wj-t2p" secondAttribute="trailing" constant="10" id="aU0-FX-VFc"/>
                                     <constraint firstItem="xga-KD-yOd" firstAttribute="leading" secondItem="PwG-9a-UeZ" secondAttribute="trailing" constant="10" id="af8-vA-7HN"/>
                                     <constraint firstItem="ZdH-Kb-zlN" firstAttribute="bottom" secondItem="E1U-pL-hsc" secondAttribute="bottom" id="azs-e7-ypy"/>
-                                    <constraint firstItem="Dw1-er-aoJ" firstAttribute="leading" secondItem="tTS-hw-KPk" secondAttribute="trailing" constant="10" id="bt4-hR-N7K"/>
+                                    <constraint firstItem="Dw1-er-aoJ" firstAttribute="leading" secondItem="tTS-hw-KPk" secondAttribute="trailing" constant="10" id="bEA-dc-fLP"/>
+                                    <constraint firstAttribute="bottom" secondItem="tTS-hw-KPk" secondAttribute="bottom" id="d4v-Uj-q53"/>
                                     <constraint firstAttribute="centerY" secondItem="D5B-fu-sVF" secondAttribute="centerY" id="dJZ-Ks-9DA"/>
                                     <constraint firstItem="ZdH-Kb-zlN" firstAttribute="top" secondItem="E1U-pL-hsc" secondAttribute="top" id="eD1-ie-poj"/>
                                     <constraint firstItem="wXF-9c-qLH" firstAttribute="leading" secondItem="G9j-w9-okB" secondAttribute="trailing" constant="60" id="g3c-8o-9GV"/>
                                     <constraint firstAttribute="height" constant="40" id="i68-xX-wQ7"/>
                                     <constraint firstAttribute="centerY" secondItem="PwG-9a-UeZ" secondAttribute="centerY" id="ixk-Bm-ze1"/>
+                                    <constraint firstItem="tTS-hw-KPk" firstAttribute="leading" secondItem="txf-wt-TEz" secondAttribute="trailing" constant="10" id="jje-bT-xwl"/>
                                     <constraint firstAttribute="centerY" secondItem="eCa-wj-t2p" secondAttribute="centerY" id="joX-qI-HAr"/>
                                     <constraint firstAttribute="centerY" secondItem="G9j-w9-okB" secondAttribute="centerY" id="m3Q-QI-s8v"/>
                                     <constraint firstItem="eCa-wj-t2p" firstAttribute="bottom" secondItem="E1U-pL-hsc" secondAttribute="bottom" id="ooK-r9-sgx"/>
@@ -415,7 +416,6 @@
                             <constraint firstItem="E1U-pL-hsc" firstAttribute="trailing" secondItem="gnR-vG-h8B" secondAttribute="trailing" id="p0T-Ww-294"/>
                             <constraint firstItem="Vte-mT-Hu8" firstAttribute="leading" secondItem="gnR-vG-h8B" secondAttribute="leading" id="xJy-TL-5ND"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <connections>
                             <outlet property="_controlView" destination="E1U-pL-hsc" id="Goy-0s-F9X"/>
                             <outlet property="_favButton" destination="D5B-fu-sVF" id="DgC-6W-c3N"/>
@@ -579,7 +579,6 @@
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQM-oO-tBl">
                                             <rect key="frame" x="20" y="11" width="80" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="5A5-ut-SPF"/>
                                             </constraints>
@@ -589,7 +588,6 @@
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" preferredMaxLayoutWidth="640" translatesAutoresizingMaskIntoConstraints="NO" id="bMM-Bl-Tas">
                                             <rect key="frame" x="108" y="0.0" width="640" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -655,7 +653,7 @@
             </objects>
             <point key="canvasLocation" x="1594" y="-268"/>
         </scene>
-        <!--Index Menu View Controller - Root View Controller-->
+        <!--Root View Controller-->
         <scene sceneID="ap5-jG-i6L">
             <objects>
                 <tableViewController storyboardIdentifier="indexMenuViewController" id="5xy-yA-bBM" customClass="GRCIndexMenuViewController" sceneMemberID="viewController">
@@ -775,7 +773,6 @@
                         <subviews>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYw-fT-CNa" userLabel="PlayerView">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="OK8-KW-BS5" kind="embed" id="bEZ-ed-RU1"/>
@@ -783,7 +780,6 @@
                             </containerView>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukw-mN-ifg" userLabel="NaviView" customClass="GRCContainerView">
                                 <rect key="frame" x="734" y="0.0" width="290" height="768"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="290" id="Po3-05-RLN"/>
@@ -803,7 +799,6 @@
                             <constraint firstItem="SYw-fT-CNa" firstAttribute="leading" secondItem="x4w-UZ-EHr" secondAttribute="leading" id="gt9-R3-okW"/>
                             <constraint firstItem="SYw-fT-CNa" firstAttribute="top" secondItem="x4w-UZ-EHr" secondAttribute="top" id="nsv-MG-f3Z"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
@@ -915,7 +910,6 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09a-d3-h6A" userLabel="menuToggleContainer">
                                 <rect key="frame" x="280" y="0.0" width="40" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqo-qP-sew" userLabel="sideMenuButton">
                                         <rect key="frame" x="4" y="6" width="32" height="32"/>
@@ -1211,7 +1205,6 @@
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2m-31-Ufd" userLabel="airPlayView">
                                         <rect key="frame" x="924" y="0.0" width="40" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="EaK-i0-ZAD"/>
@@ -1287,7 +1280,6 @@
                             <constraint firstItem="P0f-FI-t3k" firstAttribute="leading" secondItem="t8w-iR-PVD" secondAttribute="leading" id="mGw-wr-BLg"/>
                             <constraint firstItem="LUi-ou-pBo" firstAttribute="leading" secondItem="t8w-iR-PVD" secondAttribute="leading" id="xia-la-ski"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
                     <connections>

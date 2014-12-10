@@ -107,8 +107,6 @@
 			<string>{768, 1024}</string>
 		</dict>
 	</array>
-	<key>UIMainStoryboardFile</key>
-	<string>iPad</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>

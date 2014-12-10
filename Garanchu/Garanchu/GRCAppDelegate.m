@@ -31,7 +31,7 @@
     self.window.backgroundColor = [UIColor blackColor];
     self.window.rootViewController = stageViewController;
     [self.window makeKeyAndVisible];
-    
+
     return YES;
 }
 
