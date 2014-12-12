@@ -34,13 +34,14 @@ PODS:
   - TestFlightSDK (3.0.2)
   - TMCache (1.2.2)
   - WZYActivityIndicatorView (0.1)
-  - WZYAVPlayer (0.1):
-    - WZYAVPlayer/Player (= 0.1)
-  - WZYAVPlayer/AirPlay (0.1)
-  - WZYAVPlayer/Core (0.1):
+  - WZYAVPlayer (0.1.1):
+    - WZYAVPlayer/Player (= 0.1.1)
+  - WZYAVPlayer/AirPlay (0.1.1)
+  - WZYAVPlayer/Core (0.1.1):
     - BlocksKit/UIKit (~> 2.0)
     - MBProgressHUD
-  - WZYAVPlayer/Player (0.1):
+    - WZYPlayerSlider
+  - WZYAVPlayer/Player (0.1.1):
     - WZYAVPlayer/AirPlay
     - WZYAVPlayer/Core
   - WZYFlatUIColor (1.0.0)
@@ -60,39 +61,18 @@ DEPENDENCIES:
   - TestFlightSDK (= 3.0.2)
   - TMCache (= 1.2.2)
   - WZYActivityIndicatorView (from `https://github.com/makotokw/CocoaWZYActivityIndicatorView.git`)
-  - WZYAVPlayer (from `https://github.com/makotokw/CocoaWZYAVPlayer.git`)
-  - WZYFlatUIColor (from `https://github.com/makotokw/CocoaWZYFlatUIColor.git`)
-  - WZYGarapon (from `https://github.com/makotokw/CocoaWZYGarapon.git`)
-  - WZYPlayerSlider (from `https://github.com/makotokw/CocoaWZYPlayerSlider.git`)
+  - WZYAVPlayer
+  - WZYFlatUIColor
+  - WZYGarapon
 
 EXTERNAL SOURCES:
   WZYActivityIndicatorView:
     :git: https://github.com/makotokw/CocoaWZYActivityIndicatorView.git
-  WZYAVPlayer:
-    :git: https://github.com/makotokw/CocoaWZYAVPlayer.git
-  WZYFlatUIColor:
-    :git: https://github.com/makotokw/CocoaWZYFlatUIColor.git
-  WZYGarapon:
-    :git: https://github.com/makotokw/CocoaWZYGarapon.git
-  WZYPlayerSlider:
-    :git: https://github.com/makotokw/CocoaWZYPlayerSlider.git
 
 CHECKOUT OPTIONS:
   WZYActivityIndicatorView:
     :commit: d24a679116f73598879162bb05a5ed94fdfefc63
     :git: https://github.com/makotokw/CocoaWZYActivityIndicatorView.git
-  WZYAVPlayer:
-    :commit: c9fb4cd477884e40a5e54cf4557b0f789266467c
-    :git: https://github.com/makotokw/CocoaWZYAVPlayer.git
-  WZYFlatUIColor:
-    :commit: b88fdd89195827d7fe9b25c8a3333f8da8a3acdf
-    :git: https://github.com/makotokw/CocoaWZYFlatUIColor.git
-  WZYGarapon:
-    :commit: 4553d550741d0a3088dfb9a515028eaae1065902
-    :git: https://github.com/makotokw/CocoaWZYGarapon.git
-  WZYPlayerSlider:
-    :commit: 7581f56230cc289a3b09ff1c48e46265fec28df4
-    :git: https://github.com/makotokw/CocoaWZYPlayerSlider.git
 
 SPEC CHECKSUMS:
   BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
@@ -109,7 +89,7 @@ SPEC CHECKSUMS:
   TestFlightSDK: 0c24c533748d0d84bfe7a3cb6036fa79124d84ee
   TMCache: e2c9225de7a107b529d1d04baa58eb5eab3051f3
   WZYActivityIndicatorView: 32e4785c5b4fda97618bc11d665ddbe5294d0f74
-  WZYAVPlayer: ec49780e14cf0191dc1e1047a092f92588167889
+  WZYAVPlayer: 6a0e94d7decc6743b87ce04960cd22c7a81fabc5
   WZYFlatUIColor: 1bd86815faf4737ed05e58721e8843918b7be115
   WZYGarapon: 36e0d7652f984b49f1fde9ec2a11a2da73417fe6
   WZYPlayerSlider: 4b15e413bd1cabc94cfb707ce2b6c2d1b368efc2
