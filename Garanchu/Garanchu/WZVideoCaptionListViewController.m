@@ -7,7 +7,7 @@
 
 #import "WZVideoCaptionListViewController.h"
 
-#import <WZAVPlayer/WZPlayTimeFormatter.h>
+#import <WZYAVPlayer/WZYPlayTimeFormatter.h>
 
 @interface WZVideoCaptionListViewController ()
 
@@ -46,12 +46,12 @@
     for (NSDictionary *caption in _program.caption) {
         [captions addObject:@{@"text": caption[@"caption_text"],
                              @"playtime": caption[@"caption_time"],
-                             @"time": [NSNumber numberWithFloat: [WZPlayTimeFormatter timeIntervalFromPlayTime:caption[@"caption_time"]]],
+                             @"time": [NSNumber numberWithFloat: [WZYPlayTimeFormatter timeIntervalFromPlayTime:caption[@"caption_time"]]],
                               }];
     }
     
     _captions = captions;
-    [self performBlock:^(id sender) {
+    [self bk_performBlock:^(id sender) {
         WZVideoCaptionListViewController *me = sender;
         [me scrollToRowAtPosition:me.currentPosition + 5.0 animated:YES];
     } afterDelay:0.5];

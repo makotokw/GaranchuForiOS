@@ -6,8 +6,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <WZAVPlayer/WZAVPlayerViewController.h>
+#import <WZYAVPlayer/WZYAVPlayerViewController.h>
 
-@interface WZVideoViewController : WZAVPlayerViewController<UIGestureRecognizerDelegate>
+@interface WZVideoViewController : WZYAVPlayerViewController<UIGestureRecognizerDelegate>
 
 @end

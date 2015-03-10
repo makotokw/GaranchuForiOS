@@ -8,8 +8,8 @@
 #import "WZVideoPlayerView.h"
 
 #import <MediaPlayer/MediaPlayer.h>
-#import <WZAVPlayer/WZAirPlayDetector.h>
-#import <WZPlayerSlider/WZPlayerSlider.h>
+#import <WZYAVPlayer/WZYAirPlayDetector.h>
+#import <WZYPlayerSlider/WZYPlayerSlider.h>
 
 @implementation WZVideoPlayerView
 
@@ -63,8 +63,8 @@
 
     [self setupAirPlay];
     
-    if ([self.scrubber.class isSubclassOfClass:[WZPlayerSlider class]]) {
-        __weak WZPlayerSlider *playerSlider = (WZPlayerSlider *)self.scrubber;
+    if ([self.scrubber.class isSubclassOfClass:[WZYPlayerSlider class]]) {
+        __weak WZYPlayerSlider *playerSlider = (WZYPlayerSlider *)self.scrubber;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             UIImage *thumbImage = [UIImage imageNamed:@"GaranchuResources.bundle/thumbImage"];
@@ -94,8 +94,8 @@
     
     [self setAirPlayVisibled:NO];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(airPlayAvailabilityChanged:) name:WZAirPlayAvailabilityChanged object:nil];
-    [[WZAirPlayDetector defaultDetector] startMonitoringWithVolumeView:volumeView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(airPlayAvailabilityChanged:) name:WZYAirPlayAvailabilityChanged object:nil];
+    [[WZYAirPlayDetector defaultDetector] startMonitoringWithVolumeView:volumeView];
 }
 
 - (void)resetIdleTimer
@@ -188,7 +188,7 @@
 
 -(void)airPlayAvailabilityChanged:(NSNotification *)notification
 {
-    WZAirPlayDetector *detector = notification.object;
+    WZYAirPlayDetector *detector = notification.object;
     [self setAirPlayVisibled:detector.isAirPlayAvailabled];
 }
 

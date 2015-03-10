@@ -77,7 +77,7 @@
 {
     if (searchBar.text.length > 0) {
         
-        SearchCondition *condtion = [_items match:^BOOL(id obj) {
+        SearchCondition *condtion = [_items bk_match:^BOOL(id obj) {
             SearchCondition *s = obj;
             return [searchBar.text isEqualToString:s.keyword];
         }];

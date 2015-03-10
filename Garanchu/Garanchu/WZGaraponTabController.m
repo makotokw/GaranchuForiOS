@@ -54,7 +54,7 @@
 
 - (void)selectWithId:(WZGaraponTabId)tabId
 {
-    [_tabs each:^(id sender) {
+    [_tabs bk_each:^(id sender) {
         WZGaraponTab *tab = sender;
         if (tab.tabId == tabId) {
             [tab select];
@@ -66,7 +66,7 @@
 
 - (WZGaraponTab *)tabWithId:(WZGaraponTabId)tabId
 {
-    NSArray *items = [_tabs select:^BOOL(id obj) {
+    NSArray *items = [_tabs bk_select:^BOOL(id obj) {
         WZGaraponTab *tab = obj;
         return tab != nil && tab.tabId == tabId;
     }];

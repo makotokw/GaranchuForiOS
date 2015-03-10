@@ -13,6 +13,7 @@
 #import "MBProgressHUD+Garanchu.h"
 
 #import <BlocksKit/BlocksKit.h>
+#import <BlocksKit/BlocksKit+UIKit.h>
 #import <SVPullToRefresh/SVPullToRefresh.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <SDWebImage/SDWebImageManager.h>
@@ -312,7 +313,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     
     if (cannotConnectHost && reconnect) {
         __weak WZIndexMenuViewController *me = self;
-        [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
+        [UIAlertView bk_showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
                                     message:message
                           cancelButtonTitle:WZGarancuLocalizedString(@"CancelButtonLabel")
                           otherButtonTitles:@[WZGarancuLocalizedString(@"ReconnectButtonLabel")]
@@ -322,7 +323,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                                         }
                                     }];
     } else {
-        [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
+        [UIAlertView bk_showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
                                     message:message
                           cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                           otherButtonTitles:nil
@@ -420,7 +421,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     [self showLoadingHUD];
     
     __weak WZIndexMenuViewController *me = self;
-    [self performBlock:^(id sender) {
+    [self bk_performBlock:^(id sender) {
         _items = [me watchHistoryItems];
         if (_items.count == 0) {
             [me showTextHUDWithMessage:WZGarancuLocalizedString(@"IndexMenuNoWatchHistory") detail:nil];
@@ -572,7 +573,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         BOOL modifed = NO;
         NSInteger index = 0;
         for (WZGaraponTvProgram *p in items) {
-            WZGaraponTvProgram *exists = [_items match:^BOOL(id obj) {
+            WZGaraponTvProgram *exists = [_items bk_match:^BOOL(id obj) {
                 return [p.gtvid isEqualToString:[obj gtvid]];
             }];
             if (exists) {
@@ -597,7 +598,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         BOOL stillExists = YES;
         for (WZGaraponTvProgram *p in items) {            
             if (stillExists) {
-                WZGaraponTvProgram *exists = [_items match:^BOOL(id obj) {
+                WZGaraponTvProgram *exists = [_items bk_match:^BOOL(id obj) {
                     return [p.gtvid isEqualToString:[obj gtvid]];
                 }];
                 if (!exists) {
@@ -633,7 +634,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
     if (WZGenreGaranchuIndexType != _indexType) {
         return nil;
     }
-    return [_items map:^id(id obj) {
+    return [_items bk_map:^id(id obj) {
         NSDictionary *item = obj;
         return [item[@"title"] substringWithRange:NSMakeRange(0,2)];
     }];
@@ -716,7 +717,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
                 
         NSURL *thumbnailURL = [NSURL URLWithString:[_garaponTv thumbnailURLStringWithProgram:item]];
 
-        [thumbnailView setImageWithURL:thumbnailURL placeholderImage:_placeHolderImage options:SDWebImageCacheMemoryOnly];
+        [thumbnailView sd_setImageWithURL:thumbnailURL placeholderImage:_placeHolderImage options:SDWebImageCacheMemoryOnly];
                 
         titleLabel.text = item.title;
         channelLabel.text = item.broadcastStation;

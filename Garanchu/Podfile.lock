@@ -1,101 +1,108 @@
 PODS:
-  - BlocksKit (1.8.3):
-    - libffi
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
   - FlatUIKit (1.6)
-  - GRMustache (6.8.3):
+  - GRMustache (6.8.4):
     - JRSwizzle (~> 1.0)
   - InAppSettingsKit (2.0)
   - JRSwizzle (1.0)
-  - libffi (3.0.13)
-  - MBProgressHUD (0.8)
-  - MZAppearance (1.1.1)
-  - MZFormSheetController (1.3.1):
+  - MBProgressHUD (0.9.1)
+  - MZAppearance (1.1.3)
+  - MZFormSheetController (1.4.1):
     - MZAppearance (~> 1.1.1)
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
   - SFHFKeychainUtils (0.0.1)
   - SVPullToRefresh (0.4.1)
-  - TMCache (1.2.0)
+  - TMCache (1.2.3)
   - WZActivityIndicatorView (0.1)
-  - WZAVPlayer (0.1):
-    - WZAVPlayer/AirPlay (= 0.1)
-    - WZAVPlayer/Core (= 0.1)
-    - WZAVPlayer/HUD (= 0.1)
-    - WZAVPlayer/Player (= 0.1)
-  - WZAVPlayer/AirPlay (0.1)
-  - WZAVPlayer/Core (0.1):
-    - BlocksKit (~> 1.8.3)
-  - WZAVPlayer/HUD (0.1):
-    - MBProgressHUD
-  - WZAVPlayer/Player (0.1):
-    - WZAVPlayer/AirPlay
-    - WZAVPlayer/Core
-    - WZAVPlayer/HUD
   - WZGarapon (0.0.1)
-  - WZPlayerSlider (0.1.2)
+  - WZYAVPlayer (0.1.1):
+    - WZYAVPlayer/Player (= 0.1.1)
+  - WZYAVPlayer/AirPlay (0.1.1)
+  - WZYAVPlayer/Core (0.1.1):
+    - BlocksKit/UIKit (~> 2.0)
+    - MBProgressHUD
+    - WZYPlayerSlider
+  - WZYAVPlayer/Player (0.1.1):
+    - WZYAVPlayer/AirPlay
+    - WZYAVPlayer/Core
+  - WZYPlayerSlider (0.1.3)
 
 DEPENDENCIES:
-  - BlocksKit (= 1.8.3)
+  - BlocksKit (= 2.2.5)
   - FlatUIKit (= 1.6)
-  - GRMustache (= 6.8.3)
+  - GRMustache (= 6.8.4)
   - InAppSettingsKit (= 2.0)
-  - MBProgressHUD (= 0.8)
-  - MZFormSheetController (= 1.3.1)
+  - MBProgressHUD (= 0.9.1)
+  - MZFormSheetController (= 1.4.1)
   - SDWebImage (= 3.7.1)
   - SFHFKeychainUtils (= 0.0.1)
   - SVPullToRefresh (= 0.4.1)
-  - TMCache (= 1.2.0)
+  - TMCache (= 1.2.3)
   - WZActivityIndicatorView (from `https://github.com/makotokw/CocoaWZActivityIndicatorView.git`, commit `e8e8146365ce90328c9941eb7a7e49faef610b8b`)
-  - WZAVPlayer (from `https://github.com/makotokw/CocoaWZYAVPlayer.git`, commit `13323f69c3749c0b33bda835b025ddc292df868b`)
   - WZGarapon (from `https://github.com/makotokw/CocoaWZYGarapon.git`, commit `edb7131df2d7c381b299c71b08b6767b099f83d1`)
-  - WZPlayerSlider (from `https://github.com/makotokw/CocoaWZYPlayerSlider.git`, commit `2f80881983bb8b1cb8a5f98010bf83f28a9f5863`)
+  - WZYAVPlayer (from `https://github.com/makotokw/CocoaWZYAVPlayer.git`, commit `03fadf204d76b3ebbc4f020d35f3023ba8d7334e`)
+  - WZYPlayerSlider (from `https://github.com/makotokw/CocoaWZYPlayerSlider.git`, commit `7581f56230cc289a3b09ff1c48e46265fec28df4`)
 
 EXTERNAL SOURCES:
   WZActivityIndicatorView:
     :commit: e8e8146365ce90328c9941eb7a7e49faef610b8b
     :git: https://github.com/makotokw/CocoaWZActivityIndicatorView.git
-  WZAVPlayer:
-    :commit: 13323f69c3749c0b33bda835b025ddc292df868b
-    :git: https://github.com/makotokw/CocoaWZYAVPlayer.git
   WZGarapon:
     :commit: edb7131df2d7c381b299c71b08b6767b099f83d1
     :git: https://github.com/makotokw/CocoaWZYGarapon.git
-  WZPlayerSlider:
-    :commit: 2f80881983bb8b1cb8a5f98010bf83f28a9f5863
+  WZYAVPlayer:
+    :commit: 03fadf204d76b3ebbc4f020d35f3023ba8d7334e
+    :git: https://github.com/makotokw/CocoaWZYAVPlayer.git
+  WZYPlayerSlider:
+    :commit: 7581f56230cc289a3b09ff1c48e46265fec28df4
     :git: https://github.com/makotokw/CocoaWZYPlayerSlider.git
 
 CHECKOUT OPTIONS:
   WZActivityIndicatorView:
     :commit: e8e8146365ce90328c9941eb7a7e49faef610b8b
     :git: https://github.com/makotokw/CocoaWZActivityIndicatorView.git
-  WZAVPlayer:
-    :commit: 13323f69c3749c0b33bda835b025ddc292df868b
-    :git: https://github.com/makotokw/CocoaWZYAVPlayer.git
   WZGarapon:
     :commit: edb7131df2d7c381b299c71b08b6767b099f83d1
     :git: https://github.com/makotokw/CocoaWZYGarapon.git
-  WZPlayerSlider:
-    :commit: 2f80881983bb8b1cb8a5f98010bf83f28a9f5863
+  WZYAVPlayer:
+    :commit: 03fadf204d76b3ebbc4f020d35f3023ba8d7334e
+    :git: https://github.com/makotokw/CocoaWZYAVPlayer.git
+  WZYPlayerSlider:
+    :commit: 7581f56230cc289a3b09ff1c48e46265fec28df4
     :git: https://github.com/makotokw/CocoaWZYPlayerSlider.git
 
 SPEC CHECKSUMS:
-  BlocksKit: e628d209543e042b6594004780169f3ab85bacc2
+  BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
   FlatUIKit: 48b78e6d026c2f2c8a733425aaa5015c99ffc079
-  GRMustache: ab96109b7ba4b9568425bea40d6cd2cdc7582b6c
+  GRMustache: 182cda4a40255133ac6d2cc4f456669844882735
   InAppSettingsKit: d274398d1334359225afdb16f064d4de2487e5a7
   JRSwizzle: 30da7a2c539a4ebf954b16d15f6dd8221c9f6fa5
-  libffi: c6c0bfc3b84872fd99e0e35f8d9665fc7a996f6f
-  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
-  MZAppearance: fe68fc439edd97359bfa79184de1c2bb0682169c
-  MZFormSheetController: cc1bfe9db4c96068bfa3e8f261fa3cd3cf4d3d36
+  MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
+  MZAppearance: c88502c0c2345120630c34e09d5ff09e2969ba30
+  MZFormSheetController: d55d01d588633e95c23affa6f83976e677178ab1
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SFHFKeychainUtils: 6fdda05a86d035db406c7662ec1054814b68f0fd
   SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
-  TMCache: ea1c509badaf9a1245422aabf3c975b3277ab138
+  TMCache: 11589ef8c40909114a5e60132711c9a559e01d97
   WZActivityIndicatorView: 0831c45bbedf2dbf5411284f67439e0fed9584e0
-  WZAVPlayer: 4ab77221fe56f245532f9e19b72475022bfa8013
   WZGarapon: 138cc0d4bef9ebb2617c3be8148281d2c55144b8
-  WZPlayerSlider: f1cd182f37b16a798d8ab133e12f0f40b2e88cd6
+  WZYAVPlayer: 6a0e94d7decc6743b87ce04960cd22c7a81fabc5
+  WZYPlayerSlider: 4b15e413bd1cabc94cfb707ce2b6c2d1b368efc2
 
 COCOAPODS: 0.35.0

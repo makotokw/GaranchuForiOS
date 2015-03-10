@@ -5,9 +5,9 @@
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
-#import "WZAVPlayerView.h"
+#import "WZYAVPlayerView.h"
 
-@interface WZVideoPlayerView : WZAVPlayerView
+@interface WZVideoPlayerView : WZYAVPlayerView
 
 - (void)enableInfoControls;
 - (void)disableInfoControls;

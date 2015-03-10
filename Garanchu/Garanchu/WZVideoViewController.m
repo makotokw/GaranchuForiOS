@@ -22,10 +22,11 @@
 #import "NSURL+QueryString.h"
 
 #import <BlocksKit/BlocksKit.h>
+#import <BlocksKit/BlocksKit+UIKit.h>
 #import <InAppSettingsKit/IASKAppSettingsViewController.h>
 #import <InAppSettingsKit/IASKSettingsReader.h>
 #import <WZGarapon/WZGaraponTvSiteActivity.h>
-#import <WZAVPlayer/WZPlayTimeFormatter.h>
+#import <WZYAVPlayer/WZYPlayTimeFormatter.h>
 #import <MZFormSheetController/MZFormSheetController.h>
 #import <GRMustache/GRMustache.h>
 
@@ -116,7 +117,7 @@
         NSDictionary *cached = [user hostAddressCache];
         if (cached) {
             [me.garaponTv setHostAndPortWithAddressResponse:cached];
-            [me performBlock:^(id sender) {
+            [me bk_performBlock:^(id sender) {
                 [me loginGraponTv];
             } afterDelay:0.1f];
             return;
@@ -124,11 +125,11 @@
     }
 #endif
     if (user.garaponId.length && user.password.length) {
-        [self performBlock:^(id sender) {
+        [self bk_performBlock:^(id sender) {
             [me reconnectGaraponTv];
         } afterDelay:0.1f];
     } else {
-        [self performBlock:^(id sender) {
+        [self bk_performBlock:^(id sender) {
             [me presentModalLoginViewController];
         } afterDelay:0.1f];
     }
@@ -194,15 +195,15 @@
     __weak WZVideoViewController *me = self;
     __weak WZGaraponTabController *tabController = _tabController;
     
-    [_stageView.tvButton addEventHandler:^(id sender) {
+    [_stageView.tvButton bk_addEventHandler:^(id sender) {
         [tabController selectWithId:WZGaraponTabGaraponTv];
     } forControlEvents:UIControlEventTouchDown];
     
-    [_stageView.searchButton addEventHandler:^(id sender) {
+    [_stageView.searchButton bk_addEventHandler:^(id sender) {
         [me showSearchPopover];
     } forControlEvents:UIControlEventTouchDown];
     
-    [_stageView.optionButton addEventHandler:^(id sender) {
+    [_stageView.optionButton bk_addEventHandler:^(id sender) {
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             [me showSettingsModal];
         } else {
@@ -424,7 +425,7 @@
         ? nil
         : @[WZGarancuLocalizedString(@"CopyWatchHistorySendMailTitle")];
     
-    [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"CopyWatchHistoryAlertCaption")
+    [UIAlertView bk_showAlertViewWithTitle:WZGarancuLocalizedString(@"CopyWatchHistoryAlertCaption")
                                 message:message
                       cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                       otherButtonTitles:otherButtonTitles
@@ -445,7 +446,7 @@
     
     if (count > 0) {
         NSString *message = [NSString stringWithFormat:WZGarancuLocalizedString(@"ClearWatchHistoryConfirmMessageFormat"), count];
-        [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
+        [UIAlertView bk_showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
                                     message:message
                           cancelButtonTitle:WZGarancuLocalizedString(@"CancelButtonLabel")
                           otherButtonTitles:@[WZGarancuLocalizedString(@"ClearButtonLabel")]
@@ -453,7 +454,7 @@
             if (buttonIndex != alertView.cancelButtonIndex) {
                 NSUInteger deleteCount = [WatchHistory deleteAll];
                 NSString *deleteMessage = deleteCount > 0 ? WZGarancuLocalizedString(@"ClearSuccessMessage") : WZGarancuLocalizedString(@"ClearCanNotErrorMessage");
-                [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
+                [UIAlertView bk_showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
                                             message:deleteMessage
                                   cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                                   otherButtonTitles:nil
@@ -462,7 +463,7 @@
             }
         }];
     } else {
-        [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
+        [UIAlertView bk_showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearWatchHistoryAlertCaption")
                                     message:WZGarancuLocalizedString(@"ClearNoWatchHistoryErrorMessage")
                           cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                           otherButtonTitles:nil
@@ -478,7 +479,7 @@
     
     if (count > 0) {
         NSString *message = [NSString stringWithFormat:WZGarancuLocalizedString(@"ClearSearchHistoryConfirmMessageFormat"), count];
-        [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
+        [UIAlertView bk_showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
                                     message:message
                           cancelButtonTitle:WZGarancuLocalizedString(@"CancelButtonLabel")
                           otherButtonTitles:@[WZGarancuLocalizedString(@"ClearButtonLabel")]
@@ -486,7 +487,7 @@
             if (buttonIndex != alertView.cancelButtonIndex) {
                 NSUInteger deleteCount = [list deleteItems];
                 NSString *deleteMessage = deleteCount > 0 ? WZGarancuLocalizedString(@"ClearSuccessMessage") : WZGarancuLocalizedString(@"ClearCanNotErrorMessage");
-                [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
+                [UIAlertView bk_showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
                                             message:deleteMessage
                                   cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                                   otherButtonTitles:nil
@@ -495,7 +496,7 @@
             }
         }];
     } else {
-        [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
+        [UIAlertView bk_showAlertViewWithTitle:WZGarancuLocalizedString(@"ClearSearchHistoryAlertCaption")
                                     message:WZGarancuLocalizedString(@"ClearNoSearchHistoryErrorMessage")
                           cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                           otherButtonTitles:nil
@@ -631,7 +632,11 @@
                                                    ];
         NSArray *applicationActivities = @[tvSiteActivity];
         
-        UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:applicationActivities];    
+        UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:applicationActivities];
+        if ([activityView respondsToSelector:@selector(popoverPresentationController)]) { // iOS8
+            activityView.popoverPresentationController.sourceView = sender;
+        }
+        
         [self presentViewController:activityView animated:YES completion:^{
         }];
     } else {
@@ -803,7 +808,7 @@
     __weak WZVideoPlayerView *videoPlayerView = _videoPlayerView;
     viewController.selectionHandler = ^(NSDictionary *caption) {
         if (caption) {
-            NSTimeInterval position = [WZPlayTimeFormatter timeIntervalFromPlayTime:caption[@"caption_time"]];
+            NSTimeInterval position = [WZYPlayTimeFormatter timeIntervalFromPlayTime:caption[@"caption_time"]];
             if (position > 0) {
                 [videoPlayerView seekToTime:position completionHandler:^{
                 }];
@@ -872,7 +877,7 @@
         if (error) {
             
         } else {
-            [me performBlock:^(id sender) {
+            [me bk_performBlock:^(id sender) {
                 [me dismissViewControllerAnimated:YES completion:^{
                     [me loginGraponTv];
                 }];
@@ -903,7 +908,7 @@
                                                                                                      error.localizedRecoverySuggestion
                                                                                                      ] : error.localizedDescription;
                                             
-                                            [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
+                                            [UIAlertView bk_showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
                                                                         message:message
                                                               cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                                                               otherButtonTitles:nil
@@ -912,7 +917,7 @@
                                                                         }];
                                         } else {
                                             [me.garaponTv setHostAndPortWithAddressResponse:response];                                        
-                                            [me performBlock:^(id sender) {
+                                            [me bk_performBlock:^(id sender) {
                                                 [me loginGraponTv];
                                             } afterDelay:1.0f];
                                         }
@@ -942,7 +947,7 @@
     // block old devices
     float gtvVersion = _garaponTv.gtvVersion.floatValue;
     if (gtvVersion > 0 && gtvVersion < 3.0) {
-        [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
+        [UIAlertView bk_showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
                                     message:WZGarancuLocalizedString(@"GaraponTv2NotSupported")
                           cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                           otherButtonTitles:nil
@@ -961,7 +966,7 @@
     [_garaponTv loginWithLoginId:user.garaponId password:user.password completionHandler:^(NSError *error) {
         if (error) {
             [MBProgressHUD hideHUDForView:hudView animated:YES];
-            [UIAlertView showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
+            [UIAlertView bk_showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
                                         message:error.localizedDescription
                               cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
                               otherButtonTitles:nil
@@ -970,7 +975,7 @@
                                             [me presentOrEnableModalLoginViewController];
                                         }];
         } else {
-            [me performBlock:^(id sender) {
+            [me bk_performBlock:^(id sender) {
                 [me hideGaraponIndicatorForView:hudView];
                 [me didLoginGaraponTv];
                 

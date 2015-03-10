@@ -213,7 +213,7 @@
 
 - (void)toggleOverlayWithDuration:(NSTimeInterval)duration
 {
-    __weak WZAVPlayerView *me = _videoPlayerView;
+    __weak WZYAVPlayerView *me = _videoPlayerView;
     [UIView animateWithDuration:duration
                      animations:^{
                          if (_controlView.alpha == 0.0) {
