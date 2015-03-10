@@ -12,10 +12,6 @@
 
 #import <SDWebImage/SDImageCache.h>
 
-#if USE_TESTFLIGHT_SDK
-#import <TestFlightSDK/TestFlight.h>
-#endif
-
 NSString *WZGarancuLocalizedString(NSString *key)
 {
     return NSLocalizedString(key, nil);
@@ -133,13 +129,6 @@ static void WheezySignalHandler(int sig)
     sigaction(SIGABRT, &newSignalAction, NULL);
     sigaction(SIGILL, &newSignalAction, NULL);
     sigaction(SIGBUS, &newSignalAction, NULL);
-    
-#if USE_TESTFLIGHT_SDK
-#ifndef __IPHONE_7_0
-    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
-#endif
-    [TestFlight takeOff:teamToken];
-#endif
 }
 
 
