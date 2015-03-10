@@ -17,6 +17,7 @@
 #import "WZVideoPlayerView.h"
 #import "WZGaranchuUser.h"
 #import "WZActivityItemProvider.h"
+#import "WZGaranchuConfig.h"
 
 #import "NSURL+QueryString.h"
 
@@ -736,9 +737,9 @@
     _initialPlaybackPosition = 0.0;
     if (program) {        
         [self showProgressWithText:WZGarancuLocalizedString(@"IndicatorLoadProgram")];
-        NSString *mediaUrl = [_garaponTv httpLiveStreamingURLStringWithProgram:program];        
+        NSString *mediaUrl = [_garaponTv httpLiveStreamingURLStringWithProgram:program];
         [self setContentTitleWithProgram:program];
-        [self setContentURL:[NSURL URLWithString:mediaUrl]];
+        [self setContentURL:[NSURL URLWithString:[mediaUrl stringByAppendingString:[NSString stringWithFormat:@"&dev_id=%@", GARAPON_DEV_ID]]]];
         
         if (initialPlaybackPosition >= 0) {
             _initialPlaybackPosition = initialPlaybackPosition;
