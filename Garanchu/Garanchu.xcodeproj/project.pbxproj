@@ -175,7 +175,8 @@
 		8FFD027D17DE2D6D00583B1E /* WZGaraponTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZGaraponTabController.m; sourceTree = "<group>"; };
 		8FFD027F17DE379600583B1E /* WZSearchSuggestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZSearchSuggestViewController.h; sourceTree = "<group>"; };
 		8FFD028017DE379600583B1E /* WZSearchSuggestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZSearchSuggestViewController.m; sourceTree = "<group>"; };
-		96F8EB6C90064691BC69EB19 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		E26680B32A453B93550C77CE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F67C79A28BB6830D431FDE5A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +205,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F359110A767DC5C4B386C07 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E26680B32A453B93550C77CE /* Pods.debug.xcconfig */,
+				F67C79A28BB6830D431FDE5A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8F935B871791F24D001FFE01 = {
 			isa = PBXGroup;
 			children = (
@@ -211,7 +221,7 @@
 				8F935BB71791F24D001FFE01 /* GaranchuTests */,
 				8F935B921791F24D001FFE01 /* Frameworks */,
 				8F935B911791F24D001FFE01 /* Products */,
-				96F8EB6C90064691BC69EB19 /* Pods.xcconfig */,
+				7F359110A767DC5C4B386C07 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -400,7 +410,7 @@
 			name = GaranchuTests;
 			productName = GaranchuTests;
 			productReference = 8F935BB01791F24D001FFE01 /* GaranchuTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -528,7 +538,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -673,7 +683,7 @@
 		};
 		8F935BC31791F24D001FFE01 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96F8EB6C90064691BC69EB19 /* Pods.xcconfig */;
+			baseConfigurationReference = E26680B32A453B93550C77CE /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_DISPLAY_NAME_SUFFIX = D;
 				BUNDLE_IDENTIFIER_SUFFIX = .debug;
@@ -691,7 +701,7 @@
 		};
 		8F935BC41791F24D001FFE01 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96F8EB6C90064691BC69EB19 /* Pods.xcconfig */;
+			baseConfigurationReference = F67C79A28BB6830D431FDE5A /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_DISPLAY_NAME_SUFFIX = "";
 				BUNDLE_IDENTIFIER_SUFFIX = "";
