@@ -688,6 +688,7 @@
 				BUNDLE_DISPLAY_NAME_SUFFIX = D;
 				BUNDLE_IDENTIFIER_SUFFIX = .debug;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
 				INFOPLIST_FILE = "Garanchu/Garanchu-Info.plist";
@@ -707,6 +708,7 @@
 				BUNDLE_IDENTIFIER_SUFFIX = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
 				INFOPLIST_FILE = "Garanchu/Garanchu-Info.plist";
