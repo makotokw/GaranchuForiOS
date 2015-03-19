@@ -21,8 +21,11 @@ PODS:
   - JRSwizzle (1.0)
   - MBProgressHUD (0.9.1)
   - MZAppearance (1.1.3)
-  - MZFormSheetController (1.4.1):
-    - MZAppearance (~> 1.1.1)
+  - MZFormSheetController (2.4.2):
+    - MZAppearance (~> 1.1.3)
+    - MZFormSheetController/Core (= 2.4.2)
+  - MZFormSheetController/Core (2.4.2):
+    - MZAppearance (~> 1.1.3)
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
@@ -49,7 +52,7 @@ DEPENDENCIES:
   - GRMustache (= 6.8.4)
   - InAppSettingsKit (= 2.0)
   - MBProgressHUD (= 0.9.1)
-  - MZFormSheetController (= 1.4.1)
+  - MZFormSheetController (= 2.4.2)
   - SDWebImage (= 3.7.1)
   - SFHFKeychainUtils (= 0.0.1)
   - SVPullToRefresh (= 0.4.1)
@@ -95,7 +98,7 @@ SPEC CHECKSUMS:
   JRSwizzle: 30da7a2c539a4ebf954b16d15f6dd8221c9f6fa5
   MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
   MZAppearance: c88502c0c2345120630c34e09d5ff09e2969ba30
-  MZFormSheetController: d55d01d588633e95c23affa6f83976e677178ab1
+  MZFormSheetController: cbe6560a74639cf8ca17c35545c6b9eb275558d8
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SFHFKeychainUtils: 6fdda05a86d035db406c7662ec1054814b68f0fd
   SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190

@@ -979,7 +979,7 @@
                 [me hideGaraponIndicatorForView:hudView];
                 [me didLoginGaraponTv];
                 
-                [me dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+                [me mz_dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
                      _loginViewController = nil;
                 }];
 //                [_loginViewController dismissViewControllerAnimated:YES completion:^{
@@ -1031,9 +1031,9 @@
     formSheet.presentedFormSheetSize = CGSizeMake(400, 280);
     formSheet.landscapeTopInset = 100;
     formSheet.portraitTopInset = 100;
-    formSheet.shouldCenterVerticallyWhenKeyboardAppears = YES;
+    //formSheet.shouldCenterVerticallyWhenKeyboardAppears = YES;
     
-    [self presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+    [self mz_presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
         
     }];
 //    _loginViewController.modalPresentationStyle = UIModalPresentationFormSheet;
