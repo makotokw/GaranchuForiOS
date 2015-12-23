@@ -6,11 +6,9 @@
 //
 
 #import "GRCPlayerViewController.h"
-
 #import "GRCVideoPlayerView.h"
-
 #import "GRCActivityItemProvider.h"
-
+#import "GRCGaranchuConfig.h"
 #import "WatchHistory.h"
 #import <WZYAVPlayer/WZYPlayTimeFormatter.h>
 
@@ -129,7 +127,7 @@
         [self showProgressWithText:GRCLocalizedString(@"IndicatorLoadProgram")];
         NSString *mediaUrl = [_garaponTv httpLiveStreamingURLStringWithProgram:program];
         [self setContentTitleWithProgram:program];
-        [self setContentURL:[NSURL URLWithString:mediaUrl]];
+        [self setContentURL:[NSURL URLWithString:[mediaUrl stringByAppendingString:[NSString stringWithFormat:@"&dev_id=%@", GARAPON_DEV_ID]]]];
         
         if (initialPlaybackPosition >= 0) {
             _initialPlaybackPosition = initialPlaybackPosition;

@@ -42,11 +42,7 @@ compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 #import "GRCGaranchuBuild.h"
 
-#if USE_TESTFLIGHT_SDK
-#define GRCLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-#else
 #define GRCLog(...) NSLog(__VA_ARGS__)
-#endif
 #if DEBUG
 #define GRCLogD(...) NSLog(__VA_ARGS__)
 #else
