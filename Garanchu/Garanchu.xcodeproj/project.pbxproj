@@ -403,6 +403,7 @@
 				8F935B8E1791F24D001FFE01 /* Resources */,
 				BEDB7EB589314F4F827CECE1 /* Copy Pods Resources */,
 				8F8C4972182F9B9400329DFC /* Remove English Resouces */,
+				2B27AB4809B47011E3C5B0AC /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -440,7 +441,7 @@
 			attributes = {
 				CLASSPREFIX = GRC;
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = makoto_kw;
 			};
 			buildConfigurationList = 8F935B8B1791F24D001FFE01 /* Build configuration list for PBXProject "Garanchu" */;
@@ -500,6 +501,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2B27AB4809B47011E3C5B0AC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8F8C4972182F9B9400329DFC /* Remove English Resouces */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -660,6 +676,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -715,6 +732,7 @@
 				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
 				INFOPLIST_FILE = "Garanchu/Garanchu-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.makotokw.ios.${PRODUCT_NAME:rfc1034identifier}${BUNDLE_IDENTIFIER_SUFFIX}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -734,6 +752,7 @@
 				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
 				INFOPLIST_FILE = "Garanchu/Garanchu-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.makotokw.ios.${PRODUCT_NAME:rfc1034identifier}${BUNDLE_IDENTIFIER_SUFFIX}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -753,6 +772,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
 				INFOPLIST_FILE = "GaranchuTests/GaranchuTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.makotokw.ios.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -770,6 +790,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
 				INFOPLIST_FILE = "GaranchuTests/GaranchuTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.makotokw.ios.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
