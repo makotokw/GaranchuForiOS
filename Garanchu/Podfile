@@ -6,12 +6,12 @@ platform :ios,'7.0'
 pod 'BlocksKit', '2.2.5'
 pod 'SDWebImage', '3.7.3'
 pod 'SFHFKeychainUtils', '0.0.1'
-pod 'InAppSettingsKit', '2.6'
-pod 'FlatUIKit', '1.6.2'
+pod 'InAppSettingsKit', '2.6', :inhibit_warnings => true
+pod 'FlatUIKit', '1.6.2', :inhibit_warnings => true
 pod 'MBProgressHUD', '0.9.2'
 pod 'SVPullToRefresh', '0.4.1'
 pod 'TMCache', '1.2.4'
-pod 'MZFormSheetController', '2.4.2'
+pod 'MZFormSheetController', '2.4.2', :inhibit_warnings => true
 pod 'GRMustache', '7.3.2'
 
 # development with Pods
