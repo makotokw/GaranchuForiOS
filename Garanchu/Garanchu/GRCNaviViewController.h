@@ -13,6 +13,7 @@
 
 @property (weak) IBOutlet UIButton *menuButton;
 @property (weak) IBOutlet UIView *menuContainerView;
+@property (weak) IBOutlet UIView *menuToggleContainerView;
 @property (weak) IBOutlet UIView *menuHeaderView;
 @property (weak) IBOutlet UIView *menuContentView;
 @property (weak) IBOutlet UIButton *menuTvButton;

@@ -118,29 +118,4 @@
                     }];
 }
 
-- (void)removeObservers
-{
-    [super removeObservers];
-}
-
-- (void)setUpBeforeLodingView
-{
-    [super setUpBeforeLodingView];
-}
-
-- (void)fetchChildViewController
-{
-    [super fetchChildViewController];
-}
-
-- (void)hideViewsAtNotLogin
-{
-    [super hideViewsAtNotLogin];
-}
-
-- (void)showViewsAtDidLogin
-{
-    [super showViewsAtDidLogin];
-}
-
 @end

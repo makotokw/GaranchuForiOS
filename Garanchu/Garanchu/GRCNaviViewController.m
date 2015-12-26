@@ -90,7 +90,8 @@
     __weak GRCNaviViewController *me = self;
     __weak GRCGaraponTabController *tabController = _tabController;
     
-    _menuHeaderView.backgroundColor = _overlayBackgroundColor;
+    _menuToggleContainerView.backgroundColor = [_overlayBackgroundColor colorWithAlphaComponent:0.4];
+    _menuHeaderView.backgroundColor = [_overlayBackgroundColor colorWithAlphaComponent:0.4];
     _menuContentView.backgroundColor = [_overlayBackgroundColor colorWithAlphaComponent:0.4];
     
     [_menuButton setImage:[UIImage imageNamed:@"GaranchuResources.bundle/menu.png"] forState:UIControlStateNormal];

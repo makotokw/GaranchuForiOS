@@ -38,4 +38,5 @@
 - (void)fetchChildViewController;
 - (void)hideViewsAtNotLogin;
 - (void)showViewsAtDidLogin;
+
 @end
