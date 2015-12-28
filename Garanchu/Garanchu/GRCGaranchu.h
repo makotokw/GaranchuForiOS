@@ -17,6 +17,9 @@ FOUNDATION_EXPORT NSString *GRCLocalizedString(NSString *key);
 @property (weak, readwrite) WZYGaraponTvProgram *watchingProgram;
 @property (readwrite) NSURL *initialURL;
 
+@property (readonly) BOOL isTablet;
+@property (readonly) BOOL isPhone;
+
 + (GRCGaranchu *)current;
 + (void)showAlertWithError:(NSError *)error;
 

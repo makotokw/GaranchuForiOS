@@ -35,7 +35,13 @@
 
 - (void)showSettingsModal
 {
+    self.modalPresentationCapturesStatusBarAppearance = YES;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.sharedAppSettingsViewController];
+    if ([GRCGaranchu current].isPhone) {
+        navController.navigationBar.tintColor = [UIColor whiteColor];
+        navController.navigationBar.barStyle = UIBarStyleBlack;
+        navController.navigationBar.translucent = NO;
+    }
     navController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:navController animated:YES completion:^{
     }];

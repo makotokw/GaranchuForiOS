@@ -19,8 +19,7 @@
             
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPad" bundle:nil];
 
-    UIDevice *device = [UIDevice currentDevice];
-    NSString *initialViewControllerId = device.userInterfaceIdiom == UIUserInterfaceIdiomPad ?
+    NSString *initialViewControllerId = stage.isTablet ?
                                         @"tabletStageViewController"
                                         : @"phoneStageViewController";
     
@@ -31,6 +30,11 @@
     self.window.backgroundColor = [UIColor blackColor];
     self.window.rootViewController = stageViewController;
     [self.window makeKeyAndVisible];
+    
+    // display status-bar in landscape for iOS8
+    // http://stackoverflow.com/questions/24329503/on-ios8-displaying-my-app-in-landscape-mode-will-hide-the-status-bar-but-on-ios
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 
     return YES;
 }

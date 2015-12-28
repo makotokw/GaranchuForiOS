@@ -58,6 +58,10 @@ NSString *GRCLocalizedString(NSString *key)
         _garaponWeb.devId = GARAPON_DEV_ID;        
         _garaponTv = [[WZYGaraponTv alloc] init];
         _garaponTv.devId = GARAPON_DEV_ID;
+        
+        UIDevice *device = [UIDevice currentDevice];
+        _isPhone = device.userInterfaceIdiom == UIUserInterfaceIdiomPhone;
+        _isTablet = device.userInterfaceIdiom == UIUserInterfaceIdiomPad;
     }
     return self;
 }
