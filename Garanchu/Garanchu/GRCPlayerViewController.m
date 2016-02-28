@@ -127,7 +127,7 @@
         [self showProgressWithText:GRCLocalizedString(@"IndicatorLoadProgram")];
         NSString *mediaUrl = [_garaponTv httpLiveStreamingURLStringWithProgram:program];
         [self setContentTitleWithProgram:program];
-        [self setContentURL:[NSURL URLWithString:[mediaUrl stringByAppendingString:[NSString stringWithFormat:@"&dev_id=%@", GARAPON_DEV_ID]]]];
+        [self setContentURL:[NSURL URLWithString:mediaUrl]];
         
         if (initialPlaybackPosition >= 0) {
             _initialPlaybackPosition = initialPlaybackPosition;
