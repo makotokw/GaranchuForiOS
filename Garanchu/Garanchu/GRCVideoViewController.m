@@ -139,15 +139,29 @@
     [self executeInitialURL];
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+- (void)updatePopoverLayout
 {
-    // This method will be called only after device rotation is finished
-    // Can be used to reanchor popovers
     if (_currentPopoverController) {
         CGRect rect = [_stageView.optionButton convertRect:_stageView.optionButton.bounds toView:self.view];
         [_currentPopoverController presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:NO];
     }
 }
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    [self updatePopoverLayout];
+}
+
+//- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+//{
+//    // iOS8.xで呼び出される
+//    [super traitCollectionDidChange:previousTraitCollection];
+//    if ((self.traitCollection.verticalSizeClass != previousTraitCollection.verticalSizeClass)
+//        || (self.traitCollection.horizontalSizeClass != previousTraitCollection.horizontalSizeClass)) {
+//        [self updateLayout];
+//    }
+//}
 
 - (void)didReceiveMemoryWarning
 {

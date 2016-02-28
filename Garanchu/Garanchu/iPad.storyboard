@@ -968,7 +968,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBw-Fp-Mqs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4994" y="379"/>
+            <point key="canvasLocation" x="-5165" y="387"/>
         </scene>
         <!--Menu Navigation View Controller-->
         <scene sceneID="1ck-Xj-3Nr">
@@ -1296,7 +1296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVk-t5-v3a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5135" y="1160"/>
+            <point key="canvasLocation" x="-5599" y="1277"/>
         </scene>
         <!--PhoneStageViewController-->
         <scene sceneID="7Fl-lW-vHQ">
@@ -1337,10 +1337,14 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
+                    <connections>
+                        <outlet property="_naviView" destination="Nrg-PV-MkZ" id="W74-Ys-ql0"/>
+                        <outlet property="_playerView" destination="SHG-ix-2sM" id="lco-ru-h9c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dLT-JR-YOw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5584" y="387"/>
+            <point key="canvasLocation" x="-5599" y="98"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

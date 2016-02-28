@@ -6,12 +6,22 @@
 //
 
 #import "GRCPhoneStageViewController.h"
+#import "GRCNaviViewController.h"
+#import "GRCPlayerViewController.h"
 
 @interface GRCPhoneStageViewController ()
 
 @end
 
 @implementation GRCPhoneStageViewController
+
+{
+    IBOutlet UIView *_playerView;
+    IBOutlet UIView *_naviView;
+    
+    UITapGestureRecognizer *_playerTapGesture;
+    UISwipeGestureRecognizer *_playerSwipeGesture;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,24 +35,77 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self addGestures];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)addGestures
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [self.playerViewController.playerView disableScreenTapRecognizer];
+    
+    _playerTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playerViewDidTapped:)];
+    [_playerView addGestureRecognizer:_playerTapGesture];
+    
+    _playerSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(playerViewDidSwiped:)];
+    _playerSwipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:_playerSwipeGesture];
 }
-*/
+
+- (void)removeGestures
+{
+    // remove the gesture recognizers
+    [self.view removeGestureRecognizer:_playerSwipeGesture];
+    [_playerView removeGestureRecognizer:_playerTapGesture];
+}
+
+#pragma mark - GRCStageViewController (Protected)
+
+- (void)addObservers
+{
+    [super addObservers];
+    
+    __weak GRCPhoneStageViewController *me = self;
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserverForName:GRCPlayerOverlayWillAppear
+                        object:nil
+                         queue:nil
+                    usingBlock:^(NSNotification *notification) {
+                        NSNumber *duration = notification.userInfo[@"duration"];
+                        [UIView animateWithDuration:duration.doubleValue
+                                         animations:^{
+                                             if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+                                                 for (NSLayoutConstraint *footerConstraint in me.footerConstraints) {
+                                                     footerConstraint.constant = 40;
+                                                 }
+                                             }
+                                         }
+                                         completion:^(BOOL finished) {
+                                             if (finished) {
+                                             }
+                                         }];
+                    }];
+    [center addObserverForName:GRCPlayerOverlayWillDisappear
+                        object:nil
+                         queue:nil
+                    usingBlock:^(NSNotification *notification) {
+                        NSNumber *duration = notification.userInfo[@"duration"];
+                        [UIView animateWithDuration:duration.doubleValue
+                                         animations:^{
+                                             if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+                                                 for (NSLayoutConstraint *footerConstraint in me.footerConstraints) {
+                                                     footerConstraint.constant = 0;
+                                                 }
+                                             }
+                                         }
+                                         completion:^(BOOL finished) {
+                                             if (finished) {
+                                             }
+                                         }];
+                    }];
+}
 
 @end
