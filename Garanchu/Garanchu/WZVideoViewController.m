@@ -944,21 +944,21 @@
     __weak WZLoginViewController *loginViewController = _loginViewController;
     __weak UIView *hudView = loginViewController.view ? loginViewController.view : me.view;
     
-    // block old devices
-    float gtvVersion = _garaponTv.gtvVersion.floatValue;
-    if (gtvVersion > 0 && gtvVersion < 3.0) {
-        [UIAlertView bk_showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
-                                    message:WZGarancuLocalizedString(@"GaraponTv2NotSupported")
-                          cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
-                          otherButtonTitles:nil
-                                    handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                        ;
-                                        [me hideGaraponIndicatorForView:hudView];
-                                        [me presentModalLoginViewController];
-                                    }];
-
-        return;
-    }
+//    // block old devices
+//    float gtvVersion = _garaponTv.gtvVersion.floatValue;
+//    if (gtvVersion > 0 && gtvVersion < 3.0) {
+//        [UIAlertView bk_showAlertViewWithTitle:WZGarancuLocalizedString(@"DefaultAlertCaption")
+//                                    message:WZGarancuLocalizedString(@"GaraponTv2NotSupported")
+//                          cancelButtonTitle:WZGarancuLocalizedString(@"OkButtonLabel")
+//                          otherButtonTitles:nil
+//                                    handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+//                                        ;
+//                                        [me hideGaraponIndicatorForView:hudView];
+//                                        [me presentModalLoginViewController];
+//                                    }];
+//
+//        return;
+//    }
     
     [self showGaraponIndicatorWhiteWithMessage:WZGarancuLocalizedString(@"IndicatorLoginGaraponTv") inView:hudView];
         
