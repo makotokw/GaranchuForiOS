@@ -14,8 +14,11 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - Crashlytics (3.7.2):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.7)
   - FlatUIKit (1.6)
-  - GRMustache (6.8.4):
+  - GRMustache (6.9.2):
     - JRSwizzle (~> 1.0)
   - InAppSettingsKit (2.0)
   - JRSwizzle (1.0)
@@ -48,8 +51,10 @@ PODS:
 
 DEPENDENCIES:
   - BlocksKit (= 2.2.5)
+  - Crashlytics
+  - Fabric
   - FlatUIKit (= 1.6)
-  - GRMustache (= 6.8.4)
+  - GRMustache (= 6.9.2)
   - InAppSettingsKit (= 2.0)
   - MBProgressHUD (= 0.9.1)
   - MZFormSheetController (= 2.4.2)
@@ -57,10 +62,12 @@ DEPENDENCIES:
   - SFHFKeychainUtils (= 0.0.1)
   - SVPullToRefresh (= 0.4.1)
   - TMCache (= 1.2.3)
-  - WZActivityIndicatorView (from `https://github.com/makotokw/CocoaWZActivityIndicatorView.git`, commit `e8e8146365ce90328c9941eb7a7e49faef610b8b`)
+  - WZActivityIndicatorView (from `https://github.com/makotokw/CocoaWZActivityIndicatorView.git`,
+    commit `e8e8146365ce90328c9941eb7a7e49faef610b8b`)
   - WZGarapon (from `https://github.com/makotokw/CocoaWZYGarapon.git`, commit `edb7131df2d7c381b299c71b08b6767b099f83d1`)
   - WZYAVPlayer (from `https://github.com/makotokw/CocoaWZYAVPlayer.git`, commit `03fadf204d76b3ebbc4f020d35f3023ba8d7334e`)
-  - WZYPlayerSlider (from `https://github.com/makotokw/CocoaWZYPlayerSlider.git`, commit `7581f56230cc289a3b09ff1c48e46265fec28df4`)
+  - WZYPlayerSlider (from `https://github.com/makotokw/CocoaWZYPlayerSlider.git`,
+    commit `7581f56230cc289a3b09ff1c48e46265fec28df4`)
 
 EXTERNAL SOURCES:
   WZActivityIndicatorView:
@@ -91,21 +98,23 @@ CHECKOUT OPTIONS:
     :git: https://github.com/makotokw/CocoaWZYPlayerSlider.git
 
 SPEC CHECKSUMS:
-  BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
-  FlatUIKit: 48b78e6d026c2f2c8a733425aaa5015c99ffc079
-  GRMustache: 182cda4a40255133ac6d2cc4f456669844882735
-  InAppSettingsKit: d274398d1334359225afdb16f064d4de2487e5a7
-  JRSwizzle: 30da7a2c539a4ebf954b16d15f6dd8221c9f6fa5
-  MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
-  MZAppearance: c88502c0c2345120630c34e09d5ff09e2969ba30
-  MZFormSheetController: cbe6560a74639cf8ca17c35545c6b9eb275558d8
-  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
-  SFHFKeychainUtils: 6fdda05a86d035db406c7662ec1054814b68f0fd
-  SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
-  TMCache: 11589ef8c40909114a5e60132711c9a559e01d97
-  WZActivityIndicatorView: 0831c45bbedf2dbf5411284f67439e0fed9584e0
-  WZGarapon: 138cc0d4bef9ebb2617c3be8148281d2c55144b8
-  WZYAVPlayer: 6a0e94d7decc6743b87ce04960cd22c7a81fabc5
-  WZYPlayerSlider: 4b15e413bd1cabc94cfb707ce2b6c2d1b368efc2
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+  FlatUIKit: a59c93fe2fde5329dfb71dd9317b1b0386d6a178
+  GRMustache: 36b743e4f0925409ef57ccc36cbdffeb085508c7
+  InAppSettingsKit: 68fc2d5d2c01643dc6d797c2967f6014b815b333
+  JRSwizzle: dd5ead5d913a0f29e7f558200165849f006bb1e3
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  MZAppearance: c2937318234fd782e900fb178942278881ac5490
+  MZFormSheetController: d7264c84b1cbd1663fac29fdd8d4b3521a34bd5f
+  SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
+  SFHFKeychainUtils: 9576b411a79a058f4d5381ace6f3242b9a62e664
+  SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
+  TMCache: 5f68bc38d741aa8df4c63131b847522783665d81
+  WZActivityIndicatorView: 2e30bf82688fdc78e7ee0e6f1de457727071dddd
+  WZGarapon: ba82fb7a36b8d702d0263c73ab33ac4d921a9df1
+  WZYAVPlayer: 444fa7ab49e6d9aec3c75cf7da2af1da333a5f24
+  WZYPlayerSlider: 79b7221037fb5051442f5dcc1b1966f62176a01c
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.39.0

@@ -7,6 +7,8 @@
 
 #import "WZAppDelegate.h"
 #import "WZCoreData.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation WZAppDelegate
 
@@ -14,7 +16,8 @@
 {
     WZLogD(@"application:didFinishLaunchingWithOptions");
     WZGaranchu *stage = [WZGaranchu current];
-    [stage setup];
+    [stage setup];    
+    [Fabric with:@[[Crashlytics class]]];
     return YES;
 }
 
