@@ -62,12 +62,10 @@ DEPENDENCIES:
   - SFHFKeychainUtils (= 0.0.1)
   - SVPullToRefresh (= 0.4.1)
   - TMCache (= 1.2.3)
-  - WZActivityIndicatorView (from `https://github.com/makotokw/CocoaWZActivityIndicatorView.git`,
-    commit `e8e8146365ce90328c9941eb7a7e49faef610b8b`)
+  - WZActivityIndicatorView (from `https://github.com/makotokw/CocoaWZActivityIndicatorView.git`, commit `e8e8146365ce90328c9941eb7a7e49faef610b8b`)
   - WZGarapon (from `https://github.com/makotokw/CocoaWZYGarapon.git`, commit `edb7131df2d7c381b299c71b08b6767b099f83d1`)
   - WZYAVPlayer (from `https://github.com/makotokw/CocoaWZYAVPlayer.git`, commit `03fadf204d76b3ebbc4f020d35f3023ba8d7334e`)
-  - WZYPlayerSlider (from `https://github.com/makotokw/CocoaWZYPlayerSlider.git`,
-    commit `7581f56230cc289a3b09ff1c48e46265fec28df4`)
+  - WZYPlayerSlider (from `https://github.com/makotokw/CocoaWZYPlayerSlider.git`, commit `7581f56230cc289a3b09ff1c48e46265fec28df4`)
 
 EXTERNAL SOURCES:
   WZActivityIndicatorView:
@@ -117,4 +115,6 @@ SPEC CHECKSUMS:
   WZYAVPlayer: 444fa7ab49e6d9aec3c75cf7da2af1da333a5f24
   WZYPlayerSlider: 79b7221037fb5051442f5dcc1b1966f62176a01c
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 186f5d6732d3ca4df44af851527aa40b1a6323dd
+
+COCOAPODS: 1.0.1
