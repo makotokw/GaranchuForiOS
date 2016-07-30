@@ -1,0 +1,7 @@
+app_identifier ENV["APP_IDENTIFIER"]
+apple_id ENV["APPLE_ID"]
+team_id ENV["TEAM_ID"]
+
+for_lane :beta do
+  app_identifier ENV["APP_IDENTIFIER"] + ".beta"
+end

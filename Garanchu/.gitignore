@@ -62,6 +62,8 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 
+fastlane/metadata
+
 # Garanchu
 WZGaranchuConfig.h
 Garanchu.xcworkspace/

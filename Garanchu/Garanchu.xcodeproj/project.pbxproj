@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2CBEB2188D3D2688335DD105 /* libPods-Garanchu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 335EFD81661E699CFA9FB606 /* libPods-Garanchu.a */; };
 		8F3C22EF17B38FE000D35CF2 /* MBProgressHUD+Garanchu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */; };
 		8F59FC511791F73C00EEA418 /* WZVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC501791F73C00EEA418 /* WZVideoViewController.m */; };
 		8F59FC541792C21E00EEA418 /* WZGaranchuUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59FC531792C21E00EEA418 /* WZGaranchuUser.m */; };
@@ -69,6 +68,7 @@
 		8FF5973517C98B0200A9E8E9 /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8FF5973417C98B0200A9E8E9 /* InAppSettings.bundle */; };
 		8FFD027E17DE2D6D00583B1E /* WZGaraponTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFD027D17DE2D6D00583B1E /* WZGaraponTabController.m */; };
 		8FFD028117DE379600583B1E /* WZSearchSuggestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFD028017DE379600583B1E /* WZSearchSuggestViewController.m */; };
+		C2D303D763EC5C1BDE5FE756 /* libPods-Garanchu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F37577E9CC5C0C19B84606E4 /* libPods-Garanchu.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +82,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		335EFD81661E699CFA9FB606 /* libPods-Garanchu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Garanchu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A791369BA749C336B78F566 /* Pods-Garanchu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Garanchu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Garanchu/Pods-Garanchu.release.xcconfig"; sourceTree = "<group>"; };
+		845A21794987715D18C5B91B /* Pods-Garanchu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Garanchu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Garanchu/Pods-Garanchu.debug.xcconfig"; sourceTree = "<group>"; };
 		8F3C22ED17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Garanchu.h"; sourceTree = "<group>"; };
 		8F3C22EE17B38FDF00D35CF2 /* MBProgressHUD+Garanchu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Garanchu.m"; sourceTree = "<group>"; };
 		8F59FC4F1791F73C00EEA418 /* WZVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZVideoViewController.h; sourceTree = "<group>"; };
@@ -175,8 +176,7 @@
 		8FFD027D17DE2D6D00583B1E /* WZGaraponTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZGaraponTabController.m; sourceTree = "<group>"; };
 		8FFD027F17DE379600583B1E /* WZSearchSuggestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZSearchSuggestViewController.h; sourceTree = "<group>"; };
 		8FFD028017DE379600583B1E /* WZSearchSuggestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZSearchSuggestViewController.m; sourceTree = "<group>"; };
-		B640230DA1241719FE973D08 /* Pods-Garanchu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Garanchu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Garanchu/Pods-Garanchu.release.xcconfig"; sourceTree = "<group>"; };
-		E449583657341A9A3F1D5A9F /* Pods-Garanchu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Garanchu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Garanchu/Pods-Garanchu.debug.xcconfig"; sourceTree = "<group>"; };
+		F37577E9CC5C0C19B84606E4 /* libPods-Garanchu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Garanchu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,7 +188,7 @@
 				8F935B941791F24D001FFE01 /* UIKit.framework in Frameworks */,
 				8F935B961791F24D001FFE01 /* Foundation.framework in Frameworks */,
 				8F935B981791F24D001FFE01 /* CoreGraphics.framework in Frameworks */,
-				2CBEB2188D3D2688335DD105 /* libPods-Garanchu.a in Frameworks */,
+				C2D303D763EC5C1BDE5FE756 /* libPods-Garanchu.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +212,7 @@
 				8F935BB71791F24D001FFE01 /* GaranchuTests */,
 				8F935B921791F24D001FFE01 /* Frameworks */,
 				8F935B911791F24D001FFE01 /* Products */,
-				B50D797AD7E88227310C270C /* Pods */,
+				B18A586D309CF4D4B44E20DA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -233,7 +233,7 @@
 				8F935B951791F24D001FFE01 /* Foundation.framework */,
 				8F935B971791F24D001FFE01 /* CoreGraphics.framework */,
 				8F935BB11791F24D001FFE01 /* SenTestingKit.framework */,
-				335EFD81661E699CFA9FB606 /* libPods-Garanchu.a */,
+				F37577E9CC5C0C19B84606E4 /* libPods-Garanchu.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -361,11 +361,11 @@
 			name = NSManagedObject;
 			sourceTree = "<group>";
 		};
-		B50D797AD7E88227310C270C /* Pods */ = {
+		B18A586D309CF4D4B44E20DA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E449583657341A9A3F1D5A9F /* Pods-Garanchu.debug.xcconfig */,
-				B640230DA1241719FE973D08 /* Pods-Garanchu.release.xcconfig */,
+				845A21794987715D18C5B91B /* Pods-Garanchu.debug.xcconfig */,
+				2A791369BA749C336B78F566 /* Pods-Garanchu.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -382,7 +382,6 @@
 				8F935B8D1791F24D001FFE01 /* Frameworks */,
 				8F935B8E1791F24D001FFE01 /* Resources */,
 				8F8C4972182F9B9400329DFC /* Remove English Resouces */,
-				8F8574FD1D35C8CA00373158 /* ShellScript */,
 				FA87D652ED7CCB5F75DD9F9F /* [CP] Embed Pods Frameworks */,
 				8D5443599BBC3C592140E228 /* [CP] Copy Pods Resources */,
 			);
@@ -502,19 +501,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Garanchu/Pods-Garanchu-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		8F8574FD1D35C8CA00373158 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" f60b453ec10ea1a1295b6044742a0735486e119a 7ddf41ba0418625c0e1b9e35a366e925996d55220927a4334d22a70b4fb308bd";
 		};
 		8F8C4972182F9B9400329DFC /* Remove English Resouces */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -717,7 +703,7 @@
 		};
 		8F935BC31791F24D001FFE01 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E449583657341A9A3F1D5A9F /* Pods-Garanchu.debug.xcconfig */;
+			baseConfigurationReference = 845A21794987715D18C5B91B /* Pods-Garanchu.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_DISPLAY_NAME_SUFFIX = D;
 				BUNDLE_IDENTIFIER_SUFFIX = .debug;
@@ -737,12 +723,11 @@
 		};
 		8F935BC41791F24D001FFE01 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B640230DA1241719FE973D08 /* Pods-Garanchu.release.xcconfig */;
+			baseConfigurationReference = 2A791369BA749C336B78F566 /* Pods-Garanchu.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_DISPLAY_NAME_SUFFIX = "";
 				BUNDLE_IDENTIFIER_SUFFIX = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Garanchu/Garanchu-Prefix.pch";
@@ -750,7 +735,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.makotokw.ios.${PRODUCT_NAME:rfc1034identifier}${BUNDLE_IDENTIFIER_SUFFIX}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "${match_profile_uuid}";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};

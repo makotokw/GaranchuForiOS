@@ -1,0 +1,172 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version '1.98.0'
+
+default_platform :ios
+
+platform :ios do
+
+  PLIST_PATH = "Garanchu/Garanchu-Info.plist"
+  FLAVORS = {}
+
+  before_all do
+    # ENV['SLACK_URL'] = 'https://hooks.slack.com/services/...'
+    backup_file(path: PLIST_PATH)
+
+    FLAVORS[:debug] = {
+      display_name: 'd${PRODUCT_NAME}',
+      profile_app_identifier: '*',
+      profile_type: 'Development'
+    }
+    FLAVORS[:beta] = {
+      display_name: 'b${PRODUCT_NAME}',
+      profile_app_identifier: 'com.makotokw.*',
+      profile_type: 'AdHoc'
+    }
+    FLAVORS[:release] = {
+      display_name: '${PRODUCT_NAME}',
+      profile_app_identifier: ENV['APP_IDENTIFIER'],
+      profile_type: 'AppStore'
+    }
+  end
+
+  def get_flavor(app_identifier)
+    key = case app_identifier
+    when /\.debug$/
+      :debug
+    when ENV['APP_IDENTIFIER']
+      :release
+    else
+      :beta
+    end
+    FLAVORS[key]
+  end
+
+  private_lane :flavor do |options|
+    app_identifier = options[:id] ? options[:id] : CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+    flavor = get_flavor(app_identifier)
+    puts "Updated the app_identifier #{app_identifier} in plist file"
+    update_info_plist(
+      plist_path: PLIST_PATH,
+      app_identifier: app_identifier,
+      display_name: flavor[:display_name]
+    )
+  end
+
+  desc 'Fetches the provisioning profile'
+  private_lane :match_cert do |options|
+    app_identifier = options[:id] ? options[:id] : CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+    update = options[:update] ? true : false
+    flavor = get_flavor(app_identifier)
+
+    match(app_identifier: flavor[:profile_app_identifier], type: flavor[:profile_type].downcase, readonly: !update)
+
+    ENV['match_profile_key'] = "sigh_#{flavor[:profile_app_identifier]}_#{flavor[:profile_type].downcase}"
+    ENV['match_profile_name'] = "match #{flavor[:profile_type]} #{flavor[:profile_app_identifier]}"
+    # copy matched UUID to ENV
+    ENV['match_profile_uuid'] = ENV[ENV['match_profile_key']]
+  end
+
+  desc 'Fetches the provisioning profiles'
+  lane :certs do |options|
+    options ||= {}
+    match_cert(options.merge({id: ENV['APP_IDENTIFIER'] + '.debug'}))
+    match_cert(options.merge({id: ENV['APP_IDENTIFIER'] + '.beta'}))
+    match_cert(options.merge({id: ENV['APP_IDENTIFIER']}))
+  end
+
+  desc 'Runs all the tests'
+  lane :test do
+    cocoapods
+    scan(scheme: 'Garanchu')
+  end
+
+  desc 'Build the application'
+  private_lane :build do |options|
+    # cocoapods
+    flavor
+    match_cert
+    # gym(scheme: 'Garanchu')
+  end
+
+  desc 'Submit a new Beta Build to the Crashlytics'
+  desc 'This will also make sure the profile is up to date'
+  lane :beta do |options|
+    build
+
+    if options[:first_run]
+      # crashlytics wants app to be activated
+      xcodebuild(
+          scheme: "Garanchu",
+          workspace: 'Garanchu.xcworkspace',
+          derivedDataPath: './Build',
+          arch: "i386",
+          sdk: "iphonesimulator9.3"
+      )
+      say 'crashlytics wants app to be activated: '
+      puts '  xcrun instruments -w "iPad 2 (9.3)"'
+      puts '  xcrun simctl install booted ./Build/Build/Products/Debug-iphonesimulator/Garanchu.app'
+      sh('echo wait for 30 seconds to ensure app is activated && sleep 30 && echo waiting done')
+    end
+
+    crashlytics(
+      api_token: ENV['CRASHLYTICS_API_TOKEN'],
+      build_secret: ENV['CRASHLYTICS_BUILD_SECRET'],
+      groups: ['developer']
+    )
+  end
+
+  desc 'Deploy a new version to the App Store'
+  lane :dist do
+    # snapshot
+    build
+    # deliver(force: true)
+    # frameit
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    # slack(
+    #   message: 'Successfully deployed new App Update.'
+    # )
+
+    # p ENV
+
+    # Restore App Identifier and Name
+    restore_file(path: PLIST_PATH)
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+
+    # Restore App Identifier and Name
+    restore_file(path: PLIST_PATH)
+
+    # Mac OS X Notification
+    notify "Fastlane '#{lane}' errored"
+  end
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+
+# fastlane reports which actions are used
+# No personal data is recorded. Learn more at https://github.com/fastlane/enhancer
