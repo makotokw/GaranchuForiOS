@@ -121,7 +121,7 @@
     NSTimeInterval indexPosition = 0;
     
     while (indexPosition <= _program.duration) {
-        [indexArray addObject:[NSString stringWithFormat:@"%d", (NSInteger)(indexPosition/60)]];
+        [indexArray addObject:[NSString stringWithFormat:@"%ld", (long)(indexPosition/60)]];
         indexPosition += WZVideoCaptionIndexInterval;
     }
     return indexArray;

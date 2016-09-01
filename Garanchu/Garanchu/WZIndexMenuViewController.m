@@ -361,7 +361,7 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         [_items addObject:@{
          @"title": c.name,
          @"indexType": [NSNumber numberWithInteger:WZProgramGaranchuIndexType],
-         @"params": @{@"ch": [NSString stringWithFormat:@"%d", c.TSID]}
+         @"params": @{@"ch": [NSString stringWithFormat:@"%ld", (long)c.TSID]}
          }];
     }
     [self.tableView reloadData];
@@ -463,10 +463,10 @@ typedef void (^WZGaraponSearchAsyncBlock)(NSArray *items, NSError *error);
         dict = [WZGaraponTv recordingProgramParams];
     }
     if (!dict) {
-        return @{@"p": [NSString stringWithFormat:@"%d", page]};
+        return @{@"p": [NSString stringWithFormat:@"%ld", (long)page]};
     }
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:dict];
-    params[@"p"] = [NSString stringWithFormat:@"%d", page];
+    params[@"p"] = [NSString stringWithFormat:@"%ld", (long)page];
     return params;
 }
 
