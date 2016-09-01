@@ -6,4 +6,4 @@ gem 'rake'
 gem 'cocoapods', '1.0.1'
 
 # https://fastlane.tools/
-gem 'fastlane', '~> 1.98'
+gem 'fastlane', '~> 1.102'
