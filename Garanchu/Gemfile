@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rake'
 
 # https://github.com/CocoaPods/CocoaPods/blob/master/CHANGELOG.md
-gem 'cocoapods', '1.0.1'
+gem 'cocoapods', '1.5.2'
 
 # https://fastlane.tools/
 gem 'fastlane', '~> 1.102'
